@@ -1,11 +1,11 @@
 #![feature(ip)]
 #![feature(duration_float)]
 
-mod error;
-mod option;
-mod procedure;
-mod random;
-mod runner;
+pub mod error;
+pub mod option;
+pub mod procedure;
+pub mod random;
+pub mod runner;
 
 use error::SynFloodingError;
 use log::debug;
