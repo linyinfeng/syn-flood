@@ -43,7 +43,7 @@
 
 <span class="macro">quick_error</span><span class="macro">!</span> {
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">SynFloodingError</span> {
+    <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">SynFloodError</span> {
         <span class="ident">ToSocketAddrs</span>(<span class="ident">from</span>: <span class="ident">String</span>, <span class="ident">e</span>: <span class="ident">std</span>::<span class="ident">io</span>::<span class="ident">Error</span>) {
             <span class="ident">cause</span>(<span class="ident">e</span>)
             <span class="ident">display</span>(<span class="string">&quot;failed to convert \&quot;{}\&quot; to socket addresses: {}&quot;</span>, <span class="ident">from</span>, <span class="ident">e</span>)

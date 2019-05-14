@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["SynFloodingError",""]]});
+initSidebarItems({"enum":[["SynFloodError",""]]});
