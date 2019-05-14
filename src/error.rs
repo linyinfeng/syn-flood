@@ -5,7 +5,7 @@ use std::time::SystemTimeError;
 
 quick_error! {
     #[derive(Debug)]
-    pub enum SynFloodingError {
+    pub enum SynFloodError {
         ToSocketAddrs(from: String, e: std::io::Error) {
             cause(e)
             display("failed to convert \"{}\" to socket addresses: {}", from, e)

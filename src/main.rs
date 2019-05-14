@@ -7,7 +7,7 @@ pub mod procedure;
 pub mod random;
 pub mod runner;
 
-use error::SynFloodingError;
+use error::SynFloodError;
 use log::debug;
 use log::error;
 use log::info;
@@ -29,7 +29,7 @@ fn main() {
     }
     debug!("dump options: {:?}", opt);
 
-    if let Err(e) = syn_flooding_main(opt) {
+    if let Err(e) = syn_flood_main(opt) {
         error!("{}", e);
         std::process::exit(1);
     }
@@ -38,7 +38,7 @@ fn main() {
 fn initialize_logger(default_level: LevelFilter) {
     use env_logger::Builder;
     let mut builder = Builder::new();
-    builder.filter(Some("syn_flooding"), default_level);
+    builder.filter(Some("syn_flood"), default_level);
 
     if let Ok(log_var) = env::var("RUST_LOG") {
         builder.parse_filters(&log_var);
@@ -47,7 +47,7 @@ fn initialize_logger(default_level: LevelFilter) {
     builder.init();
 }
 
-fn syn_flooding_main(option: Opt) -> Result<(), SynFloodingError> {
+fn syn_flood_main(option: Opt) -> Result<(), SynFloodError> {
     // resolve socket addresses and select one
     let addr = procedure::resolve_destination(&option)?;
     info!("use first usable destination socket address: {}", addr);

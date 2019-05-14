@@ -1,24 +1,19 @@
-use crate::error::SynFloodingError;
+use crate::error::SynFloodError;
 use crate::option::Opt;
 use log::warn;
 use std::thread::sleep;
 use std::time::{Duration, SystemTime};
 
-pub fn run<F, O>(opt: &Opt, mut f: F, output: O) -> Result<RunStatistics, SynFloodingError>
+pub fn run<F, O>(opt: &Opt, mut f: F, output: O) -> Result<RunStatistics, SynFloodError>
 where
-    F: FnMut() -> Result<(), SynFloodingError>,
-    O: Fn(RunStatistics) -> Result<(), SynFloodingError>,
+    F: FnMut() -> Result<(), SynFloodError>,
+    O: Fn(RunStatistics) -> Result<(), SynFloodError>,
 {
     let mut all_time = RunStatisticsBuilder::new();
     let mut current = all_time.clone();
     let mut last_time: Option<SystemTime> = None;
     loop {
-        if current
-            .start
-            .elapsed()
-            .map_err(SynFloodingError::SystemTime)? >=
-            opt.output_interval
-        {
+        if current.start.elapsed().map_err(SynFloodError::SystemTime)? >= opt.output_interval {
             output(current.clone().build())?;
             current.clear();
         }
@@ -26,7 +21,7 @@ where
             if all_time
                 .start
                 .elapsed()
-                .map_err(SynFloodingError::SystemTime)? >=
+                .map_err(SynFloodError::SystemTime)? >=
                 time
             {
                 break Ok(all_time.build())
@@ -40,7 +35,7 @@ where
 
         if let Some(interval) = opt.interval {
             if let Some(last) = last_time {
-                let elapsed = last.elapsed().map_err(SynFloodingError::SystemTime)?;
+                let elapsed = last.elapsed().map_err(SynFloodError::SystemTime)?;
                 if elapsed < interval {
                     sleep(interval - elapsed);
                 }
@@ -76,13 +71,13 @@ impl RunStatistics {
         self.success + self.failed
     }
 
-    pub fn duration(&self) -> Result<Duration, SynFloodingError> {
+    pub fn duration(&self) -> Result<Duration, SynFloodError> {
         self.end
             .duration_since(self.start)
-            .map_err(SynFloodingError::SystemTime)
+            .map_err(SynFloodError::SystemTime)
     }
 
-    pub fn packet_per_second(&self) -> Result<f64, SynFloodingError> {
+    pub fn packet_per_second(&self) -> Result<f64, SynFloodError> {
         self.duration()
             .map(|duration| self.total() as f64 / duration.as_secs_f64())
     }
