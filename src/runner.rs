@@ -1,23 +1,34 @@
-use crate::option::Opt;
 use crate::error::SynFloodingError;
+use crate::option::Opt;
 use log::warn;
 use std::thread::sleep;
 use std::time::{Duration, SystemTime};
 
 pub fn run<F, O>(opt: &Opt, mut f: F, output: O) -> Result<RunStatistics, SynFloodingError>
-where F: FnMut() -> Result<(), SynFloodingError>,
-      O: Fn(RunStatistics) -> Result<(), SynFloodingError>,
+where
+    F: FnMut() -> Result<(), SynFloodingError>,
+    O: Fn(RunStatistics) -> Result<(), SynFloodingError>,
 {
     let mut all_time = RunStatisticsBuilder::new();
     let mut current = all_time.clone();
     let mut last_time: Option<SystemTime> = None;
     loop {
-        if current.start.elapsed().map_err(SynFloodingError::SystemTime)? >= opt.output_interval {
+        if current
+            .start
+            .elapsed()
+            .map_err(SynFloodingError::SystemTime)? >=
+            opt.output_interval
+        {
             output(current.clone().build())?;
             current.clear();
         }
         if let Some(time) = opt.time {
-            if all_time.start.elapsed().map_err(SynFloodingError::SystemTime)? >= time {
+            if all_time
+                .start
+                .elapsed()
+                .map_err(SynFloodingError::SystemTime)? >=
+                time
+            {
                 break Ok(all_time.build())
             }
         }
@@ -44,7 +55,7 @@ where F: FnMut() -> Result<(), SynFloodingError>,
                 warn!("{}", e);
                 all_time.failed += 1;
                 current.failed += 1;
-            }
+            },
         }
         if opt.interval.is_some() {
             last_time = Some(SystemTime::now());
@@ -66,11 +77,14 @@ impl RunStatistics {
     }
 
     pub fn duration(&self) -> Result<Duration, SynFloodingError> {
-        self.end.duration_since(self.start).map_err(SynFloodingError::SystemTime)
+        self.end
+            .duration_since(self.start)
+            .map_err(SynFloodingError::SystemTime)
     }
 
     pub fn packet_per_second(&self) -> Result<f64, SynFloodingError> {
-        self.duration().map(|duration| self.total() as f64 / duration.as_secs_f64())
+        self.duration()
+            .map(|duration| self.total() as f64 / duration.as_secs_f64())
     }
 }
 

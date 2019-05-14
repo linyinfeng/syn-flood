@@ -1,7 +1,7 @@
 use std::net::IpAddr;
-use structopt::StructOpt;
-use std::time::Duration;
 use std::num::ParseFloatError;
+use std::time::Duration;
+use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 #[structopt(raw(setting = "structopt::clap::AppSettings::ColoredHelp"))]
@@ -61,11 +61,20 @@ pub struct Opt {
     pub source_port: Option<u16>,
 
     /// Sets output interval(seconds).
-    #[structopt(short, long = "output-interval", default_value = "1", parse(try_from_str = "duration_try_from_str"))]
+    #[structopt(
+        short,
+        long = "output-interval",
+        default_value = "1",
+        parse(try_from_str = "duration_try_from_str")
+    )]
     pub output_interval: Duration,
 
     /// Sets output interval(seconds).
-    #[structopt(short = "i", long = "interval", parse(try_from_str = "duration_try_from_str"))]
+    #[structopt(
+        short = "i",
+        long = "interval",
+        parse(try_from_str = "duration_try_from_str")
+    )]
     pub interval: Option<Duration>,
 
     /// Number of packets to be sent.

