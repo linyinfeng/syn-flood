@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/structopt-0.2.17/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../structopt/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/structopt-0.2.18/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../structopt/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -555,21 +555,6 @@
 <span id="555">555</span>
 <span id="556">556</span>
 <span id="557">557</span>
-<span id="558">558</span>
-<span id="559">559</span>
-<span id="560">560</span>
-<span id="561">561</span>
-<span id="562">562</span>
-<span id="563">563</span>
-<span id="564">564</span>
-<span id="565">565</span>
-<span id="566">566</span>
-<span id="567">567</span>
-<span id="568">568</span>
-<span id="569">569</span>
-<span id="570">570</span>
-<span id="571">571</span>
-<span id="572">572</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright 2018 Guillaume Pinot (@TeXitoi) &lt;texitoi@texitoi.eu&gt;</span>
 <span class="comment">//</span>
@@ -658,13 +643,8 @@
 <span class="doccomment">//!   - `author`: Defaults to the crate author name given by Cargo.</span>
 <span class="doccomment">//!   - `about`: Defaults to the crate description given by Cargo.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! This approach also works for booleans and numbers which can be</span>
-<span class="doccomment">//! used as values of the attributes for corresponding `clap::App`</span>
-<span class="doccomment">//! methods (e.g. for `fn function(self, bool)` and so on).</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Methods from `clap::App` that don&#39;t take an atomic literal</span>
-<span class="doccomment">//! argument (`&amp;str`, `bool` or numbers) can be called by wrapping</span>
-<span class="doccomment">//! them in `raw()`, e.g. to activate colored help text:</span>
+<span class="doccomment">//! Methods from `clap::App` that don&#39;t take an `&amp;str` can be called by</span>
+<span class="doccomment">//! wrapping them in `raw()`, e.g. to activate colored help text:</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//! #[macro_use]</span>
@@ -683,17 +663,14 @@
 <span class="doccomment">//! # fn main() {}</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Then, each field of the struct not marked as a subcommand</span>
-<span class="doccomment">//! corresponds to a `clap::Arg`. As with the struct attributes, every</span>
-<span class="doccomment">//! method of `clap::Arg` in the form of `fn function_name(self,</span>
-<span class="doccomment">//! &amp;str)`, `fn function_name(self, bool)` or `fn function_name(self,</span>
-<span class="doccomment">//! usize)` can be used through specifying it as an attribute with a</span>
-<span class="doccomment">//! literal value. The `name` attribute can be used to customize the</span>
-<span class="doccomment">//! `Arg::with_name()` call (defaults to the field name in</span>
-<span class="doccomment">//! kebab-case). For functions that do not take an atomic literal as</span>
-<span class="doccomment">//! argument, the attribute can be wrapped in `raw()`, e. g.</span>
-<span class="doccomment">//! `raw(aliases = r#&quot;&amp;[&quot;alias&quot;]&quot;#, possible_values = r#&quot;&amp;[&quot;fast&quot;,</span>
-<span class="doccomment">//! &quot;slow&quot;]&quot;#)`.</span>
+<span class="doccomment">//! Then, each field of the struct not marked as a subcommand corresponds</span>
+<span class="doccomment">//! to a `clap::Arg`. As with the struct attributes, every method of</span>
+<span class="doccomment">//! `clap::Arg` in the form of `fn function_name(self, &amp;str)` can be used</span>
+<span class="doccomment">//! through specifying it as an attribute. The `name` attribute can be used</span>
+<span class="doccomment">//! to customize the `Arg::with_name()` call (defaults to the field name in</span>
+<span class="doccomment">//! kebab-case).</span>
+<span class="doccomment">//! For functions that do not take a `&amp;str` as argument, the attribute can be</span>
+<span class="doccomment">//! wrapped in `raw()`, e. g. `raw(aliases = r#&quot;&amp;[&quot;alias&quot;]&quot;#, next_line_help = &quot;true&quot;)`.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The type of the field gives the kind of argument:</span>
 <span class="doccomment">//!</span>
@@ -703,14 +680,7 @@
 <span class="doccomment">//! `Option&lt;T: FromStr&gt;`         | optional positional argument or option            | `.takes_value(true).multiple(false)`</span>
 <span class="doccomment">//! `Option&lt;Option&lt;T: FromStr&gt;&gt;` | optional option with optional value               | `.takes_value(true).multiple(false).min_values(0).max_values(1)`</span>
 <span class="doccomment">//! `Vec&lt;T: FromStr&gt;`            | list of options or the other positional arguments | `.takes_value(true).multiple(true)`</span>
-<span class="doccomment">//! `Option&lt;Vec&lt;T: FromStr&gt;`     | optional list of options                          | `.takes_values(true).multiple(true).min_values(0)`</span>
 <span class="doccomment">//! `T: FromStr`                 | required option or positional argument            | `.takes_value(true).multiple(false).required(!has_default)`</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Note that `Option&lt;Option&lt;T&gt;&gt;` allows to express options like</span>
-<span class="doccomment">//! `[--opt=[val]]` which can have three values: `None` if `--opt` was</span>
-<span class="doccomment">//! not mentioned, `Some(None)` if it was mentioned, but didn&#39;t have</span>
-<span class="doccomment">//! value (`--opt`) and `Some(Some(val))` for `--opt=val` case.</span>
-<span class="doccomment">//! Similar reasoning also applies to `Option&lt;Vec&lt;T&gt;&gt;`.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The `FromStr` trait is used to convert the argument to the given</span>
 <span class="doccomment">//! type, and the `Arg::validator` method is set to a method using</span>
