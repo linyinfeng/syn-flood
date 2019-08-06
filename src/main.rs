@@ -8,13 +8,9 @@ pub mod random;
 pub mod runner;
 
 use error::SynFloodError;
-use log::debug;
-use log::error;
-use log::info;
-use log::LevelFilter;
+use log::{debug, error, info, LevelFilter};
 use option::Opt;
-use std::env;
-use std::net::SocketAddr;
+use std::{env, net::SocketAddr};
 use structopt::StructOpt;
 
 fn main() {

@@ -1,6 +1,4 @@
-use std::net::IpAddr;
-use std::num::ParseFloatError;
-use std::time::Duration;
+use std::{net::IpAddr, num::ParseFloatError, time::Duration};
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]

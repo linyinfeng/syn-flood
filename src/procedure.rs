@@ -1,25 +1,24 @@
-use crate::error::SynFloodError;
-use crate::option::Opt;
-use crate::random::{random_global_ipv4_addr, random_source_port};
-use crate::runner::run;
-use log::debug;
-use log::info;
-use pnet::packet::ip::IpNextHeaderProtocols;
-use pnet::packet::ipv4;
-use pnet::packet::ipv4::Ipv4Packet;
-use pnet::packet::ipv4::MutableIpv4Packet;
-use pnet::packet::tcp;
-use pnet::packet::tcp::MutableTcpPacket;
-use pnet::packet::tcp::TcpFlags;
-use pnet::packet::tcp::TcpPacket;
-use pnet::packet::MutablePacket;
-use pnet::packet::Packet;
-use pnet::transport::transport_channel;
-use pnet::transport::TransportChannelType;
+use crate::{
+    error::SynFloodError,
+    option::Opt,
+    random::{random_global_ipv4_addr, random_source_port},
+    runner::run,
+};
+use log::{debug, info};
+use pnet::{
+    packet::{
+        ip::IpNextHeaderProtocols,
+        ipv4::{self, Ipv4Packet, MutableIpv4Packet},
+        tcp::{self, MutableTcpPacket, TcpFlags, TcpPacket},
+        MutablePacket, Packet,
+    },
+    transport::{transport_channel, TransportChannelType},
+};
 use rand::Rng;
-use std::convert::TryInto;
-use std::net::{IpAddr, ToSocketAddrs};
-use std::net::{SocketAddr, SocketAddrV4, SocketAddrV6};
+use std::{
+    convert::TryInto,
+    net::{IpAddr, SocketAddr, SocketAddrV4, SocketAddrV6, ToSocketAddrs},
+};
 
 pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodError> {
     let addrs: Vec<_> = option

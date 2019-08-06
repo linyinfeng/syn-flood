@@ -1,8 +1,9 @@
-use crate::error::SynFloodError;
-use crate::option::Opt;
+use crate::{error::SynFloodError, option::Opt};
 use log::warn;
-use std::thread::sleep;
-use std::time::{Duration, SystemTime};
+use std::{
+    thread::sleep,
+    time::{Duration, SystemTime},
+};
 
 pub fn run<F, O>(opt: &Opt, mut f: F, output: O) -> Result<RunStatistics, SynFloodError>
 where
