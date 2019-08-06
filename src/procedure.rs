@@ -43,7 +43,7 @@ pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodError> {
                 true
             }
         })
-        .filter(|addr| {
+        .find(|addr| {
             if option.ipv6 && !addr.is_ipv6() {
                 info!("address {} excluded by option ipv6", addr);
                 false
@@ -51,7 +51,6 @@ pub fn resolve_destination(option: &Opt) -> Result<SocketAddr, SynFloodError> {
                 true
             }
         })
-        .next()
         .ok_or(SynFloodError::NoSocketAddr)
 }
 
