@@ -24,6 +24,7 @@ ALIASES["pnet_sys"] = {};
 ALIASES["pnet_transport"] = {};
 ALIASES["ppv_lite86"] = {};
 ALIASES["proc_macro2"] = {};
+ALIASES["proc_macro_error"] = {};
 ALIASES["quick_error"] = {};
 ALIASES["quote"] = {};
 ALIASES["rand"] = {};

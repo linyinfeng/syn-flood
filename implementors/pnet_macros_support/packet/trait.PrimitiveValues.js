@@ -6,5 +6,4 @@ implementors["pnet_macros_support"] = [];
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

@@ -148,7 +148,7 @@
         <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">libc</span>::<span class="ident">close</span>(<span class="ident">sock</span>);
     }
 
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">socket</span>(<span class="ident">af</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>, <span class="ident">sock</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>, <span class="ident">proto</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">CSocket</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">socket</span>(<span class="ident">af</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>, <span class="ident">sock</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>, <span class="ident">proto</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CSocket</span> {
         <span class="ident">libc</span>::<span class="ident">socket</span>(<span class="ident">af</span>, <span class="ident">sock</span>, <span class="ident">proto</span>)
     }
 
@@ -157,11 +157,11 @@
                             <span class="ident">name</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>,
                             <span class="ident">value</span>: <span class="ident">Buf</span>,
                             <span class="ident">option_len</span>: <span class="ident">SockLen</span>)
-        <span class="op">-&gt;</span> <span class="ident">libc</span>::<span class="ident">c_int</span> {
+        <span class="op">-</span><span class="op">&gt;</span> <span class="ident">libc</span>::<span class="ident">c_int</span> {
         <span class="ident">libc</span>::<span class="ident">setsockopt</span>(<span class="ident">socket</span>, <span class="ident">level</span>, <span class="ident">name</span>, <span class="ident">value</span>, <span class="ident">option_len</span>)
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">duration_to_timespec</span>(<span class="ident">dur</span>: <span class="ident">Duration</span>) <span class="op">-&gt;</span> <span class="ident">libc</span>::<span class="ident">timespec</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">duration_to_timespec</span>(<span class="ident">dur</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">libc</span>::<span class="ident">timespec</span> {
         <span class="ident">libc</span>::<span class="ident">timespec</span> {
             <span class="ident">tv_sec</span>: <span class="ident">dur</span>.<span class="ident">as_secs</span>() <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">time_t</span>,
             <span class="ident">tv_nsec</span>: <span class="ident">dur</span>.<span class="ident">subsec_nanos</span>() <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">c_long</span>,
@@ -173,12 +173,12 @@
 <span class="kw">use</span> <span class="self">self</span>::<span class="ident">public</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv4_addr</span>(<span class="ident">addr</span>: <span class="ident">InAddr</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv4_addr</span>(<span class="ident">addr</span>: <span class="ident">InAddr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
     (<span class="ident">addr</span>.<span class="ident">s_addr</span> <span class="kw">as</span> <span class="ident">u32</span>).<span class="ident">to_be</span>()
 }
 
 <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mk_inaddr</span>(<span class="ident">addr</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">InAddr</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mk_inaddr</span>(<span class="ident">addr</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">InAddr</span> {
     <span class="ident">InAddr</span> { <span class="ident">s_addr</span>: <span class="ident">addr</span> }
 }
 
@@ -189,7 +189,7 @@
                      <span class="ident">flags</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>,
                      <span class="ident">addr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">SockAddr</span>,
                      <span class="ident">addrlen</span>: <span class="ident">SockLen</span>)
-    <span class="op">-&gt;</span> <span class="ident">CouldFail</span> {
+    <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CouldFail</span> {
     <span class="ident">libc</span>::<span class="ident">sendto</span>(<span class="ident">socket</span>, <span class="ident">buf</span>, <span class="ident">len</span>, <span class="ident">flags</span>, <span class="ident">addr</span>, <span class="ident">addrlen</span>)
 }
 
@@ -199,24 +199,24 @@
                        <span class="ident">flags</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>,
                        <span class="ident">addr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">SockAddr</span>,
                        <span class="ident">addrlen</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">SockLen</span>)
-    <span class="op">-&gt;</span> <span class="ident">CouldFail</span> {
+    <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CouldFail</span> {
     <span class="ident">libc</span>::<span class="ident">recvfrom</span>(<span class="ident">socket</span>, <span class="ident">buf</span>, <span class="ident">len</span>, <span class="ident">flags</span>, <span class="ident">addr</span>, <span class="ident">addrlen</span>)
 }
 
 
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">retry</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="ident">libc</span>::<span class="ident">ssize_t</span>
-    <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">FnMut</span>() <span class="op">-&gt;</span> <span class="ident">libc</span>::<span class="ident">ssize_t</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">retry</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">libc</span>::<span class="ident">ssize_t</span>
+    <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">FnMut</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">libc</span>::<span class="ident">ssize_t</span>
 {
     <span class="kw">loop</span> {
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">f</span>();
-        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">!=</span> <span class="op">-</span><span class="number">1</span> <span class="op">||</span> <span class="ident">errno</span>() <span class="kw">as</span> <span class="ident">isize</span> <span class="op">!=</span> <span class="ident">libc</span>::<span class="ident">EINTR</span> <span class="kw">as</span> <span class="ident">isize</span> {
+        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">!</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> <span class="op">|</span><span class="op">|</span> <span class="ident">errno</span>() <span class="kw">as</span> <span class="ident">isize</span> <span class="op">!</span><span class="op">=</span> <span class="ident">libc</span>::<span class="ident">EINTR</span> <span class="kw">as</span> <span class="ident">isize</span> {
             <span class="kw">return</span> <span class="ident">ret</span>;
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">errno</span>() <span class="op">-&gt;</span> <span class="ident">i32</span> {
+<span class="kw">fn</span> <span class="ident">errno</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
     <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>().<span class="ident">raw_os_error</span>().<span class="ident">unwrap</span>()
 }
 </pre></div>

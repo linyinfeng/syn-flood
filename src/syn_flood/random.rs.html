@@ -32,7 +32,7 @@
 <span class="kw">use</span> <span class="ident">rand</span>::<span class="ident">distributions</span>::<span class="ident">Uniform</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">net</span>::<span class="ident">Ipv4Addr</span>;
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random_global_ipv4_addr</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="ident">_opt</span>: <span class="kw-2">&amp;</span><span class="ident">Opt</span>, <span class="ident">rng</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-&gt;</span> <span class="ident">Ipv4Addr</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random_global_ipv4_addr</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="ident">_opt</span>: <span class="kw-2">&amp;</span><span class="ident">Opt</span>, <span class="ident">rng</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Addr</span>
 <span class="kw">where</span>
     <span class="ident">R</span>: <span class="ident">rand</span>::<span class="ident">Rng</span>,
 {
@@ -50,7 +50,7 @@
     }
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random_source_port</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="ident">opt</span>: <span class="kw-2">&amp;</span><span class="ident">Opt</span>, <span class="ident">rng</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-&gt;</span> <span class="ident">u16</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random_source_port</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="ident">opt</span>: <span class="kw-2">&amp;</span><span class="ident">Opt</span>, <span class="ident">rng</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16</span>
 <span class="kw">where</span>
     <span class="ident">R</span>: <span class="ident">rand</span>::<span class="ident">Rng</span>,
 {

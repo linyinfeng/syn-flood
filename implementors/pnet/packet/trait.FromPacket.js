@@ -6,5 +6,4 @@ implementors["pnet"] = [];
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

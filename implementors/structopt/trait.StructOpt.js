@@ -6,5 +6,4 @@ implementors["syn_flood"] = [{text:"impl <a class=\"trait\" href=\"structopt/tra
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

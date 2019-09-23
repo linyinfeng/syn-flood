@@ -6,5 +6,4 @@ implementors["pnet_packet"] = [{text:"impl <a class=\"trait\" href=\"pnet_packet
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

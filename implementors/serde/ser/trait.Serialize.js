@@ -6,5 +6,4 @@ implementors["ipnetwork"] = [{text:"impl <a class=\"trait\" href=\"serde/ser/tra
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

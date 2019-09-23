@@ -396,7 +396,7 @@
     <span class="ident">ni</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>,
     <span class="ident">storage</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc</span>::<span class="ident">sockaddr_storage</span>,
     <span class="ident">proto</span>: <span class="ident">libc</span>::<span class="ident">c_int</span>,
-) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="ident">sll</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc</span>::<span class="ident">sockaddr_ll</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">storage</span>);
         (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_family</span> <span class="op">=</span> <span class="ident">libc</span>::<span class="ident">AF_PACKET</span> <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">sa_family_t</span>;
@@ -435,7 +435,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw">super</span>::<span class="ident">Config</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">config</span>: <span class="kw-2">&amp;</span><span class="kw">super</span>::<span class="ident">Config</span>) <span class="op">-&gt;</span> <span class="ident">Config</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">config</span>: <span class="kw-2">&amp;</span><span class="kw">super</span>::<span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
         <span class="ident">Config</span> {
             <span class="ident">write_buffer_size</span>: <span class="ident">config</span>.<span class="ident">write_buffer_size</span>,
             <span class="ident">read_buffer_size</span>: <span class="ident">config</span>.<span class="ident">read_buffer_size</span>,
@@ -448,7 +448,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">Config</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
         <span class="ident">Config</span> {
             <span class="ident">write_buffer_size</span>: <span class="number">4096</span>,
             <span class="ident">read_buffer_size</span>: <span class="number">4096</span>,
@@ -462,14 +462,14 @@
 
 <span class="doccomment">/// Create a data link channel using the Linux&#39;s AF_PACKET socket type</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel</span>(<span class="ident">network_interface</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>, <span class="ident">config</span>: <span class="ident">Config</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">super</span>::<span class="ident">Channel</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel</span>(<span class="ident">network_interface</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>, <span class="ident">config</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">super</span>::<span class="ident">Channel</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">eth_p_all</span> <span class="op">=</span> <span class="number">0x0003</span>;
     <span class="kw">let</span> (<span class="ident">typ</span>, <span class="ident">proto</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">config</span>.<span class="ident">channel_type</span> {
-        <span class="kw">super</span>::<span class="ident">ChannelType</span>::<span class="ident">Layer2</span> <span class="op">=&gt;</span> (<span class="ident">libc</span>::<span class="ident">SOCK_RAW</span>, <span class="ident">eth_p_all</span>),
-        <span class="kw">super</span>::<span class="ident">ChannelType</span>::<span class="ident">Layer3</span>(<span class="ident">proto</span>) <span class="op">=&gt;</span> (<span class="ident">libc</span>::<span class="ident">SOCK_DGRAM</span>, <span class="ident">proto</span>),
+        <span class="kw">super</span>::<span class="ident">ChannelType</span>::<span class="ident">Layer2</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">libc</span>::<span class="ident">SOCK_RAW</span>, <span class="ident">eth_p_all</span>),
+        <span class="kw">super</span>::<span class="ident">ChannelType</span>::<span class="ident">Layer3</span>(<span class="ident">proto</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">libc</span>::<span class="ident">SOCK_DGRAM</span>, <span class="ident">proto</span>),
     };
     <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">socket</span>(<span class="ident">libc</span>::<span class="ident">AF_PACKET</span>, <span class="ident">typ</span>, <span class="ident">proto</span>.<span class="ident">to_be</span>() <span class="kw">as</span> <span class="ident">i32</span>) };
-    <span class="kw">if</span> <span class="ident">socket</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+    <span class="kw">if</span> <span class="ident">socket</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>());
     }
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">addr</span>: <span class="ident">libc</span>::<span class="ident">sockaddr_storage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem</span>::<span class="ident">zeroed</span>() };
@@ -478,7 +478,7 @@
     <span class="kw">let</span> <span class="ident">send_addr</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="ident">addr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">sockaddr_storage</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">sockaddr</span>;
 
     <span class="comment">// Bind to interface</span>
-    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">bind</span>(<span class="ident">socket</span>, <span class="ident">send_addr</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">socklen_t</span>) } <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">bind</span>(<span class="ident">socket</span>, <span class="ident">send_addr</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">socklen_t</span>) } <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
         <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">pnet_sys</span>::<span class="ident">close</span>(<span class="ident">socket</span>);
@@ -499,7 +499,7 @@
             (<span class="kw-2">&amp;</span><span class="ident">pmr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">linux</span>::<span class="ident">packet_mreq</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">c_void</span>,
             <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">linux</span>::<span class="ident">packet_mreq</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>,
         )
-    } <span class="op">==</span> <span class="op">-</span><span class="number">1</span>
+    } <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span>
     {
         <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>();
         <span class="kw">unsafe</span> {
@@ -512,14 +512,14 @@
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">fanout</span>) <span class="op">=</span> <span class="ident">config</span>.<span class="ident">fanout</span> {
         <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">FanoutType</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">typ</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">fanout</span>.<span class="ident">fanout_type</span> {
-            <span class="ident">FanoutType</span>::<span class="ident">HASH</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_HASH</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">LB</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_LB</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">CPU</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_CPU</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">ROLLOVER</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_ROLLOVER</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">RND</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_RND</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">QM</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_QM</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">CBPF</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_CBPF</span>,
-            <span class="ident">FanoutType</span>::<span class="ident">EBPF</span> <span class="op">=&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_EBPF</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">HASH</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_HASH</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">LB</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_LB</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">CPU</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_CPU</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">ROLLOVER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_ROLLOVER</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">RND</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_RND</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">QM</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_QM</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">CBPF</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_CBPF</span>,
+            <span class="ident">FanoutType</span>::<span class="ident">EBPF</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">linux</span>::<span class="ident">PACKET_FANOUT_EBPF</span>,
         } <span class="kw">as</span> <span class="ident">u32</span>;
         <span class="comment">// set defrag flag</span>
         <span class="kw">if</span> <span class="ident">fanout</span>.<span class="ident">defrag</span> {
@@ -531,7 +531,7 @@
         }
         <span class="comment">// set uniqueid flag -- probably not needed atm..</span>
         <span class="comment">// PACKET_FANOUT_FLAG_UNIQUEID -- https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a69a864209e9ab436d4a58e8028ac96cc873d15</span>
-        <span class="kw">let</span> <span class="ident">arg</span>: <span class="ident">libc</span>::<span class="ident">c_uint</span> <span class="op">=</span> <span class="ident">fanout</span>.<span class="ident">group_id</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">|</span> (<span class="ident">typ</span> <span class="op">&lt;&lt;</span> <span class="number">16</span>);
+        <span class="kw">let</span> <span class="ident">arg</span>: <span class="ident">libc</span>::<span class="ident">c_uint</span> <span class="op">=</span> <span class="ident">fanout</span>.<span class="ident">group_id</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">|</span> (<span class="ident">typ</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>);
 
         <span class="kw">if</span> <span class="kw">unsafe</span> {
             <span class="ident">libc</span>::<span class="ident">setsockopt</span>(
@@ -541,7 +541,7 @@
                 (<span class="kw-2">&amp;</span><span class="ident">arg</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">c_uint</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">c_void</span>,
                 <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc</span>::<span class="ident">c_uint</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>,
             )
-        } <span class="op">==</span> <span class="op">-</span><span class="number">1</span>
+        } <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span>
         {
             <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>();
             <span class="kw">unsafe</span> {
@@ -552,7 +552,7 @@
     }
 
     <span class="comment">// Enable nonblocking</span>
-    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">fcntl</span>(<span class="ident">socket</span>, <span class="ident">libc</span>::<span class="ident">F_SETFL</span>, <span class="ident">libc</span>::<span class="ident">O_NONBLOCK</span>) } <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">fcntl</span>(<span class="ident">socket</span>, <span class="ident">libc</span>::<span class="ident">F_SETFL</span>, <span class="ident">libc</span>::<span class="ident">O_NONBLOCK</span>) } <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
         <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">pnet_sys</span>::<span class="ident">close</span>(<span class="ident">socket</span>);
@@ -603,7 +603,7 @@
         <span class="ident">num_packets</span>: <span class="ident">usize</span>,
         <span class="ident">packet_size</span>: <span class="ident">usize</span>,
         <span class="ident">func</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]),
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">num_packets</span> <span class="op">*</span> <span class="ident">packet_size</span>;
         <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">write_buffer</span>.<span class="ident">len</span>() {
             <span class="kw">let</span> <span class="ident">min</span> <span class="op">=</span> <span class="ident">cmp</span>::<span class="ident">min</span>(<span class="self">self</span>.<span class="ident">write_buffer</span>[..].<span class="ident">len</span>(), <span class="ident">len</span>);
@@ -630,9 +630,9 @@
                         <span class="ident">ptr</span>::<span class="ident">null</span>(),
                     )
                 };
-                <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+                <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>()));
-                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>)));
                 } <span class="kw">else</span> {
                     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">pnet_sys</span>::<span class="ident">send_to</span>(
@@ -653,7 +653,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_to</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">_dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">send_to</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">_dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">libc</span>::<span class="ident">FD_ZERO</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc</span>::<span class="ident">fd_set</span>);
             <span class="ident">libc</span>::<span class="ident">FD_SET</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc</span>::<span class="ident">fd_set</span>);
@@ -671,9 +671,9 @@
                 <span class="ident">ptr</span>::<span class="ident">null</span>(),
             )
         };
-        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
             <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>()))
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
             <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>)))
         } <span class="kw">else</span> {
             <span class="kw">match</span> <span class="ident">pnet_sys</span>::<span class="ident">send_to</span>(
@@ -682,8 +682,8 @@
                 (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">send_addr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc</span>::<span class="ident">sockaddr_ll</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
                 <span class="self">self</span>.<span class="ident">send_addr_len</span> <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">socklen_t</span>,
             ) {
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">e</span>)),
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(())),
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">e</span>)),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(())),
             }
         }
     }
@@ -698,7 +698,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">DataLinkReceiver</span> <span class="kw">for</span> <span class="ident">DataLinkReceiverImpl</span> {
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">caddr</span>: <span class="ident">libc</span>::<span class="ident">sockaddr_storage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem</span>::<span class="ident">zeroed</span>() };
         <span class="kw">unsafe</span> {
             <span class="ident">libc</span>::<span class="ident">FD_ZERO</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc</span>::<span class="ident">fd_set</span>);
@@ -717,22 +717,22 @@
                 <span class="ident">ptr</span>::<span class="ident">null</span>(),
             )
         };
-        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
             <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>())
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
             <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>))
         } <span class="kw">else</span> {
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">pnet_sys</span>::<span class="ident">recv_from</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">read_buffer</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">caddr</span>);
             <span class="kw">match</span> <span class="ident">res</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">len</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">read_buffer</span>[<span class="number">0</span>..<span class="ident">len</span>]),
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
+                <span class="prelude-val">Ok</span>(<span class="ident">len</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">read_buffer</span>[<span class="number">0</span>..<span class="ident">len</span>]),
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
             }
         }
     }
 }
 
 <span class="doccomment">/// Get a list of available network interfaces for the current machine.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interfaces</span>() <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interfaces</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;unix_interfaces.rs&quot;</span>]</span>
     <span class="kw">mod</span> <span class="ident">interfaces</span>;
     <span class="ident">interfaces</span>::<span class="ident">interfaces</span>()
