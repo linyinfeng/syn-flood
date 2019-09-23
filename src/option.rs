@@ -2,7 +2,7 @@ use std::{net::IpAddr, num::ParseFloatError, time::Duration};
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(raw(setting = "structopt::clap::AppSettings::ColoredHelp"))]
+#[structopt(setting = structopt::clap::AppSettings::ColoredHelp)]
 pub struct Opt {
     /// Activate debug mode.
     ///
@@ -63,7 +63,7 @@ pub struct Opt {
         short,
         long = "output-interval",
         default_value = "1",
-        parse(try_from_str = "duration_try_from_str")
+        parse(try_from_str = duration_try_from_str)
     )]
     pub output_interval: Duration,
 
@@ -71,7 +71,7 @@ pub struct Opt {
     #[structopt(
         short = "i",
         long = "interval",
-        parse(try_from_str = "duration_try_from_str")
+        parse(try_from_str = duration_try_from_str)
     )]
     pub interval: Option<Duration>,
 
@@ -80,7 +80,7 @@ pub struct Opt {
     pub number: Option<usize>,
 
     /// Maximal time of sending packets.
-    #[structopt(short, long, parse(try_from_str = "duration_try_from_str"))]
+    #[structopt(short, long, parse(try_from_str = duration_try_from_str))]
     pub time: Option<Duration>,
 }
 

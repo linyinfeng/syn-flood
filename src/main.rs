@@ -1,5 +1,4 @@
 #![feature(ip)]
-#![feature(duration_float)]
 
 pub mod error;
 pub mod option;
