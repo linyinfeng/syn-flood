@@ -2,24 +2,24 @@
 <p><code>libpnet</code> provides a cross-platform API for low level networking using Rust.</p>
 <p>There are four key components:</p>
 <ul>
-<li>The packet module, allowing safe construction and manipulation of packets</li>
-<li>The pnet_packet crate, providing infrastructure for the packet module</li>
-<li>The transport module, which allows implementation of transport protocols</li>
-<li>The datalink module, which allows sending and receiving data link
-packets directly</li>
+<li>The <code>packet</code> module, allowing safe construction and manipulation of packets;</li>
+<li>The <code>pnet_packet</code> crate, providing infrastructure for the packet module;</li>
+<li>The <code>transport</code> module, which allows implementation of transport protocols;</li>
+<li>The <code>datalink</code> module, which allows sending and receiving data link
+packets directly.</li>
 </ul>
 <h2 id="terminology" class="section-header"><a href="#terminology">Terminology</a></h2>
 <p>The documentation uses the following terms interchangably:</p>
 <ul>
-<li>Layer 2, datalink layer</li>
-<li>Layer 3, network layer</li>
-<li>Layer 4, transport layer</li>
+<li>Layer 2, datalink layer;</li>
+<li>Layer 3, network layer;</li>
+<li>Layer 4, transport layer.</li>
 </ul>
 <p>Unless otherwise stated, all interactions with libpnet are in host-byte
 order - any platform specific variations are handled internally.</p>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>More examples, including a packet logger, and a version of the echo server
-written at the transport layer, can be found in the examples/ directory.</p>
+written at the transport layer, can be found in the <code>examples/</code> directory.</p>
 <h3 id="ethernet-echo-server" class="section-header"><a href="#ethernet-echo-server">Ethernet echo server</a></h3>
 <p>This (fairly useless) code implements an Ethernet echo server. Whenever a
 packet is received on an interface, it echo's the packet back; reversing the
@@ -86,8 +86,8 @@ source and destination addresses.</p>
     }
 }</pre></div>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table><tr class='module-item'><td><a class="mod" href="datalink/index.html" title='pnet::datalink mod'>datalink</a></td><td class='docblock-short'><p>Support for sending and receiving data link layer packets</p>
-</td></tr><tr class='module-item'><td><a class="mod" href="packet/index.html" title='pnet::packet mod'>packet</a></td><td class='docblock-short'><p>Support for packet parsing and manipulation</p>
-</td></tr><tr class='module-item'><td><a class="mod" href="transport/index.html" title='pnet::transport mod'>transport</a></td><td class='docblock-short'><p>Support for sending and receiving transport layer packets</p>
-</td></tr><tr class='module-item'><td><a class="mod" href="util/index.html" title='pnet::util mod'>util</a></td><td class='docblock-short'><p>Miscellaneous utilities for low level networking</p>
-</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "pnet";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
+<table><tr class='module-item'><td><a class="mod" href="datalink/index.html" title='pnet::datalink mod'>datalink</a></td><td class='docblock-short'><p>Support for sending and receiving data link layer packets.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="packet/index.html" title='pnet::packet mod'>packet</a></td><td class='docblock-short'><p>Support for packet parsing and manipulation.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="transport/index.html" title='pnet::transport mod'>transport</a></td><td class='docblock-short'><p>Support for sending and receiving transport layer packets.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="util/index.html" title='pnet::util mod'>util</a></td><td class='docblock-short'><p>Miscellaneous utilities for low-level networking.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "pnet";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

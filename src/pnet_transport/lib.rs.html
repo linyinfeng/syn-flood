@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_transport-0.22.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../pnet_transport/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_transport-0.23.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../pnet_transport/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -349,6 +349,59 @@
 <span id="349">349</span>
 <span id="350">350</span>
 <span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
 <span class="comment">//</span>
@@ -386,11 +439,13 @@
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::<span class="ident">Error</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::<span class="ident">ErrorKind</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">net</span>::{<span class="self">self</span>, <span class="ident">IpAddr</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Arc</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::<span class="ident">Duration</span>;
 
-<span class="doccomment">/// Represents a transport layer protocol</span>
+<span class="doccomment">/// Represents a transport layer protocol.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">TransportProtocol</span> {
     <span class="doccomment">/// Represents a transport protocol built on top of IPv4</span>
@@ -399,22 +454,22 @@
     <span class="ident">Ipv6</span>(<span class="ident">IpNextHeaderProtocol</span>),
 }
 
-<span class="doccomment">/// Type of transport channel to present</span>
+<span class="doccomment">/// Type of transport channel to present.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">TransportChannelType</span> {
-    <span class="doccomment">/// The application will send and receive transport layer packets</span>
+    <span class="doccomment">/// The application will send and receive transport layer packets.</span>
     <span class="ident">Layer4</span>(<span class="ident">TransportProtocol</span>),
-    <span class="doccomment">/// The application will send and receive IPv4 packets, with the specified transport protocol</span>
+    <span class="doccomment">/// The application will send and receive IPv4 packets, with the specified transport protocol.</span>
     <span class="ident">Layer3</span>(<span class="ident">IpNextHeaderProtocol</span>),
 }
 
-<span class="doccomment">/// Structure used for sending at the transport layer. Should be created with transport_channel()</span>
+<span class="doccomment">/// Structure used for sending at the transport layer. Should be created with `transport_channel()`.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TransportSender</span> {
     <span class="kw">pub</span> <span class="ident">socket</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">pnet_sys</span>::<span class="ident">FileDesc</span><span class="op">&gt;</span>,
     <span class="ident">_channel_type</span>: <span class="ident">TransportChannelType</span>,
 }
 
-<span class="doccomment">/// Structure used for receiving at the transport layer. Should be created with transport_channel()</span>
+<span class="doccomment">/// Structure used for receiving at the transport layer. Should be created with `transport_channel()`.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TransportReceiver</span> {
     <span class="kw">pub</span> <span class="ident">socket</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">pnet_sys</span>::<span class="ident">FileDesc</span><span class="op">&gt;</span>,
     <span class="kw">pub</span> <span class="ident">buffer</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
@@ -428,21 +483,19 @@
         <span class="ident">time_to_live</span>: <span class="ident">u8</span>,
 }
 
-<span class="doccomment">/// Create a new (TransportSender, TransportReceiver) pair</span>
+<span class="doccomment">/// Create a new `(TransportSender, TransportReceiver)` pair.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This allows for sending and receiving packets at the transport layer. The buffer size should be</span>
 <span class="doccomment">/// large enough to handle the largest packet you wish to receive.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The channel type specifies what layer to send and receive packets at, and the transport</span>
 <span class="doccomment">/// protocol you wish to implement. For example, `Layer4(Ipv4(IpNextHeaderProtocols::Udp))` would</span>
-<span class="doccomment">/// allow sending and receiving UDP packets using IPv4; whereas Layer3(IpNextHeaderProtocols::Udp)</span>
+<span class="doccomment">/// allow sending and receiving UDP packets using IPv4; whereas `Layer3(IpNextHeaderProtocols::Udp)`</span>
 <span class="doccomment">/// would include the IPv4 Header in received values, and require manual construction of an IP</span>
 <span class="doccomment">/// header when sending.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transport_channel</span>(<span class="ident">buffer_size</span>: <span class="ident">usize</span>,
                          <span class="ident">channel_type</span>: <span class="ident">TransportChannelType</span>)
     <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">TransportSender</span>, <span class="ident">TransportReceiver</span>)<span class="op">&gt;</span> {
-    <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">net</span>;
-
     <span class="comment">// This hack makes sure that winsock is initialised</span>
     <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> {
         <span class="kw">let</span> <span class="ident">ip</span> <span class="op">=</span> <span class="ident">net</span>::<span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>);
@@ -506,7 +559,7 @@
     <span class="prelude-val">Ok</span>((<span class="ident">sender</span>, <span class="ident">receiver</span>))
 }
 
-<span class="doccomment">/// Create a new (TransportSender, TransportReceiver) pair using the additional</span>
+<span class="doccomment">/// Create a new `(TransportSender, TransportReceiver)` pair using the additional</span>
 <span class="doccomment">/// options specified.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// For a more exhaustive descriptive, see above.</span>
@@ -521,7 +574,7 @@
     <span class="prelude-val">Ok</span>((<span class="ident">sender</span>, <span class="ident">receiver</span>))
 }
 
-<span class="doccomment">/// Sets the time-to-live for all IP packets sent on the specified socket.</span>
+<span class="doccomment">/// Sets a time-to-live for all IP packets sent on the specified socket.</span>
 <span class="kw">fn</span> <span class="ident">set_socket_ttl</span>(<span class="ident">socket</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">pnet_sys</span>::<span class="ident">FileDesc</span><span class="op">&gt;</span>, <span class="ident">ttl</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">ttl</span> <span class="op">=</span> <span class="ident">ttl</span> <span class="kw">as</span> <span class="ident">i32</span>;
     <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="kw">unsafe</span> {
@@ -559,13 +612,13 @@
         <span class="ident">pnet_sys</span>::<span class="ident">send_to</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="ident">packet</span>.<span class="ident">packet</span>(), <span class="ident">caddr_ptr</span>, <span class="ident">slen</span>)
     }
 
-    <span class="doccomment">/// Send a packet to the provided destination</span>
+    <span class="doccomment">/// Send a packet to the provided destination.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_to</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Packet</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="ident">T</span>, <span class="ident">destination</span>: <span class="ident">IpAddr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">send_to_impl</span>(<span class="ident">packet</span>, <span class="ident">destination</span>)
     }
 
-    <span class="doccomment">/// Sets the time-to-live on the socket, which then applies for all packets sent.</span>
+    <span class="doccomment">/// Sets a time-to-live on the socket, which then applies for all packets sent.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_ttl</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">time_to_live</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="ident">set_socket_ttl</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">clone</span>(), <span class="ident">time_to_live</span>)
     }
@@ -616,18 +669,29 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">transport_channel_iterator</span> {
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> (
-        <span class="doccomment">/// An iterator over packets of type $ty</span>
+        <span class="macro">transport_channel_iterator</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>));
+    );
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tyname</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> (
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;An iterator over packets of type `&quot;</span>]</span>
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tyname</span>]</span>
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;`.&quot;</span>]</span>
         <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
             <span class="ident">tr</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">TransportReceiver</span>
         }
-        <span class="doccomment">/// Return a packet iterator with packets of type $ty for some transport receiver</span>
+
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;Return a packet iterator with packets of type `&quot;</span>]</span>
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tyname</span>]</span>
+        <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;` for some transport receiver.&quot;</span>]</span>
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>(<span class="ident">tr</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TransportReceiver</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span> {
                 <span class="ident">tr</span>: <span class="ident">tr</span>
             }
         }
+
         <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-            <span class="doccomment">/// Get the next ($ty, IpAddr) pair for the given channel</span>
+            <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;Get the next (`&quot;</span>]</span>
+            <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tyname</span> ]</span>
+            <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="string">&quot;`, `IpAddr`) pair for the given channel.&quot;</span>]</span>
             <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>, <span class="ident">IpAddr</span>)<span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">caddr</span>: <span class="ident">pnet_sys</span>::<span class="ident">SockAddrStorage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem</span>::<span class="ident">zeroed</span>() };
                 <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">pnet_sys</span>::<span class="ident">recv_from</span>(<span class="self">self</span>.<span class="ident">tr</span>.<span class="ident">socket</span>.<span class="ident">fd</span>,
@@ -688,8 +752,50 @@
                 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;freebsd&quot;</span>), <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span>
                 <span class="kw">fn</span> <span class="ident">fixup_packet</span>(<span class="ident">_buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) {}
             }
+
+            <span class="doccomment">/// Wait only for a timespan of `t` to receive some data, then return. If no data was</span>
+            <span class="doccomment">/// received, then `Ok(None)` is returned.</span>
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
+            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_with_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">t</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>, <span class="ident">IpAddr</span>)<span class="op">&gt;</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="ident">socket_fd</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">tr</span>.<span class="ident">socket</span>.<span class="ident">fd</span>;
+                
+                <span class="kw">let</span> <span class="ident">old_timeout</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">pnet_sys</span>::<span class="ident">get_socket_receive_timeout</span>(<span class="ident">socket_fd</span>) {
+                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;Can not get socket timeout before receiving: {}&quot;</span>, <span class="ident">e</span>);
+                        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>)
+                    }
+                    <span class="prelude-val">Ok</span>(<span class="ident">t</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">t</span>
+                };
+
+                <span class="kw">match</span> <span class="ident">pnet_sys</span>::<span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket_fd</span>, <span class="ident">t</span>) {
+                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;Can not set socket timeout for receiving: {}&quot;</span>, <span class="ident">e</span>);
+                        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>)
+                    }
+                    <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {}
+                }
+                    
+                <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">next</span>() {
+                    <span class="prelude-val">Ok</span>(<span class="ident">r</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">r</span>)),
+                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="ident">e</span>.<span class="ident">kind</span>() {
+                        <span class="ident">ErrorKind</span>::<span class="ident">WouldBlock</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="prelude-val">Err</span>(<span class="ident">e</span>)
+                        }
+                    }
+                };
+                
+                <span class="kw">match</span> <span class="ident">pnet_sys</span>::<span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket_fd</span>, <span class="ident">old_timeout</span>) {
+                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;Can not reset socket timeout after receiving: {}&quot;</span>, <span class="ident">e</span>);
+                    },
+                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
+                };
+
+                <span class="ident">r</span>
+            }
         }
-    )
+    );
 }
 
 <span class="macro">transport_channel_iterator</span><span class="macro">!</span>(<span class="ident">Ipv4Packet</span>, <span class="ident">Ipv4TransportChannelIterator</span>, <span class="ident">ipv4_packet_iter</span>);
@@ -702,4 +808,4 @@
 
 <span class="macro">transport_channel_iterator</span><span class="macro">!</span>(<span class="ident">TcpPacket</span>, <span class="ident">TcpTransportChannelIterator</span>, <span class="ident">tcp_packet_iter</span>);
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "pnet_transport";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "pnet_transport";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
