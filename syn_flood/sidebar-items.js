@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["error",""],["option",""],["procedure",""],["random",""],["runner",""]]});
+initSidebarItems({"fn":[["initialize_logger",""],["main",""],["syn_flood_main",""]],"mod":[["error",""],["option",""],["procedure",""],["random",""],["runner",""]]});

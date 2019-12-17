@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["run",""]],"struct":[["RunStatistics",""]]});
+initSidebarItems({"fn":[["run",""]],"struct":[["RunStatistics",""],["RunStatisticsBuilder",""]]});
