@@ -14,10 +14,4 @@ implementors["serde"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rus
 implementors["syn"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"syn/struct.Error.html\" title=\"struct syn::Error\">Error</a>","synthetic":false,"types":["syn::error::Error"]}];
 implementors["syn_flood"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"enum\" href=\"syn_flood/error/enum.SynFloodError.html\" title=\"enum syn_flood::error::SynFloodError\">SynFloodError</a>","synthetic":false,"types":["syn_flood::error::SynFloodError"]}];
 implementors["termcolor"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"termcolor/struct.ParseColorError.html\" title=\"struct termcolor::ParseColorError\">ParseColorError</a>","synthetic":false,"types":["termcolor::ParseColorError"]}];
-
-            if (window.register_implementors) {
-                window.register_implementors(implementors);
-            } else {
-                window.pending_implementors = implementors;
-            }
-        })()
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
