@@ -33,7 +33,6 @@ ALIASES["rand_chacha"] = {};
 ALIASES["rand_core"] = {};
 ALIASES["regex"] = {};
 ALIASES["regex_syntax"] = {};
-ALIASES["rustversion"] = {};
 ALIASES["serde"] = {};
 ALIASES["strsim"] = {};
 ALIASES["structopt"] = {};
