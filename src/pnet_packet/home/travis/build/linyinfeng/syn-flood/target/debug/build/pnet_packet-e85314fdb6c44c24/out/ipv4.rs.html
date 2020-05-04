@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/build/linyinfeng/syn-flood/target/debug/build/pnet_packet-ac40ead6b94bb611/out/ipv4.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv4.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css" id="themeStyle"><script src="../../../../../../../../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../../../../../../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../../../../../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../../../../../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/build/linyinfeng/syn-flood/target/debug/build/pnet_packet-e85314fdb6c44c24/out/ipv4.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv4.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css" id="themeStyle"><script src="../../../../../../../../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../../../../../../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../../../../../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../../../../../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1847,6 +1847,22 @@
 <span id="1847">1847</span>
 <span id="1848">1848</span>
 <span id="1849">1849</span>
+<span id="1850">1850</span>
+<span id="1851">1851</span>
+<span id="1852">1852</span>
+<span id="1853">1853</span>
+<span id="1854">1854</span>
+<span id="1855">1855</span>
+<span id="1856">1856</span>
+<span id="1857">1857</span>
+<span id="1858">1858</span>
+<span id="1859">1859</span>
+<span id="1860">1860</span>
+<span id="1861">1861</span>
+<span id="1862">1862</span>
+<span id="1863">1863</span>
+<span id="1864">1864</span>
+<span id="1865">1865</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
 <span class="comment">//</span>
@@ -1992,6 +2008,9 @@
 
 
 
+<span class="comment">// just comparing with 0 is prone to false positives in this case.</span>
+<span class="comment">// for instance if one forgets to set total_length, one always gets 0</span>
+
 <span class="comment">// The length field is an optional field, using a Vec is a way to implement</span>
 <span class="comment">// it</span>
 
@@ -2075,7 +2094,7 @@
     <span class="doccomment">/// The minimum size (in bytes) a packet of this type can be. It&#39;s based on the total size</span>
     <span class="doccomment">/// of the fixed-size fields.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">20</span> }
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">20</span> }
     <span class="doccomment">/// The size (in bytes) of a Ipv4 instance when converted into</span>
     <span class="doccomment">/// a byte-array</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2084,7 +2103,7 @@
     }
     <span class="doccomment">/// Get the version field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_version</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u4</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2093,7 +2112,7 @@
     }
     <span class="doccomment">/// Get the header_length field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_header_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u4</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2102,7 +2121,7 @@
     }
     <span class="doccomment">/// Get the dscp field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_dscp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u6</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2111,7 +2130,7 @@
     }
     <span class="doccomment">/// Get the ecn field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_ecn</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u2</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2121,7 +2140,7 @@
     <span class="doccomment">/// Get the total_length field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_total_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2133,7 +2152,7 @@
     <span class="doccomment">/// Get the identification field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_identification</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2144,7 +2163,7 @@
     }
     <span class="doccomment">/// Get the flags field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u3</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2154,7 +2173,7 @@
     <span class="doccomment">/// Get the fragment_offset field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_fragment_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u13be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2165,7 +2184,7 @@
     }
     <span class="doccomment">/// Get the ttl field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_ttl</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2178,7 +2197,7 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_next_level_protocol</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IpNextHeaderProtocol</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">9</span>;
@@ -2189,7 +2208,7 @@
     <span class="doccomment">/// Get the checksum field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_checksum</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2204,28 +2223,28 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_source</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Addr</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">12</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg1</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">13</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg2</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">14</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg3</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">15</span>;
@@ -2240,28 +2259,28 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_destination</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Addr</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">16</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg1</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">17</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg2</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">18</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg3</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">19</span>;
@@ -2346,7 +2365,7 @@
     <span class="doccomment">/// The minimum size (in bytes) a packet of this type can be. It&#39;s based on the total size</span>
     <span class="doccomment">/// of the fixed-size fields.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">20</span> }
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">20</span> }
     <span class="doccomment">/// The size (in bytes) of a Ipv4 instance when converted into</span>
     <span class="doccomment">/// a byte-array</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2376,7 +2395,7 @@
     }
     <span class="doccomment">/// Get the version field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_version</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u4</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2385,7 +2404,7 @@
     }
     <span class="doccomment">/// Get the header_length field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_header_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u4</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2394,7 +2413,7 @@
     }
     <span class="doccomment">/// Get the dscp field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_dscp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u6</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2403,7 +2422,7 @@
     }
     <span class="doccomment">/// Get the ecn field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_ecn</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u2</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2413,7 +2432,7 @@
     <span class="doccomment">/// Get the total_length field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_total_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2425,7 +2444,7 @@
     <span class="doccomment">/// Get the identification field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_identification</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2436,7 +2455,7 @@
     }
     <span class="doccomment">/// Get the flags field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u3</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2446,7 +2465,7 @@
     <span class="doccomment">/// Get the fragment_offset field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_fragment_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u13be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2457,7 +2476,7 @@
     }
     <span class="doccomment">/// Get the ttl field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_ttl</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2470,7 +2489,7 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_next_level_protocol</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IpNextHeaderProtocol</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">9</span>;
@@ -2481,7 +2500,7 @@
     <span class="doccomment">/// Get the checksum field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_checksum</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2496,28 +2515,28 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_source</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Addr</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">12</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg1</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">13</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg2</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">14</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg3</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">15</span>;
@@ -2532,28 +2551,28 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_destination</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Addr</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">16</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg1</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">17</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg2</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">18</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg3</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">19</span>;
@@ -2698,7 +2717,7 @@
         <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">8</span>;
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">0</span>] <span class="op">=</span> (<span class="ident">val</span>) <span class="kw">as</span> <span class="ident">u8</span>;
     }
-    <span class="doccomment">/// Set the value of the next_level_protocol field</span>
+    <span class="doccomment">/// Set the value of the next_level_protocol field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
@@ -2726,7 +2745,7 @@
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">0</span>] <span class="op">=</span> ((<span class="ident">val</span> <span class="op">&amp;</span> <span class="number">65280</span>) <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>;
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span> (<span class="ident">val</span>) <span class="kw">as</span> <span class="ident">u8</span>;
     }
-    <span class="doccomment">/// Set the value of the source field</span>
+    <span class="doccomment">/// Set the value of the source field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
@@ -2767,7 +2786,7 @@
         <span class="ident">set_arg2</span>(<span class="ident">_self</span>, <span class="ident">vals</span>.<span class="number">2</span>);
         <span class="ident">set_arg3</span>(<span class="ident">_self</span>, <span class="ident">vals</span>.<span class="number">3</span>);
     }
-    <span class="doccomment">/// Set the value of the destination field</span>
+    <span class="doccomment">/// Set the value of the destination field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
@@ -3127,7 +3146,17 @@
 }
 <span class="kw">fn</span> <span class="ident">ipv4_payload_length</span>(<span class="ident">ipv4</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
     (<span class="ident">ipv4</span>.<span class="ident">get_total_length</span>() <span class="kw">as</span>
-         <span class="ident">usize</span>).<span class="ident">saturating_sub</span>(<span class="ident">ipv4</span>.<span class="ident">get_header_length</span>() <span class="kw">as</span> <span class="ident">usize</span>)
+         <span class="ident">usize</span>).<span class="ident">saturating_sub</span>((<span class="ident">ipv4</span>.<span class="ident">get_header_length</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> <span class="number">4</span>)
+}
+<span class="attribute">#[<span class="ident">test</span>]</span>
+<span class="kw">fn</span> <span class="ident">ipv4_payload_length_test</span>() {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">30</span>];
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+    <span class="ident">ip_header</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
+    <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">20</span>);
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">0</span>);
+    <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">30</span>);
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">10</span>);
 }
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
@@ -3173,7 +3202,7 @@
     <span class="doccomment">/// The minimum size (in bytes) a packet of this type can be. It&#39;s based on the total size</span>
     <span class="doccomment">/// of the fixed-size fields.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">1</span> }
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">1</span> }
     <span class="doccomment">/// The size (in bytes) of a Ipv4Option instance when converted into</span>
     <span class="doccomment">/// a byte-array</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3182,7 +3211,7 @@
     }
     <span class="doccomment">/// Get the copied field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_copied</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u1</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -3191,7 +3220,7 @@
     }
     <span class="doccomment">/// Get the class field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_class</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u2</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -3204,7 +3233,7 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_number</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionNumber</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4OptionPacket</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u5</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
@@ -3227,7 +3256,7 @@
     }
     <span class="doccomment">/// Get the value of the length field (copies contents)</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
@@ -3285,7 +3314,7 @@
     <span class="doccomment">/// The minimum size (in bytes) a packet of this type can be. It&#39;s based on the total size</span>
     <span class="doccomment">/// of the fixed-size fields.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">1</span> }
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minimum_packet_size</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="number">1</span> }
     <span class="doccomment">/// The size (in bytes) of a Ipv4Option instance when converted into</span>
     <span class="doccomment">/// a byte-array</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3305,7 +3334,7 @@
     }
     <span class="doccomment">/// Get the copied field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_copied</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u1</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -3314,7 +3343,7 @@
     }
     <span class="doccomment">/// Get the class field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_class</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u2</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -3327,7 +3356,7 @@
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_number</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionNumber</span> {
         <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
         <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
         <span class="kw">fn</span> <span class="ident">get_arg0</span>(<span class="ident">_self</span>: <span class="kw-2">&amp;</span><span class="ident">MutableIpv4OptionPacket</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u5</span> {
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
@@ -3350,7 +3379,7 @@
     }
     <span class="doccomment">/// Get the value of the length field (copies contents)</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
@@ -3389,7 +3418,7 @@
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">0</span>] <span class="op">=</span>
             ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">0</span>] <span class="op">&amp;</span> <span class="number">159</span>) <span class="op">|</span> (((<span class="ident">val</span> <span class="op">&amp;</span> <span class="number">3</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">5</span>) <span class="kw">as</span> <span class="ident">u8</span>)) <span class="kw">as</span> <span class="ident">u8</span>;
     }
-    <span class="doccomment">/// Set the value of the number field</span>
+    <span class="doccomment">/// Set the value of the number field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
@@ -3638,6 +3667,7 @@
 <span class="kw">fn</span> <span class="ident">ipv4_packet_test</span>() {
     <span class="kw">use</span> <span class="ident">ip</span>::<span class="ident">IpNextHeaderProtocols</span>;
     <span class="kw">use</span> <span class="ident">Packet</span>;
+    <span class="kw">use</span> <span class="ident">PacketSize</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">200</span>];
     {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
@@ -3651,7 +3681,9 @@
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_ecn</span> (  ) , <span class="number">1</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">115</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="number">115</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">110</span> , <span class="ident">ip_header</span> . <span class="ident">payload</span> (  ) . <span class="ident">len</span> (  ));
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">95</span> , <span class="ident">ip_header</span> . <span class="ident">payload</span> (  ) . <span class="ident">len</span> (  ));
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="ident">ip_header</span> . <span class="ident">packet_size</span>
+                   (  ) <span class="kw">as</span> <span class="ident">u16</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_identification</span>(<span class="number">257</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_identification</span> (  ) , <span class="number">257</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_flags</span>(<span class="ident">Ipv4Flags</span>::<span class="ident">DontFragment</span>);
