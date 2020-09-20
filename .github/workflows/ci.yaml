@@ -67,7 +67,7 @@ jobs:
         with:
           command: doc
 
-      - uses: peaceiris/actions-gh-pages@master
+      - uses: peaceiris/actions-gh-pages@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: target/doc
