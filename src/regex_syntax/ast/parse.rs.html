@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/regex-syntax-0.6.12/src/ast/parse.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>parse.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../regex_syntax/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/regex-syntax-0.6.18/src/ast/parse.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>parse.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../regex_syntax/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -5879,6 +5880,26 @@
 <span id="5879">5879</span>
 <span id="5880">5880</span>
 <span id="5881">5881</span>
+<span id="5882">5882</span>
+<span id="5883">5883</span>
+<span id="5884">5884</span>
+<span id="5885">5885</span>
+<span id="5886">5886</span>
+<span id="5887">5887</span>
+<span id="5888">5888</span>
+<span id="5889">5889</span>
+<span id="5890">5890</span>
+<span id="5891">5891</span>
+<span id="5892">5892</span>
+<span id="5893">5893</span>
+<span id="5894">5894</span>
+<span id="5895">5895</span>
+<span id="5896">5896</span>
+<span id="5897">5897</span>
+<span id="5898">5898</span>
+<span id="5899">5899</span>
+<span id="5900">5900</span>
+<span id="5901">5901</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">/*!
 This module provides a regular expression parser.
@@ -5974,7 +5995,7 @@ This module provides a regular expression parser.
 
 <span class="doccomment">/// Returns true if the given character is a hexadecimal digit.</span>
 <span class="kw">fn</span> <span class="ident">is_hex</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-    (<span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span>) <span class="op">|</span><span class="op">|</span> (<span class="string">&#39;a&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;f&#39;</span>) <span class="op">|</span><span class="op">|</span> (<span class="string">&#39;A&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;F&#39;</span>)
+    (<span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span>) <span class="op">|</span><span class="op">|</span> (<span class="string">&#39;a&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;f&#39;</span>) <span class="op">|</span><span class="op">|</span> (<span class="string">&#39;A&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">c</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;F&#39;</span>)
 }
 
 <span class="doccomment">/// Returns true if the given character is a valid in a capture group name.</span>
@@ -5983,9 +6004,9 @@ This module provides a regular expression parser.
 <span class="doccomment">/// group name (which is not allowed to be a digit).</span>
 <span class="kw">fn</span> <span class="ident">is_capture_char</span>(<span class="ident">c</span>: <span class="ident">char</span>, <span class="ident">first</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
     <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;_&#39;</span>
-        <span class="op">|</span><span class="op">|</span> (<span class="op">!</span><span class="ident">first</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;0&#39;</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span>)
-        <span class="op">|</span><span class="op">|</span> (<span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;a&#39;</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;z&#39;</span>)
-        <span class="op">|</span><span class="op">|</span> (<span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;A&#39;</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;Z&#39;</span>)
+        <span class="op">|</span><span class="op">|</span> (<span class="op">!</span><span class="ident">first</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;0&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span>)
+        <span class="op">|</span><span class="op">|</span> (<span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;a&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;z&#39;</span>)
+        <span class="op">|</span><span class="op">|</span> (<span class="ident">c</span> <span class="op">&gt;</span><span class="op">=</span> <span class="string">&#39;A&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;Z&#39;</span>)
 }
 
 <span class="doccomment">/// A builder for a regular expression parser.</span>
@@ -6473,9 +6494,9 @@ This module provides a regular expression parser.
         <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">c</span>) <span class="kw">in</span> <span class="self">self</span>.<span class="ident">pattern</span>()[<span class="ident">start</span>..].<span class="ident">char_indices</span>() {
             <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">is_whitespace</span>() {
                 <span class="kw">continue</span>;
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">in_comment</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;#&#39;</span> {
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">in_comment</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;#&#39;</span> {
                 <span class="ident">in_comment</span> <span class="op">=</span> <span class="bool-val">true</span>;
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">in_comment</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;\n&#39;</span> {
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">in_comment</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;\n&#39;</span> {
                 <span class="ident">in_comment</span> <span class="op">=</span> <span class="bool-val">false</span>;
             } <span class="kw">else</span> {
                 <span class="ident">start</span> <span class="op">+</span><span class="op">=</span> <span class="ident">i</span>;
@@ -6939,7 +6960,7 @@ This module provides a regular expression parser.
             <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
         }
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">greedy</span> <span class="op">=</span> <span class="bool-val">true</span>;
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">bump</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;?&#39;</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">bump</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;?&#39;</span> {
             <span class="ident">greedy</span> <span class="op">=</span> <span class="bool-val">false</span>;
             <span class="self">self</span>.<span class="ident">bump</span>();
         }
@@ -7034,7 +7055,7 @@ This module provides a regular expression parser.
         }
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">greedy</span> <span class="op">=</span> <span class="bool-val">true</span>;
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;?&#39;</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;?&#39;</span> {
             <span class="ident">greedy</span> <span class="op">=</span> <span class="bool-val">false</span>;
             <span class="self">self</span>.<span class="ident">bump</span>();
         }
@@ -7207,7 +7228,7 @@ This module provides a regular expression parser.
     <span class="kw">fn</span> <span class="ident">parse_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ast</span>::<span class="ident">Flags</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">flags</span> <span class="op">=</span> <span class="ident">ast</span>::<span class="ident">Flags</span> { <span class="ident">span</span>: <span class="self">self</span>.<span class="ident">span</span>(), <span class="ident">items</span>: <span class="macro">vec</span><span class="macro">!</span>[] };
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">last_was_negation</span> <span class="op">=</span> <span class="prelude-val">None</span>;
-        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;:&#39;</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;)&#39;</span> {
+        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;:&#39;</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;)&#39;</span> {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;-&#39;</span> {
                 <span class="ident">last_was_negation</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">span_char</span>());
                 <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="ident">ast</span>::<span class="ident">FlagsItem</span> {
@@ -7430,13 +7451,13 @@ This module provides a regular expression parser.
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">u32</span>;
 
         <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">octal</span>);
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;7&#39;</span>);
+        <span class="macro">assert</span><span class="macro">!</span>(<span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;7&#39;</span>);
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
         <span class="comment">// Parse up to two more digits.</span>
         <span class="kw">while</span> <span class="self">self</span>.<span class="ident">bump</span>()
-            <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>()
-            <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;7&#39;</span>
-            <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">pos</span>().<span class="ident">offset</span> <span class="op">-</span> <span class="ident">start</span>.<span class="ident">offset</span> <span class="op">&lt;</span><span class="op">=</span> <span class="number">2</span>
+            <span class="op">&amp;&amp;</span> <span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>()
+            <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;7&#39;</span>
+            <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">pos</span>().<span class="ident">offset</span> <span class="op">-</span> <span class="ident">start</span>.<span class="ident">offset</span> <span class="op">&lt;</span><span class="op">=</span> <span class="number">2</span>
         {}
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
         <span class="kw">let</span> <span class="ident">octal</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">pattern</span>()[<span class="ident">start</span>.<span class="ident">offset</span>..<span class="ident">end</span>.<span class="ident">offset</span>];
@@ -7501,7 +7522,7 @@ This module provides a regular expression parser.
 
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">kind</span>.<span class="ident">digits</span>() {
-            <span class="kw">if</span> <span class="ident">i</span> <span class="op">&gt;</span> <span class="number">0</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() {
+            <span class="kw">if</span> <span class="ident">i</span> <span class="op">&gt;</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="self">self</span>
                     .<span class="ident">error</span>(<span class="self">self</span>.<span class="ident">span</span>(), <span class="ident">ast</span>::<span class="ident">ErrorKind</span>::<span class="ident">EscapeUnexpectedEof</span>));
             }
@@ -7547,7 +7568,7 @@ This module provides a regular expression parser.
 
         <span class="kw">let</span> <span class="ident">brace_pos</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">span_char</span>().<span class="ident">end</span>;
-        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;}&#39;</span> {
+        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;}&#39;</span> {
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_hex</span>(<span class="self">self</span>.<span class="ident">char</span>()) {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="self">self</span>.<span class="ident">error</span>(
                     <span class="self">self</span>.<span class="ident">span_char</span>(),
@@ -7599,16 +7620,16 @@ This module provides a regular expression parser.
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">scratch</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">scratch</span>.<span class="ident">borrow_mut</span>();
         <span class="ident">scratch</span>.<span class="ident">clear</span>();
 
-        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>().<span class="ident">is_whitespace</span>() {
+        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>().<span class="ident">is_whitespace</span>() {
             <span class="self">self</span>.<span class="ident">bump</span>();
         }
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
-        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span> {
+        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="op">&amp;&amp;</span> <span class="string">&#39;0&#39;</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;9&#39;</span> {
             <span class="ident">scratch</span>.<span class="ident">push</span>(<span class="self">self</span>.<span class="ident">char</span>());
             <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>();
         }
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">Span</span>::<span class="ident">new</span>(<span class="ident">start</span>, <span class="self">self</span>.<span class="ident">pos</span>());
-        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>().<span class="ident">is_whitespace</span>() {
+        <span class="kw">while</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_eof</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>().<span class="ident">is_whitespace</span>() {
             <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>();
         }
         <span class="kw">let</span> <span class="ident">digits</span> <span class="op">=</span> <span class="ident">scratch</span>.<span class="ident">as_str</span>();
@@ -7815,7 +7836,7 @@ This module provides a regular expression parser.
         }
         <span class="comment">// If `]` is the *first* char in a set, then interpret it as a literal</span>
         <span class="comment">// `]`. That is, an empty class is impossible to write.</span>
-        <span class="kw">if</span> <span class="ident">union</span>.<span class="ident">items</span>.<span class="ident">is_empty</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;]&#39;</span> {
+        <span class="kw">if</span> <span class="ident">union</span>.<span class="ident">items</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;]&#39;</span> {
             <span class="ident">union</span>.<span class="ident">push</span>(<span class="ident">ast</span>::<span class="ident">ClassSetItem</span>::<span class="ident">Literal</span>(<span class="ident">ast</span>::<span class="ident">Literal</span> {
                 <span class="ident">span</span>: <span class="self">self</span>.<span class="ident">span_char</span>(),
                 <span class="ident">kind</span>: <span class="ident">ast</span>::<span class="ident">LiteralKind</span>::<span class="ident">Verbatim</span>,
@@ -7888,7 +7909,7 @@ This module provides a regular expression parser.
             }
         }
         <span class="kw">let</span> <span class="ident">name_start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">offset</span>();
-        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;:&#39;</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">bump</span>() {}
+        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;:&#39;</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">bump</span>() {}
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_eof</span>() {
             <span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">pos</span>.<span class="ident">set</span>(<span class="ident">start</span>);
             <span class="kw">return</span> <span class="prelude-val">None</span>;
@@ -7933,7 +7954,7 @@ This module provides a regular expression parser.
         }
         <span class="kw">let</span> (<span class="ident">start</span>, <span class="ident">kind</span>) <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&#39;{&#39;</span> {
             <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">span_char</span>().<span class="ident">end</span>;
-            <span class="kw">while</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;}&#39;</span> {
+            <span class="kw">while</span> <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">char</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&#39;}&#39;</span> {
                 <span class="ident">scratch</span>.<span class="ident">push</span>(<span class="self">self</span>.<span class="ident">char</span>());
             }
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_eof</span>() {
@@ -7977,6 +7998,12 @@ This module provides a regular expression parser.
         } <span class="kw">else</span> {
             <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pos</span>();
             <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">char</span>();
+            <span class="kw">if</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;\\&#39;</span> {
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="self">self</span>.<span class="ident">error</span>(
+                    <span class="self">self</span>.<span class="ident">span_char</span>(),
+                    <span class="ident">ast</span>::<span class="ident">ErrorKind</span>::<span class="ident">UnicodeClassInvalid</span>,
+                ));
+            }
             <span class="self">self</span>.<span class="ident">bump_and_bump_space</span>();
             <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">ast</span>::<span class="ident">ClassUnicodeKind</span>::<span class="ident">OneLetter</span>(<span class="ident">c</span>);
             (<span class="ident">start</span>, <span class="ident">kind</span>)
@@ -8218,13 +8245,13 @@ This module provides a regular expression parser.
 
     <span class="kw">impl</span> <span class="ident">PartialEq</span><span class="op">&lt;</span><span class="ident">ast</span>::<span class="ident">Error</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">TestError</span> {
         <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">ast</span>::<span class="ident">Error</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-            <span class="self">self</span>.<span class="ident">span</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">span</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">kind</span>
+            <span class="self">self</span>.<span class="ident">span</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">span</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">kind</span>
         }
     }
 
     <span class="kw">impl</span> <span class="ident">PartialEq</span><span class="op">&lt;</span><span class="ident">TestError</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ast</span>::<span class="ident">Error</span> {
         <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">TestError</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-            <span class="self">self</span>.<span class="ident">span</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">span</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">kind</span>
+            <span class="self">self</span>.<span class="ident">span</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">span</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">kind</span>
         }
     }
 
@@ -11595,6 +11622,20 @@ bar
                 ],
             }))
         );
+        <span class="macro">assert_eq</span><span class="macro">!</span>(
+            <span class="ident">parser</span>(<span class="string">r&quot;\p\{&quot;</span>).<span class="ident">parse</span>().<span class="ident">unwrap_err</span>(),
+            <span class="ident">TestError</span> {
+                <span class="ident">span</span>: <span class="ident">span</span>(<span class="number">2</span>..<span class="number">3</span>),
+                <span class="ident">kind</span>: <span class="ident">ast</span>::<span class="ident">ErrorKind</span>::<span class="ident">UnicodeClassInvalid</span>,
+            }
+        );
+        <span class="macro">assert_eq</span><span class="macro">!</span>(
+            <span class="ident">parser</span>(<span class="string">r&quot;\P\{&quot;</span>).<span class="ident">parse</span>().<span class="ident">unwrap_err</span>(),
+            <span class="ident">TestError</span> {
+                <span class="ident">span</span>: <span class="ident">span</span>(<span class="number">2</span>..<span class="number">3</span>),
+                <span class="ident">kind</span>: <span class="ident">ast</span>::<span class="ident">ErrorKind</span>::<span class="ident">UnicodeClassInvalid</span>,
+            }
+        );
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
@@ -11762,4 +11803,4 @@ bar
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "regex_syntax";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "regex_syntax";</script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
