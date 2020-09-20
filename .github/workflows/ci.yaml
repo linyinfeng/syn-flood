@@ -39,15 +39,6 @@ jobs:
           command: clippy
           args: --all-targets -- -D warnings
 
-      - uses: actions-rs/cargo@master
-        with:
-          command: doc
-
-      - uses: peaceiris/actions-gh-pages@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/doc
-
 
   doc:
     runs-on: ubuntu-latest
