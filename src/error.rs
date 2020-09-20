@@ -8,14 +8,12 @@ quick_error! {
     #[derive(Debug)]
     pub enum SynFloodError {
         ToSocketAddrs(from: String, e: std::io::Error) {
-            cause(e)
             display("failed to convert \"{}\" to socket addresses: {}", from, e)
         }
         NoSocketAddr {
             display("no socket addresses resolved satisfies options provided")
         }
         TransportChannel(e: std::io::Error) {
-            cause(e)
             display("failed to open transport channel: {}", e)
         }
         NewIpv4Packet {
@@ -31,7 +29,6 @@ quick_error! {
             display("specified IPv6 source {} for IPv4 destination {}", source, destination)
         }
         SystemTime(e: SystemTimeError) {
-            cause(e)
             display("failed to get system time: {}", e)
         }
     }
