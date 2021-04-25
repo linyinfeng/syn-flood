@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/work/syn-flood/syn-flood/target/debug/build/pnet_packet-4911b756ae5b9aaf/out/vlan.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>vlan.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../../../../../../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/work/syn-flood/syn-flood/target/debug/build/pnet_packet-084f965178bbe856/out/vlan.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>vlan.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../../../../../../../../../../storage.js"></script><script src="../../../../../../../../../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container rust-logo'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../../../../../../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../../../../../../../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
-                <a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container rust-logo'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../../../../../../../../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
+                <a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -507,8 +507,8 @@
 <span id="504">504</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">PrimitiveValues</span>;
-<span class="kw">use</span> <span class="ident">ethernet</span>::<span class="ident">EtherType</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">ethernet::EtherType</span>;
+<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// Represents an IEEE 802.1p class of a service.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -532,7 +532,7 @@
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ClassesOfService</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">ClassOfService</span>;
+    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::ClassOfService</span>;
 
     <span class="doccomment">/// Background</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BK</span>: <span class="ident">ClassOfService</span> <span class="op">=</span> <span class="ident">ClassOfService</span>(<span class="number">1</span>);
@@ -572,37 +572,37 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Constructs a new VlanPacket. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">VlanPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">VlanPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new VlanPacket. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None. With this constructor the VlanPacket will</span>
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the VlanPacket is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">VlanPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">VlanPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a VlanPacket to a VlanPacket</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-        <span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+        <span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a VlanPacket to a VlanPacket while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -629,7 +629,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
             ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u3</span>) <span class="op">&amp;</span> <span class="number">224</span>) <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">5</span>
         }
-        <span class="ident">ClassOfService</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">ClassOfService::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the drop_eligible_indicator field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -666,7 +666,7 @@
             <span class="kw">let</span> <span class="ident">b1</span> <span class="op">=</span> ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">1</span>] <span class="kw">as</span> <span class="ident">u16be</span>)) <span class="kw">as</span> <span class="ident">u16be</span>;
             <span class="ident">b0</span> <span class="op">|</span> <span class="ident">b1</span>
         }
-        <span class="ident">EtherType</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">EtherType::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
 }
 <span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
@@ -674,25 +674,25 @@
     <span class="doccomment">/// packet size, this will return None.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableVlanPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">MutableVlanPacket</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableVlanPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">MutableVlanPacket</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new MutableVlanPacket. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None. With this constructor the MutableVlanPacket will</span>
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the MutableVlanPacket is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableVlanPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">MutableVlanPacket</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableVlanPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">MutableVlanPacket</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a MutableVlanPacket to a VlanPacket</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-        <span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+        <span class="ident">VlanPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a MutableVlanPacket to a VlanPacket while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -730,7 +730,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
             ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u3</span>) <span class="op">&amp;</span> <span class="number">224</span>) <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">5</span>
         }
-        <span class="ident">ClassOfService</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">ClassOfService::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the drop_eligible_indicator field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -767,14 +767,14 @@
             <span class="kw">let</span> <span class="ident">b1</span> <span class="op">=</span> ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span> <span class="op">+</span> <span class="number">1</span>] <span class="kw">as</span> <span class="ident">u16be</span>)) <span class="kw">as</span> <span class="ident">u16be</span>;
             <span class="ident">b0</span> <span class="op">|</span> <span class="ident">b1</span>
         }
-        <span class="ident">EtherType</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">EtherType::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Set the value of the priority_code_point field.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_priority_code_point</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">ClassOfService</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -816,7 +816,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_ethertype</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">EtherType</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -840,16 +840,16 @@
                                          <span class="ident">vals</span>.<span class="ident">len</span>()].<span class="ident">copy_from_slice</span>(<span class="ident">vals</span>);
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>; <span class="number">4</span> }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
  {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> { <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>; <span class="number">4</span> }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutablePacket</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::MutablePacket</span> <span class="kw">for</span>
  <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet_mut</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">packet</span>[..] }
@@ -862,7 +862,7 @@
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -874,7 +874,7 @@
         <span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -896,10 +896,10 @@
     <span class="op">=</span>
     <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
     <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span>;
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PacketSize</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">VlanPacket</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">VlanPacket::new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
                 <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">min</span>(<span class="ident">ret</span>.<span class="ident">packet_size</span>(), <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>());
                 <span class="self">self</span>.<span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">buf</span>[<span class="ident">start</span>..];
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>);
@@ -909,14 +909,14 @@
     }
     <span class="kw">fn</span> <span class="ident">size_hint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">usize</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>) { (<span class="number">0</span>, <span class="prelude-val">None</span>) }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="kw">type</span>
     <span class="ident">T</span>
     <span class="op">=</span>
     <span class="ident">Vlan</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vlan</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Vlan</span>{<span class="ident">priority_code_point</span>: <span class="ident">_self</span>.<span class="ident">get_priority_code_point</span>(),
              <span class="ident">drop_eligible_indicator</span>: <span class="ident">_self</span>.<span class="ident">get_drop_eligible_indicator</span>(),
@@ -925,13 +925,13 @@
              <span class="ident">payload</span>:
                  {
                      <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                      <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                      <span class="ident">vec</span>
                  },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>
  {
     <span class="kw">type</span>
     <span class="ident">T</span>
@@ -939,7 +939,7 @@
     <span class="ident">Vlan</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vlan</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Vlan</span>{<span class="ident">priority_code_point</span>: <span class="ident">_self</span>.<span class="ident">get_priority_code_point</span>(),
              <span class="ident">drop_eligible_indicator</span>: <span class="ident">_self</span>.<span class="ident">get_drop_eligible_indicator</span>(),
@@ -948,28 +948,28 @@
              <span class="ident">payload</span>:
                  {
                      <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                      <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                      <span class="ident">vec</span>
                  },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">VlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;VlanPacket {{ priority_code_point : {:?}, drop_eligible_indicator : {:?}, vlan_identifier : {:?}, ethertype : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_priority_code_point</span> (  ) , <span class="ident">_self</span> .
                <span class="ident">get_drop_eligible_indicator</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_vlan_identifier</span>
                (  ) , <span class="ident">_self</span> . <span class="ident">get_ethertype</span> (  ))
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">MutableVlanPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;MutableVlanPacket {{ priority_code_point : {:?}, drop_eligible_indicator : {:?}, vlan_identifier : {:?}, ethertype : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_priority_code_point</span> (  ) , <span class="ident">_self</span> .
                <span class="ident">get_drop_eligible_indicator</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_vlan_identifier</span>
@@ -988,27 +988,28 @@
 }
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident">ethernet</span>::<span class="ident">EtherTypes</span>;
+    <span class="kw">use</span> <span class="ident">ethernet::EtherTypes</span>;
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">vlan_packet_test</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">4</span>];
         {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vlan_header</span> <span class="op">=</span>
-                <span class="ident">MutableVlanPacket</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-            <span class="ident">vlan_header</span>.<span class="ident">set_priority_code_point</span>(<span class="ident">ClassesOfService</span>::<span class="ident">BE</span>);
-            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_priority_code_point</span> (  ) ,
+                <span class="ident">MutableVlanPacket::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+            <span class="ident">vlan_header</span>.<span class="ident">set_priority_code_point</span>(<span class="ident">ClassesOfService::BE</span>);
+            <span class="macro">assert_eq!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_priority_code_point</span> (  ) ,
                        <span class="ident">ClassesOfService</span> :: <span class="ident">BE</span>);
             <span class="ident">vlan_header</span>.<span class="ident">set_drop_eligible_indicator</span>(<span class="number">0</span>);
-            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_drop_eligible_indicator</span> (  ) , <span class="number">0</span>);
-            <span class="ident">vlan_header</span>.<span class="ident">set_ethertype</span>(<span class="ident">EtherTypes</span>::<span class="ident">Ipv4</span>);
-            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_ethertype</span> (  ) , <span class="ident">EtherTypes</span> :: <span class="ident">Ipv4</span>);
+            <span class="macro">assert_eq!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_drop_eligible_indicator</span> (  ) , <span class="number">0</span>);
+            <span class="ident">vlan_header</span>.<span class="ident">set_ethertype</span>(<span class="ident">EtherTypes::Ipv4</span>);
+            <span class="macro">assert_eq!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_ethertype</span> (  ) , <span class="ident">EtherTypes</span> :: <span class="ident">Ipv4</span>);
             <span class="ident">vlan_header</span>.<span class="ident">set_vlan_identifier</span>(<span class="number">256</span>);
-            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_vlan_identifier</span> (  ) , <span class="number">0x100</span>);
+            <span class="macro">assert_eq!</span>(<span class="ident">vlan_header</span> . <span class="ident">get_vlan_identifier</span> (  ) , <span class="number">0x100</span>);
         }
         <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> [<span class="number">1</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">0</span>];
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. ]);
+        <span class="macro">assert_eq!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. ]);
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../../../../../../../../../";window.currentCrate = "pnet_packet";</script><script src="../../../../../../../../../../../../main.js"></script><script src="../../../../../../../../../../../../source-script.js"></script><script src="../../../../../../../../../../../../source-files.js"></script><script defer src="../../../../../../../../../../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../../../../../../../../../../" data-current-crate="pnet_packet" data-search-index-js="../../../../../../../../../../../../search-index.js" data-search-js="../../../../../../../../../../../../search.js"></div>
+    <script src="../../../../../../../../../../../../main.js"></script><script src="../../../../../../../../../../../../source-script.js"></script><script src="../../../../../../../../../../../../source-files.js"></script></body></html>

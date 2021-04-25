@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/work/syn-flood/syn-flood/target/debug/build/pnet_packet-4911b756ae5b9aaf/out/ipv4.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv4.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../../../../../../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/work/syn-flood/syn-flood/target/debug/build/pnet_packet-084f965178bbe856/out/ipv4.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv4.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../../../../../../../../../../storage.js"></script><script src="../../../../../../../../../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../../../../../../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container rust-logo'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../../../../../../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../../../../../../../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
-                <a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<link rel="alternate icon" type="image/png" href="../../../../../../../../../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../../../../../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../../../../../../../../../pnet_packet/index.html'><div class='logo-container rust-logo'><img src='../../../../../../../../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../../../../../../../../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
+                <a id="settings-menu" href="../../../../../../../../../../../../settings.html"><img src="../../../../../../../../../../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1893,17 +1893,17 @@
 <span class="comment">// except according to those terms.</span>
 
 <span class="kw">use</span> <span class="ident">PrimitiveValues</span>;
-<span class="kw">use</span> <span class="ident">ip</span>::<span class="ident">IpNextHeaderProtocol</span>;
+<span class="kw">use</span> <span class="ident">ip::IpNextHeaderProtocol</span>;
 
-<span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">net</span>::<span class="ident">Ipv4Addr</span>;
+<span class="kw">use</span> <span class="ident">std::net::Ipv4Addr</span>;
 
 <span class="doccomment">/// The IPv4 header flags.</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Ipv4Flags</span> {
-    <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">types</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
 
     <span class="doccomment">/// Don&#39;t Fragment flag.</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DontFragment</span>: <span class="ident">u3</span> <span class="op">=</span> <span class="number">0b010</span>;
@@ -1916,7 +1916,7 @@
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Ipv4OptionNumbers</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">Ipv4OptionNumber</span>;
+    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Ipv4OptionNumber</span>;
 
     <span class="doccomment">/// End of Options List.</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EOL</span>: <span class="ident">Ipv4OptionNumber</span> <span class="op">=</span> <span class="ident">Ipv4OptionNumber</span>(<span class="number">0</span>);
@@ -2082,37 +2082,37 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Constructs a new Ipv4Packet. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4Packet</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4Packet::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new Ipv4Packet. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None. With this constructor the Ipv4Packet will</span>
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the Ipv4Packet is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4Packet</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4Packet::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a Ipv4Packet to a Ipv4Packet</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-        <span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+        <span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a Ipv4Packet to a Ipv4Packet while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2231,7 +2231,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">9</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">IpNextHeaderProtocol</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">IpNextHeaderProtocol::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the checksum field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
@@ -2278,7 +2278,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">15</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
+        <span class="ident">Ipv4Addr::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
                       <span class="ident">get_arg3</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the value of the destination field</span>
@@ -2314,7 +2314,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">19</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
+        <span class="ident">Ipv4Addr::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
                       <span class="ident">get_arg3</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the raw &amp;[u8] value of the options field, without copying</span>
@@ -2322,7 +2322,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options_raw</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2335,8 +2335,8 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ipv4Option</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span>;
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::FromPacket</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2351,7 +2351,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options_iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionIterable</span> {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2365,25 +2365,25 @@
     <span class="doccomment">/// packet size, this will return None.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4Packet</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4Packet::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4Packet</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new MutableIpv4Packet. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None. With this constructor the MutableIpv4Packet will</span>
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the MutableIpv4Packet is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4Packet</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4Packet::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4Packet</span>{<span class="ident">packet</span>: <span class="ident">MutPacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a MutableIpv4Packet to a Ipv4Packet</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-        <span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+        <span class="ident">Ipv4Packet</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a MutableIpv4Packet to a Ipv4Packet while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2523,7 +2523,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">9</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">IpNextHeaderProtocol</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">IpNextHeaderProtocol::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the checksum field. This field is always stored big-endian</span>
     <span class="doccomment">/// within the struct, but this accessor returns host order.</span>
@@ -2570,7 +2570,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">15</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
+        <span class="ident">Ipv4Addr::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
                       <span class="ident">get_arg3</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the value of the destination field</span>
@@ -2606,7 +2606,7 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">19</span>;
             (<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>)
         }
-        <span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
+        <span class="ident">Ipv4Addr::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg1</span>(<span class="kw-2">&amp;</span><span class="self">self</span>), <span class="ident">get_arg2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
                       <span class="ident">get_arg3</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the raw &amp;[u8] value of the options field, without copying</span>
@@ -2614,7 +2614,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options_raw</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2627,8 +2627,8 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ipv4Option</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span>;
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::FromPacket</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2643,7 +2643,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options_iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionIterable</span> {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2750,7 +2750,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_next_level_protocol</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">IpNextHeaderProtocol</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -2778,7 +2778,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_source</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">Ipv4Addr</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -2819,7 +2819,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_destination</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">Ipv4Addr</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -2860,7 +2860,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_options_raw_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -2873,16 +2873,16 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_options</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">vals</span>: <span class="kw-2">&amp;</span>[<span class="ident">Ipv4Option</span>]) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PacketSize</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">current_offset</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">for</span> <span class="ident">val</span> <span class="kw">in</span> <span class="ident">vals</span>.<span class="ident">into_iter</span>() {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span>
-                <span class="ident">MutableIpv4OptionPacket</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..]).<span class="ident">unwrap</span>();
+                <span class="ident">MutableIpv4OptionPacket::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..]).<span class="ident">unwrap</span>();
             <span class="ident">packet</span>.<span class="ident">populate</span>(<span class="ident">val</span>);
             <span class="ident">current_offset</span> <span class="op">+</span><span class="op">=</span> <span class="ident">packet</span>.<span class="ident">packet_size</span>();
-            <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">current_offset</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">end</span>);
+            <span class="macro">assert!</span>(<span class="ident">current_offset</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">end</span>);
         }
     }
     <span class="doccomment">/// Set the value of the payload field (copies contents)</span>
@@ -2893,12 +2893,12 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
+        <span class="macro">assert!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..<span class="ident">current_offset</span> <span class="op">+</span>
                                          <span class="ident">vals</span>.<span class="ident">len</span>()].<span class="ident">copy_from_slice</span>(<span class="ident">vals</span>);
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -2906,7 +2906,7 @@
             <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>())
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
  {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
@@ -2915,7 +2915,7 @@
             <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>())
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutablePacket</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::MutablePacket</span> <span class="kw">for</span>
  <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet_mut</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">packet</span>[..] }
@@ -2925,14 +2925,14 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> []; }
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..<span class="ident">end</span>]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2941,14 +2941,14 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span>[]; }
         <span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..<span class="ident">end</span>]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -2957,7 +2957,7 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">20</span> <span class="op">+</span> <span class="ident">ipv4_options_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span>[]; }
@@ -2974,10 +2974,10 @@
     <span class="op">=</span>
     <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
     <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span>;
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PacketSize</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">Ipv4Packet</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">Ipv4Packet::new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
                 <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">min</span>(<span class="ident">ret</span>.<span class="ident">packet_size</span>(), <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>());
                 <span class="self">self</span>.<span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">buf</span>[<span class="ident">start</span>..];
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>);
@@ -2987,14 +2987,14 @@
     }
     <span class="kw">fn</span> <span class="ident">size_hint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">usize</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>) { (<span class="number">0</span>, <span class="prelude-val">None</span>) }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="kw">type</span>
     <span class="ident">T</span>
     <span class="op">=</span>
     <span class="ident">Ipv4</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Ipv4</span>{<span class="ident">version</span>: <span class="ident">_self</span>.<span class="ident">get_version</span>(),
              <span class="ident">header_length</span>: <span class="ident">_self</span>.<span class="ident">get_header_length</span>(),
@@ -3013,13 +3013,13 @@
              <span class="ident">payload</span>:
                  {
                      <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                      <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                      <span class="ident">vec</span>
                  },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>
  {
     <span class="kw">type</span>
     <span class="ident">T</span>
@@ -3027,7 +3027,7 @@
     <span class="ident">Ipv4</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Ipv4</span>{<span class="ident">version</span>: <span class="ident">_self</span>.<span class="ident">get_version</span>(),
              <span class="ident">header_length</span>: <span class="ident">_self</span>.<span class="ident">get_header_length</span>(),
@@ -3046,17 +3046,17 @@
              <span class="ident">payload</span>:
                  {
                      <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                      <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                      <span class="ident">vec</span>
                  },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">Ipv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;Ipv4Packet {{ version : {:?}, header_length : {:?}, dscp : {:?}, ecn : {:?}, total_length : {:?}, identification : {:?}, flags : {:?}, fragment_offset : {:?}, ttl : {:?}, next_level_protocol : {:?}, checksum : {:?}, source : {:?}, destination : {:?}, options : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_version</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_header_length</span> (  ) ,
                <span class="ident">_self</span> . <span class="ident">get_dscp</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_ecn</span> (  ) , <span class="ident">_self</span> .
@@ -3067,11 +3067,11 @@
                <span class="ident">get_destination</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_options</span> (  ))
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">MutableIpv4Packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;MutableIpv4Packet {{ version : {:?}, header_length : {:?}, dscp : {:?}, ecn : {:?}, total_length : {:?}, identification : {:?}, flags : {:?}, fragment_offset : {:?}, ttl : {:?}, next_level_protocol : {:?}, checksum : {:?}, source : {:?}, destination : {:?}, options : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_version</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_header_length</span> (  ) ,
                <span class="ident">_self</span> . <span class="ident">get_dscp</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_ecn</span> (  ) , <span class="ident">_self</span> .
@@ -3107,7 +3107,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">checksum</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16be</span> {
     <span class="kw">use</span> <span class="ident">Packet</span>;
     <span class="kw">use</span> <span class="ident">util</span>;
-    <span class="kw">let</span> <span class="ident">min</span> <span class="op">=</span> <span class="ident">Ipv4Packet</span>::<span class="ident">minimum_packet_size</span>();
+    <span class="kw">let</span> <span class="ident">min</span> <span class="op">=</span> <span class="ident">Ipv4Packet::minimum_packet_size</span>();
     <span class="kw">let</span> <span class="ident">max</span> <span class="op">=</span> <span class="ident">packet</span>.<span class="ident">packet</span>().<span class="ident">len</span>();
     <span class="kw">let</span> <span class="ident">header_length</span> <span class="op">=</span>
         <span class="kw">match</span> (<span class="ident">packet</span>.<span class="ident">get_header_length</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> <span class="number">4</span> {
@@ -3116,46 +3116,46 @@
             <span class="ident">length</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">length</span>,
         };
     <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">packet</span>.<span class="ident">packet</span>()[..<span class="ident">header_length</span>];
-    <span class="ident">util</span>::<span class="ident">checksum</span>(<span class="ident">data</span>, <span class="number">5</span>)
+    <span class="ident">util::checksum</span>(<span class="ident">data</span>, <span class="number">5</span>)
 }
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">checksum_tests</span> {
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">checksum_zeros</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>(<span class="number">0</span> ; <span class="number">20</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>(<span class="number">0</span> ; <span class="number">20</span>);
         <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">64255</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">pkg</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
         <span class="ident">pkg</span>.<span class="ident">set_checksum</span>(<span class="number">123</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
     }
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">checksum_nonzero</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>(<span class="number">255</span> ; <span class="number">20</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>(<span class="number">255</span> ; <span class="number">20</span>);
         <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">2560</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">pkg</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
         <span class="ident">pkg</span>.<span class="ident">set_checksum</span>(<span class="number">123</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
     }
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">checksum_too_small_header_length</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>(<span class="number">148</span> ; <span class="number">20</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>(<span class="number">148</span> ; <span class="number">20</span>);
         <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">51910</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">pkg</span>.<span class="ident">set_header_length</span>(<span class="number">0</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
     }
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">checksum_too_large_header_length</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>(<span class="number">148</span> ; <span class="number">20</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>(<span class="number">148</span> ; <span class="number">20</span>);
         <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">51142</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">pkg</span>.<span class="ident">set_header_length</span>(<span class="number">99</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span> ( <span class="op">&amp;</span> <span class="ident">pkg</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="ident">expected</span>);
     }
 }
 <span class="kw">fn</span> <span class="ident">ipv4_options_length</span>(<span class="ident">ipv4</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
@@ -3164,9 +3164,9 @@
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_options_length_test</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">20</span>];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
     <span class="ident">ip_header</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_options_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">0</span>);
+    <span class="macro">assert_eq!</span>(<span class="ident">ipv4_options_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">0</span>);
 }
 <span class="kw">fn</span> <span class="ident">ipv4_payload_length</span>(<span class="ident">ipv4</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Packet</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
     (<span class="ident">ipv4</span>.<span class="ident">get_total_length</span>() <span class="kw">as</span>
@@ -3175,48 +3175,48 @@
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_payload_length_test</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">30</span>];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
     <span class="ident">ip_header</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
     <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">20</span>);
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">0</span>);
+    <span class="macro">assert_eq!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">0</span>);
     <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">30</span>);
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">10</span>);
+    <span class="macro">assert_eq!</span>(<span class="ident">ipv4_payload_length</span> ( <span class="op">&amp;</span> <span class="ident">ip_header</span> . <span class="ident">to_immutable</span> (  ) ) , <span class="number">10</span>);
 }
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::PacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>)]</span>
 <span class="doccomment">/// A structure enabling manipulation of on the wire packets</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="ident">packet</span>: ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
+    <span class="ident">packet</span>: <span class="ident">::pnet_macros_support::packet::MutPacketData</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>,
 }
 <span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Constructs a new Ipv4OptionPacket. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4OptionPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4OptionPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new Ipv4OptionPacket. If the provided buffer is less than the minimum required</span>
     <span class="doccomment">/// packet size, this will return None. With this constructor the Ipv4OptionPacket will</span>
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the Ipv4OptionPacket is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4OptionPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
-            <span class="prelude-val">Some</span>(<span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Ipv4OptionPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
+            <span class="prelude-val">Some</span>(<span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>: <span class="ident">PacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a Ipv4OptionPacket to a Ipv4OptionPacket</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
         <span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>:
-                             <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+                             <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a Ipv4OptionPacket to a Ipv4OptionPacket while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3263,14 +3263,14 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
             ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u5</span>) <span class="op">&amp;</span> <span class="number">31</span>)
         }
-        <span class="ident">Ipv4OptionNumber</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">Ipv4OptionNumber::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the raw &amp;[u8] value of the length field, without copying</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length_raw</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -3283,7 +3283,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>, <span class="ident">unused_braces</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">pkt_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">len</span>();
@@ -3291,7 +3291,7 @@
             <span class="ident">min</span>(<span class="ident">current_offset</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                 <span class="ident">pkt_len</span>);
         <span class="kw">let</span> <span class="ident">packet</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..<span class="ident">end</span>];
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">packet</span>.<span class="ident">len</span>());
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">vec</span>.<span class="ident">capacity</span>() {
             <span class="ident">vec</span>.<span class="ident">push</span>({ (<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>) });
@@ -3306,10 +3306,10 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>])
      <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4OptionPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4OptionPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
             <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4OptionPacket</span>{<span class="ident">packet</span>:
-                                             <span class="ident">MutPacketData</span>::<span class="ident">Borrowed</span>(<span class="ident">packet</span>),})
+                                             <span class="ident">MutPacketData::Borrowed</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Constructs a new MutableIpv4OptionPacket. If the provided buffer is less than the minimum required</span>
@@ -3317,18 +3317,18 @@
     <span class="doccomment">/// own its own data and the underlying buffer will be dropped when the MutableIpv4OptionPacket is.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">owned</span>(<span class="ident">packet</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)
      <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4OptionPacket</span>::<span class="ident">minimum_packet_size</span>() {
-            <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutPacketData</span>;
+        <span class="kw">if</span> <span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">MutableIpv4OptionPacket::minimum_packet_size</span>() {
+            <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::MutPacketData</span>;
             <span class="prelude-val">Some</span>(<span class="ident">MutableIpv4OptionPacket</span>{<span class="ident">packet</span>:
-                                             <span class="ident">MutPacketData</span>::<span class="ident">Owned</span>(<span class="ident">packet</span>),})
+                                             <span class="ident">MutPacketData::Owned</span>(<span class="ident">packet</span>),})
         } <span class="kw">else</span> { <span class="prelude-val">None</span> }
     }
     <span class="doccomment">/// Maps from a MutableIpv4OptionPacket to a Ipv4OptionPacket</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_immutable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketData</span>;
+        <span class="kw">use</span> <span class="ident">::pnet_macros_support::packet::PacketData</span>;
         <span class="ident">Ipv4OptionPacket</span>{<span class="ident">packet</span>:
-                             <span class="ident">PacketData</span>::<span class="ident">Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
+                             <span class="ident">PacketData::Borrowed</span>(<span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">as_slice</span>()),}
     }
     <span class="doccomment">/// Maps from a MutableIpv4OptionPacket to a Ipv4OptionPacket while consuming the source</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3386,14 +3386,14 @@
             <span class="kw">let</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
             ((<span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u5</span>) <span class="op">&amp;</span> <span class="number">31</span>)
         }
-        <span class="ident">Ipv4OptionNumber</span>::<span class="ident">new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
+        <span class="ident">Ipv4OptionNumber::new</span>(<span class="ident">get_arg0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>))
     }
     <span class="doccomment">/// Get the raw &amp;[u8] value of the length field, without copying</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length_raw</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -3406,7 +3406,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>, <span class="ident">unused_parens</span>, <span class="ident">unused_braces</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">pkt_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">packet</span>.<span class="ident">len</span>();
@@ -3414,7 +3414,7 @@
             <span class="ident">min</span>(<span class="ident">current_offset</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                 <span class="ident">pkt_len</span>);
         <span class="kw">let</span> <span class="ident">packet</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..<span class="ident">end</span>];
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">packet</span>.<span class="ident">len</span>());
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">co</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">vec</span>.<span class="ident">capacity</span>() {
             <span class="ident">vec</span>.<span class="ident">push</span>({ (<span class="ident">packet</span>[<span class="ident">co</span>] <span class="kw">as</span> <span class="ident">u8</span>) });
@@ -3447,7 +3447,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_number</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">Ipv4OptionNumber</span>) {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PrimitiveValues</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PrimitiveValues</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
@@ -3465,7 +3465,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_length_raw_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>] {
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
@@ -3481,7 +3481,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
+        <span class="macro">assert!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..<span class="ident">current_offset</span> <span class="op">+</span>
                                          <span class="ident">vals</span>.<span class="ident">len</span>()].<span class="ident">copy_from_slice</span>(<span class="ident">vals</span>);
     }
@@ -3493,12 +3493,12 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">current_offset</span> <span class="op">=</span> <span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
+        <span class="macro">assert!</span>(<span class="ident">vals</span> . <span class="ident">len</span> (  ) <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span>);
         <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">current_offset</span>..<span class="ident">current_offset</span> <span class="op">+</span>
                                          <span class="ident">vals</span>.<span class="ident">len</span>()].<span class="ident">copy_from_slice</span>(<span class="ident">vals</span>);
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
@@ -3506,7 +3506,7 @@
             <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>())
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::PacketSize</span> <span class="kw">for</span>
  <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
     <span class="kw">fn</span> <span class="ident">packet_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
@@ -3515,7 +3515,7 @@
             <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>())
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">MutablePacket</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::MutablePacket</span> <span class="kw">for</span>
  <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet_mut</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">packet</span>[..] }
@@ -3525,14 +3525,14 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> []; }
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..<span class="ident">end</span>]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span>
  <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
@@ -3542,14 +3542,14 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span>[]; }
         <span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">packet</span>[<span class="ident">start</span>..<span class="ident">end</span>]
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::Packet</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">packet</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">u8</span>] { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">packet</span>[..] }
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3558,7 +3558,7 @@
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>());
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span>
-            ::<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
+            <span class="ident">::std::cmp::min</span>(<span class="number">1</span> <span class="op">+</span> <span class="ident">ipv4_option_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()) <span class="op">+</span>
                                 <span class="ident">ipv4_option_payload_length</span>(<span class="kw-2">&amp;</span><span class="ident">_self</span>.<span class="ident">to_immutable</span>()),
                             <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>());
         <span class="kw">if</span> <span class="ident">_self</span>.<span class="ident">packet</span>.<span class="ident">len</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="ident">start</span> { <span class="kw">return</span> <span class="kw-2">&amp;</span>[]; }
@@ -3575,10 +3575,10 @@
     <span class="op">=</span>
     <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
     <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">PacketSize</span>;
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::PacketSize</span>;
+        <span class="kw">use</span> <span class="ident">std::cmp::min</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">Ipv4OptionPacket</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">Ipv4OptionPacket::new</span>(<span class="self">self</span>.<span class="ident">buf</span>) {
                 <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">min</span>(<span class="ident">ret</span>.<span class="ident">packet_size</span>(), <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">len</span>());
                 <span class="self">self</span>.<span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">buf</span>[<span class="ident">start</span>..];
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>);
@@ -3588,14 +3588,14 @@
     }
     <span class="kw">fn</span> <span class="ident">size_hint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">usize</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>) { (<span class="number">0</span>, <span class="prelude-val">None</span>) }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="kw">type</span>
     <span class="ident">T</span>
     <span class="op">=</span>
     <span class="ident">Ipv4Option</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Option</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Ipv4Option</span>{<span class="ident">copied</span>: <span class="ident">_self</span>.<span class="ident">get_copied</span>(),
                    <span class="ident">class</span>: <span class="ident">_self</span>.<span class="ident">get_class</span>(),
@@ -3604,13 +3604,13 @@
                    <span class="ident">data</span>:
                        {
                            <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                           <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                           <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                            <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                            <span class="ident">vec</span>
                        },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">FromPacket</span> <span class="kw">for</span>
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::pnet_macros_support::packet::FromPacket</span> <span class="kw">for</span>
  <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="kw">type</span>
     <span class="ident">T</span>
@@ -3618,7 +3618,7 @@
     <span class="ident">Ipv4Option</span>;
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from_packet</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ipv4Option</span> {
-        <span class="kw">use</span> <span class="ident">pnet_macros_support</span>::<span class="ident">packet</span>::<span class="ident">Packet</span>;
+        <span class="kw">use</span> <span class="ident">pnet_macros_support::packet::Packet</span>;
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
         <span class="ident">Ipv4Option</span>{<span class="ident">copied</span>: <span class="ident">_self</span>.<span class="ident">get_copied</span>(),
                    <span class="ident">class</span>: <span class="ident">_self</span>.<span class="ident">get_class</span>(),
@@ -3627,27 +3627,27 @@
                    <span class="ident">data</span>:
                        {
                            <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">payload</span>();
-                           <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
+                           <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">payload</span>.<span class="ident">len</span>());
                            <span class="ident">vec</span>.<span class="ident">extend_from_slice</span>(<span class="ident">payload</span>);
                            <span class="ident">vec</span>
                        },}
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">Ipv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;Ipv4OptionPacket {{ copied : {:?}, class : {:?}, number : {:?}, length : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_copied</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_class</span> (  ) , <span class="ident">_self</span> .
                <span class="ident">get_number</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_length</span> (  ))
     }
 }
-<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">MutableIpv4OptionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">used_underscore_binding</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">_self</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span> ,
+        <span class="macro">write!</span>(<span class="ident">fmt</span> ,
                <span class="string">&quot;MutableIpv4OptionPacket {{ copied : {:?}, class : {:?}, number : {:?}, length : {:?},  }}&quot;</span>
                , <span class="ident">_self</span> . <span class="ident">get_copied</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_class</span> (  ) , <span class="ident">_self</span> .
                <span class="ident">get_number</span> (  ) , <span class="ident">_self</span> . <span class="ident">get_length</span> (  ))
@@ -3668,8 +3668,8 @@
 <span class="doccomment">/// to 0.</span>
 <span class="kw">fn</span> <span class="ident">ipv4_option_length</span>(<span class="ident">option</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4OptionPacket</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
     <span class="kw">match</span> <span class="ident">option</span>.<span class="ident">get_number</span>() {
-        <span class="ident">Ipv4OptionNumbers</span>::<span class="ident">EOL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">0</span>,
-        <span class="ident">Ipv4OptionNumbers</span>::<span class="ident">NOP</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">0</span>,
+        <span class="ident">Ipv4OptionNumbers::EOL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">0</span>,
+        <span class="ident">Ipv4OptionNumbers::NOP</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">0</span>,
         <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>,
     }
 }
@@ -3681,90 +3681,91 @@
 }
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_packet_test</span>() {
-    <span class="kw">use</span> <span class="ident">ip</span>::<span class="ident">IpNextHeaderProtocols</span>;
+    <span class="kw">use</span> <span class="ident">ip::IpNextHeaderProtocols</span>;
     <span class="kw">use</span> <span class="ident">Packet</span>;
     <span class="kw">use</span> <span class="ident">PacketSize</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">200</span>];
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">ip_header</span>.<span class="ident">set_version</span>(<span class="number">4</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_version</span> (  ) , <span class="number">4</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_version</span> (  ) , <span class="number">4</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_header_length</span> (  ) , <span class="number">5</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_header_length</span> (  ) , <span class="number">5</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_dscp</span>(<span class="number">4</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_dscp</span> (  ) , <span class="number">4</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_dscp</span> (  ) , <span class="number">4</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_ecn</span>(<span class="number">1</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_ecn</span> (  ) , <span class="number">1</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_ecn</span> (  ) , <span class="number">1</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_total_length</span>(<span class="number">115</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="number">115</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">95</span> , <span class="ident">ip_header</span> . <span class="ident">payload</span> (  ) . <span class="ident">len</span> (  ));
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="ident">ip_header</span> . <span class="ident">packet_size</span>
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="number">115</span>);
+        <span class="macro">assert_eq!</span>(<span class="number">95</span> , <span class="ident">ip_header</span> . <span class="ident">payload</span> (  ) . <span class="ident">len</span> (  ));
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_total_length</span> (  ) , <span class="ident">ip_header</span> . <span class="ident">packet_size</span>
                    (  ) <span class="kw">as</span> <span class="ident">u16</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_identification</span>(<span class="number">257</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_identification</span> (  ) , <span class="number">257</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_flags</span>(<span class="ident">Ipv4Flags</span>::<span class="ident">DontFragment</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_flags</span> (  ) , <span class="number">2</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_identification</span> (  ) , <span class="number">257</span>);
+        <span class="ident">ip_header</span>.<span class="ident">set_flags</span>(<span class="ident">Ipv4Flags::DontFragment</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_flags</span> (  ) , <span class="number">2</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_fragment_offset</span>(<span class="number">257</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_fragment_offset</span> (  ) , <span class="number">257</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_fragment_offset</span> (  ) , <span class="number">257</span>);
         <span class="ident">ip_header</span>.<span class="ident">set_ttl</span>(<span class="number">64</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_ttl</span> (  ) , <span class="number">64</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_next_level_protocol</span>(<span class="ident">IpNextHeaderProtocols</span>::<span class="ident">Udp</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_next_level_protocol</span> (  ) ,
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_ttl</span> (  ) , <span class="number">64</span>);
+        <span class="ident">ip_header</span>.<span class="ident">set_next_level_protocol</span>(<span class="ident">IpNextHeaderProtocols::Udp</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_next_level_protocol</span> (  ) ,
                    <span class="ident">IpNextHeaderProtocols</span> :: <span class="ident">Udp</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_source</span>(<span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">1</span>));
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_source</span> (  ) , <span class="ident">Ipv4Addr</span> :: <span class="ident">new</span> (
+        <span class="ident">ip_header</span>.<span class="ident">set_source</span>(<span class="ident">Ipv4Addr::new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_source</span> (  ) , <span class="ident">Ipv4Addr</span> :: <span class="ident">new</span> (
                    <span class="number">192</span> , <span class="number">168</span> , <span class="number">0</span> , <span class="number">1</span> ));
-        <span class="ident">ip_header</span>.<span class="ident">set_destination</span>(<span class="ident">Ipv4Addr</span>::<span class="ident">new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">199</span>));
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_destination</span> (  ) , <span class="ident">Ipv4Addr</span> :: <span class="ident">new</span> (
+        <span class="ident">ip_header</span>.<span class="ident">set_destination</span>(<span class="ident">Ipv4Addr::new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">199</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_destination</span> (  ) , <span class="ident">Ipv4Addr</span> :: <span class="ident">new</span> (
                    <span class="number">192</span> , <span class="number">168</span> , <span class="number">0</span> , <span class="number">199</span> ));
         <span class="kw">let</span> <span class="ident">imm_header</span> <span class="op">=</span> <span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">ip_header</span>.<span class="ident">to_immutable</span>());
         <span class="ident">ip_header</span>.<span class="ident">set_checksum</span>(<span class="ident">imm_header</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_header</span> . <span class="ident">get_checksum</span> (  ) , <span class="number">0xb64e</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span> . <span class="ident">get_checksum</span> (  ) , <span class="number">0xb64e</span>);
     }
     <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span>
         [<span class="number">69</span>, <span class="number">17</span>, <span class="number">0</span>, <span class="number">115</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">65</span>, <span class="number">1</span>, <span class="number">64</span>, <span class="number">17</span>, <span class="number">182</span>, <span class="number">78</span>, <span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">192</span>,
          <span class="number">168</span>, <span class="number">0</span>, <span class="number">199</span>];
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. <span class="ident">ref_packet</span> . <span class="ident">len</span> (  ) ]);
+    <span class="macro">assert_eq!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. <span class="ident">ref_packet</span> . <span class="ident">len</span> (  ) ]);
 }
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_packet_option_test</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">3</span>];
     {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ipv4_options</span> <span class="op">=</span>
-            <span class="ident">MutableIpv4OptionPacket</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+            <span class="ident">MutableIpv4OptionPacket::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
         <span class="ident">ipv4_options</span>.<span class="ident">set_copied</span>(<span class="number">1</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_copied</span> (  ) , <span class="number">1</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_copied</span> (  ) , <span class="number">1</span>);
         <span class="ident">ipv4_options</span>.<span class="ident">set_class</span>(<span class="number">0</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_class</span> (  ) , <span class="number">0</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_class</span> (  ) , <span class="number">0</span>);
         <span class="ident">ipv4_options</span>.<span class="ident">set_number</span>(<span class="ident">Ipv4OptionNumber</span>(<span class="number">3</span>));
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_number</span> (  ) , <span class="ident">Ipv4OptionNumbers</span> :: <span class="ident">LSR</span>);
-        <span class="ident">ipv4_options</span>.<span class="ident">set_length</span>(<span class="kw-2">&amp;</span><span class="macro">vec</span><span class="macro">!</span>(<span class="number">3</span>));
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_length</span> (  ) , <span class="ident">vec</span> <span class="op">!</span> [ <span class="number">3</span> ]);
-        <span class="ident">ipv4_options</span>.<span class="ident">set_data</span>(<span class="kw-2">&amp;</span><span class="macro">vec</span><span class="macro">!</span>(<span class="number">16</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_number</span> (  ) , <span class="ident">Ipv4OptionNumbers</span> :: <span class="ident">LSR</span>);
+        <span class="ident">ipv4_options</span>.<span class="ident">set_length</span>(<span class="kw-2">&amp;</span><span class="macro">vec!</span>(<span class="number">3</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">ipv4_options</span> . <span class="ident">get_length</span> (  ) , <span class="ident">vec</span> <span class="op">!</span> [ <span class="number">3</span> ]);
+        <span class="ident">ipv4_options</span>.<span class="ident">set_data</span>(<span class="kw-2">&amp;</span><span class="macro">vec!</span>(<span class="number">16</span>));
     }
     <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> [<span class="number">131</span>, <span class="number">3</span>, <span class="number">16</span>];
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. ]);
+    <span class="macro">assert_eq!</span>(<span class="op">&amp;</span> <span class="ident">ref_packet</span> [ .. ] , <span class="op">&amp;</span> <span class="ident">packet</span> [ .. ]);
 }
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_packet_set_payload_test</span>() {
     <span class="kw">use</span> <span class="ident">Packet</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">25</span>];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_packet</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_packet</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
     <span class="ident">ip_packet</span>.<span class="ident">set_total_length</span>(<span class="number">25</span>);
     <span class="ident">ip_packet</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
     <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="string">b&quot;stuff&quot;</span>;
     <span class="ident">ip_packet</span>.<span class="ident">set_payload</span>(<span class="kw-2">&amp;</span><span class="ident">payload</span>[..]);
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">ip_packet</span> . <span class="ident">payload</span> (  ) , <span class="ident">payload</span>);
+    <span class="macro">assert_eq!</span>(<span class="ident">ip_packet</span> . <span class="ident">payload</span> (  ) , <span class="ident">payload</span>);
 }
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="attribute">#[<span class="ident">should_panic</span>(<span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;index 25 out of range for slice of length 24&quot;</span>)]</span>
 <span class="kw">fn</span> <span class="ident">ipv4_packet_set_payload_test_panic</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">24</span>];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_packet</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_packet</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
     <span class="ident">ip_packet</span>.<span class="ident">set_total_length</span>(<span class="number">25</span>);
     <span class="ident">ip_packet</span>.<span class="ident">set_header_length</span>(<span class="number">5</span>);
     <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="string">b&quot;stuff&quot;</span>;
     <span class="ident">ip_packet</span>.<span class="ident">set_payload</span>(<span class="kw-2">&amp;</span><span class="ident">payload</span>[..]);
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../../../../../../../../../";window.currentCrate = "pnet_packet";</script><script src="../../../../../../../../../../../../main.js"></script><script src="../../../../../../../../../../../../source-script.js"></script><script src="../../../../../../../../../../../../source-files.js"></script><script defer src="../../../../../../../../../../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../../../../../../../../../../" data-current-crate="pnet_packet" data-search-index-js="../../../../../../../../../../../../search-index.js" data-search-js="../../../../../../../../../../../../search.js"></div>
+    <script src="../../../../../../../../../../../../main.js"></script><script src="../../../../../../../../../../../../source-script.js"></script><script src="../../../../../../../../../../../../source-files.js"></script></body></html>
