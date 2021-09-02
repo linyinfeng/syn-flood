@@ -115,7 +115,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFloodErr
     }
     let mut rng = rand::thread_rng();
     let statistics = run(
-        &opt,
+        opt,
         || {
             ipv4_packet.set_identification(rng.gen()); // random identification
             let source_addr = opt
@@ -127,7 +127,7 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFloodErr
                     },
                 })
                 .transpose()?
-                .unwrap_or_else(|| random_global_ipv4_addr(&opt, &mut rng));
+                .unwrap_or_else(|| random_global_ipv4_addr(opt, &mut rng));
             ipv4_packet.set_source(source_addr);
             ipv4_packet.set_checksum(ipv4::checksum(&ipv4_packet.to_immutable()));
             {
@@ -135,13 +135,13 @@ pub fn flood_v4(opt: &Opt, socket_addr: &SocketAddrV4) -> Result<(), SynFloodErr
                     .ok_or(SynFloodError::NewTcpPacket)?;
                 let source_port = opt
                     .source_port
-                    .unwrap_or_else(|| random_source_port(&opt, &mut rng));
+                    .unwrap_or_else(|| random_source_port(opt, &mut rng));
                 tcp_packet.set_source(source_port);
                 tcp_packet.set_sequence(rng.gen()); // random sequence number
                 tcp_packet.set_checksum(tcp::ipv4_checksum(
                     &tcp_packet.to_immutable(),
                     &source_addr,
-                    &addr,
+                    addr,
                 ));
             }
             let packet = ipv4_packet.to_immutable();
