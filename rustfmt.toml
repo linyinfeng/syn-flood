@@ -12,4 +12,4 @@ use_try_shorthand = true
 #format_doc_comments = true # Removed
 format_code_in_doc_comments = true # Unstable
 format_macro_bodies = false # Unstable
-merge_imports = true # Unstable
+imports_granularity="Crate"
