@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["duration_try_from_str",""]],"struct":[["Opt",""]]});
+window.SIDEBAR_ITEMS = {"fn":[["duration_try_from_str",""]],"struct":[["Opt",""]]};

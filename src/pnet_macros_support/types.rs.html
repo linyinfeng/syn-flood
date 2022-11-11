@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_macros_support-0.30.0/src/types.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>types.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_macros_support/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_macros_support/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_macros_support/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_macros_support-0.30.0/src/types.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>types.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_macros_support/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -665,666 +658,665 @@
 <span id="658">658</span>
 <span id="659">659</span>
 <span id="660">660</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-
-<span class="doccomment">//! Provides type aliases for various primitive integer types</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! These types are aliased to the next largest of \[`u8`, `u16`, `u32`, `u64`\], and purely serve as</span>
-<span class="doccomment">//! hints for the `#[packet]` macro to enable the generation of the correct bit manipulations to</span>
-<span class="doccomment">//! get the value out of a packet.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! They should NOT be used outside of data types marked as `#[packet]`.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! All aliases for types larger than `u8` contain a `be` or `le` suffix. These specify whether the</span>
-<span class="doccomment">//! value is big or little endian, respectively. When using `set_*()` and `get_*()` methods, host</span>
-<span class="doccomment">//! endianness should be used - the methods will convert as appropriate.</span>
-
-<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-
-<span class="comment">// TODO signed equivalents?</span>
-
-<span class="doccomment">/// Represents an unsigned, 1-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u1</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 2-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u2</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 3-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u3</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 4-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u4</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 5-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u5</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 6-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u6</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned, 7-bit integer.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u7</span> <span class="op">=</span> <span class="ident">u8</span>;
-
-<span class="doccomment">/// Represents an unsigned 9-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u9be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 10-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u10be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 11-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u11be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 12-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u12be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 13-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u13be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 14-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u14be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 15-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u15be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 16-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u16be</span> <span class="op">=</span> <span class="ident">u16</span>;
-
-<span class="doccomment">/// Represents an unsigned 17-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u17be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 18-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u18be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 19-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u19be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 20-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u20be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 21-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u21be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 22-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u22be</span> <span class="op">=</span> <span class="ident">u32</span>;
-
-<span class="doccomment">/// Represents an unsigned 23-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u23be</span> <span class="op">=</span> <span class="ident">u32</span>;
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
+
+</span><span class="doccomment">//! Provides type aliases for various primitive integer types
+//!
+//! These types are aliased to the next largest of \[`u8`, `u16`, `u32`, `u64`\], and purely serve as
+//! hints for the `#[packet]` macro to enable the generation of the correct bit manipulations to
+//! get the value out of a packet.
+//!
+//! They should NOT be used outside of data types marked as `#[packet]`.
+//!
+//! All aliases for types larger than `u8` contain a `be` or `le` suffix. These specify whether the
+//! value is big or little endian, respectively. When using `set_*()` and `get_*()` methods, host
+//! endianness should be used - the methods will convert as appropriate.
+
+</span><span class="attr">#![allow(non_camel_case_types)]
+
+</span><span class="comment">// TODO signed equivalents?
+
+</span><span class="doccomment">/// Represents an unsigned, 1-bit integer.
+</span><span class="kw">pub type </span>u1 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 2-bit integer.
+</span><span class="kw">pub type </span>u2 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 3-bit integer.
+</span><span class="kw">pub type </span>u3 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 4-bit integer.
+</span><span class="kw">pub type </span>u4 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 5-bit integer.
+</span><span class="kw">pub type </span>u5 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 6-bit integer.
+</span><span class="kw">pub type </span>u6 = u8;
+
+<span class="doccomment">/// Represents an unsigned, 7-bit integer.
+</span><span class="kw">pub type </span>u7 = u8;
+
+<span class="doccomment">/// Represents an unsigned 9-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u9be = u16;
+
+<span class="doccomment">/// Represents an unsigned 10-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u10be = u16;
+
+<span class="doccomment">/// Represents an unsigned 11-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u11be = u16;
+
+<span class="doccomment">/// Represents an unsigned 12-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u12be = u16;
+
+<span class="doccomment">/// Represents an unsigned 13-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u13be = u16;
+
+<span class="doccomment">/// Represents an unsigned 14-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u14be = u16;
+
+<span class="doccomment">/// Represents an unsigned 15-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u15be = u16;
+
+<span class="doccomment">/// Represents an unsigned 16-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u16be = u16;
+
+<span class="doccomment">/// Represents an unsigned 17-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u17be = u32;
+
+<span class="doccomment">/// Represents an unsigned 18-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u18be = u32;
+
+<span class="doccomment">/// Represents an unsigned 19-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u19be = u32;
+
+<span class="doccomment">/// Represents an unsigned 20-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u20be = u32;
+
+<span class="doccomment">/// Represents an unsigned 21-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u21be = u32;
+
+<span class="doccomment">/// Represents an unsigned 22-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u22be = u32;
+
+<span class="doccomment">/// Represents an unsigned 23-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u23be = u32;
 
-<span class="doccomment">/// Represents an unsigned 24-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u24be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 24-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u24be = u32;
 
-<span class="doccomment">/// Represents an unsigned 25-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u25be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 25-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u25be = u32;
 
-<span class="doccomment">/// Represents an unsigned 26-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u26be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 26-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u26be = u32;
 
-<span class="doccomment">/// Represents an unsigned 27-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u27be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 27-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u27be = u32;
 
-<span class="doccomment">/// Represents an unsigned 28-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u28be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 28-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u28be = u32;
 
-<span class="doccomment">/// Represents an unsigned 29-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u29be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 29-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u29be = u32;
 
-<span class="doccomment">/// Represents an unsigned 30-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u30be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 30-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u30be = u32;
 
-<span class="doccomment">/// Represents an unsigned 31-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u31be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 31-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u31be = u32;
 
-<span class="doccomment">/// Represents an unsigned 32-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u32be</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 32-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u32be = u32;
 
-<span class="doccomment">/// Represents an unsigned 33-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u33be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 33-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u33be = u64;
 
-<span class="doccomment">/// Represents an unsigned 34-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u34be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 34-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u34be = u64;
 
-<span class="doccomment">/// Represents an unsigned 35-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u35be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 35-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u35be = u64;
 
-<span class="doccomment">/// Represents an unsigned 36-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u36be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 36-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u36be = u64;
 
-<span class="doccomment">/// Represents an unsigned 37-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u37be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 37-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u37be = u64;
 
-<span class="doccomment">/// Represents an unsigned 38-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u38be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 38-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u38be = u64;
 
-<span class="doccomment">/// Represents an unsigned 39-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u39be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 39-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u39be = u64;
 
-<span class="doccomment">/// Represents an unsigned 40-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u40be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 40-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u40be = u64;
 
-<span class="doccomment">/// Represents an unsigned 41-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u41be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 41-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u41be = u64;
 
-<span class="doccomment">/// Represents an unsigned 42-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u42be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 42-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u42be = u64;
 
-<span class="doccomment">/// Represents an unsigned 43-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u43be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 43-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u43be = u64;
 
-<span class="doccomment">/// Represents an unsigned 44-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u44be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 44-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u44be = u64;
 
-<span class="doccomment">/// Represents an unsigned 45-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u45be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 45-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u45be = u64;
 
-<span class="doccomment">/// Represents an unsigned 46-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u46be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 46-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u46be = u64;
 
-<span class="doccomment">/// Represents an unsigned 47-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u47be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 47-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u47be = u64;
 
-<span class="doccomment">/// Represents an unsigned 48-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u48be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 48-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u48be = u64;
 
-<span class="doccomment">/// Represents an unsigned 49-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u49be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 49-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u49be = u64;
 
-<span class="doccomment">/// Represents an unsigned 50-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u50be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 50-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u50be = u64;
 
-<span class="doccomment">/// Represents an unsigned 51-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u51be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 51-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u51be = u64;
 
-<span class="doccomment">/// Represents an unsigned 52-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u52be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 52-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u52be = u64;
 
-<span class="doccomment">/// Represents an unsigned 53-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u53be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 53-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u53be = u64;
 
-<span class="doccomment">/// Represents an unsigned 54-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u54be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 54-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u54be = u64;
 
-<span class="doccomment">/// Represents an unsigned 55-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u55be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 55-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u55be = u64;
 
-<span class="doccomment">/// Represents an unsigned 56-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u56be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 56-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u56be = u64;
 
-<span class="doccomment">/// Represents an unsigned 57-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u57be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 57-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u57be = u64;
 
-<span class="doccomment">/// Represents an unsigned 58-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u58be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 58-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u58be = u64;
 
-<span class="doccomment">/// Represents an unsigned 59-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u59be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 59-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u59be = u64;
 
-<span class="doccomment">/// Represents an unsigned 60-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u60be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 60-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u60be = u64;
 
-<span class="doccomment">/// Represents an unsigned 61-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u61be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 61-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u61be = u64;
 
-<span class="doccomment">/// Represents an unsigned 62-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u62be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 62-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u62be = u64;
 
-<span class="doccomment">/// Represents an unsigned 63-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u63be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 63-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u63be = u64;
 
-<span class="doccomment">/// Represents an unsigned 64-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u64be</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 64-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as big-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u64be = u64;
 
-<span class="doccomment">/// Represents an unsigned 9-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u9le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 9-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u9le = u16;
 
-<span class="doccomment">/// Represents an unsigned 10-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u10le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 10-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u10le = u16;
 
-<span class="doccomment">/// Represents an unsigned 11-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u11le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 11-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u11le = u16;
 
-<span class="doccomment">/// Represents an unsigned 12-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u12le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 12-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u12le = u16;
 
-<span class="doccomment">/// Represents an unsigned 13-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u13le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 13-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u13le = u16;
 
-<span class="doccomment">/// Represents an unsigned 14-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u14le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 14-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u14le = u16;
 
-<span class="doccomment">/// Represents an unsigned 15-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u15le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 15-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u15le = u16;
 
-<span class="doccomment">/// Represents an unsigned 16-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u16le</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 16-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u16le = u16;
 
-<span class="doccomment">/// Represents an unsigned 17-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u17le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 17-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u17le = u32;
 
-<span class="doccomment">/// Represents an unsigned 18-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u18le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 18-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u18le = u32;
 
-<span class="doccomment">/// Represents an unsigned 19-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u19le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 19-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u19le = u32;
 
-<span class="doccomment">/// Represents an unsigned 20-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u20le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 20-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u20le = u32;
 
-<span class="doccomment">/// Represents an unsigned 21-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u21le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 21-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u21le = u32;
 
-<span class="doccomment">/// Represents an unsigned 22-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u22le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 22-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u22le = u32;
 
-<span class="doccomment">/// Represents an unsigned 23-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u23le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 23-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u23le = u32;
 
-<span class="doccomment">/// Represents an unsigned 24-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u24le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 24-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u24le = u32;
 
-<span class="doccomment">/// Represents an unsigned 25-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u25le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 25-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u25le = u32;
 
-<span class="doccomment">/// Represents an unsigned 26-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u26le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 26-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u26le = u32;
 
-<span class="doccomment">/// Represents an unsigned 27-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u27le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 27-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u27le = u32;
 
-<span class="doccomment">/// Represents an unsigned 28-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u28le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 28-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u28le = u32;
 
-<span class="doccomment">/// Represents an unsigned 29-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u29le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 29-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u29le = u32;
 
-<span class="doccomment">/// Represents an unsigned 30-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u30le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 30-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u30le = u32;
 
-<span class="doccomment">/// Represents an unsigned 31-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u31le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 31-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u31le = u32;
 
-<span class="doccomment">/// Represents an unsigned 32-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u32le</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 32-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u32le = u32;
 
-<span class="doccomment">/// Represents an unsigned 33-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u33le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 33-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u33le = u64;
 
-<span class="doccomment">/// Represents an unsigned 34-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u34le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 34-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u34le = u64;
 
-<span class="doccomment">/// Represents an unsigned 35-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u35le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 35-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u35le = u64;
 
-<span class="doccomment">/// Represents an unsigned 36-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u36le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 36-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u36le = u64;
 
-<span class="doccomment">/// Represents an unsigned 37-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u37le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 37-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u37le = u64;
 
-<span class="doccomment">/// Represents an unsigned 38-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u38le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 38-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u38le = u64;
 
-<span class="doccomment">/// Represents an unsigned 39-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u39le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 39-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u39le = u64;
 
-<span class="doccomment">/// Represents an unsigned 40-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u40le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 40-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u40le = u64;
 
-<span class="doccomment">/// Represents an unsigned 41-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u41le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 41-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u41le = u64;
 
-<span class="doccomment">/// Represents an unsigned 42-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u42le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 42-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u42le = u64;
 
-<span class="doccomment">/// Represents an unsigned 43-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u43le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 43-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u43le = u64;
 
-<span class="doccomment">/// Represents an unsigned 44-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u44le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 44-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u44le = u64;
 
-<span class="doccomment">/// Represents an unsigned 45-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u45le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 45-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u45le = u64;
 
-<span class="doccomment">/// Represents an unsigned 46-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u46le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 46-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u46le = u64;
 
-<span class="doccomment">/// Represents an unsigned 47-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u47le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 47-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u47le = u64;
 
-<span class="doccomment">/// Represents an unsigned 48-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u48le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 48-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u48le = u64;
 
-<span class="doccomment">/// Represents an unsigned 49-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u49le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 49-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u49le = u64;
 
-<span class="doccomment">/// Represents an unsigned 50-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u50le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 50-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u50le = u64;
 
-<span class="doccomment">/// Represents an unsigned 51-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u51le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 51-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u51le = u64;
 
-<span class="doccomment">/// Represents an unsigned 52-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u52le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 52-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u52le = u64;
 
-<span class="doccomment">/// Represents an unsigned 53-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u53le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 53-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u53le = u64;
 
-<span class="doccomment">/// Represents an unsigned 54-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u54le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 54-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u54le = u64;
 
-<span class="doccomment">/// Represents an unsigned 55-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u55le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 55-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u55le = u64;
 
-<span class="doccomment">/// Represents an unsigned 56-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u56le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 56-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u56le = u64;
 
-<span class="doccomment">/// Represents an unsigned 57-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u57le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 57-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u57le = u64;
 
-<span class="doccomment">/// Represents an unsigned 58-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u58le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 58-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u58le = u64;
 
-<span class="doccomment">/// Represents an unsigned 59-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u59le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 59-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u59le = u64;
 
-<span class="doccomment">/// Represents an unsigned 60-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u60le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 60-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u60le = u64;
 
-<span class="doccomment">/// Represents an unsigned 61-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u61le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 61-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u61le = u64;
 
-<span class="doccomment">/// Represents an unsigned 62-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u62le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 62-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u62le = u64;
 
-<span class="doccomment">/// Represents an unsigned 63-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u63le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 63-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u63le = u64;
 
-<span class="doccomment">/// Represents an unsigned 64-bit integer. libpnet #\[packet\]-derived structs using this type will</span>
-<span class="doccomment">/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u64le</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 64-bit integer. libpnet #\[packet\]-derived structs using this type will
+/// hold it in memory as little-endian, but accessors/mutators will return/take host-order values.
+</span><span class="kw">pub type </span>u64le = u64;
 
-<span class="doccomment">/// Represents an unsigned 9-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u9he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 9-bit integer in host endianness.
+</span><span class="kw">pub type </span>u9he = u16;
 
-<span class="doccomment">/// Represents an unsigned 10-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u10he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 10-bit integer in host endianness.
+</span><span class="kw">pub type </span>u10he = u16;
 
-<span class="doccomment">/// Represents an unsigned 11-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u11he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 11-bit integer in host endianness.
+</span><span class="kw">pub type </span>u11he = u16;
 
-<span class="doccomment">/// Represents an unsigned 12-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u12he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 12-bit integer in host endianness.
+</span><span class="kw">pub type </span>u12he = u16;
 
-<span class="doccomment">/// Represents an unsigned 13-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u13he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 13-bit integer in host endianness.
+</span><span class="kw">pub type </span>u13he = u16;
 
-<span class="doccomment">/// Represents an unsigned 14-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u14he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 14-bit integer in host endianness.
+</span><span class="kw">pub type </span>u14he = u16;
 
-<span class="doccomment">/// Represents an unsigned 15-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u15he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 15-bit integer in host endianness.
+</span><span class="kw">pub type </span>u15he = u16;
 
-<span class="doccomment">/// Represents an unsigned 16-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u16he</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Represents an unsigned 16-bit integer in host endianness.
+</span><span class="kw">pub type </span>u16he = u16;
 
-<span class="doccomment">/// Represents an unsigned 17-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u17he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 17-bit integer in host endianness.
+</span><span class="kw">pub type </span>u17he = u32;
 
-<span class="doccomment">/// Represents an unsigned 18-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u18he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 18-bit integer in host endianness.
+</span><span class="kw">pub type </span>u18he = u32;
 
-<span class="doccomment">/// Represents an unsigned 19-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u19he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 19-bit integer in host endianness.
+</span><span class="kw">pub type </span>u19he = u32;
 
-<span class="doccomment">/// Represents an unsigned 20-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u20he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 20-bit integer in host endianness.
+</span><span class="kw">pub type </span>u20he = u32;
 
-<span class="doccomment">/// Represents an unsigned 21-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u21he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 21-bit integer in host endianness.
+</span><span class="kw">pub type </span>u21he = u32;
 
-<span class="doccomment">/// Represents an unsigned 22-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u22he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 22-bit integer in host endianness.
+</span><span class="kw">pub type </span>u22he = u32;
 
-<span class="doccomment">/// Represents an unsigned 23-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u23he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 23-bit integer in host endianness.
+</span><span class="kw">pub type </span>u23he = u32;
 
-<span class="doccomment">/// Represents an unsigned 24-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u24he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 24-bit integer in host endianness.
+</span><span class="kw">pub type </span>u24he = u32;
 
-<span class="doccomment">/// Represents an unsigned 25-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u25he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 25-bit integer in host endianness.
+</span><span class="kw">pub type </span>u25he = u32;
 
-<span class="doccomment">/// Represents an unsigned 26-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u26he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 26-bit integer in host endianness.
+</span><span class="kw">pub type </span>u26he = u32;
 
-<span class="doccomment">/// Represents an unsigned 27-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u27he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 27-bit integer in host endianness.
+</span><span class="kw">pub type </span>u27he = u32;
 
-<span class="doccomment">/// Represents an unsigned 28-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u28he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 28-bit integer in host endianness.
+</span><span class="kw">pub type </span>u28he = u32;
 
-<span class="doccomment">/// Represents an unsigned 29-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u29he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 29-bit integer in host endianness.
+</span><span class="kw">pub type </span>u29he = u32;
 
-<span class="doccomment">/// Represents an unsigned 30-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u30he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 30-bit integer in host endianness.
+</span><span class="kw">pub type </span>u30he = u32;
 
-<span class="doccomment">/// Represents an unsigned 31-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u31he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 31-bit integer in host endianness.
+</span><span class="kw">pub type </span>u31he = u32;
 
-<span class="doccomment">/// Represents an unsigned 32-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u32he</span> <span class="op">=</span> <span class="ident">u32</span>;
+<span class="doccomment">/// Represents an unsigned 32-bit integer in host endianness.
+</span><span class="kw">pub type </span>u32he = u32;
 
-<span class="doccomment">/// Represents an unsigned 33-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u33he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 33-bit integer in host endianness.
+</span><span class="kw">pub type </span>u33he = u64;
 
-<span class="doccomment">/// Represents an unsigned 34-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u34he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 34-bit integer in host endianness.
+</span><span class="kw">pub type </span>u34he = u64;
 
-<span class="doccomment">/// Represents an unsigned 35-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u35he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 35-bit integer in host endianness.
+</span><span class="kw">pub type </span>u35he = u64;
 
-<span class="doccomment">/// Represents an unsigned 36-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u36he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 36-bit integer in host endianness.
+</span><span class="kw">pub type </span>u36he = u64;
 
-<span class="doccomment">/// Represents an unsigned 37-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u37he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 37-bit integer in host endianness.
+</span><span class="kw">pub type </span>u37he = u64;
 
-<span class="doccomment">/// Represents an unsigned 38-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u38he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 38-bit integer in host endianness.
+</span><span class="kw">pub type </span>u38he = u64;
 
-<span class="doccomment">/// Represents an unsigned 39-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u39he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 39-bit integer in host endianness.
+</span><span class="kw">pub type </span>u39he = u64;
 
-<span class="doccomment">/// Represents an unsigned 40-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u40he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 40-bit integer in host endianness.
+</span><span class="kw">pub type </span>u40he = u64;
 
-<span class="doccomment">/// Represents an unsigned 41-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u41he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 41-bit integer in host endianness.
+</span><span class="kw">pub type </span>u41he = u64;
 
-<span class="doccomment">/// Represents an unsigned 42-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u42he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 42-bit integer in host endianness.
+</span><span class="kw">pub type </span>u42he = u64;
 
-<span class="doccomment">/// Represents an unsigned 43-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u43he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 43-bit integer in host endianness.
+</span><span class="kw">pub type </span>u43he = u64;
 
-<span class="doccomment">/// Represents an unsigned 44-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u44he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 44-bit integer in host endianness.
+</span><span class="kw">pub type </span>u44he = u64;
 
-<span class="doccomment">/// Represents an unsigned 45-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u45he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 45-bit integer in host endianness.
+</span><span class="kw">pub type </span>u45he = u64;
 
-<span class="doccomment">/// Represents an unsigned 46-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u46he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 46-bit integer in host endianness.
+</span><span class="kw">pub type </span>u46he = u64;
 
-<span class="doccomment">/// Represents an unsigned 47-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u47he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 47-bit integer in host endianness.
+</span><span class="kw">pub type </span>u47he = u64;
 
-<span class="doccomment">/// Represents an unsigned 48-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u48he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 48-bit integer in host endianness.
+</span><span class="kw">pub type </span>u48he = u64;
 
-<span class="doccomment">/// Represents an unsigned 49-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u49he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 49-bit integer in host endianness.
+</span><span class="kw">pub type </span>u49he = u64;
 
-<span class="doccomment">/// Represents an unsigned 50-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u50he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 50-bit integer in host endianness.
+</span><span class="kw">pub type </span>u50he = u64;
 
-<span class="doccomment">/// Represents an unsigned 51-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u51he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 51-bit integer in host endianness.
+</span><span class="kw">pub type </span>u51he = u64;
 
-<span class="doccomment">/// Represents an unsigned 52-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u52he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 52-bit integer in host endianness.
+</span><span class="kw">pub type </span>u52he = u64;
 
-<span class="doccomment">/// Represents an unsigned 53-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u53he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 53-bit integer in host endianness.
+</span><span class="kw">pub type </span>u53he = u64;
 
-<span class="doccomment">/// Represents an unsigned 54-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u54he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 54-bit integer in host endianness.
+</span><span class="kw">pub type </span>u54he = u64;
 
-<span class="doccomment">/// Represents an unsigned 55-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u55he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 55-bit integer in host endianness.
+</span><span class="kw">pub type </span>u55he = u64;
 
-<span class="doccomment">/// Represents an unsigned 56-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u56he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 56-bit integer in host endianness.
+</span><span class="kw">pub type </span>u56he = u64;
 
-<span class="doccomment">/// Represents an unsigned 57-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u57he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 57-bit integer in host endianness.
+</span><span class="kw">pub type </span>u57he = u64;
 
-<span class="doccomment">/// Represents an unsigned 58-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u58he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 58-bit integer in host endianness.
+</span><span class="kw">pub type </span>u58he = u64;
 
-<span class="doccomment">/// Represents an unsigned 59-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u59he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 59-bit integer in host endianness.
+</span><span class="kw">pub type </span>u59he = u64;
 
-<span class="doccomment">/// Represents an unsigned 60-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u60he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 60-bit integer in host endianness.
+</span><span class="kw">pub type </span>u60he = u64;
 
-<span class="doccomment">/// Represents an unsigned 61-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u61he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 61-bit integer in host endianness.
+</span><span class="kw">pub type </span>u61he = u64;
 
-<span class="doccomment">/// Represents an unsigned 62-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u62he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 62-bit integer in host endianness.
+</span><span class="kw">pub type </span>u62he = u64;
 
-<span class="doccomment">/// Represents an unsigned 63-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u63he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 63-bit integer in host endianness.
+</span><span class="kw">pub type </span>u63he = u64;
 
-<span class="doccomment">/// Represents an unsigned 64-bit integer in host endianness.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">u64he</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Represents an unsigned 64-bit integer in host endianness.
+</span><span class="kw">pub type </span>u64he = u64;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_macros_support" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_macros_support" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

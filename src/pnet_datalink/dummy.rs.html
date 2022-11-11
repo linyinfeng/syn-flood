@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/dummy.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>dummy.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/dummy.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>dummy.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -324,325 +317,324 @@
 <span id="317">317</span>
 <span id="318">318</span>
 <span id="319">319</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2016 Linus Färnstrand &lt;faern@faern.net&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2016 Linus Färnstrand &lt;faern@faern.net&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Support for sending and receiving data link layer packets on a fake network managed</span>
-<span class="doccomment">//! by in memory FIFO queues. Useful for writing tests.</span>
+</span><span class="doccomment">//! Support for sending and receiving data link layer packets on a fake network managed
+//! by in memory FIFO queues. Useful for writing tests.
 
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">DataLinkReceiver</span>, <span class="ident">DataLinkSender</span>, <span class="ident">MacAddr</span>, <span class="ident">NetworkInterface</span>};
+</span><span class="kw">use crate</span>::{DataLinkReceiver, DataLinkSender, MacAddr, NetworkInterface};
 
-<span class="kw">use</span> <span class="ident">std::io</span>;
-<span class="kw">use</span> <span class="ident">std::sync::mpsc</span>::{<span class="self">self</span>, <span class="ident">Receiver</span>, <span class="ident">Sender</span>};
-<span class="kw">use</span> <span class="ident">std::thread</span>;
-<span class="kw">use</span> <span class="ident">std::time</span>;
+<span class="kw">use </span>std::io;
+<span class="kw">use </span>std::sync::mpsc::{<span class="self">self</span>, Receiver, Sender};
+<span class="kw">use </span>std::thread;
+<span class="kw">use </span>std::time;
 
-<span class="doccomment">/// Configuration for the dummy datalink backend. Contains `std::sync::mpsc`</span>
-<span class="doccomment">/// channels that are used to communicate with the fake network.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Config</span> {
-    <span class="ident">receiver</span>: <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">inject_handle</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Configuration for the dummy datalink backend. Contains `std::sync::mpsc`
+/// channels that are used to communicate with the fake network.
+</span><span class="attr">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Config {
+    receiver: Receiver&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;,
+    inject_handle: <span class="prelude-ty">Option</span>&lt;Sender&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;&gt;,
 
-    <span class="ident">sender</span>: <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">read_handle</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    sender: Sender&lt;Box&lt;[u8]&gt;&gt;,
+    read_handle: <span class="prelude-ty">Option</span>&lt;Receiver&lt;Box&lt;[u8]&gt;&gt;&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">Config</span> {
-    <span class="doccomment">/// Creates a new `Config` with the given channels as the backing network.</span>
-    <span class="doccomment">/// When using this constructor `inject_handle` and `read_handle` will return `None`.</span>
-    <span class="doccomment">/// Those handles must be kept track of elsewhere.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The `DataLinkReceiver` created by the dummy backend will read packets from</span>
-    <span class="doccomment">/// `receiver`. Both network errors and data can be sent on this channel.</span>
-    <span class="doccomment">/// When the `receiver` channel is closed (`Sender` is dropped)</span>
-    <span class="doccomment">/// `DataLinkReceiver::next()` will sleep forever, simlating an idle network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The `DataLinkSender` created by the dummy backend will send all packets sent</span>
-    <span class="doccomment">/// through `build_and_send()` and `send_to()` to the `sender` channel.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">receiver</span>: <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">sender</span>: <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="ident">Config</span> {
-        <span class="ident">Config</span> {
-            <span class="ident">receiver</span>: <span class="ident">receiver</span>,
-            <span class="ident">inject_handle</span>: <span class="prelude-val">None</span>,
-            <span class="ident">sender</span>: <span class="ident">sender</span>,
-            <span class="ident">read_handle</span>: <span class="prelude-val">None</span>,
+<span class="kw">impl </span>Config {
+    <span class="doccomment">/// Creates a new `Config` with the given channels as the backing network.
+    /// When using this constructor `inject_handle` and `read_handle` will return `None`.
+    /// Those handles must be kept track of elsewhere.
+    ///
+    /// The `DataLinkReceiver` created by the dummy backend will read packets from
+    /// `receiver`. Both network errors and data can be sent on this channel.
+    /// When the `receiver` channel is closed (`Sender` is dropped)
+    /// `DataLinkReceiver::next()` will sleep forever, simlating an idle network.
+    ///
+    /// The `DataLinkSender` created by the dummy backend will send all packets sent
+    /// through `build_and_send()` and `send_to()` to the `sender` channel.
+    </span><span class="kw">pub fn </span>new(receiver: Receiver&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;, sender: Sender&lt;Box&lt;[u8]&gt;&gt;) -&gt; Config {
+        Config {
+            receiver: receiver,
+            inject_handle: <span class="prelude-val">None</span>,
+            sender: sender,
+            read_handle: <span class="prelude-val">None</span>,
         }
     }
 
-    <span class="doccomment">/// Get the `Sender` handle that can inject packets in the fake network.</span>
-    <span class="doccomment">/// Only usable with `Config`s generated from `default()`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inject_handle</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">inject_handle</span>.<span class="ident">take</span>()
+    <span class="doccomment">/// Get the `Sender` handle that can inject packets in the fake network.
+    /// Only usable with `Config`s generated from `default()`.
+    </span><span class="kw">pub fn </span>inject_handle(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Sender&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;&gt; {
+        <span class="self">self</span>.inject_handle.take()
     }
 
-    <span class="doccomment">/// Get the `Receiver` handle where packets sent to the fake network can be read.</span>
-    <span class="doccomment">/// Only usable with `Config`s generated from `default()`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">read_handle</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">read_handle</span>.<span class="ident">take</span>()
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident"><span class="kw">super</span>::Config</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="doccomment">/// Will not use the `super::Config`. This will simply call `dummy::Config::default()`.</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">_config</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="kw">super</span>::Config</span>) -&gt; <span class="ident">Config</span> {
-        <span class="ident">Config::default</span>()
+    <span class="doccomment">/// Get the `Receiver` handle where packets sent to the fake network can be read.
+    /// Only usable with `Config`s generated from `default()`.
+    </span><span class="kw">pub fn </span>read_handle(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Receiver&lt;Box&lt;[u8]&gt;&gt;&gt; {
+        <span class="self">self</span>.read_handle.take()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="doccomment">/// Creates a default config with one input and one output channel. The handles used to inject</span>
-    <span class="doccomment">/// to and read form the network can be fetched with `inject_handle()` and `read_handle()`.</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">Config</span> {
-        <span class="kw">let</span> (<span class="ident">in_tx</span>, <span class="ident">in_rx</span>) <span class="op">=</span> <span class="ident">mpsc::channel</span>();
-        <span class="kw">let</span> (<span class="ident">out_tx</span>, <span class="ident">out_rx</span>) <span class="op">=</span> <span class="ident">mpsc::channel</span>();
-        <span class="ident">Config</span> {
-            <span class="ident">receiver</span>: <span class="ident">in_rx</span>,
-            <span class="ident">inject_handle</span>: <span class="prelude-val">Some</span>(<span class="ident">in_tx</span>),
-            <span class="ident">sender</span>: <span class="ident">out_tx</span>,
-            <span class="ident">read_handle</span>: <span class="prelude-val">Some</span>(<span class="ident">out_rx</span>),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw">super</span>::Config&gt; <span class="kw">for </span>Config {
+    <span class="doccomment">/// Will not use the `super::Config`. This will simply call `dummy::Config::default()`.
+    </span><span class="kw">fn </span>from(_config: <span class="kw-2">&amp;</span><span class="kw">super</span>::Config) -&gt; Config {
+        Config::default()
+    }
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>Config {
+    <span class="doccomment">/// Creates a default config with one input and one output channel. The handles used to inject
+    /// to and read form the network can be fetched with `inject_handle()` and `read_handle()`.
+    </span><span class="kw">fn </span>default() -&gt; Config {
+        <span class="kw">let </span>(in_tx, in_rx) = mpsc::channel();
+        <span class="kw">let </span>(out_tx, out_rx) = mpsc::channel();
+        Config {
+            receiver: in_rx,
+            inject_handle: <span class="prelude-val">Some</span>(in_tx),
+            sender: out_tx,
+            read_handle: <span class="prelude-val">Some</span>(out_rx),
         }
     }
 }
 
-<span class="doccomment">/// Create a data link channel backed by FIFO queues. Useful for debugging and testing.</span>
-<span class="doccomment">/// See `Config` for how to inject and read packets on this fake network.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>, <span class="ident">config</span>: <span class="ident">Config</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident"><span class="kw">super</span>::Channel</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">sender</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">MockDataLinkSender</span> {
-        <span class="ident">sender</span>: <span class="ident">config</span>.<span class="ident">sender</span>,
+<span class="doccomment">/// Create a data link channel backed by FIFO queues. Useful for debugging and testing.
+/// See `Config` for how to inject and read packets on this fake network.
+</span><span class="kw">pub fn </span>channel(<span class="kw">_</span>: <span class="kw-2">&amp;</span>NetworkInterface, config: Config) -&gt; io::Result&lt;<span class="kw">super</span>::Channel&gt; {
+    <span class="kw">let </span>sender = Box::new(MockDataLinkSender {
+        sender: config.sender,
     });
-    <span class="kw">let</span> <span class="ident">receiver</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">MockDataLinkReceiver</span> {
-        <span class="ident">receiver</span>: <span class="ident">config</span>.<span class="ident">receiver</span>,
-        <span class="ident">used_packets</span>: <span class="ident">Vec::new</span>(),
+    <span class="kw">let </span>receiver = Box::new(MockDataLinkReceiver {
+        receiver: config.receiver,
+        used_packets: Vec::new(),
     });
 
-    <span class="prelude-val">Ok</span>(<span class="ident"><span class="kw">super</span>::Channel::Ethernet</span>(<span class="ident">sender</span>, <span class="ident">receiver</span>))
+    <span class="prelude-val">Ok</span>(<span class="kw">super</span>::Channel::Ethernet(sender, receiver))
 }
 
-<span class="kw">struct</span> <span class="ident">MockDataLinkSender</span> {
-    <span class="ident">sender</span>: <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="kw">struct </span>MockDataLinkSender {
+    sender: Sender&lt;Box&lt;[u8]&gt;&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">DataLinkSender</span> <span class="kw">for</span> <span class="ident">MockDataLinkSender</span> {
-    <span class="kw">fn</span> <span class="ident">build_and_send</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">num_packets</span>: <span class="ident">usize</span>,
-        <span class="ident">packet_size</span>: <span class="ident">usize</span>,
-        <span class="ident">func</span>: <span class="kw-2">&amp;mut</span> <span class="kw">dyn</span> <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]),
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">num_packets</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="ident">packet_size</span>];
-            <span class="ident">func</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buffer</span>);
-            <span class="comment">// Send the data to the queue. Don&#39;t care if it&#39;s closed</span>
-            <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send</span>(<span class="ident">buffer</span>.<span class="ident">into_boxed_slice</span>()).<span class="ident">unwrap_or</span>(());
+<span class="kw">impl </span>DataLinkSender <span class="kw">for </span>MockDataLinkSender {
+    <span class="kw">fn </span>build_and_send(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        num_packets: usize,
+        packet_size: usize,
+        func: <span class="kw-2">&amp;mut </span><span class="kw">dyn </span>FnMut(<span class="kw-2">&amp;mut </span>[u8]),
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt; {
+        <span class="kw">for _ in </span><span class="number">0</span>..num_packets {
+            <span class="kw">let </span><span class="kw-2">mut </span>buffer = <span class="macro">vec!</span>[<span class="number">0</span>; packet_size];
+            func(<span class="kw-2">&amp;mut </span>buffer);
+            <span class="comment">// Send the data to the queue. Don&#39;t care if it&#39;s closed
+            </span><span class="self">self</span>.sender.send(buffer.into_boxed_slice()).unwrap_or(());
         }
         <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(()))
     }
 
-    <span class="kw">fn</span> <span class="ident">send_to</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">_dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">packet</span>.<span class="ident">to_vec</span>();
-        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send</span>(<span class="ident">buffer</span>.<span class="ident">into_boxed_slice</span>()).<span class="ident">unwrap_or</span>(());
+    <span class="kw">fn </span>send_to(<span class="kw-2">&amp;mut </span><span class="self">self</span>, packet: <span class="kw-2">&amp;</span>[u8], _dst: <span class="prelude-ty">Option</span>&lt;NetworkInterface&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt; {
+        <span class="kw">let </span>buffer = packet.to_vec();
+        <span class="self">self</span>.sender.send(buffer.into_boxed_slice()).unwrap_or(());
         <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(()))
     }
 }
 
-<span class="kw">struct</span> <span class="ident">MockDataLinkReceiver</span> {
-    <span class="ident">receiver</span>: <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">used_packets</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="kw">struct </span>MockDataLinkReceiver {
+    receiver: Receiver&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;,
+    used_packets: Vec&lt;Box&lt;[u8]&gt;&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">DataLinkReceiver</span> <span class="kw">for</span> <span class="ident">MockDataLinkReceiver</span> {
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">receiver</span>.<span class="ident">recv</span>() {
-            <span class="prelude-val">Ok</span>(<span class="ident">result</span>) =&gt; {
-                <span class="comment">// A network event happened. Might be a packet or a simulated error</span>
-                <span class="kw">match</span> <span class="ident">result</span> {
-                    <span class="prelude-val">Ok</span>(<span class="ident">buffer</span>) =&gt; {
-                        <span class="self">self</span>.<span class="ident">used_packets</span>.<span class="ident">push</span>(<span class="ident">buffer</span>);
-                        <span class="kw">let</span> <span class="ident">buffer_ref</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>.<span class="ident">used_packets</span>[<span class="self">self</span>.<span class="ident">used_packets</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>];
-                        <span class="prelude-val">Ok</span>(<span class="ident">buffer_ref</span>)
+<span class="kw">impl </span>DataLinkReceiver <span class="kw">for </span>MockDataLinkReceiver {
+    <span class="kw">fn </span>next(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; io::Result&lt;<span class="kw-2">&amp;</span>[u8]&gt; {
+        <span class="kw">match </span><span class="self">self</span>.receiver.recv() {
+            <span class="prelude-val">Ok</span>(result) =&gt; {
+                <span class="comment">// A network event happened. Might be a packet or a simulated error
+                </span><span class="kw">match </span>result {
+                    <span class="prelude-val">Ok</span>(buffer) =&gt; {
+                        <span class="self">self</span>.used_packets.push(buffer);
+                        <span class="kw">let </span>buffer_ref = <span class="kw-2">&amp;*</span><span class="self">self</span>.used_packets[<span class="self">self</span>.used_packets.len() - <span class="number">1</span>];
+                        <span class="prelude-val">Ok</span>(buffer_ref)
                     }
-                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">e</span>),
+                    <span class="prelude-val">Err</span>(e) =&gt; <span class="prelude-val">Err</span>(e),
                 }
             }
             <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
-                <span class="comment">// The channel supplying fake packets is broken. The user lost/destroyed their</span>
-                <span class="comment">// inject_handle. This means there will never be any more packets sent to this</span>
-                <span class="comment">// dummy network. To simulate an idle network we block and sleep forever here.</span>
-                <span class="kw">loop</span> {
-                    <span class="ident">thread::sleep</span>(<span class="ident">time::Duration::new</span>(<span class="number">10</span>, <span class="number">0</span>));
+                <span class="comment">// The channel supplying fake packets is broken. The user lost/destroyed their
+                // inject_handle. This means there will never be any more packets sent to this
+                // dummy network. To simulate an idle network we block and sleep forever here.
+                </span><span class="kw">loop </span>{
+                    thread::sleep(time::Duration::new(<span class="number">10</span>, <span class="number">0</span>));
                 }
             }
         }
     }
 }
 
-<span class="doccomment">/// Get three fake interfaces generated with `dummy_interface(0..3)`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interfaces</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span> {
-    (<span class="number">0</span>..<span class="number">3</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">i</span><span class="op">|</span> <span class="ident">dummy_interface</span>(<span class="ident">i</span>)).<span class="ident">collect</span>()
+<span class="doccomment">/// Get three fake interfaces generated with `dummy_interface(0..3)`.
+</span><span class="kw">pub fn </span>interfaces() -&gt; Vec&lt;NetworkInterface&gt; {
+    (<span class="number">0</span>..<span class="number">3</span>).map(|i| dummy_interface(i)).collect()
 }
 
-<span class="doccomment">/// Generates a fake `NetworkInterface`.</span>
-<span class="doccomment">/// The name of the interface will be `ethX` where X is the integer `i`.</span>
-<span class="doccomment">/// The index will be `i`.</span>
-<span class="doccomment">/// The MAC will be `01:02:03:04:05:i`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dummy_interface</span>(<span class="ident">i</span>: <span class="ident">u8</span>) -&gt; <span class="ident">NetworkInterface</span> {
-    <span class="ident">NetworkInterface</span> {
-        <span class="ident">name</span>: <span class="macro">format!</span>(<span class="string">&quot;eth{}&quot;</span>, <span class="ident">i</span>),
-        <span class="ident">description</span>: <span class="string">&quot;&quot;</span>.<span class="ident">to_string</span>(),
-        <span class="ident">index</span>: <span class="ident">i</span> <span class="kw">as</span> <span class="ident">u32</span>,
-        <span class="ident">mac</span>: <span class="prelude-val">Some</span>(<span class="ident">MacAddr::new</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="ident">i</span>)),
-        <span class="ident">ips</span>: <span class="ident">Vec::new</span>(),
-        <span class="ident">flags</span>: <span class="number">0</span>,
+<span class="doccomment">/// Generates a fake `NetworkInterface`.
+/// The name of the interface will be `ethX` where X is the integer `i`.
+/// The index will be `i`.
+/// The MAC will be `01:02:03:04:05:i`.
+</span><span class="kw">pub fn </span>dummy_interface(i: u8) -&gt; NetworkInterface {
+    NetworkInterface {
+        name: <span class="macro">format!</span>(<span class="string">&quot;eth{}&quot;</span>, i),
+        description: <span class="string">&quot;&quot;</span>.to_string(),
+        index: i <span class="kw">as </span>u32,
+        mac: <span class="prelude-val">Some</span>(MacAddr::new(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, i)),
+        ips: Vec::new(),
+        flags: <span class="number">0</span>,
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">DataLinkReceiver</span>, <span class="ident">DataLinkSender</span>};
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use crate</span>::{DataLinkReceiver, DataLinkSender};
 
-    <span class="kw">use</span> <span class="ident">std::io</span>;
-    <span class="kw">use</span> <span class="ident">std::sync::mpsc</span>::{<span class="self">self</span>, <span class="ident">Receiver</span>, <span class="ident">Sender</span>, <span class="ident">TryRecvError</span>};
-    <span class="kw">use</span> <span class="ident">std::thread</span>::{<span class="ident">sleep</span>, <span class="ident">spawn</span>};
-    <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+    <span class="kw">use </span>std::io;
+    <span class="kw">use </span>std::sync::mpsc::{<span class="self">self</span>, Receiver, Sender, TryRecvError};
+    <span class="kw">use </span>std::thread::{sleep, spawn};
+    <span class="kw">use </span>std::time::Duration;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_nothing</span>() {
-        <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">read_handle</span>, <span class="kw-2">mut</span> <span class="ident">tx</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">create_net</span>();
-        <span class="comment">// Check that sending zero packets yields zero packets</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="op">|</span><span class="kw">_</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]<span class="op">|</span> {
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>send_nothing() {
+        <span class="kw">let </span>(<span class="kw">_</span>, read_handle, <span class="kw-2">mut </span>tx, <span class="kw">_</span>) = create_net();
+        <span class="comment">// Check that sending zero packets yields zero packets
+        </span><span class="kw">let </span><span class="kw-2">mut </span>builder = |<span class="kw">_</span>: <span class="kw-2">&amp;mut </span>[u8]| {
             <span class="macro">panic!</span>(<span class="string">&quot;Should not be called&quot;</span>);
         };
-        <span class="ident">tx</span>.<span class="ident">build_and_send</span>(<span class="number">0</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut</span> <span class="ident">builder</span>).<span class="ident">unwrap</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert!</span>(<span class="ident">read_handle</span>.<span class="ident">try_recv</span>().<span class="ident">is_err</span>());
+        tx.build_and_send(<span class="number">0</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut </span>builder).unwrap().unwrap();
+        <span class="macro">assert!</span>(read_handle.try_recv().is_err());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_one_packet</span>() {
-        <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">read_handle</span>, <span class="kw-2">mut</span> <span class="ident">tx</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">create_net</span>();
-        <span class="comment">// Check that sending one packet yields one packet</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="op">|</span><span class="ident">pkg</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]<span class="op">|</span> {
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">len</span>(), <span class="number">20</span>);
-            <span class="ident">pkg</span>[<span class="number">0</span>] <span class="op">=</span> <span class="number">9</span>;
-            <span class="ident">pkg</span>[<span class="number">19</span>] <span class="op">=</span> <span class="number">201</span>;
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>send_one_packet() {
+        <span class="kw">let </span>(<span class="kw">_</span>, read_handle, <span class="kw-2">mut </span>tx, <span class="kw">_</span>) = create_net();
+        <span class="comment">// Check that sending one packet yields one packet
+        </span><span class="kw">let </span><span class="kw-2">mut </span>builder = |pkg: <span class="kw-2">&amp;mut </span>[u8]| {
+            <span class="macro">assert_eq!</span>(pkg.len(), <span class="number">20</span>);
+            pkg[<span class="number">0</span>] = <span class="number">9</span>;
+            pkg[<span class="number">19</span>] = <span class="number">201</span>;
         };
-        <span class="ident">tx</span>.<span class="ident">build_and_send</span>(<span class="number">1</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut</span> <span class="ident">builder</span>).<span class="ident">unwrap</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">read_handle</span>
-            .<span class="ident">try_recv</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;Expected one packet to be sent&quot;</span>);
-        <span class="macro">assert!</span>(<span class="ident">read_handle</span>.<span class="ident">try_recv</span>().<span class="ident">is_err</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">len</span>(), <span class="number">20</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>[<span class="number">0</span>], <span class="number">9</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>[<span class="number">19</span>], <span class="number">201</span>);
+        tx.build_and_send(<span class="number">1</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut </span>builder).unwrap().unwrap();
+        <span class="kw">let </span>pkg = read_handle
+            .try_recv()
+            .expect(<span class="string">&quot;Expected one packet to be sent&quot;</span>);
+        <span class="macro">assert!</span>(read_handle.try_recv().is_err());
+        <span class="macro">assert_eq!</span>(pkg.len(), <span class="number">20</span>);
+        <span class="macro">assert_eq!</span>(pkg[<span class="number">0</span>], <span class="number">9</span>);
+        <span class="macro">assert_eq!</span>(pkg[<span class="number">19</span>], <span class="number">201</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_multiple_packets</span>() {
-        <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">read_handle</span>, <span class="kw-2">mut</span> <span class="ident">tx</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">create_net</span>();
-        <span class="comment">// Check that sending multiple packets does the correct thing</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">closure_counter</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="op">|</span><span class="ident">pkg</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]<span class="op">|</span> {
-            <span class="ident">pkg</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">closure_counter</span>;
-            <span class="ident">closure_counter</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>send_multiple_packets() {
+        <span class="kw">let </span>(<span class="kw">_</span>, read_handle, <span class="kw-2">mut </span>tx, <span class="kw">_</span>) = create_net();
+        <span class="comment">// Check that sending multiple packets does the correct thing
+        </span><span class="kw">let </span><span class="kw-2">mut </span>closure_counter = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>builder = |pkg: <span class="kw-2">&amp;mut </span>[u8]| {
+            pkg[<span class="number">0</span>] = closure_counter;
+            closure_counter += <span class="number">1</span>;
         };
-        <span class="ident">tx</span>.<span class="ident">build_and_send</span>(<span class="number">3</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut</span> <span class="ident">builder</span>).<span class="ident">unwrap</span>().<span class="ident">unwrap</span>();
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">read_handle</span>.<span class="ident">try_recv</span>().<span class="ident">expect</span>(<span class="string">&quot;Expected a packet&quot;</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>[<span class="number">0</span>], <span class="ident">i</span>);
+        tx.build_and_send(<span class="number">3</span>, <span class="number">20</span>, <span class="kw-2">&amp;mut </span>builder).unwrap().unwrap();
+        <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..<span class="number">3 </span>{
+            <span class="kw">let </span>pkg = read_handle.try_recv().expect(<span class="string">&quot;Expected a packet&quot;</span>);
+            <span class="macro">assert_eq!</span>(pkg[<span class="number">0</span>], i);
         }
-        <span class="macro">assert!</span>(<span class="ident">read_handle</span>.<span class="ident">try_recv</span>().<span class="ident">is_err</span>());
+        <span class="macro">assert!</span>(read_handle.try_recv().is_err());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_to</span>() {
-        <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">read_handle</span>, <span class="kw-2">mut</span> <span class="ident">tx</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">create_net</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">20</span>];
-        <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="number">34</span>;
-        <span class="ident">buffer</span>[<span class="number">18</span>] <span class="op">=</span> <span class="number">76</span>;
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>send_to() {
+        <span class="kw">let </span>(<span class="kw">_</span>, read_handle, <span class="kw-2">mut </span>tx, <span class="kw">_</span>) = create_net();
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">20</span>];
+        buffer[<span class="number">1</span>] = <span class="number">34</span>;
+        buffer[<span class="number">18</span>] = <span class="number">76</span>;
 
-        <span class="ident">tx</span>.<span class="ident">send_to</span>(<span class="kw-2">&amp;</span><span class="ident">buffer</span>, <span class="prelude-val">None</span>).<span class="ident">unwrap</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">read_handle</span>
-            .<span class="ident">try_recv</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;Expected one packet to be sent&quot;</span>);
-        <span class="macro">assert!</span>(<span class="ident">read_handle</span>.<span class="ident">try_recv</span>().<span class="ident">is_err</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">len</span>(), <span class="number">20</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>[<span class="number">1</span>], <span class="number">34</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>[<span class="number">18</span>], <span class="number">76</span>);
+        tx.send_to(<span class="kw-2">&amp;</span>buffer, <span class="prelude-val">None</span>).unwrap().unwrap();
+        <span class="kw">let </span>pkg = read_handle
+            .try_recv()
+            .expect(<span class="string">&quot;Expected one packet to be sent&quot;</span>);
+        <span class="macro">assert!</span>(read_handle.try_recv().is_err());
+        <span class="macro">assert_eq!</span>(pkg.len(), <span class="number">20</span>);
+        <span class="macro">assert_eq!</span>(pkg[<span class="number">1</span>], <span class="number">34</span>);
+        <span class="macro">assert_eq!</span>(pkg[<span class="number">18</span>], <span class="number">76</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_nothing</span>() {
-        <span class="kw">let</span> (<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">create_net</span>();
-        <span class="kw">let</span> (<span class="ident">control_tx</span>, <span class="ident">control_rx</span>) <span class="op">=</span> <span class="ident">mpsc::channel</span>();
-        <span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="ident">rx</span>.<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Should not happen 1&quot;</span>);
-            <span class="ident">control_tx</span>.<span class="ident">send</span>(()).<span class="ident">expect</span>(<span class="string">&quot;Should not happen 2&quot;</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>read_nothing() {
+        <span class="kw">let </span>(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut </span>rx) = create_net();
+        <span class="kw">let </span>(control_tx, control_rx) = mpsc::channel();
+        spawn(<span class="kw">move </span>|| {
+            rx.next().expect(<span class="string">&quot;Should not happen 1&quot;</span>);
+            control_tx.send(()).expect(<span class="string">&quot;Should not happen 2&quot;</span>);
         });
-        <span class="ident">sleep</span>(<span class="ident">Duration::new</span>(<span class="number">0</span>, <span class="number">1_000_000</span>));
-        <span class="kw">match</span> <span class="ident">control_rx</span>.<span class="ident">try_recv</span>() {
+        sleep(Duration::new(<span class="number">0</span>, <span class="number">1_000_000</span>));
+        <span class="kw">match </span>control_rx.try_recv() {
             <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Nothing should have arrived&quot;</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">TryRecvError::Disconnected</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Thread should not have quit&quot;</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">TryRecvError::Empty</span>) =&gt; (),
+            <span class="prelude-val">Err</span>(TryRecvError::Disconnected) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Thread should not have quit&quot;</span>),
+            <span class="prelude-val">Err</span>(TryRecvError::Empty) =&gt; (),
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_one_pkg</span>() {
-        <span class="kw">let</span> (<span class="ident">inject_handle</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">create_net</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>read_one_pkg() {
+        <span class="kw">let </span>(inject_handle, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut </span>rx) = create_net();
 
-        <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">20</span>];
-        <span class="ident">inject_handle</span>.<span class="ident">send</span>(<span class="prelude-val">Ok</span>(<span class="ident">buffer</span>.<span class="ident">into_boxed_slice</span>())).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>buffer = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">20</span>];
+        inject_handle.send(<span class="prelude-val">Ok</span>(buffer.into_boxed_slice())).unwrap();
 
-        <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">rx</span>.<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Expected a packet&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">len</span>(), <span class="number">20</span>);
+        <span class="kw">let </span>pkg = rx.next().expect(<span class="string">&quot;Expected a packet&quot;</span>);
+        <span class="macro">assert_eq!</span>(pkg.len(), <span class="number">20</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_multiple_pkgs</span>() {
-        <span class="kw">let</span> (<span class="ident">inject_handle</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">create_net</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>read_multiple_pkgs() {
+        <span class="kw">let </span>(inject_handle, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw-2">mut </span>rx) = create_net();
 
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
-            <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">i</span>; <span class="number">20</span>];
-            <span class="ident">inject_handle</span>.<span class="ident">send</span>(<span class="prelude-val">Ok</span>(<span class="ident">buffer</span>.<span class="ident">into_boxed_slice</span>())).<span class="ident">unwrap</span>();
+        <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..<span class="number">3 </span>{
+            <span class="kw">let </span>buffer = <span class="macro">vec!</span>[i; <span class="number">20</span>];
+            inject_handle.send(<span class="prelude-val">Ok</span>(buffer.into_boxed_slice())).unwrap();
         }
 
         {
-            <span class="kw">let</span> <span class="ident">pkg1</span> <span class="op">=</span> <span class="ident">rx</span>.<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Expected a packet&quot;</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg1</span>[<span class="number">0</span>], <span class="number">0</span>);
+            <span class="kw">let </span>pkg1 = rx.next().expect(<span class="string">&quot;Expected a packet&quot;</span>);
+            <span class="macro">assert_eq!</span>(pkg1[<span class="number">0</span>], <span class="number">0</span>);
         }
         {
-            <span class="kw">let</span> <span class="ident">pkg2</span> <span class="op">=</span> <span class="ident">rx</span>.<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Expected a packet&quot;</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg2</span>[<span class="number">0</span>], <span class="number">1</span>);
+            <span class="kw">let </span>pkg2 = rx.next().expect(<span class="string">&quot;Expected a packet&quot;</span>);
+            <span class="macro">assert_eq!</span>(pkg2[<span class="number">0</span>], <span class="number">1</span>);
         }
         {
-            <span class="kw">let</span> <span class="ident">pkg3</span> <span class="op">=</span> <span class="ident">rx</span>.<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Expected a packet&quot;</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg3</span>[<span class="number">0</span>], <span class="number">2</span>);
+            <span class="kw">let </span>pkg3 = rx.next().expect(<span class="string">&quot;Expected a packet&quot;</span>);
+            <span class="macro">assert_eq!</span>(pkg3[<span class="number">0</span>], <span class="number">2</span>);
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">create_net</span>() -&gt; (
-        <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-        <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>,
-        <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">DataLinkSender</span><span class="op">&gt;</span>,
-        <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">DataLinkReceiver</span><span class="op">&gt;</span>,
+    <span class="kw">fn </span>create_net() -&gt; (
+        Sender&lt;io::Result&lt;Box&lt;[u8]&gt;&gt;&gt;,
+        Receiver&lt;Box&lt;[u8]&gt;&gt;,
+        Box&lt;<span class="kw">dyn </span>DataLinkSender&gt;,
+        Box&lt;<span class="kw">dyn </span>DataLinkReceiver&gt;,
     ) {
-        <span class="kw">let</span> <span class="ident">interface</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::dummy_interface</span>(<span class="number">56</span>);
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">config</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::Config::default</span>();
-        <span class="kw">let</span> <span class="ident">inject_handle</span> <span class="op">=</span> <span class="ident">config</span>.<span class="ident">inject_handle</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">read_handle</span> <span class="op">=</span> <span class="ident">config</span>.<span class="ident">read_handle</span>().<span class="ident">unwrap</span>();
+        <span class="kw">let </span>interface = <span class="kw">super</span>::dummy_interface(<span class="number">56</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>config = <span class="kw">super</span>::Config::default();
+        <span class="kw">let </span>inject_handle = config.inject_handle().unwrap();
+        <span class="kw">let </span>read_handle = config.read_handle().unwrap();
 
-        <span class="kw">let</span> <span class="ident">channel</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::channel</span>(<span class="kw-2">&amp;</span><span class="ident">interface</span>, <span class="ident">config</span>);
-        <span class="kw">let</span> (<span class="ident">tx</span>, <span class="ident">rx</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">channel</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident"><span class="kw">super</span>::<span class="kw">super</span>::Channel::Ethernet</span>(<span class="ident">tx</span>, <span class="ident">rx</span>)) =&gt; (<span class="ident">tx</span>, <span class="ident">rx</span>),
-            <span class="kw">_</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Not a valid channel returned&quot;</span>),
+        <span class="kw">let </span>channel = <span class="kw">super</span>::channel(<span class="kw-2">&amp;</span>interface, config);
+        <span class="kw">let </span>(tx, rx) = <span class="kw">match </span>channel {
+            <span class="prelude-val">Ok</span>(<span class="kw">super</span>::<span class="kw">super</span>::Channel::Ethernet(tx, rx)) =&gt; (tx, rx),
+            <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Not a valid channel returned&quot;</span>),
         };
-        (<span class="ident">inject_handle</span>, <span class="ident">read_handle</span>, <span class="ident">tx</span>, <span class="ident">rx</span>)
+        (inject_handle, read_handle, tx, rx)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_datalink" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_datalink" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

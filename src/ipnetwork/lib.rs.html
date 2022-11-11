@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/ipnetwork-0.19.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../ipnetwork/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../ipnetwork/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../ipnetwork/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/ipnetwork-0.19.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../ipnetwork/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -389,390 +382,389 @@
 <span id="382">382</span>
 <span id="383">383</span>
 <span id="384">384</span>
-</pre><pre class="rust"><code><span class="doccomment">//! The `ipnetwork` crate provides a set of APIs to work with IP CIDRs in</span>
-<span class="doccomment">//! Rust.</span>
-<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;lib&quot;</span>]</span>
+</pre><pre class="rust"><code><span class="doccomment">//! The `ipnetwork` crate provides a set of APIs to work with IP CIDRs in
+//! Rust.
+</span><span class="attr">#![crate_type = <span class="string">&quot;lib&quot;</span>]
 
-<span class="attribute">#![<span class="ident">deny</span>(
-    <span class="ident">missing_debug_implementations</span>,
-    <span class="ident">unsafe_code</span>,
-    <span class="ident">unused_extern_crates</span>,
-    <span class="ident">unused_import_braces</span>)]</span>
+#![deny(
+    missing_debug_implementations,
+    unsafe_code,
+    unused_extern_crates,
+    unused_import_braces)]
 
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fmt</span>, <span class="ident">net::IpAddr</span>, <span class="ident">str::FromStr</span>, <span class="ident">convert::TryFrom</span>};
+</span><span class="kw">use </span>std::{fmt, net::IpAddr, str::FromStr, convert::TryFrom};
 
-<span class="kw">mod</span> <span class="ident">common</span>;
-<span class="kw">mod</span> <span class="ident">ipv4</span>;
-<span class="kw">mod</span> <span class="ident">ipv6</span>;
+<span class="kw">mod </span>common;
+<span class="kw">mod </span>ipv4;
+<span class="kw">mod </span>ipv6;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::common::IpNetworkError</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv4::Ipv4NetworkIterator</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv4</span>::{<span class="ident">ipv4_mask_to_prefix</span>, <span class="ident">Ipv4Network</span>};
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv6::Ipv6NetworkIterator</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv6</span>::{<span class="ident">ipv6_mask_to_prefix</span>, <span class="ident">Ipv6Network</span>};
+<span class="kw">pub use </span><span class="kw">crate</span>::common::IpNetworkError;
+<span class="kw">pub use </span><span class="kw">crate</span>::ipv4::Ipv4NetworkIterator;
+<span class="kw">pub use </span><span class="kw">crate</span>::ipv4::{ipv4_mask_to_prefix, Ipv4Network};
+<span class="kw">pub use </span><span class="kw">crate</span>::ipv6::Ipv6NetworkIterator;
+<span class="kw">pub use </span><span class="kw">crate</span>::ipv6::{ipv6_mask_to_prefix, Ipv6Network};
 
-<span class="doccomment">/// Represents a generic network range. This type can have two variants:</span>
-<span class="doccomment">/// the v4 and the v6 case.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">IpNetwork</span> {
-    <span class="ident">V4</span>(<span class="ident">Ipv4Network</span>),
-    <span class="ident">V6</span>(<span class="ident">Ipv6Network</span>),
+<span class="doccomment">/// Represents a generic network range. This type can have two variants:
+/// the v4 and the v6 case.
+</span><span class="attr">#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
+</span><span class="kw">pub enum </span>IpNetwork {
+    V4(Ipv4Network),
+    V6(Ipv6Network),
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">serde::Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">D</span>: <span class="ident">serde::Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;de</span>&gt; serde::Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>deserialize&lt;D&gt;(deserializer: D) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, D::Error&gt;
+    <span class="kw">where
+        </span>D: serde::Deserializer&lt;<span class="lifetime">&#39;de</span>&gt;,
     {
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="ident">::deserialize</span>(<span class="ident">deserializer</span>)<span class="question-mark">?</span>;
-        <span class="ident">IpNetwork::from_str</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map_err</span>(<span class="ident">serde::de::Error::custom</span>)
+        <span class="kw">let </span>s = &lt;String&gt;::deserialize(deserializer)<span class="question-mark">?</span>;
+        IpNetwork::from_str(<span class="kw-2">&amp;</span>s).map_err(serde::de::Error::custom)
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">impl</span> <span class="ident">serde::Serialize</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">S</span>: <span class="ident">serde::Serializer</span>,
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">impl </span>serde::Serialize <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>serialize&lt;S&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, serializer: S) -&gt; <span class="prelude-ty">Result</span>&lt;S::Ok, S::Error&gt;
+    <span class="kw">where
+        </span>S: serde::Serializer,
     {
-        <span class="ident">serializer</span>.<span class="ident">collect_str</span>(<span class="self">self</span>)
+        serializer.collect_str(<span class="self">self</span>)
     }
 }
 
-<span class="doccomment">/// Represents a generic network size. For IPv4, the max size is a u32 and for IPv6, it is a u128</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NetworkSize</span> {
-    <span class="ident">V4</span>(<span class="ident">u32</span>),
-    <span class="ident">V6</span>(<span class="ident">u128</span>),
+<span class="doccomment">/// Represents a generic network size. For IPv4, the max size is a u32 and for IPv6, it is a u128
+</span><span class="attr">#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
+</span><span class="kw">pub enum </span>NetworkSize {
+    V4(u32),
+    V6(u128),
 }
 
-<span class="kw">impl</span> <span class="ident">IpNetwork</span> {
-    <span class="doccomment">/// Constructs a new `IpNetwork` from a given `IpAddr` and a prefix denoting the</span>
-    <span class="doccomment">/// network size. If the prefix is larger than 32 (for IPv4) or 128 (for IPv6), this</span>
-    <span class="doccomment">/// will raise an `IpNetworkError::InvalidPrefix` error. Support for IPv6 is not</span>
-    <span class="doccomment">/// complete yet.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ip</span>: <span class="ident">IpAddr</span>, <span class="ident">prefix</span>: <span class="ident">u8</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">IpNetwork</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="ident">ip</span> {
-            <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">IpNetwork::V4</span>(<span class="ident">Ipv4Network::new</span>(<span class="ident">a</span>, <span class="ident">prefix</span>)<span class="question-mark">?</span>)),
-            <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">IpNetwork::V6</span>(<span class="ident">Ipv6Network::new</span>(<span class="ident">a</span>, <span class="ident">prefix</span>)<span class="question-mark">?</span>)),
+<span class="kw">impl </span>IpNetwork {
+    <span class="doccomment">/// Constructs a new `IpNetwork` from a given `IpAddr` and a prefix denoting the
+    /// network size. If the prefix is larger than 32 (for IPv4) or 128 (for IPv6), this
+    /// will raise an `IpNetworkError::InvalidPrefix` error. Support for IPv6 is not
+    /// complete yet.
+    </span><span class="kw">pub fn </span>new(ip: IpAddr, prefix: u8) -&gt; <span class="prelude-ty">Result</span>&lt;IpNetwork, IpNetworkError&gt; {
+        <span class="kw">match </span>ip {
+            IpAddr::V4(a) =&gt; <span class="prelude-val">Ok</span>(IpNetwork::V4(Ipv4Network::new(a, prefix)<span class="question-mark">?</span>)),
+            IpAddr::V6(a) =&gt; <span class="prelude-val">Ok</span>(IpNetwork::V6(Ipv6Network::new(a, prefix)<span class="question-mark">?</span>)),
         }
     }
 
-    <span class="doccomment">/// Constructs a new `IpNetwork` from a network address and a network mask.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the netmask is not valid this will return an `IpNetworkError::InvalidPrefix`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_netmask</span>(<span class="ident">netaddr</span>: <span class="ident">IpAddr</span>, <span class="ident">netmask</span>: <span class="ident">IpAddr</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ip_mask_to_prefix</span>(<span class="ident">netmask</span>)<span class="question-mark">?</span>;
-        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">netaddr</span>, <span class="ident">prefix</span>)
+    <span class="doccomment">/// Constructs a new `IpNetwork` from a network address and a network mask.
+    ///
+    /// If the netmask is not valid this will return an `IpNetworkError::InvalidPrefix`.
+    </span><span class="kw">pub fn </span>with_netmask(netaddr: IpAddr, netmask: IpAddr) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, IpNetworkError&gt; {
+        <span class="kw">let </span>prefix = ip_mask_to_prefix(netmask)<span class="question-mark">?</span>;
+        <span class="self">Self</span>::new(netaddr, prefix)
     }
 
-    <span class="doccomment">/// Returns the IP part of a given `IpNetwork`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ip</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IpAddr</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>.<span class="ident">ip</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>.<span class="ident">ip</span>()),
+    <span class="doccomment">/// Returns the IP part of a given `IpNetwork`
+    </span><span class="kw">pub fn </span>ip(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; IpAddr {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>a) =&gt; IpAddr::V4(a.ip()),
+            IpNetwork::V6(<span class="kw-2">ref </span>a) =&gt; IpAddr::V6(a.ip()),
         }
     }
 
-    <span class="doccomment">/// Returns the prefix of the given `IpNetwork`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(IpNetwork::V4(&quot;10.9.0.1&quot;.parse().unwrap()).prefix(), 32u8);</span>
-    <span class="doccomment">/// assert_eq!(IpNetwork::V4(&quot;10.9.0.32/16&quot;.parse().unwrap()).prefix(), 16u8);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(IpNetwork::V6(&quot;ff01::0&quot;.parse().unwrap()).prefix(), 128u8);</span>
-    <span class="doccomment">/// assert_eq!(IpNetwork::V6(&quot;ff01::0/32&quot;.parse().unwrap()).prefix(), 32u8);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prefix</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u8</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">prefix</span>(),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">prefix</span>(),
+    <span class="doccomment">/// Returns the prefix of the given `IpNetwork`
+    ///
+    /// # Example
+    /// ```
+    /// use ipnetwork::IpNetwork;
+    ///
+    /// assert_eq!(IpNetwork::V4(&quot;10.9.0.1&quot;.parse().unwrap()).prefix(), 32u8);
+    /// assert_eq!(IpNetwork::V4(&quot;10.9.0.32/16&quot;.parse().unwrap()).prefix(), 16u8);
+    ///
+    /// assert_eq!(IpNetwork::V6(&quot;ff01::0&quot;.parse().unwrap()).prefix(), 128u8);
+    /// assert_eq!(IpNetwork::V6(&quot;ff01::0/32&quot;.parse().unwrap()).prefix(), 32u8);
+    /// ```
+    </span><span class="kw">pub fn </span>prefix(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>a) =&gt; a.prefix(),
+            IpNetwork::V6(<span class="kw-2">ref </span>a) =&gt; a.prefix(),
         }
     }
 
-    <span class="doccomment">/// Returns the address of the network denoted by this `IpNetwork`.</span>
-    <span class="doccomment">/// This means the lowest possible IP address inside of the network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::{Ipv4Addr, Ipv6Addr};</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: IpNetwork = &quot;10.1.9.32/16&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.network(), Ipv4Addr::new(10, 1, 0, 0));</span>
-    <span class="doccomment">/// let net: IpNetwork = &quot;2001:db8::/96&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.network(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">network</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IpAddr</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>.<span class="ident">network</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>.<span class="ident">network</span>()),
+    <span class="doccomment">/// Returns the address of the network denoted by this `IpNetwork`.
+    /// This means the lowest possible IP address inside of the network.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::{Ipv4Addr, Ipv6Addr};
+    /// use ipnetwork::IpNetwork;
+    ///
+    /// let net: IpNetwork = &quot;10.1.9.32/16&quot;.parse().unwrap();
+    /// assert_eq!(net.network(), Ipv4Addr::new(10, 1, 0, 0));
+    /// let net: IpNetwork = &quot;2001:db8::/96&quot;.parse().unwrap();
+    /// assert_eq!(net.network(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0));
+    /// ```
+    </span><span class="kw">pub fn </span>network(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; IpAddr {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>a) =&gt; IpAddr::V4(a.network()),
+            IpNetwork::V6(<span class="kw-2">ref </span>a) =&gt; IpAddr::V6(a.network()),
         }
     }
 
-    <span class="doccomment">/// Returns the broadcasting address of this `IpNetwork`.</span>
-    <span class="doccomment">/// This means the highest possible IP address inside of the network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv4Addr;</span>
-    <span class="doccomment">/// use ipnetwork::{IpNetwork, Ipv4Network};</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv4Network = &quot;10.9.0.32/16&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.broadcast(), Ipv4Addr::new(10, 9, 255, 255));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">broadcast</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IpAddr</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>.<span class="ident">broadcast</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>.<span class="ident">broadcast</span>()),
+    <span class="doccomment">/// Returns the broadcasting address of this `IpNetwork`.
+    /// This means the highest possible IP address inside of the network.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv4Addr;
+    /// use ipnetwork::{IpNetwork, Ipv4Network};
+    ///
+    /// let net: Ipv4Network = &quot;10.9.0.32/16&quot;.parse().unwrap();
+    /// assert_eq!(net.broadcast(), Ipv4Addr::new(10, 9, 255, 255));
+    /// ```
+    </span><span class="kw">pub fn </span>broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; IpAddr {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>a) =&gt; IpAddr::V4(a.broadcast()),
+            IpNetwork::V6(<span class="kw-2">ref </span>a) =&gt; IpAddr::V6(a.broadcast()),
         }
     }
 
-    <span class="doccomment">/// Returns the mask for this `IpNetwork`.</span>
-    <span class="doccomment">/// That means the `prefix` most significant bits will be 1 and the rest 0</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">/// use std::net::{Ipv4Addr, Ipv6Addr};</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let v4_net: IpNetwork = &quot;10.9.0.1&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(v4_net.mask(), Ipv4Addr::new(255, 255, 255, 255));</span>
-    <span class="doccomment">/// let v4_net: IpNetwork = &quot;10.9.0.32/16&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(v4_net.mask(), Ipv4Addr::new(255, 255, 0, 0));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let v6_net: IpNetwork = &quot;ff01::0&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(v6_net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff));</span>
-    <span class="doccomment">/// let v6_net: IpNetwork = &quot;ff01::0/32&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(v6_net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0, 0, 0, 0, 0, 0));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mask</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IpAddr</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>.<span class="ident">mask</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">a</span>) =&gt; <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>.<span class="ident">mask</span>()),
+    <span class="doccomment">/// Returns the mask for this `IpNetwork`.
+    /// That means the `prefix` most significant bits will be 1 and the rest 0
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use ipnetwork::IpNetwork;
+    /// use std::net::{Ipv4Addr, Ipv6Addr};
+    ///
+    /// let v4_net: IpNetwork = &quot;10.9.0.1&quot;.parse().unwrap();
+    /// assert_eq!(v4_net.mask(), Ipv4Addr::new(255, 255, 255, 255));
+    /// let v4_net: IpNetwork = &quot;10.9.0.32/16&quot;.parse().unwrap();
+    /// assert_eq!(v4_net.mask(), Ipv4Addr::new(255, 255, 0, 0));
+    ///
+    /// let v6_net: IpNetwork = &quot;ff01::0&quot;.parse().unwrap();
+    /// assert_eq!(v6_net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff));
+    /// let v6_net: IpNetwork = &quot;ff01::0/32&quot;.parse().unwrap();
+    /// assert_eq!(v6_net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0, 0, 0, 0, 0, 0));
+    /// ```
+    </span><span class="kw">pub fn </span>mask(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; IpAddr {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>a) =&gt; IpAddr::V4(a.mask()),
+            IpNetwork::V6(<span class="kw-2">ref </span>a) =&gt; IpAddr::V6(a.mask()),
         }
     }
 
-    <span class="doccomment">/// Returns true if the IP in this `IpNetwork` is a valid IPv4 address,</span>
-    <span class="doccomment">/// false if it&#39;s a valid IPv6 address.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///```</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let v4: IpNetwork = IpNetwork::V4(&quot;10.9.0.32/16&quot;.parse().unwrap());</span>
-    <span class="doccomment">/// assert_eq!(v4.is_ipv4(), true);</span>
-    <span class="doccomment">/// assert_eq!(v4.is_ipv6(), false);</span>
-    <span class="doccomment">///```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_ipv4</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">true</span>,
-            <span class="ident">IpNetwork::V6</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
+    <span class="doccomment">/// Returns true if the IP in this `IpNetwork` is a valid IPv4 address,
+    /// false if it&#39;s a valid IPv6 address.
+    ///
+    /// # Example
+    ///
+    ///```
+    /// use ipnetwork::IpNetwork;
+    ///
+    /// let v4: IpNetwork = IpNetwork::V4(&quot;10.9.0.32/16&quot;.parse().unwrap());
+    /// assert_eq!(v4.is_ipv4(), true);
+    /// assert_eq!(v4.is_ipv6(), false);
+    ///```
+    </span><span class="kw">pub fn </span>is_ipv4(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw">_</span>) =&gt; <span class="bool-val">true</span>,
+            IpNetwork::V6(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
         }
     }
 
-    <span class="doccomment">/// Returns true if the IP in this `IpNetwork` is a valid IPv6 address,</span>
-    <span class="doccomment">/// false if it&#39;s a valid IPv4 address.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///```</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let v6: IpNetwork = IpNetwork::V6(&quot;ff01::0/32&quot;.parse().unwrap());</span>
-    <span class="doccomment">/// assert_eq!(v6.is_ipv6(), true);</span>
-    <span class="doccomment">/// assert_eq!(v6.is_ipv4(), false);</span>
-    <span class="doccomment">///```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_ipv6</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
-            <span class="ident">IpNetwork::V6</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">true</span>,
+    <span class="doccomment">/// Returns true if the IP in this `IpNetwork` is a valid IPv6 address,
+    /// false if it&#39;s a valid IPv4 address.
+    ///
+    /// # Example
+    ///
+    ///```
+    /// use ipnetwork::IpNetwork;
+    ///
+    /// let v6: IpNetwork = IpNetwork::V6(&quot;ff01::0/32&quot;.parse().unwrap());
+    /// assert_eq!(v6.is_ipv6(), true);
+    /// assert_eq!(v6.is_ipv4(), false);
+    ///```
+    </span><span class="kw">pub fn </span>is_ipv6(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
+            IpNetwork::V6(<span class="kw">_</span>) =&gt; <span class="bool-val">true</span>,
         }
     }
 
-    <span class="comment">// TODO(abhishek) when TryFrom is stable, implement it for IpNetwork to</span>
-    <span class="comment">// variant conversions. Then use that to implement a generic is_subnet_of</span>
-    <span class="comment">// is_supernet_of, overlaps</span>
+    <span class="comment">// TODO(abhishek) when TryFrom is stable, implement it for IpNetwork to
+    // variant conversions. Then use that to implement a generic is_subnet_of
+    // is_supernet_of, overlaps
 
-    <span class="doccomment">/// Checks if a given `IpAddr` is in this `IpNetwork`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::IpAddr;</span>
-    <span class="doccomment">/// use ipnetwork::IpNetwork;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: IpNetwork = &quot;127.0.0.0/24&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// let ip1: IpAddr = &quot;127.0.0.1&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// let ip2: IpAddr = &quot;172.0.0.1&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// let ip4: IpAddr = &quot;::1&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert!(net.contains(ip1));</span>
-    <span class="doccomment">/// assert!(!net.contains(ip2));</span>
-    <span class="doccomment">/// assert!(!net.contains(ip4));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ip</span>: <span class="ident">IpAddr</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> (<span class="kw-2">*</span><span class="self">self</span>, <span class="ident">ip</span>) {
-            (<span class="ident">IpNetwork::V4</span>(<span class="ident">net</span>), <span class="ident">IpAddr::V4</span>(<span class="ident">ip</span>)) =&gt; <span class="ident">net</span>.<span class="ident">contains</span>(<span class="ident">ip</span>),
-            (<span class="ident">IpNetwork::V6</span>(<span class="ident">net</span>), <span class="ident">IpAddr::V6</span>(<span class="ident">ip</span>)) =&gt; <span class="ident">net</span>.<span class="ident">contains</span>(<span class="ident">ip</span>),
-            <span class="kw">_</span> =&gt; <span class="bool-val">false</span>,
+    </span><span class="doccomment">/// Checks if a given `IpAddr` is in this `IpNetwork`
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::IpAddr;
+    /// use ipnetwork::IpNetwork;
+    ///
+    /// let net: IpNetwork = &quot;127.0.0.0/24&quot;.parse().unwrap();
+    /// let ip1: IpAddr = &quot;127.0.0.1&quot;.parse().unwrap();
+    /// let ip2: IpAddr = &quot;172.0.0.1&quot;.parse().unwrap();
+    /// let ip4: IpAddr = &quot;::1&quot;.parse().unwrap();
+    /// assert!(net.contains(ip1));
+    /// assert!(!net.contains(ip2));
+    /// assert!(!net.contains(ip4));
+    /// ```
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub fn </span>contains(<span class="kw-2">&amp;</span><span class="self">self</span>, ip: IpAddr) -&gt; bool {
+        <span class="kw">match </span>(<span class="kw-2">*</span><span class="self">self</span>, ip) {
+            (IpNetwork::V4(net), IpAddr::V4(ip)) =&gt; net.contains(ip),
+            (IpNetwork::V6(net), IpAddr::V6(ip)) =&gt; net.contains(ip),
+            <span class="kw">_ </span>=&gt; <span class="bool-val">false</span>,
         }
     }
 
-    <span class="doccomment">/// Returns the number of possible host addresses in this `IpAddr`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use ipnetwork::{IpNetwork, NetworkSize};</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: IpNetwork = &quot;127.0.0.0/24&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.size(), NetworkSize::V4(256))</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">NetworkSize</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="kw-2">ref</span> <span class="ident">ip</span>) =&gt; <span class="ident">NetworkSize::V4</span>(<span class="ident">ip</span>.<span class="ident">size</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="kw-2">ref</span> <span class="ident">ip</span>) =&gt; <span class="ident">NetworkSize::V6</span>(<span class="ident">ip</span>.<span class="ident">size</span>()),
+    <span class="doccomment">/// Returns the number of possible host addresses in this `IpAddr`
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use ipnetwork::{IpNetwork, NetworkSize};
+    ///
+    ///
+    /// let net: IpNetwork = &quot;127.0.0.0/24&quot;.parse().unwrap();
+    /// assert_eq!(net.size(), NetworkSize::V4(256))
+    /// ```
+    </span><span class="kw">pub fn </span>size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; NetworkSize {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(<span class="kw-2">ref </span>ip) =&gt; NetworkSize::V4(ip.size()),
+            IpNetwork::V6(<span class="kw-2">ref </span>ip) =&gt; NetworkSize::V6(ip.size()),
         }
     }
 
-    <span class="doccomment">/// Returns an iterator over the addresses contained in the network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This lists all the addresses in the network range, in ascending order.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IpNetworkIterator</span> {
-        <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="ident">ip</span>) =&gt; <span class="ident">IpNetworkIteratorInner::V4</span>(<span class="ident">ip</span>.<span class="ident">iter</span>()),
-            <span class="ident">IpNetwork::V6</span>(<span class="ident">ip</span>) =&gt; <span class="ident">IpNetworkIteratorInner::V6</span>(<span class="ident">ip</span>.<span class="ident">iter</span>()),
+    <span class="doccomment">/// Returns an iterator over the addresses contained in the network.
+    ///
+    /// This lists all the addresses in the network range, in ascending order.
+    </span><span class="kw">pub fn </span>iter(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; IpNetworkIterator {
+        <span class="kw">let </span>inner = <span class="kw">match </span><span class="self">self </span>{
+            IpNetwork::V4(ip) =&gt; IpNetworkIteratorInner::V4(ip.iter()),
+            IpNetwork::V6(ip) =&gt; IpNetworkIteratorInner::V6(ip.iter()),
         };
-        <span class="ident">IpNetworkIterator</span> { <span class="ident">inner</span> }
+        IpNetworkIterator { inner }
     }
 }
 
-<span class="doccomment">/// Tries to parse the given string into a `IpNetwork`. Will first try to parse</span>
-<span class="doccomment">/// it as an `Ipv4Network` and if that fails as an `Ipv6Network`. If both</span>
-<span class="doccomment">/// fails it will return an `InvalidAddr` error.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use std::net::Ipv4Addr;</span>
-<span class="doccomment">/// use ipnetwork::{IpNetwork, Ipv4Network};</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let expected = IpNetwork::V4(Ipv4Network::new(Ipv4Addr::new(10, 1, 9, 32), 16).unwrap());</span>
-<span class="doccomment">/// let from_cidr: IpNetwork = &quot;10.1.9.32/16&quot;.parse().unwrap();</span>
-<span class="doccomment">/// assert_eq!(expected, from_cidr);</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">IpNetworkError</span>;
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="ident">net</span>) <span class="op">=</span> <span class="ident">Ipv4Network::from_str</span>(<span class="ident">s</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">IpNetwork::V4</span>(<span class="ident">net</span>))
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="ident">net</span>) <span class="op">=</span> <span class="ident">Ipv6Network::from_str</span>(<span class="ident">s</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">IpNetwork::V6</span>(<span class="ident">net</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">IpNetworkError::InvalidAddr</span>(<span class="ident">s</span>.<span class="ident">to_string</span>()))
+<span class="doccomment">/// Tries to parse the given string into a `IpNetwork`. Will first try to parse
+/// it as an `Ipv4Network` and if that fails as an `Ipv6Network`. If both
+/// fails it will return an `InvalidAddr` error.
+///
+/// # Examples
+///
+/// ```
+/// use std::net::Ipv4Addr;
+/// use ipnetwork::{IpNetwork, Ipv4Network};
+///
+/// let expected = IpNetwork::V4(Ipv4Network::new(Ipv4Addr::new(10, 1, 9, 32), 16).unwrap());
+/// let from_cidr: IpNetwork = &quot;10.1.9.32/16&quot;.parse().unwrap();
+/// assert_eq!(expected, from_cidr);
+/// ```
+</span><span class="kw">impl </span>FromStr <span class="kw">for </span>IpNetwork {
+    <span class="kw">type </span><span class="prelude-val">Err </span>= IpNetworkError;
+    <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
+        <span class="kw">if let </span><span class="prelude-val">Ok</span>(net) = Ipv4Network::from_str(s) {
+            <span class="prelude-val">Ok</span>(IpNetwork::V4(net))
+        } <span class="kw">else if let </span><span class="prelude-val">Ok</span>(net) = Ipv6Network::from_str(s) {
+            <span class="prelude-val">Ok</span>(IpNetwork::V6(net))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">Err</span>(IpNetworkError::InvalidAddr(s.to_string()))
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">TryFrom</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">IpNetworkError</span>;
+<span class="kw">impl </span>TryFrom&lt;<span class="kw-2">&amp;</span>str&gt; <span class="kw">for </span>IpNetwork {
+    <span class="kw">type </span>Error = IpNetworkError;
 
-    <span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
-        <span class="ident">IpNetwork::from_str</span>(<span class="ident">s</span>)
+    <span class="kw">fn </span>try_from(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Error&gt; {
+        IpNetwork::from_str(s)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Ipv4Network</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v4</span>: <span class="ident">Ipv4Network</span>) -&gt; <span class="ident">IpNetwork</span> {
-        <span class="ident">IpNetwork::V4</span>(<span class="ident">v4</span>)
+<span class="kw">impl </span>From&lt;Ipv4Network&gt; <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>from(v4: Ipv4Network) -&gt; IpNetwork {
+        IpNetwork::V4(v4)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v6</span>: <span class="ident">Ipv6Network</span>) -&gt; <span class="ident">IpNetwork</span> {
-        <span class="ident">IpNetwork::V6</span>(<span class="ident">v6</span>)
+<span class="kw">impl </span>From&lt;Ipv6Network&gt; <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>from(v6: Ipv6Network) -&gt; IpNetwork {
+        IpNetwork::V6(v6)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">IpAddr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">addr</span>: <span class="ident">IpAddr</span>) -&gt; <span class="ident">IpNetwork</span> {
-        <span class="kw">match</span> <span class="ident">addr</span> {
-            <span class="ident">IpAddr::V4</span>(<span class="ident">a</span>) =&gt; <span class="ident">IpNetwork::V4</span>(<span class="ident">Ipv4Network::from</span>(<span class="ident">a</span>)),
-            <span class="ident">IpAddr::V6</span>(<span class="ident">a</span>) =&gt; <span class="ident">IpNetwork::V6</span>(<span class="ident">Ipv6Network::from</span>(<span class="ident">a</span>)),
+<span class="kw">impl </span>From&lt;IpAddr&gt; <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>from(addr: IpAddr) -&gt; IpNetwork {
+        <span class="kw">match </span>addr {
+            IpAddr::V4(a) =&gt; IpNetwork::V4(Ipv4Network::from(a)),
+            IpAddr::V6(a) =&gt; IpNetwork::V6(Ipv6Network::from(a)),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">IpNetwork::V4</span>(<span class="ident">net</span>) =&gt; <span class="ident">net</span>.<span class="ident">fmt</span>(<span class="ident">f</span>),
-            <span class="ident">IpNetwork::V6</span>(<span class="ident">net</span>) =&gt; <span class="ident">net</span>.<span class="ident">fmt</span>(<span class="ident">f</span>),
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>IpNetwork {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            IpNetwork::V4(net) =&gt; net.fmt(f),
+            IpNetwork::V6(net) =&gt; net.fmt(f),
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">enum</span> <span class="ident">IpNetworkIteratorInner</span> {
-    <span class="ident">V4</span>(<span class="ident">Ipv4NetworkIterator</span>),
-    <span class="ident">V6</span>(<span class="ident">Ipv6NetworkIterator</span>),
+<span class="attr">#[derive(Clone, Debug)]
+</span><span class="kw">enum </span>IpNetworkIteratorInner {
+    V4(Ipv4NetworkIterator),
+    V6(Ipv6NetworkIterator),
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IpNetworkIterator</span> {
-    <span class="ident">inner</span>: <span class="ident">IpNetworkIteratorInner</span>,
+<span class="attr">#[derive(Clone, Debug)]
+</span><span class="kw">pub struct </span>IpNetworkIterator {
+    inner: IpNetworkIteratorInner,
 }
 
-<span class="kw">impl</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">IpNetworkIterator</span> {
-    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">IpAddr</span>;
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IpAddr</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">inner</span> {
-            <span class="ident">IpNetworkIteratorInner::V4</span>(<span class="ident">iter</span>) =&gt; <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">map</span>(<span class="ident">IpAddr::V4</span>),
-            <span class="ident">IpNetworkIteratorInner::V6</span>(<span class="ident">iter</span>) =&gt; <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">map</span>(<span class="ident">IpAddr::V6</span>),
+<span class="kw">impl </span>Iterator <span class="kw">for </span>IpNetworkIterator {
+    <span class="kw">type </span>Item = IpAddr;
+    <span class="kw">fn </span>next(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;IpAddr&gt; {
+        <span class="kw">match </span><span class="kw-2">&amp;mut </span><span class="self">self</span>.inner {
+            IpNetworkIteratorInner::V4(iter) =&gt; iter.next().map(IpAddr::V4),
+            IpNetworkIteratorInner::V6(iter) =&gt; iter.next().map(IpAddr::V6),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">IntoIterator</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="ident">IpNetwork</span> {
-    <span class="kw">type</span> <span class="ident">IntoIter</span> <span class="op">=</span> <span class="ident">IpNetworkIterator</span>;
-    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">IpAddr</span>;
-    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) -&gt; <span class="ident">IpNetworkIterator</span> {
-        <span class="self">self</span>.<span class="ident">iter</span>()
+<span class="kw">impl </span>IntoIterator <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;_ </span>IpNetwork {
+    <span class="kw">type </span>IntoIter = IpNetworkIterator;
+    <span class="kw">type </span>Item = IpAddr;
+    <span class="kw">fn </span>into_iter(<span class="self">self</span>) -&gt; IpNetworkIterator {
+        <span class="self">self</span>.iter()
     }
 }
 
-<span class="doccomment">/// Converts a `IpAddr` network mask into a prefix.</span>
-<span class="doccomment">/// If the mask is invalid this will return an `IpNetworkError::InvalidPrefix`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ip_mask_to_prefix</span>(<span class="ident">mask</span>: <span class="ident">IpAddr</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u8</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-    <span class="kw">match</span> <span class="ident">mask</span> {
-        <span class="ident">IpAddr::V4</span>(<span class="ident">mask</span>) =&gt; <span class="ident">ipv4_mask_to_prefix</span>(<span class="ident">mask</span>),
-        <span class="ident">IpAddr::V6</span>(<span class="ident">mask</span>) =&gt; <span class="ident">ipv6_mask_to_prefix</span>(<span class="ident">mask</span>),
+<span class="doccomment">/// Converts a `IpAddr` network mask into a prefix.
+/// If the mask is invalid this will return an `IpNetworkError::InvalidPrefix`.
+</span><span class="kw">pub fn </span>ip_mask_to_prefix(mask: IpAddr) -&gt; <span class="prelude-ty">Result</span>&lt;u8, IpNetworkError&gt; {
+    <span class="kw">match </span>mask {
+        IpAddr::V4(mask) =&gt; ipv4_mask_to_prefix(mask),
+        IpAddr::V6(mask) =&gt; ipv6_mask_to_prefix(mask),
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">test</span> {
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">deserialize_from_serde_json_value</span>() {
-        <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-        <span class="kw">let</span> <span class="ident">network</span> <span class="op">=</span> <span class="ident">IpNetwork::from_str</span>(<span class="string">&quot;0.0.0.0/0&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">val</span>: <span class="ident">serde_json::value::Value</span> <span class="op">=</span>
-            <span class="ident">serde_json::from_str</span>(<span class="kw-2">&amp;</span><span class="ident">serde_json::to_string</span>(<span class="kw-2">&amp;</span><span class="ident">network</span>).<span class="ident">unwrap</span>()).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">_deser</span>: <span class="ident">IpNetwork</span> <span class="op">=</span> <span class="ident">serde_json::from_value</span>(<span class="ident">val</span>)
-            .<span class="ident">expect</span>(<span class="string">&quot;Fails to deserialize from json_value::value::Value&quot;</span>);
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>test {
+    <span class="attr">#[test]
+    #[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+    </span><span class="kw">fn </span>deserialize_from_serde_json_value() {
+        <span class="kw">use super</span>::<span class="kw-2">*</span>;
+        <span class="kw">let </span>network = IpNetwork::from_str(<span class="string">&quot;0.0.0.0/0&quot;</span>).unwrap();
+        <span class="kw">let </span>val: serde_json::value::Value =
+            serde_json::from_str(<span class="kw-2">&amp;</span>serde_json::to_string(<span class="kw-2">&amp;</span>network).unwrap()).unwrap();
+        <span class="kw">let </span>_deser: IpNetwork = serde_json::from_value(val)
+            .expect(<span class="string">&quot;Fails to deserialize from json_value::value::Value&quot;</span>);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="ipnetwork" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="ipnetwork" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

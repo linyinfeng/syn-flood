@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/runner.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>runner.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../syn_flood/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../syn_flood/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../syn_flood/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/runner.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>runner.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../syn_flood/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -131,132 +124,131 @@
 <span id="124">124</span>
 <span id="125">125</span>
 <span id="126">126</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">error::SynFloodError</span>, <span class="ident">option::Opt</span>};
-<span class="kw">use</span> <span class="ident">log::warn</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{
-    <span class="ident">thread::sleep</span>,
-    <span class="ident">time</span>::{<span class="ident">Duration</span>, <span class="ident">SystemTime</span>},
+</pre><pre class="rust"><code><span class="kw">use crate</span>::{error::SynFloodError, option::Opt};
+<span class="kw">use </span>log::warn;
+<span class="kw">use </span>std::{
+    thread::sleep,
+    time::{Duration, SystemTime},
 };
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">run</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">O</span><span class="op">&gt;</span>(<span class="ident">opt</span>: <span class="kw-2">&amp;</span><span class="ident">Opt</span>, <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="ident">F</span>, <span class="ident">output</span>: <span class="ident">O</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RunStatistics</span>, <span class="ident">SynFloodError</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnMut</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SynFloodError</span><span class="op">&gt;</span>,
-    <span class="ident">O</span>: <span class="ident">Fn</span>(<span class="ident">RunStatistics</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SynFloodError</span><span class="op">&gt;</span>,
+<span class="kw">pub fn </span>run&lt;F, O&gt;(opt: <span class="kw-2">&amp;</span>Opt, <span class="kw-2">mut </span>f: F, output: O) -&gt; <span class="prelude-ty">Result</span>&lt;RunStatistics, SynFloodError&gt;
+<span class="kw">where
+    </span>F: FnMut() -&gt; <span class="prelude-ty">Result</span>&lt;(), SynFloodError&gt;,
+    O: Fn(RunStatistics) -&gt; <span class="prelude-ty">Result</span>&lt;(), SynFloodError&gt;,
 {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">all_time</span> <span class="op">=</span> <span class="ident">RunStatisticsBuilder::new</span>();
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">current</span> <span class="op">=</span> <span class="ident">all_time</span>.<span class="ident">clone</span>();
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">last_time</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">SystemTime</span><span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">None</span>;
-    <span class="kw">loop</span> {
-        <span class="kw">if</span> <span class="ident">current</span>.<span class="ident">start</span>.<span class="ident">elapsed</span>().<span class="ident">map_err</span>(<span class="ident">SynFloodError::SystemTime</span>)<span class="question-mark">?</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">opt</span>.<span class="ident">output_interval</span> {
-            <span class="ident">output</span>(<span class="ident">current</span>.<span class="ident">clone</span>().<span class="ident">build</span>())<span class="question-mark">?</span>;
-            <span class="ident">current</span>.<span class="ident">clear</span>();
+    <span class="kw">let </span><span class="kw-2">mut </span>all_time = RunStatisticsBuilder::new();
+    <span class="kw">let </span><span class="kw-2">mut </span>current = all_time.clone();
+    <span class="kw">let </span><span class="kw-2">mut </span>last_time: <span class="prelude-ty">Option</span>&lt;SystemTime&gt; = <span class="prelude-val">None</span>;
+    <span class="kw">loop </span>{
+        <span class="kw">if </span>current.start.elapsed().map_err(SynFloodError::SystemTime)<span class="question-mark">? </span>&gt;= opt.output_interval {
+            output(current.clone().build())<span class="question-mark">?</span>;
+            current.clear();
         }
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">time</span>) <span class="op">=</span> <span class="ident">opt</span>.<span class="ident">time</span> {
-            <span class="kw">if</span> <span class="ident">all_time</span>
-                .<span class="ident">start</span>
-                .<span class="ident">elapsed</span>()
-                .<span class="ident">map_err</span>(<span class="ident">SynFloodError::SystemTime</span>)<span class="question-mark">?</span> <span class="op">&gt;</span><span class="op">=</span>
-                <span class="ident">time</span>
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(time) = opt.time {
+            <span class="kw">if </span>all_time
+                .start
+                .elapsed()
+                .map_err(SynFloodError::SystemTime)<span class="question-mark">? </span>&gt;=
+                time
             {
-                <span class="kw">break</span> <span class="prelude-val">Ok</span>(<span class="ident">all_time</span>.<span class="ident">build</span>())
+                <span class="kw">break </span><span class="prelude-val">Ok</span>(all_time.build())
             }
         }
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">number</span>) <span class="op">=</span> <span class="ident">opt</span>.<span class="ident">number</span> {
-            <span class="kw">if</span> <span class="ident">all_time</span>.<span class="ident">total</span>() <span class="op">==</span> <span class="ident">number</span> {
-                <span class="kw">break</span> <span class="prelude-val">Ok</span>(<span class="ident">all_time</span>.<span class="ident">build</span>())
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(number) = opt.number {
+            <span class="kw">if </span>all_time.total() == number {
+                <span class="kw">break </span><span class="prelude-val">Ok</span>(all_time.build())
             }
         }
 
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">interval</span>) <span class="op">=</span> <span class="ident">opt</span>.<span class="ident">interval</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">last</span>) <span class="op">=</span> <span class="ident">last_time</span> {
-                <span class="kw">let</span> <span class="ident">elapsed</span> <span class="op">=</span> <span class="ident">last</span>.<span class="ident">elapsed</span>().<span class="ident">map_err</span>(<span class="ident">SynFloodError::SystemTime</span>)<span class="question-mark">?</span>;
-                <span class="kw">if</span> <span class="ident">elapsed</span> <span class="op">&lt;</span> <span class="ident">interval</span> {
-                    <span class="ident">sleep</span>(<span class="ident">interval</span> <span class="op">-</span> <span class="ident">elapsed</span>);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(interval) = opt.interval {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(last) = last_time {
+                <span class="kw">let </span>elapsed = last.elapsed().map_err(SynFloodError::SystemTime)<span class="question-mark">?</span>;
+                <span class="kw">if </span>elapsed &lt; interval {
+                    sleep(interval - elapsed);
                 }
             }
         }
-        <span class="kw">match</span> <span class="ident">f</span>() {
+        <span class="kw">match </span>f() {
             <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
-                <span class="ident">all_time</span>.<span class="ident">success</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
-                <span class="ident">current</span>.<span class="ident">success</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+                all_time.success += <span class="number">1</span>;
+                current.success += <span class="number">1</span>;
             },
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
-                <span class="macro">warn!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">e</span>);
-                <span class="ident">all_time</span>.<span class="ident">failed</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
-                <span class="ident">current</span>.<span class="ident">failed</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+            <span class="prelude-val">Err</span>(e) =&gt; {
+                <span class="macro">warn!</span>(<span class="string">&quot;{}&quot;</span>, e);
+                all_time.failed += <span class="number">1</span>;
+                current.failed += <span class="number">1</span>;
             },
         }
-        <span class="kw">if</span> <span class="ident">opt</span>.<span class="ident">interval</span>.<span class="ident">is_some</span>() {
-            <span class="ident">last_time</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">SystemTime::now</span>());
+        <span class="kw">if </span>opt.interval.is_some() {
+            last_time = <span class="prelude-val">Some</span>(SystemTime::now());
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RunStatistics</span> {
-    <span class="kw">pub</span> <span class="ident">start</span>: <span class="ident">SystemTime</span>,
-    <span class="kw">pub</span> <span class="ident">end</span>: <span class="ident">SystemTime</span>,
-    <span class="kw">pub</span> <span class="ident">success</span>: <span class="ident">usize</span>,
-    <span class="kw">pub</span> <span class="ident">failed</span>: <span class="ident">usize</span>,
+<span class="attr">#[derive(Debug, Clone)]
+</span><span class="kw">pub struct </span>RunStatistics {
+    <span class="kw">pub </span>start: SystemTime,
+    <span class="kw">pub </span>end: SystemTime,
+    <span class="kw">pub </span>success: usize,
+    <span class="kw">pub </span>failed: usize,
 }
 
-<span class="kw">impl</span> <span class="ident">RunStatistics</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">total</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="ident">success</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">failed</span>
+<span class="kw">impl </span>RunStatistics {
+    <span class="kw">pub fn </span>total(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.success + <span class="self">self</span>.failed
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">duration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Duration</span>, <span class="ident">SynFloodError</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">end</span>
-            .<span class="ident">duration_since</span>(<span class="self">self</span>.<span class="ident">start</span>)
-            .<span class="ident">map_err</span>(<span class="ident">SynFloodError::SystemTime</span>)
+    <span class="kw">pub fn </span>duration(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Duration, SynFloodError&gt; {
+        <span class="self">self</span>.end
+            .duration_since(<span class="self">self</span>.start)
+            .map_err(SynFloodError::SystemTime)
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">packet_per_second</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">f64</span>, <span class="ident">SynFloodError</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">duration</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">duration</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">total</span>() <span class="kw">as</span> <span class="ident">f64</span> <span class="op">/</span> <span class="ident">duration</span>.<span class="ident">as_secs_f64</span>())
+    <span class="kw">pub fn </span>packet_per_second(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;f64, SynFloodError&gt; {
+        <span class="self">self</span>.duration()
+            .map(|duration| <span class="self">self</span>.total() <span class="kw">as </span>f64 / duration.as_secs_f64())
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">struct</span> <span class="ident">RunStatisticsBuilder</span> {
-    <span class="ident">start</span>: <span class="ident">SystemTime</span>,
-    <span class="ident">success</span>: <span class="ident">usize</span>,
-    <span class="ident">failed</span>: <span class="ident">usize</span>,
+<span class="attr">#[derive(Debug, Clone)]
+</span><span class="kw">struct </span>RunStatisticsBuilder {
+    start: SystemTime,
+    success: usize,
+    failed: usize,
 }
 
-<span class="kw">impl</span> <span class="ident">RunStatisticsBuilder</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">RunStatisticsBuilder</span> {
-        <span class="ident">RunStatisticsBuilder</span> {
-            <span class="ident">start</span>: <span class="ident">SystemTime::now</span>(),
-            <span class="ident">success</span>: <span class="number">0</span>,
-            <span class="ident">failed</span>: <span class="number">0</span>,
+<span class="kw">impl </span>RunStatisticsBuilder {
+    <span class="kw">fn </span>new() -&gt; RunStatisticsBuilder {
+        RunStatisticsBuilder {
+            start: SystemTime::now(),
+            success: <span class="number">0</span>,
+            failed: <span class="number">0</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">start</span> <span class="op">=</span> <span class="ident">SystemTime::now</span>();
-        <span class="self">self</span>.<span class="ident">success</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="self">self</span>.<span class="ident">failed</span> <span class="op">=</span> <span class="number">0</span>;
+    <span class="kw">fn </span>clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="self">self</span>.start = SystemTime::now();
+        <span class="self">self</span>.success = <span class="number">0</span>;
+        <span class="self">self</span>.failed = <span class="number">0</span>;
     }
 
-    <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">RunStatistics</span> {
-        <span class="kw">let</span> <span class="ident">RunStatisticsBuilder</span> {
-            <span class="ident">start</span>,
-            <span class="ident">success</span>,
-            <span class="ident">failed</span>,
-        } <span class="op">=</span> <span class="self">self</span>;
-        <span class="ident">RunStatistics</span> {
-            <span class="ident">start</span>,
-            <span class="ident">end</span>: <span class="ident">SystemTime::now</span>(),
-            <span class="ident">success</span>,
-            <span class="ident">failed</span>,
+    <span class="kw">fn </span>build(<span class="self">self</span>) -&gt; RunStatistics {
+        <span class="kw">let </span>RunStatisticsBuilder {
+            start,
+            success,
+            failed,
+        } = <span class="self">self</span>;
+        RunStatistics {
+            start,
+            end: SystemTime::now(),
+            success,
+            failed,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">total</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="ident">success</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">failed</span>
+    <span class="kw">fn </span>total(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.success + <span class="self">self</span>.failed
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="syn_flood" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="syn_flood" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

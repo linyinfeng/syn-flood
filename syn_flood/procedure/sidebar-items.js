@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["flood_v4",""],["flood_v6",""],["resolve_destination",""]]});
+window.SIDEBAR_ITEMS = {"fn":[["flood_v4",""],["flood_v6",""],["resolve_destination",""]]};

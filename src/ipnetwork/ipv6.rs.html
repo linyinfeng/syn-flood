@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/ipnetwork-0.19.0/src/ipv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../ipnetwork/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../ipnetwork/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../ipnetwork/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/ipnetwork-0.19.0/src/ipv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../ipnetwork/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -641,642 +634,641 @@
 <span id="634">634</span>
 <span id="635">635</span>
 <span id="636">636</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::common</span>::{<span class="ident">cidr_parts</span>, <span class="ident">parse_prefix</span>, <span class="ident">IpNetworkError</span>};
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">cmp</span>, <span class="ident">fmt</span>, <span class="ident">net::Ipv6Addr</span>, <span class="ident">str::FromStr</span>, <span class="ident">convert::TryFrom</span>};
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::common::{cidr_parts, parse_prefix, IpNetworkError};
+<span class="kw">use </span>std::{cmp, fmt, net::Ipv6Addr, str::FromStr, convert::TryFrom};
 
-<span class="kw">const</span> <span class="ident">IPV6_BITS</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">128</span>;
-<span class="kw">const</span> <span class="ident">IPV6_SEGMENT_BITS</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">16</span>;
+<span class="kw">const </span>IPV6_BITS: u8 = <span class="number">128</span>;
+<span class="kw">const </span>IPV6_SEGMENT_BITS: u8 = <span class="number">16</span>;
 
-<span class="doccomment">/// Represents a network range where the IP addresses are of v6</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ipv6Network</span> {
-    <span class="ident">addr</span>: <span class="ident">Ipv6Addr</span>,
-    <span class="ident">prefix</span>: <span class="ident">u8</span>,
+<span class="doccomment">/// Represents a network range where the IP addresses are of v6
+</span><span class="attr">#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
+</span><span class="kw">pub struct </span>Ipv6Network {
+    addr: Ipv6Addr,
+    prefix: u8,
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">serde::Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">D</span>: <span class="ident">serde::Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;de</span>&gt; serde::Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span>Ipv6Network {
+    <span class="kw">fn </span>deserialize&lt;D&gt;(deserializer: D) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, D::Error&gt;
+    <span class="kw">where
+        </span>D: serde::Deserializer&lt;<span class="lifetime">&#39;de</span>&gt;,
     {
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="ident">::deserialize</span>(<span class="ident">deserializer</span>)<span class="question-mark">?</span>;
-        <span class="ident">Ipv6Network::from_str</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map_err</span>(<span class="ident">serde::de::Error::custom</span>)
+        <span class="kw">let </span>s = &lt;String&gt;::deserialize(deserializer)<span class="question-mark">?</span>;
+        Ipv6Network::from_str(<span class="kw-2">&amp;</span>s).map_err(serde::de::Error::custom)
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">impl</span> <span class="ident">serde::Serialize</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">S</span>: <span class="ident">serde::Serializer</span>,
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">impl </span>serde::Serialize <span class="kw">for </span>Ipv6Network {
+    <span class="kw">fn </span>serialize&lt;S&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, serializer: S) -&gt; <span class="prelude-ty">Result</span>&lt;S::Ok, S::Error&gt;
+    <span class="kw">where
+        </span>S: serde::Serializer,
     {
-        <span class="ident">serializer</span>.<span class="ident">collect_str</span>(<span class="self">self</span>)
+        serializer.collect_str(<span class="self">self</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Ipv6Network</span> {
-    <span class="doccomment">/// Constructs a new `Ipv6Network` from any `Ipv6Addr` and a prefix denoting the network size.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the prefix is larger than 128 this will return an `IpNetworkError::InvalidPrefix`.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">addr</span>: <span class="ident">Ipv6Addr</span>, <span class="ident">prefix</span>: <span class="ident">u8</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Ipv6Network</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">prefix</span> <span class="op">&gt;</span> <span class="ident">IPV6_BITS</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">IpNetworkError::InvalidPrefix</span>)
-        } <span class="kw">else</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">Ipv6Network</span> { <span class="ident">addr</span>, <span class="ident">prefix</span> })
+<span class="kw">impl </span>Ipv6Network {
+    <span class="doccomment">/// Constructs a new `Ipv6Network` from any `Ipv6Addr` and a prefix denoting the network size.
+    ///
+    /// If the prefix is larger than 128 this will return an `IpNetworkError::InvalidPrefix`.
+    </span><span class="kw">pub const fn </span>new(addr: Ipv6Addr, prefix: u8) -&gt; <span class="prelude-ty">Result</span>&lt;Ipv6Network, IpNetworkError&gt; {
+        <span class="kw">if </span>prefix &gt; IPV6_BITS {
+            <span class="prelude-val">Err</span>(IpNetworkError::InvalidPrefix)
+        } <span class="kw">else </span>{
+            <span class="prelude-val">Ok</span>(Ipv6Network { addr, prefix })
         }
     }
 
-    <span class="doccomment">/// Constructs a new `Ipv6Network` from a network address and a network mask.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the netmask is not valid this will return an `IpNetworkError::InvalidPrefix`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_netmask</span>(<span class="ident">netaddr</span>: <span class="ident">Ipv6Addr</span>, <span class="ident">netmask</span>: <span class="ident">Ipv6Addr</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ipv6_mask_to_prefix</span>(<span class="ident">netmask</span>)<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">net</span> <span class="op">=</span> <span class="self">Self</span> {
-            <span class="ident">addr</span>: <span class="ident">netaddr</span>,
-            <span class="ident">prefix</span>,
+    <span class="doccomment">/// Constructs a new `Ipv6Network` from a network address and a network mask.
+    ///
+    /// If the netmask is not valid this will return an `IpNetworkError::InvalidPrefix`.
+    </span><span class="kw">pub fn </span>with_netmask(netaddr: Ipv6Addr, netmask: Ipv6Addr) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, IpNetworkError&gt; {
+        <span class="kw">let </span>prefix = ipv6_mask_to_prefix(netmask)<span class="question-mark">?</span>;
+        <span class="kw">let </span>net = <span class="self">Self </span>{
+            addr: netaddr,
+            prefix,
         };
-        <span class="prelude-val">Ok</span>(<span class="ident">net</span>)
+        <span class="prelude-val">Ok</span>(net)
     }
 
-    <span class="doccomment">/// Returns an iterator over `Ipv6Network`. Each call to `next` will return the next</span>
-    <span class="doccomment">/// `Ipv6Addr` in the given network. `None` will be returned when there are no more</span>
-    <span class="doccomment">/// addresses.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ipv6NetworkIterator</span> {
-        <span class="kw">let</span> <span class="ident">dec</span> <span class="op">=</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">addr</span>);
-        <span class="kw">let</span> <span class="ident">max</span> <span class="op">=</span> <span class="ident">u128::max_value</span>();
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">prefix</span>;
+    <span class="doccomment">/// Returns an iterator over `Ipv6Network`. Each call to `next` will return the next
+    /// `Ipv6Addr` in the given network. `None` will be returned when there are no more
+    /// addresses.
+    </span><span class="kw">pub fn </span>iter(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Ipv6NetworkIterator {
+        <span class="kw">let </span>dec = u128::from(<span class="self">self</span>.addr);
+        <span class="kw">let </span>max = u128::max_value();
+        <span class="kw">let </span>prefix = <span class="self">self</span>.prefix;
 
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">max</span>.<span class="ident">checked_shl</span>(<span class="ident">u32::from</span>(<span class="ident">IPV6_BITS</span> <span class="op">-</span> <span class="ident">prefix</span>)).<span class="ident">unwrap_or</span>(<span class="number">0</span>);
-        <span class="kw">let</span> <span class="ident">start</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="ident">dec</span> <span class="op">&amp;</span> <span class="ident">mask</span>;
+        <span class="kw">let </span>mask = max.checked_shl(u32::from(IPV6_BITS - prefix)).unwrap_or(<span class="number">0</span>);
+        <span class="kw">let </span>start: u128 = dec &amp; mask;
 
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">max</span>.<span class="ident">checked_shr</span>(<span class="ident">u32::from</span>(<span class="ident">prefix</span>)).<span class="ident">unwrap_or</span>(<span class="number">0</span>);
-        <span class="kw">let</span> <span class="ident">end</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="ident">dec</span> <span class="op">|</span> <span class="ident">mask</span>;
+        <span class="kw">let </span>mask = max.checked_shr(u32::from(prefix)).unwrap_or(<span class="number">0</span>);
+        <span class="kw">let </span>end: u128 = dec | mask;
 
-        <span class="ident">Ipv6NetworkIterator</span> {
-            <span class="ident">next</span>: <span class="prelude-val">Some</span>(<span class="ident">start</span>),
-            <span class="ident">end</span>,
+        Ipv6NetworkIterator {
+            next: <span class="prelude-val">Some</span>(start),
+            end,
         }
     }
 
-    <span class="doccomment">/// Returns the address of the network denoted by this `Ipv6Network`.</span>
-    <span class="doccomment">/// This means the lowest possible IPv6 address inside of the network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv6Addr;</span>
-    <span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;2001:db8::/96&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.network(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">network</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ipv6Addr</span> {
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">mask</span>());
-        <span class="kw">let</span> <span class="ident">ip</span> <span class="op">=</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">addr</span>) <span class="op">&amp;</span> <span class="ident">mask</span>;
-        <span class="ident">Ipv6Addr::from</span>(<span class="ident">ip</span>)
+    <span class="doccomment">/// Returns the address of the network denoted by this `Ipv6Network`.
+    /// This means the lowest possible IPv6 address inside of the network.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv6Addr;
+    /// use ipnetwork::Ipv6Network;
+    ///
+    /// let net: Ipv6Network = &quot;2001:db8::/96&quot;.parse().unwrap();
+    /// assert_eq!(net.network(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0));
+    /// ```
+    </span><span class="kw">pub fn </span>network(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Ipv6Addr {
+        <span class="kw">let </span>mask = u128::from(<span class="self">self</span>.mask());
+        <span class="kw">let </span>ip = u128::from(<span class="self">self</span>.addr) &amp; mask;
+        Ipv6Addr::from(ip)
     }
 
-    <span class="doccomment">/// Returns the broadcast address of this `Ipv6Network`.</span>
-    <span class="doccomment">/// This means the highest possible IPv4 address inside of the network.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv6Addr;</span>
-    <span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;2001:db8::/96&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.broadcast(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0xffff, 0xffff));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">broadcast</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ipv6Addr</span> {
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">mask</span>());
-        <span class="kw">let</span> <span class="ident">broadcast</span> <span class="op">=</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">addr</span>) <span class="op">|</span> <span class="op">!</span><span class="ident">mask</span>;
-        <span class="ident">Ipv6Addr::from</span>(<span class="ident">broadcast</span>)
+    <span class="doccomment">/// Returns the broadcast address of this `Ipv6Network`.
+    /// This means the highest possible IPv4 address inside of the network.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv6Addr;
+    /// use ipnetwork::Ipv6Network;
+    ///
+    /// let net: Ipv6Network = &quot;2001:db8::/96&quot;.parse().unwrap();
+    /// assert_eq!(net.broadcast(), Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0xffff, 0xffff));
+    /// ```
+    </span><span class="kw">pub fn </span>broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Ipv6Addr {
+        <span class="kw">let </span>mask = u128::from(<span class="self">self</span>.mask());
+        <span class="kw">let </span>broadcast = u128::from(<span class="self">self</span>.addr) | !mask;
+        Ipv6Addr::from(broadcast)
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ip</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ipv6Addr</span> {
-        <span class="self">self</span>.<span class="ident">addr</span>
+    <span class="kw">pub fn </span>ip(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Ipv6Addr {
+        <span class="self">self</span>.addr
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prefix</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u8</span> {
-        <span class="self">self</span>.<span class="ident">prefix</span>
+    <span class="kw">pub fn </span>prefix(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
+        <span class="self">self</span>.prefix
     }
 
-    <span class="doccomment">/// Checks if the given `Ipv6Network` is a subnet of the other.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_subnet_of</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Ipv6Network</span>) -&gt; <span class="ident">bool</span> {
-        <span class="ident">other</span>.<span class="ident">ip</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">ip</span>() <span class="op">&amp;&amp;</span> <span class="ident">other</span>.<span class="ident">broadcast</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">broadcast</span>()
+    <span class="doccomment">/// Checks if the given `Ipv6Network` is a subnet of the other.
+    </span><span class="kw">pub fn </span>is_subnet_of(<span class="self">self</span>, other: Ipv6Network) -&gt; bool {
+        other.ip() &lt;= <span class="self">self</span>.ip() &amp;&amp; other.broadcast() &gt;= <span class="self">self</span>.broadcast()
     }
 
-    <span class="doccomment">/// Checks if the given `Ipv6Network` is a supernet of the other.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_supernet_of</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Ipv6Network</span>) -&gt; <span class="ident">bool</span> {
-        <span class="ident">other</span>.<span class="ident">is_subnet_of</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Checks if the given `Ipv6Network` is a supernet of the other.
+    </span><span class="kw">pub fn </span>is_supernet_of(<span class="self">self</span>, other: Ipv6Network) -&gt; bool {
+        other.is_subnet_of(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Checks if the given `Ipv6Network` is partly contained in other.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">overlaps</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Ipv6Network</span>) -&gt; <span class="ident">bool</span> {
-        <span class="ident">other</span>.<span class="ident">contains</span>(<span class="self">self</span>.<span class="ident">ip</span>())
-            <span class="op">|</span><span class="op">|</span> (<span class="ident">other</span>.<span class="ident">contains</span>(<span class="self">self</span>.<span class="ident">broadcast</span>())
-                <span class="op">|</span><span class="op">|</span> (<span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">other</span>.<span class="ident">ip</span>()) <span class="op">|</span><span class="op">|</span> (<span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">other</span>.<span class="ident">broadcast</span>()))))
+    <span class="doccomment">/// Checks if the given `Ipv6Network` is partly contained in other.
+    </span><span class="kw">pub fn </span>overlaps(<span class="self">self</span>, other: Ipv6Network) -&gt; bool {
+        other.contains(<span class="self">self</span>.ip())
+            || (other.contains(<span class="self">self</span>.broadcast())
+                || (<span class="self">self</span>.contains(other.ip()) || (<span class="self">self</span>.contains(other.broadcast()))))
     }
 
-    <span class="doccomment">/// Returns the mask for this `Ipv6Network`.</span>
-    <span class="doccomment">/// That means the `prefix` most significant bits will be 1 and the rest 0</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv6Addr;</span>
-    <span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;ff01::0&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff));</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0, 0, 0, 0, 0, 0));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mask</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ipv6Addr</span> {
-        <span class="comment">// Ipv6Addr::from is only implemented for [u8; 16]</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">segments</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">16</span>];
-        <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">segment</span>) <span class="kw">in</span> <span class="ident">segments</span>.<span class="ident">iter_mut</span>().<span class="ident">enumerate</span>() {
-            <span class="kw">let</span> <span class="ident">bits_remaining</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">prefix</span>.<span class="ident">saturating_sub</span>(<span class="ident">i</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">*</span> <span class="number">8</span>);
-            <span class="kw">let</span> <span class="ident">set_bits</span> <span class="op">=</span> <span class="ident">cmp::min</span>(<span class="ident">bits_remaining</span>, <span class="number">8</span>);
-            <span class="kw-2">*</span><span class="ident">segment</span> <span class="op">=</span> <span class="op">!</span>(<span class="number">0xff</span> <span class="kw">as</span> <span class="ident">u16</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">set_bits</span>) <span class="kw">as</span> <span class="ident">u8</span>;
+    <span class="doccomment">/// Returns the mask for this `Ipv6Network`.
+    /// That means the `prefix` most significant bits will be 1 and the rest 0
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv6Addr;
+    /// use ipnetwork::Ipv6Network;
+    ///
+    /// let net: Ipv6Network = &quot;ff01::0&quot;.parse().unwrap();
+    /// assert_eq!(net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff));
+    /// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();
+    /// assert_eq!(net.mask(), Ipv6Addr::new(0xffff, 0xffff, 0, 0, 0, 0, 0, 0));
+    /// ```
+    </span><span class="kw">pub fn </span>mask(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Ipv6Addr {
+        <span class="comment">// Ipv6Addr::from is only implemented for [u8; 16]
+        </span><span class="kw">let </span><span class="kw-2">mut </span>segments = [<span class="number">0</span>; <span class="number">16</span>];
+        <span class="kw">for </span>(i, segment) <span class="kw">in </span>segments.iter_mut().enumerate() {
+            <span class="kw">let </span>bits_remaining = <span class="self">self</span>.prefix.saturating_sub(i <span class="kw">as </span>u8 * <span class="number">8</span>);
+            <span class="kw">let </span>set_bits = cmp::min(bits_remaining, <span class="number">8</span>);
+            <span class="kw-2">*</span>segment = !(<span class="number">0xff </span><span class="kw">as </span>u16 &gt;&gt; set_bits) <span class="kw">as </span>u8;
         }
-        <span class="ident">Ipv6Addr::from</span>(<span class="ident">segments</span>)
+        Ipv6Addr::from(segments)
     }
 
-    <span class="doccomment">/// Checks if a given `Ipv6Addr` is in this `Ipv6Network`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv6Addr;</span>
-    <span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert!(net.contains(Ipv6Addr::new(0xff01, 0, 0, 0, 0, 0, 0, 0x1)));</span>
-    <span class="doccomment">/// assert!(!net.contains(Ipv6Addr::new(0xffff, 0, 0, 0, 0, 0, 0, 0x1)));</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ip</span>: <span class="ident">Ipv6Addr</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">addr</span>.<span class="ident">segments</span>();
-        <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">ip</span>.<span class="ident">segments</span>();
-        <span class="kw">let</span> <span class="ident">addrs</span> <span class="op">=</span> <span class="ident">Iterator::zip</span>(<span class="ident">a</span>.<span class="ident">iter</span>(), <span class="ident">b</span>.<span class="ident">iter</span>());
-        <span class="self">self</span>.<span class="ident">mask</span>()
-            .<span class="ident">segments</span>()
-            .<span class="ident">iter</span>()
-            .<span class="ident">zip</span>(<span class="ident">addrs</span>)
-            .<span class="ident">all</span>(<span class="op">|</span>(<span class="ident">mask</span>, (<span class="ident">a</span>, <span class="ident">b</span>))<span class="op">|</span> <span class="ident">a</span> <span class="op">&amp;</span> <span class="ident">mask</span> <span class="op">==</span> <span class="ident">b</span> <span class="op">&amp;</span> <span class="ident">mask</span>)
+    <span class="doccomment">/// Checks if a given `Ipv6Addr` is in this `Ipv6Network`
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv6Addr;
+    /// use ipnetwork::Ipv6Network;
+    ///
+    /// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();
+    /// assert!(net.contains(Ipv6Addr::new(0xff01, 0, 0, 0, 0, 0, 0, 0x1)));
+    /// assert!(!net.contains(Ipv6Addr::new(0xffff, 0, 0, 0, 0, 0, 0, 0x1)));
+    /// ```
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub fn </span>contains(<span class="kw-2">&amp;</span><span class="self">self</span>, ip: Ipv6Addr) -&gt; bool {
+        <span class="kw">let </span>a = <span class="self">self</span>.addr.segments();
+        <span class="kw">let </span>b = ip.segments();
+        <span class="kw">let </span>addrs = Iterator::zip(a.iter(), b.iter());
+        <span class="self">self</span>.mask()
+            .segments()
+            .iter()
+            .zip(addrs)
+            .all(|(mask, (a, b))| a &amp; mask == b &amp; mask)
     }
 
-    <span class="doccomment">/// Returns number of possible host addresses in this `Ipv6Network`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::net::Ipv6Addr;</span>
-    <span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(net.size(), 79228162514264337593543950336);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let tinynet: Ipv6Network = &quot;ff01::0/128&quot;.parse().unwrap();</span>
-    <span class="doccomment">/// assert_eq!(tinynet.size(), 1);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u128</span> {
-        <span class="kw">let</span> <span class="ident">host_bits</span> <span class="op">=</span> <span class="ident">u32::from</span>(<span class="ident">IPV6_BITS</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">prefix</span>);
-        (<span class="number">2</span> <span class="kw">as</span> <span class="ident">u128</span>).<span class="ident">pow</span>(<span class="ident">host_bits</span>)
+    <span class="doccomment">/// Returns number of possible host addresses in this `Ipv6Network`.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::net::Ipv6Addr;
+    /// use ipnetwork::Ipv6Network;
+    ///
+    /// let net: Ipv6Network = &quot;ff01::0/32&quot;.parse().unwrap();
+    /// assert_eq!(net.size(), 79228162514264337593543950336);
+    ///
+    /// let tinynet: Ipv6Network = &quot;ff01::0/128&quot;.parse().unwrap();
+    /// assert_eq!(tinynet.size(), 1);
+    /// ```
+    </span><span class="kw">pub fn </span>size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u128 {
+        <span class="kw">let </span>host_bits = u32::from(IPV6_BITS - <span class="self">self</span>.prefix);
+        (<span class="number">2 </span><span class="kw">as </span>u128).pow(host_bits)
     }
 }
 
-<span class="doccomment">/// Creates an `Ipv6Network` from parsing a string in CIDR notation.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use std::net::Ipv6Addr;</span>
-<span class="doccomment">/// use ipnetwork::Ipv6Network;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let new = Ipv6Network::new(Ipv6Addr::new(0xff01, 0, 0, 0x17, 0, 0, 0, 0x2), 65).unwrap();</span>
-<span class="doccomment">/// let from_cidr: Ipv6Network = &quot;FF01:0:0:17:0:0:0:2/65&quot;.parse().unwrap();</span>
-<span class="doccomment">/// assert_eq!(new.ip(), from_cidr.ip());</span>
-<span class="doccomment">/// assert_eq!(new.prefix(), from_cidr.prefix());</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">IpNetworkError</span>;
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> (<span class="ident">addr_str</span>, <span class="ident">prefix_str</span>) <span class="op">=</span> <span class="ident">cidr_parts</span>(<span class="ident">s</span>)<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">addr</span> <span class="op">=</span> <span class="ident">Ipv6Addr::from_str</span>(<span class="ident">addr_str</span>)
-            .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">IpNetworkError::InvalidAddr</span>(<span class="ident">addr_str</span>.<span class="ident">to_string</span>()))<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">prefix_str</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">v</span>) =&gt; <span class="ident">parse_prefix</span>(<span class="ident">v</span>, <span class="ident">IPV6_BITS</span>)<span class="question-mark">?</span>,
-            <span class="prelude-val">None</span> =&gt; <span class="ident">IPV6_BITS</span>,
+<span class="doccomment">/// Creates an `Ipv6Network` from parsing a string in CIDR notation.
+///
+/// # Examples
+///
+/// ```
+/// use std::net::Ipv6Addr;
+/// use ipnetwork::Ipv6Network;
+///
+/// let new = Ipv6Network::new(Ipv6Addr::new(0xff01, 0, 0, 0x17, 0, 0, 0, 0x2), 65).unwrap();
+/// let from_cidr: Ipv6Network = &quot;FF01:0:0:17:0:0:0:2/65&quot;.parse().unwrap();
+/// assert_eq!(new.ip(), from_cidr.ip());
+/// assert_eq!(new.prefix(), from_cidr.prefix());
+/// ```
+</span><span class="kw">impl </span>FromStr <span class="kw">for </span>Ipv6Network {
+    <span class="kw">type </span><span class="prelude-val">Err </span>= IpNetworkError;
+    <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
+        <span class="kw">let </span>(addr_str, prefix_str) = cidr_parts(s)<span class="question-mark">?</span>;
+        <span class="kw">let </span>addr = Ipv6Addr::from_str(addr_str)
+            .map_err(|<span class="kw">_</span>| IpNetworkError::InvalidAddr(addr_str.to_string()))<span class="question-mark">?</span>;
+        <span class="kw">let </span>prefix = <span class="kw">match </span>prefix_str {
+            <span class="prelude-val">Some</span>(v) =&gt; parse_prefix(v, IPV6_BITS)<span class="question-mark">?</span>,
+            <span class="prelude-val">None </span>=&gt; IPV6_BITS,
         };
-        <span class="ident">Ipv6Network::new</span>(<span class="ident">addr</span>, <span class="ident">prefix</span>)
+        Ipv6Network::new(addr, prefix)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">TryFrom</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">IpNetworkError</span>;
+<span class="kw">impl </span>TryFrom&lt;<span class="kw-2">&amp;</span>str&gt; <span class="kw">for </span>Ipv6Network {
+    <span class="kw">type </span>Error = IpNetworkError;
 
-    <span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
-        <span class="ident">Ipv6Network::from_str</span>(<span class="ident">s</span>)
+    <span class="kw">fn </span>try_from(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Error&gt; {
+        Ipv6Network::from_str(s)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Ipv6Addr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">a</span>: <span class="ident">Ipv6Addr</span>) -&gt; <span class="ident">Ipv6Network</span> {
-        <span class="ident">Ipv6Network</span> {
-            <span class="ident">addr</span>: <span class="ident">a</span>,
-            <span class="ident">prefix</span>: <span class="number">128</span>,
+<span class="kw">impl </span>From&lt;Ipv6Addr&gt; <span class="kw">for </span>Ipv6Network {
+    <span class="kw">fn </span>from(a: Ipv6Addr) -&gt; Ipv6Network {
+        Ipv6Network {
+            addr: a,
+            prefix: <span class="number">128</span>,
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ipv6NetworkIterator</span> {
-    <span class="ident">next</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span>,
-    <span class="ident">end</span>: <span class="ident">u128</span>,
+<span class="attr">#[derive(Clone, Debug)]
+</span><span class="kw">pub struct </span>Ipv6NetworkIterator {
+    next: <span class="prelude-ty">Option</span>&lt;u128&gt;,
+    end: u128,
 }
 
-<span class="kw">impl</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">Ipv6NetworkIterator</span> {
-    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Ipv6Addr</span>;
+<span class="kw">impl </span>Iterator <span class="kw">for </span>Ipv6NetworkIterator {
+    <span class="kw">type </span>Item = Ipv6Addr;
 
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv6Addr</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">next</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">next</span><span class="question-mark">?</span>;
-        <span class="self">self</span>.<span class="ident">next</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">next</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">end</span> {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">next</span> <span class="op">+</span> <span class="number">1</span>)
+    <span class="kw">fn </span>next(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Ipv6Addr&gt; {
+        <span class="kw">let </span>next = <span class="self">self</span>.next<span class="question-mark">?</span>;
+        <span class="self">self</span>.next = <span class="kw">if </span>next == <span class="self">self</span>.end {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="prelude-val">Some</span>(next + <span class="number">1</span>)
         };
-        <span class="prelude-val">Some</span>(<span class="ident">next</span>.<span class="ident">into</span>())
+        <span class="prelude-val">Some</span>(next.into())
     }
 }
 
-<span class="kw">impl</span> <span class="ident">IntoIterator</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">type</span> <span class="ident">IntoIter</span> <span class="op">=</span> <span class="ident">Ipv6NetworkIterator</span>;
-    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Ipv6Addr</span>;
-    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) -&gt; <span class="ident">Ipv6NetworkIterator</span> {
-        <span class="self">self</span>.<span class="ident">iter</span>()
+<span class="kw">impl </span>IntoIterator <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;_ </span>Ipv6Network {
+    <span class="kw">type </span>IntoIter = Ipv6NetworkIterator;
+    <span class="kw">type </span>Item = Ipv6Addr;
+    <span class="kw">fn </span>into_iter(<span class="self">self</span>) -&gt; Ipv6NetworkIterator {
+        <span class="self">self</span>.iter()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Ipv6Network</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;{}/{}&quot;</span>, <span class="self">self</span>.<span class="ident">ip</span>(), <span class="self">self</span>.<span class="ident">prefix</span>())
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>Ipv6Network {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, fmt: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="macro">write!</span>(fmt, <span class="string">&quot;{}/{}&quot;</span>, <span class="self">self</span>.ip(), <span class="self">self</span>.prefix())
     }
 }
 
-<span class="doccomment">/// Converts a `Ipv6Addr` network mask into a prefix.</span>
-<span class="doccomment">/// If the mask is invalid this will return an `IpNetworkError::InvalidPrefix`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv6_mask_to_prefix</span>(<span class="ident">mask</span>: <span class="ident">Ipv6Addr</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u8</span>, <span class="ident">IpNetworkError</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">mask</span>.<span class="ident">segments</span>();
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mask_iter</span> <span class="op">=</span> <span class="ident">mask</span>.<span class="ident">iter</span>();
+<span class="doccomment">/// Converts a `Ipv6Addr` network mask into a prefix.
+/// If the mask is invalid this will return an `IpNetworkError::InvalidPrefix`.
+</span><span class="kw">pub fn </span>ipv6_mask_to_prefix(mask: Ipv6Addr) -&gt; <span class="prelude-ty">Result</span>&lt;u8, IpNetworkError&gt; {
+    <span class="kw">let </span>mask = mask.segments();
+    <span class="kw">let </span><span class="kw-2">mut </span>mask_iter = mask.iter();
 
-    <span class="comment">// Count the number of set bits from the start of the address</span>
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">segment</span> <span class="kw">in</span> <span class="kw-2">&amp;mut</span> <span class="ident">mask_iter</span> {
-        <span class="kw">if</span> <span class="ident">segment</span> <span class="op">==</span> <span class="number">0xffff</span> {
-            <span class="ident">prefix</span> <span class="op">+</span><span class="op">=</span> <span class="ident">IPV6_SEGMENT_BITS</span>;
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">segment</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="comment">// Prefix finishes on a segment boundary</span>
-            <span class="kw">break</span>;
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">prefix_bits</span> <span class="op">=</span> (<span class="op">!</span><span class="ident">segment</span>).<span class="ident">leading_zeros</span>() <span class="kw">as</span> <span class="ident">u8</span>;
-            <span class="comment">// Check that the remainder of the bits are all unset</span>
-            <span class="kw">if</span> <span class="ident">segment</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="ident">prefix_bits</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">IpNetworkError::InvalidPrefix</span>);
+    <span class="comment">// Count the number of set bits from the start of the address
+    </span><span class="kw">let </span><span class="kw-2">mut </span>prefix = <span class="number">0</span>;
+    <span class="kw">for </span><span class="kw-2">&amp;</span>segment <span class="kw">in </span><span class="kw-2">&amp;mut </span>mask_iter {
+        <span class="kw">if </span>segment == <span class="number">0xffff </span>{
+            prefix += IPV6_SEGMENT_BITS;
+        } <span class="kw">else if </span>segment == <span class="number">0 </span>{
+            <span class="comment">// Prefix finishes on a segment boundary
+            </span><span class="kw">break</span>;
+        } <span class="kw">else </span>{
+            <span class="kw">let </span>prefix_bits = (!segment).leading_zeros() <span class="kw">as </span>u8;
+            <span class="comment">// Check that the remainder of the bits are all unset
+            </span><span class="kw">if </span>segment &lt;&lt; prefix_bits != <span class="number">0 </span>{
+                <span class="kw">return </span><span class="prelude-val">Err</span>(IpNetworkError::InvalidPrefix);
             }
-            <span class="ident">prefix</span> <span class="op">+</span><span class="op">=</span> <span class="ident">prefix_bits</span>;
+            prefix += prefix_bits;
             <span class="kw">break</span>;
         }
     }
 
-    <span class="comment">// Now check all the remaining bits are unset</span>
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">segment</span> <span class="kw">in</span> <span class="ident">mask_iter</span> {
-        <span class="kw">if</span> <span class="ident">segment</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">IpNetworkError::InvalidPrefix</span>);
+    <span class="comment">// Now check all the remaining bits are unset
+    </span><span class="kw">for </span><span class="kw-2">&amp;</span>segment <span class="kw">in </span>mask_iter {
+        <span class="kw">if </span>segment != <span class="number">0 </span>{
+            <span class="kw">return </span><span class="prelude-val">Err</span>(IpNetworkError::InvalidPrefix);
         }
     }
 
-    <span class="prelude-val">Ok</span>(<span class="ident">prefix</span>)
+    <span class="prelude-val">Ok</span>(prefix)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">test</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
-    <span class="kw">use</span> <span class="ident">std::net::Ipv6Addr</span>;
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>test {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>std::collections::HashMap;
+    <span class="kw">use </span>std::net::Ipv6Addr;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">create_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">24</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">prefix</span>(), <span class="number">24</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>create_v6() {
+        <span class="kw">let </span>cidr = Ipv6Network::new(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">24</span>).unwrap();
+        <span class="macro">assert_eq!</span>(cidr.prefix(), <span class="number">24</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_netmask_broken_v6</span>() {
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_netmask_broken_v6() {
         <span class="macro">assert_eq!</span>(
-            <span class="string">&quot;FF01:0:0:17:0:0:0:2/255.255.255.0&quot;</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span>(),
-            <span class="prelude-val">Err</span>(<span class="ident">IpNetworkError::InvalidPrefix</span>)
+            <span class="string">&quot;FF01:0:0:17:0:0:0:2/255.255.255.0&quot;</span>.parse::&lt;Ipv6Network&gt;(),
+            <span class="prelude-val">Err</span>(IpNetworkError::InvalidPrefix)
         );
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">create_v6_invalid_prefix</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">129</span>);
-        <span class="macro">assert!</span>(<span class="ident">cidr</span>.<span class="ident">is_err</span>());
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>create_v6_invalid_prefix() {
+        <span class="kw">let </span>cidr = Ipv6Network::new(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">129</span>);
+        <span class="macro">assert!</span>(cidr.is_err());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;::1/0&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">ip</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">prefix</span>(), <span class="number">0</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;::1/0&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(cidr.ip(), Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(cidr.prefix(), <span class="number">0</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6_2</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;FF01:0:0:17:0:0:0:2/64&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">ip</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">prefix</span>(), <span class="number">64</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6_2() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;FF01:0:0:17:0:0:0:2/64&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(cidr.ip(), Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>));
+        <span class="macro">assert_eq!</span>(cidr.prefix(), <span class="number">64</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6_noprefix</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;::1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">ip</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">prefix</span>(), <span class="number">128</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6_noprefix() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;::1&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(cidr.ip(), Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(cidr.prefix(), <span class="number">128</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6_fail_addr</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span> <span class="op">=</span> <span class="string">&quot;2001::1::/8&quot;</span>.<span class="ident">parse</span>().<span class="ident">ok</span>();
-        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">cidr</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6_fail_addr() {
+        <span class="kw">let </span>cidr: <span class="prelude-ty">Option</span>&lt;Ipv6Network&gt; = <span class="string">&quot;2001::1::/8&quot;</span>.parse().ok();
+        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, cidr);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6_fail_prefix</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span> <span class="op">=</span> <span class="string">&quot;::1/129&quot;</span>.<span class="ident">parse</span>().<span class="ident">ok</span>();
-        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">cidr</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6_fail_prefix() {
+        <span class="kw">let </span>cidr: <span class="prelude-ty">Option</span>&lt;Ipv6Network&gt; = <span class="string">&quot;::1/129&quot;</span>.parse().ok();
+        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, cidr);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">parse_v6_fail_two_slashes</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span> <span class="op">=</span> <span class="string">&quot;::1/24/&quot;</span>.<span class="ident">parse</span>().<span class="ident">ok</span>();
-        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">cidr</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>parse_v6_fail_two_slashes() {
+        <span class="kw">let </span>cidr: <span class="prelude-ty">Option</span>&lt;Ipv6Network&gt; = <span class="string">&quot;::1/24/&quot;</span>.parse().ok();
+        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, cidr);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">mask_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">40</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">mask</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">mask</span>, <span class="ident">Ipv6Addr::new</span>(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xff00</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>mask_v6() {
+        <span class="kw">let </span>cidr = Ipv6Network::new(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">40</span>).unwrap();
+        <span class="kw">let </span>mask = cidr.mask();
+        <span class="macro">assert_eq!</span>(mask, Ipv6Addr::new(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xff00</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">contains_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">65</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">ip</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0x7fff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
-        <span class="macro">assert!</span>(<span class="ident">cidr</span>.<span class="ident">contains</span>(<span class="ident">ip</span>));
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>contains_v6() {
+        <span class="kw">let </span>cidr = Ipv6Network::new(Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">65</span>).unwrap();
+        <span class="kw">let </span>ip = Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0x7fff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
+        <span class="macro">assert!</span>(cidr.contains(ip));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">not_contains_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">65</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">ip</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">cidr</span>.<span class="ident">contains</span>(<span class="ident">ip</span>));
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>not_contains_v6() {
+        <span class="kw">let </span>cidr = Ipv6Network::new(Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">65</span>).unwrap();
+        <span class="kw">let </span>ip = Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
+        <span class="macro">assert!</span>(!cidr.contains(ip));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">v6_mask_to_prefix</span>() {
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ipv6_mask_to_prefix</span>(<span class="ident">mask</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">prefix</span>, <span class="number">48</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>v6_mask_to_prefix() {
+        <span class="kw">let </span>mask = Ipv6Addr::new(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
+        <span class="kw">let </span>prefix = ipv6_mask_to_prefix(mask).unwrap();
+        <span class="macro">assert_eq!</span>(prefix, <span class="number">48</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">invalid_v6_mask_to_prefix</span>() {
-        <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ipv6_mask_to_prefix</span>(<span class="ident">mask</span>);
-        <span class="macro">assert!</span>(<span class="ident">prefix</span>.<span class="ident">is_err</span>());
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>invalid_v6_mask_to_prefix() {
+        <span class="kw">let </span>mask = Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
+        <span class="kw">let </span>prefix = ipv6_mask_to_prefix(mask);
+        <span class="macro">assert!</span>(prefix.is_err());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">ipv6network_with_netmask</span>() {
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>ipv6network_with_netmask() {
         {
-            <span class="comment">// Positive test-case.</span>
-            <span class="kw">let</span> <span class="ident">addr</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
-            <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
-            <span class="kw">let</span> <span class="ident">net</span> <span class="op">=</span> <span class="ident">Ipv6Network::with_netmask</span>(<span class="ident">addr</span>, <span class="ident">mask</span>).<span class="ident">unwrap</span>();
-            <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span>
-                <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">48</span>).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">net</span>, <span class="ident">expected</span>);
+            <span class="comment">// Positive test-case.
+            </span><span class="kw">let </span>addr = Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
+            <span class="kw">let </span>mask = Ipv6Addr::new(<span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
+            <span class="kw">let </span>net = Ipv6Network::with_netmask(addr, mask).unwrap();
+            <span class="kw">let </span>expected =
+                Ipv6Network::new(Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>), <span class="number">48</span>).unwrap();
+            <span class="macro">assert_eq!</span>(net, expected);
         }
         {
-            <span class="comment">// Negative test-case.</span>
-            <span class="kw">let</span> <span class="ident">addr</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
-            <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
-            <span class="ident">Ipv6Network::with_netmask</span>(<span class="ident">addr</span>, <span class="ident">mask</span>).<span class="ident">unwrap_err</span>();
+            <span class="comment">// Negative test-case.
+            </span><span class="kw">let </span>addr = Ipv6Addr::new(<span class="number">0xff01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x17</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0x2</span>);
+            <span class="kw">let </span>mask = Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0xffff</span>, <span class="number">0xffff</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
+            Ipv6Network::with_netmask(addr, mask).unwrap_err();
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">iterator_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::/126&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">iter</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>iterator_v6() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::/126&quot;</span>.parse().unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>iter = cidr.iter();
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Ipv6Addr::new</span>(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>),
-            <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>()
+            Ipv6Addr::new(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>),
+            iter.next().unwrap()
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Ipv6Addr::new</span>(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>),
-            <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>()
+            Ipv6Addr::new(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>),
+            iter.next().unwrap()
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Ipv6Addr::new</span>(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>),
-            <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>()
+            Ipv6Addr::new(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>),
+            iter.next().unwrap()
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Ipv6Addr::new</span>(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>),
-            <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>()
+            Ipv6Addr::new(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>),
+            iter.next().unwrap()
         );
-        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">iter</span>.<span class="ident">next</span>());
+        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, iter.next());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">iterator_v6_tiny</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::/128&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">iter</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>iterator_v6_tiny() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::/128&quot;</span>.parse().unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>iter = cidr.iter();
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Ipv6Addr::new</span>(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>),
-            <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>()
+            Ipv6Addr::new(<span class="number">0x2001</span>, <span class="number">0xdb8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>),
+            iter.next().unwrap()
         );
-        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">iter</span>.<span class="ident">next</span>());
+        <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, iter.next());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">iterator_v6_huge</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::/0&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">iter</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>), <span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>());
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>iterator_v6_huge() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::/0&quot;</span>.parse().unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>iter = cidr.iter();
+        <span class="macro">assert_eq!</span>(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), iter.next().unwrap());
+        <span class="macro">assert_eq!</span>(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), iter.next().unwrap());
+        <span class="macro">assert_eq!</span>(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>), iter.next().unwrap());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">network_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::0/96&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">net</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">network</span>();
-        <span class="kw">let</span> <span class="ident">expected</span>: <span class="ident">Ipv6Addr</span> <span class="op">=</span> <span class="string">&quot;2001:db8::&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">net</span>, <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>network_v6() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::0/96&quot;</span>.parse().unwrap();
+        <span class="kw">let </span>net = cidr.network();
+        <span class="kw">let </span>expected: Ipv6Addr = <span class="string">&quot;2001:db8::&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(net, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">broadcast_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::0/96&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">net</span> <span class="op">=</span> <span class="ident">cidr</span>.<span class="ident">broadcast</span>();
-        <span class="kw">let</span> <span class="ident">expected</span>: <span class="ident">Ipv6Addr</span> <span class="op">=</span> <span class="string">&quot;2001:db8::ffff:ffff&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">net</span>, <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>broadcast_v6() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::0/96&quot;</span>.parse().unwrap();
+        <span class="kw">let </span>net = cidr.broadcast();
+        <span class="kw">let </span>expected: Ipv6Addr = <span class="string">&quot;2001:db8::ffff:ffff&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(net, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">size_v6</span>() {
-        <span class="kw">let</span> <span class="ident">cidr</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:db8::0/96&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">cidr</span>.<span class="ident">size</span>(), <span class="number">4294967296</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>size_v6() {
+        <span class="kw">let </span>cidr: Ipv6Network = <span class="string">&quot;2001:db8::0/96&quot;</span>.parse().unwrap();
+        <span class="macro">assert_eq!</span>(cidr.size(), <span class="number">4294967296</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">ipv6network_from_ipv6addr</span>() {
-        <span class="kw">let</span> <span class="ident">net</span> <span class="op">=</span> <span class="ident">Ipv6Network::from</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="ident">Ipv6Network::new</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">128</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">net</span>, <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>ipv6network_from_ipv6addr() {
+        <span class="kw">let </span>net = Ipv6Network::from(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+        <span class="kw">let </span>expected = Ipv6Network::new(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), <span class="number">128</span>).unwrap();
+        <span class="macro">assert_eq!</span>(net, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_send</span>() {
-        <span class="kw">fn</span> <span class="ident">assert_send</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Send</span><span class="op">&gt;</span>() {}
-        <span class="ident">assert_send</span>::<span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_send() {
+        <span class="kw">fn </span>assert_send&lt;T: Send&gt;() {}
+        assert_send::&lt;Ipv6Network&gt;();
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_sync</span>() {
-        <span class="kw">fn</span> <span class="ident">assert_sync</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Sync</span><span class="op">&gt;</span>() {}
-        <span class="ident">assert_sync</span>::<span class="op">&lt;</span><span class="ident">Ipv6Network</span><span class="op">&gt;</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_sync() {
+        <span class="kw">fn </span>assert_sync&lt;T: Sync&gt;() {}
+        assert_sync::&lt;Ipv6Network&gt;();
     }
 
-    <span class="comment">// Tests from cpython https://github.com/python/cpython/blob/e9bc4172d18db9c182d8e04dd7b033097a994c06/Lib/test/test_ipaddress.py</span>
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_is_subnet_of</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">test_cases</span>: <span class="ident">HashMap</span><span class="op">&lt;</span>(<span class="ident">Ipv6Network</span>, <span class="ident">Ipv6Network</span>), <span class="ident">bool</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">HashMap::new</span>();
+    <span class="comment">// Tests from cpython https://github.com/python/cpython/blob/e9bc4172d18db9c182d8e04dd7b033097a994c06/Lib/test/test_ipaddress.py
+    </span><span class="attr">#[test]
+    </span><span class="kw">fn </span>test_is_subnet_of() {
+        <span class="kw">let </span><span class="kw-2">mut </span>test_cases: HashMap&lt;(Ipv6Network, Ipv6Network), bool&gt; = HashMap::new();
 
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:999::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:999::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:aaa::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:aaa::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">true</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:bbb::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:bbb::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/56&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
 
-        <span class="kw">for</span> (<span class="ident">key</span>, <span class="ident">val</span>) <span class="kw">in</span> <span class="ident">test_cases</span>.<span class="ident">iter</span>() {
-            <span class="kw">let</span> (<span class="ident">src</span>, <span class="ident">dest</span>) <span class="op">=</span> (<span class="ident">key</span>.<span class="number">0</span>, <span class="ident">key</span>.<span class="number">1</span>);
+        <span class="kw">for </span>(key, val) <span class="kw">in </span>test_cases.iter() {
+            <span class="kw">let </span>(src, dest) = (key.<span class="number">0</span>, key.<span class="number">1</span>);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">src</span>.<span class="ident">is_subnet_of</span>(<span class="ident">dest</span>),
-                <span class="kw-2">*</span><span class="ident">val</span>,
+                src.is_subnet_of(dest),
+                <span class="kw-2">*</span>val,
                 <span class="string">&quot;testing with {} and {}&quot;</span>,
-                <span class="ident">src</span>,
-                <span class="ident">dest</span>
+                src,
+                dest
             );
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_is_supernet_of</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">test_cases</span>: <span class="ident">HashMap</span><span class="op">&lt;</span>(<span class="ident">Ipv6Network</span>, <span class="ident">Ipv6Network</span>), <span class="ident">bool</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">HashMap::new</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_is_supernet_of() {
+        <span class="kw">let </span><span class="kw-2">mut </span>test_cases: HashMap&lt;(Ipv6Network, Ipv6Network), bool&gt; = HashMap::new();
 
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:999::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:999::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:aaa::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:aaa::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:bbb::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:bbb::/56&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">false</span>,
         );
-        <span class="ident">test_cases</span>.<span class="ident">insert</span>(
+        test_cases.insert(
             (
-                <span class="string">&quot;2000:aaa::/48&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
-                <span class="string">&quot;2000:aaa::/56&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>(),
+                <span class="string">&quot;2000:aaa::/48&quot;</span>.parse().unwrap(),
+                <span class="string">&quot;2000:aaa::/56&quot;</span>.parse().unwrap(),
             ),
             <span class="bool-val">true</span>,
         );
 
-        <span class="kw">for</span> (<span class="ident">key</span>, <span class="ident">val</span>) <span class="kw">in</span> <span class="ident">test_cases</span>.<span class="ident">iter</span>() {
-            <span class="kw">let</span> (<span class="ident">src</span>, <span class="ident">dest</span>) <span class="op">=</span> (<span class="ident">key</span>.<span class="number">0</span>, <span class="ident">key</span>.<span class="number">1</span>);
+        <span class="kw">for </span>(key, val) <span class="kw">in </span>test_cases.iter() {
+            <span class="kw">let </span>(src, dest) = (key.<span class="number">0</span>, key.<span class="number">1</span>);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">src</span>.<span class="ident">is_supernet_of</span>(<span class="ident">dest</span>),
-                <span class="kw-2">*</span><span class="ident">val</span>,
+                src.is_supernet_of(dest),
+                <span class="kw-2">*</span>val,
                 <span class="string">&quot;testing with {} and {}&quot;</span>,
-                <span class="ident">src</span>,
-                <span class="ident">dest</span>
+                src,
+                dest
             );
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_overlaps</span>() {
-        <span class="kw">let</span> <span class="ident">other</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:DB8:ACAD::1/64&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">other2</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;2001:DB8:ACAD::20:2/64&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_overlaps() {
+        <span class="kw">let </span>other: Ipv6Network = <span class="string">&quot;2001:DB8:ACAD::1/64&quot;</span>.parse().unwrap();
+        <span class="kw">let </span>other2: Ipv6Network = <span class="string">&quot;2001:DB8:ACAD::20:2/64&quot;</span>.parse().unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">other2</span>.<span class="ident">overlaps</span>(<span class="ident">other</span>), <span class="bool-val">true</span>);
+        <span class="macro">assert_eq!</span>(other2.overlaps(other), <span class="bool-val">true</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">edges</span>() {
-        <span class="kw">let</span> <span class="ident">low</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;::0/120&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">low_addrs</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ipv6Addr</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">low</span>.<span class="ident">iter</span>().<span class="ident">collect</span>();
-        <span class="macro">assert_eq!</span>(<span class="number">256</span>, <span class="ident">low_addrs</span>.<span class="ident">len</span>());
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>edges() {
+        <span class="kw">let </span>low: Ipv6Network = <span class="string">&quot;::0/120&quot;</span>.parse().unwrap();
+        <span class="kw">let </span>low_addrs: Vec&lt;Ipv6Addr&gt; = low.iter().collect();
+        <span class="macro">assert_eq!</span>(<span class="number">256</span>, low_addrs.len());
 
-        <span class="kw">let</span> <span class="ident">high</span>: <span class="ident">Ipv6Network</span> <span class="op">=</span> <span class="string">&quot;ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00/120&quot;</span>
-            .<span class="ident">parse</span>()
-            .<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">high_addrs</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ipv6Addr</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">high</span>.<span class="ident">iter</span>().<span class="ident">collect</span>();
-        <span class="macro">assert_eq!</span>(<span class="number">256</span>, <span class="ident">high_addrs</span>.<span class="ident">len</span>());
+        <span class="kw">let </span>high: Ipv6Network = <span class="string">&quot;ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00/120&quot;
+            </span>.parse()
+            .unwrap();
+        <span class="kw">let </span>high_addrs: Vec&lt;Ipv6Addr&gt; = high.iter().collect();
+        <span class="macro">assert_eq!</span>(<span class="number">256</span>, high_addrs.len());
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="ipnetwork" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="ipnetwork" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

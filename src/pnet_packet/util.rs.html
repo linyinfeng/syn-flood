@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/util.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>util.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/util.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>util.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -261,262 +254,261 @@
 <span id="254">254</span>
 <span id="255">255</span>
 <span id="256">256</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Utilities for working with packets, eg. checksumming.</span>
+</span><span class="doccomment">//! Utilities for working with packets, eg. checksumming.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocol</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support::types::u16be</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocol;
+<span class="kw">use </span>pnet_macros_support::types::u16be;
 
-<span class="kw">use</span> <span class="ident">core::convert::TryInto</span>;
-<span class="kw">use</span> <span class="ident">pnet_base::core_net</span>::{<span class="ident">Ipv4Addr</span>, <span class="ident">Ipv6Addr</span>};
-<span class="kw">use</span> <span class="ident">core::u16</span>;
-<span class="kw">use</span> <span class="ident">core::u8</span>;
+<span class="kw">use </span>core::convert::TryInto;
+<span class="kw">use </span>pnet_base::core_net::{Ipv4Addr, Ipv6Addr};
+<span class="kw">use </span>core::u16;
+<span class="kw">use </span>core::u8;
 
-<span class="doccomment">/// Convert a value to a byte array.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Octets</span> {
-    <span class="doccomment">/// Output type - bytes array.</span>
-    <span class="kw">type</span> <span class="ident">Output</span>;
+<span class="doccomment">/// Convert a value to a byte array.
+</span><span class="kw">pub trait </span>Octets {
+    <span class="doccomment">/// Output type - bytes array.
+    </span><span class="kw">type </span>Output;
 
-    <span class="doccomment">/// Return a value as bytes (big-endian order).</span>
-    <span class="kw">fn</span> <span class="ident">octets</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span>;
+    <span class="doccomment">/// Return a value as bytes (big-endian order).
+    </span><span class="kw">fn </span>octets(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Output;
 }
 
-<span class="kw">impl</span> <span class="ident">Octets</span> <span class="kw">for</span> <span class="ident">u64</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> [<span class="ident">u8</span>; <span class="number">8</span>];
+<span class="kw">impl </span>Octets <span class="kw">for </span>u64 {
+    <span class="kw">type </span>Output = [u8; <span class="number">8</span>];
 
-    <span class="kw">fn</span> <span class="ident">octets</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
+    <span class="kw">fn </span>octets(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
         [
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">56</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">48</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">40</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">32</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="kw-2">*</span><span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span>,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">56</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">48</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">40</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">32</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            <span class="kw-2">*</span><span class="self">self </span><span class="kw">as </span>u8,
         ]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Octets</span> <span class="kw">for</span> <span class="ident">u32</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> [<span class="ident">u8</span>; <span class="number">4</span>];
+<span class="kw">impl </span>Octets <span class="kw">for </span>u32 {
+    <span class="kw">type </span>Output = [u8; <span class="number">4</span>];
 
-    <span class="kw">fn</span> <span class="ident">octets</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
+    <span class="kw">fn </span>octets(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
         [
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="kw-2">*</span><span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span>,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            <span class="kw-2">*</span><span class="self">self </span><span class="kw">as </span>u8,
         ]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Octets</span> <span class="kw">for</span> <span class="ident">u16</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> [<span class="ident">u8</span>; <span class="number">2</span>];
+<span class="kw">impl </span>Octets <span class="kw">for </span>u16 {
+    <span class="kw">type </span>Output = [u8; <span class="number">2</span>];
 
-    <span class="kw">fn</span> <span class="ident">octets</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        [(<span class="kw-2">*</span><span class="self">self</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>, <span class="kw-2">*</span><span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span>]
+    <span class="kw">fn </span>octets(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
+        [(<span class="kw-2">*</span><span class="self">self </span>&gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8, <span class="kw-2">*</span><span class="self">self </span><span class="kw">as </span>u8]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Octets</span> <span class="kw">for</span> <span class="ident">u8</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> [<span class="ident">u8</span>; <span class="number">1</span>];
+<span class="kw">impl </span>Octets <span class="kw">for </span>u8 {
+    <span class="kw">type </span>Output = [u8; <span class="number">1</span>];
 
-    <span class="kw">fn</span> <span class="ident">octets</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
+    <span class="kw">fn </span>octets(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
         [<span class="kw-2">*</span><span class="self">self</span>]
     }
 }
 
-<span class="doccomment">/// Calculates a checksum. Used by ipv4 and icmp. The two bytes starting at `skipword * 2` will be</span>
-<span class="doccomment">/// ignored. Supposed to be the checksum field, which is regarded as zero during calculation.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">checksum</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">skipword</span>: <span class="ident">usize</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">if</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span> {
-        <span class="kw">return</span> <span class="number">0</span>;
+<span class="doccomment">/// Calculates a checksum. Used by ipv4 and icmp. The two bytes starting at `skipword * 2` will be
+/// ignored. Supposed to be the checksum field, which is regarded as zero during calculation.
+</span><span class="kw">pub fn </span>checksum(data: <span class="kw-2">&amp;</span>[u8], skipword: usize) -&gt; u16be {
+    <span class="kw">if </span>data.len() == <span class="number">0 </span>{
+        <span class="kw">return </span><span class="number">0</span>;
     }
-    <span class="kw">let</span> <span class="ident">sum</span> <span class="op">=</span> <span class="ident">sum_be_words</span>(<span class="ident">data</span>, <span class="ident">skipword</span>);
-    <span class="ident">finalize_checksum</span>(<span class="ident">sum</span>)
+    <span class="kw">let </span>sum = sum_be_words(data, skipword);
+    finalize_checksum(sum)
 }
 
-<span class="kw">fn</span> <span class="ident">finalize_checksum</span>(<span class="kw-2">mut</span> <span class="ident">sum</span>: <span class="ident">u32</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">while</span> <span class="ident">sum</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
-        <span class="ident">sum</span> <span class="op">=</span> (<span class="ident">sum</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="op">+</span> (<span class="ident">sum</span> <span class="op">&amp;</span> <span class="number">0xFFFF</span>);
+<span class="kw">fn </span>finalize_checksum(<span class="kw-2">mut </span>sum: u32) -&gt; u16be {
+    <span class="kw">while </span>sum &gt;&gt; <span class="number">16 </span>!= <span class="number">0 </span>{
+        sum = (sum &gt;&gt; <span class="number">16</span>) + (sum &amp; <span class="number">0xFFFF</span>);
     }
-    <span class="op">!</span><span class="ident">sum</span> <span class="kw">as</span> <span class="ident">u16</span>
+    !sum <span class="kw">as </span>u16
 }
 
-<span class="doccomment">/// Calculate the checksum for a packet built on IPv4. Used by UDP and TCP.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv4_checksum</span>(
-    <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    <span class="ident">skipword</span>: <span class="ident">usize</span>,
-    <span class="ident">extra_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>,
-    <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>,
-    <span class="ident">next_level_protocol</span>: <span class="ident">IpNextHeaderProtocol</span>,
-) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sum</span> <span class="op">=</span> <span class="number">0u32</span>;
+<span class="doccomment">/// Calculate the checksum for a packet built on IPv4. Used by UDP and TCP.
+</span><span class="kw">pub fn </span>ipv4_checksum(
+    data: <span class="kw-2">&amp;</span>[u8],
+    skipword: usize,
+    extra_data: <span class="kw-2">&amp;</span>[u8],
+    source: <span class="kw-2">&amp;</span>Ipv4Addr,
+    destination: <span class="kw-2">&amp;</span>Ipv4Addr,
+    next_level_protocol: IpNextHeaderProtocol,
+) -&gt; u16be {
+    <span class="kw">let </span><span class="kw-2">mut </span>sum = <span class="number">0u32</span>;
 
-    <span class="comment">// Checksum pseudo-header</span>
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">ipv4_word_sum</span>(<span class="ident">source</span>);
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">ipv4_word_sum</span>(<span class="ident">destination</span>);
+    <span class="comment">// Checksum pseudo-header
+    </span>sum += ipv4_word_sum(source);
+    sum += ipv4_word_sum(destination);
 
-    <span class="kw">let</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="ident">next_level_protocol</span>) <span class="op">=</span> <span class="ident">next_level_protocol</span>;
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">next_level_protocol</span> <span class="kw">as</span> <span class="ident">u32</span>;
+    <span class="kw">let </span>IpNextHeaderProtocol(next_level_protocol) = next_level_protocol;
+    sum += next_level_protocol <span class="kw">as </span>u32;
 
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="ident">extra_data</span>.<span class="ident">len</span>();
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">len</span> <span class="kw">as</span> <span class="ident">u32</span>;
+    <span class="kw">let </span>len = data.len() + extra_data.len();
+    sum += len <span class="kw">as </span>u32;
 
-    <span class="comment">// Checksum packet header and data</span>
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">sum_be_words</span>(<span class="ident">data</span>, <span class="ident">skipword</span>);
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">sum_be_words</span>(<span class="ident">extra_data</span>, <span class="ident">extra_data</span>.<span class="ident">len</span>() <span class="op">/</span> <span class="number">2</span>);
+    <span class="comment">// Checksum packet header and data
+    </span>sum += sum_be_words(data, skipword);
+    sum += sum_be_words(extra_data, extra_data.len() / <span class="number">2</span>);
 
-    <span class="ident">finalize_checksum</span>(<span class="ident">sum</span>)
+    finalize_checksum(sum)
 }
 
-<span class="kw">fn</span> <span class="ident">ipv4_word_sum</span>(<span class="ident">ip</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>) -&gt; <span class="ident">u32</span> {
-    <span class="kw">let</span> <span class="ident">octets</span> <span class="op">=</span> <span class="ident">ip</span>.<span class="ident">octets</span>();
-    ((<span class="ident">octets</span>[<span class="number">0</span>] <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span> <span class="op">|</span> <span class="ident">octets</span>[<span class="number">1</span>] <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">+</span> ((<span class="ident">octets</span>[<span class="number">2</span>] <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span> <span class="op">|</span> <span class="ident">octets</span>[<span class="number">3</span>] <span class="kw">as</span> <span class="ident">u32</span>)
+<span class="kw">fn </span>ipv4_word_sum(ip: <span class="kw-2">&amp;</span>Ipv4Addr) -&gt; u32 {
+    <span class="kw">let </span>octets = ip.octets();
+    ((octets[<span class="number">0</span>] <span class="kw">as </span>u32) &lt;&lt; <span class="number">8 </span>| octets[<span class="number">1</span>] <span class="kw">as </span>u32) + ((octets[<span class="number">2</span>] <span class="kw">as </span>u32) &lt;&lt; <span class="number">8 </span>| octets[<span class="number">3</span>] <span class="kw">as </span>u32)
 }
 
-<span class="doccomment">/// Calculate the checksum for a packet built on IPv6.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv6_checksum</span>(
-    <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    <span class="ident">skipword</span>: <span class="ident">usize</span>,
-    <span class="ident">extra_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>,
-    <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>,
-    <span class="ident">next_level_protocol</span>: <span class="ident">IpNextHeaderProtocol</span>,
-) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sum</span> <span class="op">=</span> <span class="number">0u32</span>;
+<span class="doccomment">/// Calculate the checksum for a packet built on IPv6.
+</span><span class="kw">pub fn </span>ipv6_checksum(
+    data: <span class="kw-2">&amp;</span>[u8],
+    skipword: usize,
+    extra_data: <span class="kw-2">&amp;</span>[u8],
+    source: <span class="kw-2">&amp;</span>Ipv6Addr,
+    destination: <span class="kw-2">&amp;</span>Ipv6Addr,
+    next_level_protocol: IpNextHeaderProtocol,
+) -&gt; u16be {
+    <span class="kw">let </span><span class="kw-2">mut </span>sum = <span class="number">0u32</span>;
 
-    <span class="comment">// Checksum pseudo-header</span>
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">ipv6_word_sum</span>(<span class="ident">source</span>);
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">ipv6_word_sum</span>(<span class="ident">destination</span>);
+    <span class="comment">// Checksum pseudo-header
+    </span>sum += ipv6_word_sum(source);
+    sum += ipv6_word_sum(destination);
 
-    <span class="kw">let</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="ident">next_level_protocol</span>) <span class="op">=</span> <span class="ident">next_level_protocol</span>;
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">next_level_protocol</span> <span class="kw">as</span> <span class="ident">u32</span>;
+    <span class="kw">let </span>IpNextHeaderProtocol(next_level_protocol) = next_level_protocol;
+    sum += next_level_protocol <span class="kw">as </span>u32;
 
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="ident">extra_data</span>.<span class="ident">len</span>();
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">len</span> <span class="kw">as</span> <span class="ident">u32</span>;
+    <span class="kw">let </span>len = data.len() + extra_data.len();
+    sum += len <span class="kw">as </span>u32;
 
-    <span class="comment">// Checksum packet header and data</span>
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">sum_be_words</span>(<span class="ident">data</span>, <span class="ident">skipword</span>);
-    <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">sum_be_words</span>(<span class="ident">extra_data</span>, <span class="ident">extra_data</span>.<span class="ident">len</span>() <span class="op">/</span> <span class="number">2</span>);
+    <span class="comment">// Checksum packet header and data
+    </span>sum += sum_be_words(data, skipword);
+    sum += sum_be_words(extra_data, extra_data.len() / <span class="number">2</span>);
 
-    <span class="ident">finalize_checksum</span>(<span class="ident">sum</span>)
+    finalize_checksum(sum)
 }
 
-<span class="kw">fn</span> <span class="ident">ipv6_word_sum</span>(<span class="ident">ip</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>) -&gt; <span class="ident">u32</span> {
-    <span class="ident">ip</span>.<span class="ident">segments</span>().<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="kw">as</span> <span class="ident">u32</span>).<span class="ident">sum</span>()
+<span class="kw">fn </span>ipv6_word_sum(ip: <span class="kw-2">&amp;</span>Ipv6Addr) -&gt; u32 {
+    ip.segments().iter().map(|x| <span class="kw-2">*</span>x <span class="kw">as </span>u32).sum()
 }
 
-<span class="doccomment">/// Sum all words (16 bit chunks) in the given data. The word at word offset</span>
-<span class="doccomment">/// `skipword` will be skipped. Each word is treated as big endian.</span>
-<span class="kw">fn</span> <span class="ident">sum_be_words</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">skipword</span>: <span class="ident">usize</span>) -&gt; <span class="ident">u32</span> {
-    <span class="kw">if</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span> {
-        <span class="kw">return</span> <span class="number">0</span>;
+<span class="doccomment">/// Sum all words (16 bit chunks) in the given data. The word at word offset
+/// `skipword` will be skipped. Each word is treated as big endian.
+</span><span class="kw">fn </span>sum_be_words(data: <span class="kw-2">&amp;</span>[u8], skipword: usize) -&gt; u32 {
+    <span class="kw">if </span>data.len() == <span class="number">0 </span>{
+        <span class="kw">return </span><span class="number">0</span>;
     }
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">len</span>();
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cur_data</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">data</span>[..];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sum</span> <span class="op">=</span> <span class="number">0u32</span>;
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">i</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="kw">while</span> <span class="ident">cur_data</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">2</span> {
-        <span class="kw">if</span> <span class="ident">i</span> <span class="op">!</span><span class="op">=</span> <span class="ident">skipword</span> {
-            <span class="comment">// It&#39;s safe to unwrap because we verified there are at least 2 bytes</span>
-            <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">u16::from_be_bytes</span>(<span class="ident">cur_data</span>[<span class="number">0</span>..<span class="number">2</span>].<span class="ident">try_into</span>().<span class="ident">unwrap</span>()) <span class="kw">as</span> <span class="ident">u32</span>;
+    <span class="kw">let </span>len = data.len();
+    <span class="kw">let </span><span class="kw-2">mut </span>cur_data = <span class="kw-2">&amp;</span>data[..];
+    <span class="kw">let </span><span class="kw-2">mut </span>sum = <span class="number">0u32</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>i = <span class="number">0</span>;
+    <span class="kw">while </span>cur_data.len() &gt;= <span class="number">2 </span>{
+        <span class="kw">if </span>i != skipword {
+            <span class="comment">// It&#39;s safe to unwrap because we verified there are at least 2 bytes
+            </span>sum += u16::from_be_bytes(cur_data[<span class="number">0</span>..<span class="number">2</span>].try_into().unwrap()) <span class="kw">as </span>u32;
         }
-        <span class="ident">cur_data</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">cur_data</span>[<span class="number">2</span>..];
-        <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+        cur_data = <span class="kw-2">&amp;</span>cur_data[<span class="number">2</span>..];
+        i += <span class="number">1</span>;
     }
 
-    <span class="comment">// If the length is odd, make sure to checksum the final byte</span>
-    <span class="kw">if</span> <span class="ident">i</span> <span class="op">!</span><span class="op">=</span> <span class="ident">skipword</span> <span class="op">&amp;&amp;</span> <span class="ident">len</span> <span class="op">&amp;</span> <span class="number">1</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
-        <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> (<span class="ident">data</span>[<span class="ident">len</span> <span class="op">-</span> <span class="number">1</span>] <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>;
+    <span class="comment">// If the length is odd, make sure to checksum the final byte
+    </span><span class="kw">if </span>i != skipword &amp;&amp; len &amp; <span class="number">1 </span>!= <span class="number">0 </span>{
+        sum += (data[len - <span class="number">1</span>] <span class="kw">as </span>u32) &lt;&lt; <span class="number">8</span>;
     }
 
-    <span class="ident">sum</span>
+    sum
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::sum_be_words</span>;
-    <span class="kw">use</span> <span class="ident">core::slice</span>;
-    <span class="kw">use</span> <span class="ident">alloc</span>::{<span class="ident">vec</span>, <span class="ident">vec::Vec</span>};
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">super</span>::sum_be_words;
+    <span class="kw">use </span>core::slice;
+    <span class="kw">use </span>alloc::{vec, vec::Vec};
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">sum_be_words_different_skipwords</span>() {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> (<span class="number">0</span>..<span class="number">11</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>();
-        <span class="macro">assert_eq!</span>(<span class="number">7190</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>, <span class="number">1</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">6676</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>, <span class="number">2</span>));
-        <span class="comment">// Assert having the skipword outside the range gives correct and equal</span>
-        <span class="comment">// results</span>
-        <span class="macro">assert_eq!</span>(<span class="number">7705</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>, <span class="number">99</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">7705</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>, <span class="number">101</span>));
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>sum_be_words_different_skipwords() {
+        <span class="kw">let </span>data = (<span class="number">0</span>..<span class="number">11</span>).collect::&lt;Vec&lt;u8&gt;&gt;();
+        <span class="macro">assert_eq!</span>(<span class="number">7190</span>, sum_be_words(<span class="kw-2">&amp;</span>data, <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">6676</span>, sum_be_words(<span class="kw-2">&amp;</span>data, <span class="number">2</span>));
+        <span class="comment">// Assert having the skipword outside the range gives correct and equal
+        // results
+        </span><span class="macro">assert_eq!</span>(<span class="number">7705</span>, sum_be_words(<span class="kw-2">&amp;</span>data, <span class="number">99</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">7705</span>, sum_be_words(<span class="kw-2">&amp;</span>data, <span class="number">101</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">sum_be_words_small_sizes</span>() {
-        <span class="kw">let</span> <span class="ident">data_zero</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">0</span>];
-        <span class="macro">assert_eq!</span>(<span class="number">0</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_zero</span>, <span class="number">0</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">0</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_zero</span>, <span class="number">10</span>));
-        <span class="kw">let</span> <span class="ident">data_one</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">1</span>; <span class="number">1</span>];
-        <span class="macro">assert_eq!</span>(<span class="number">0</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_zero</span>, <span class="number">0</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">256</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_one</span>, <span class="number">1</span>));
-        <span class="kw">let</span> <span class="ident">data_two</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">1</span>; <span class="number">2</span>];
-        <span class="macro">assert_eq!</span>(<span class="number">0</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_two</span>, <span class="number">0</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">257</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_two</span>, <span class="number">1</span>));
-        <span class="kw">let</span> <span class="ident">data_three</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">4</span>; <span class="number">3</span>];
-        <span class="macro">assert_eq!</span>(<span class="number">1024</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_three</span>, <span class="number">0</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">1028</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_three</span>, <span class="number">1</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">2052</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_three</span>, <span class="number">2</span>));
-        <span class="macro">assert_eq!</span>(<span class="number">2052</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">data_three</span>, <span class="number">3</span>));
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>sum_be_words_small_sizes() {
+        <span class="kw">let </span>data_zero = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">0</span>];
+        <span class="macro">assert_eq!</span>(<span class="number">0</span>, sum_be_words(<span class="kw-2">&amp;</span>data_zero, <span class="number">0</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">0</span>, sum_be_words(<span class="kw-2">&amp;</span>data_zero, <span class="number">10</span>));
+        <span class="kw">let </span>data_one = <span class="macro">vec!</span>[<span class="number">1</span>; <span class="number">1</span>];
+        <span class="macro">assert_eq!</span>(<span class="number">0</span>, sum_be_words(<span class="kw-2">&amp;</span>data_zero, <span class="number">0</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">256</span>, sum_be_words(<span class="kw-2">&amp;</span>data_one, <span class="number">1</span>));
+        <span class="kw">let </span>data_two = <span class="macro">vec!</span>[<span class="number">1</span>; <span class="number">2</span>];
+        <span class="macro">assert_eq!</span>(<span class="number">0</span>, sum_be_words(<span class="kw-2">&amp;</span>data_two, <span class="number">0</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">257</span>, sum_be_words(<span class="kw-2">&amp;</span>data_two, <span class="number">1</span>));
+        <span class="kw">let </span>data_three = <span class="macro">vec!</span>[<span class="number">4</span>; <span class="number">3</span>];
+        <span class="macro">assert_eq!</span>(<span class="number">1024</span>, sum_be_words(<span class="kw-2">&amp;</span>data_three, <span class="number">0</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">1028</span>, sum_be_words(<span class="kw-2">&amp;</span>data_three, <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">2052</span>, sum_be_words(<span class="kw-2">&amp;</span>data_three, <span class="number">2</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">2052</span>, sum_be_words(<span class="kw-2">&amp;</span>data_three, <span class="number">3</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">sum_be_words_misaligned_ptr</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">13</span>];
-        <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">%</span> <span class="number">2</span> {
-            <span class="number">0</span> =&gt; <span class="kw">unsafe</span> { <span class="ident">data</span>.<span class="ident">as_mut_ptr</span>().<span class="ident">offset</span>(<span class="number">1</span>) },
-            <span class="kw">_</span> =&gt; <span class="ident">data</span>.<span class="ident">as_mut_ptr</span>(),
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>sum_be_words_misaligned_ptr() {
+        <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">13</span>];
+        <span class="kw">let </span>ptr = <span class="kw">match </span>data.as_ptr() <span class="kw">as </span>usize % <span class="number">2 </span>{
+            <span class="number">0 </span>=&gt; <span class="kw">unsafe </span>{ data.as_mut_ptr().offset(<span class="number">1</span>) },
+            <span class="kw">_ </span>=&gt; data.as_mut_ptr(),
         };
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">slice_data</span> <span class="op">=</span> <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="number">12</span>);
-            <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">11</span> {
-                <span class="ident">slice_data</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="ident">i</span> <span class="kw">as</span> <span class="ident">u8</span>;
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>slice_data = slice::from_raw_parts_mut(ptr, <span class="number">12</span>);
+            <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..<span class="number">11 </span>{
+                slice_data[i] = i <span class="kw">as </span>u8;
             }
-            <span class="macro">assert_eq!</span>(<span class="number">7190</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">slice_data</span>, <span class="number">1</span>));
-            <span class="macro">assert_eq!</span>(<span class="number">6676</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">slice_data</span>, <span class="number">2</span>));
-            <span class="comment">// Assert having the skipword outside the range gives correct and equal</span>
-            <span class="comment">// results</span>
-            <span class="macro">assert_eq!</span>(<span class="number">7705</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">slice_data</span>, <span class="number">99</span>));
-            <span class="macro">assert_eq!</span>(<span class="number">7705</span>, <span class="ident">sum_be_words</span>(<span class="kw-2">&amp;</span><span class="ident">slice_data</span>, <span class="number">101</span>));
+            <span class="macro">assert_eq!</span>(<span class="number">7190</span>, sum_be_words(<span class="kw-2">&amp;</span>slice_data, <span class="number">1</span>));
+            <span class="macro">assert_eq!</span>(<span class="number">6676</span>, sum_be_words(<span class="kw-2">&amp;</span>slice_data, <span class="number">2</span>));
+            <span class="comment">// Assert having the skipword outside the range gives correct and equal
+            // results
+            </span><span class="macro">assert_eq!</span>(<span class="number">7705</span>, sum_be_words(<span class="kw-2">&amp;</span>slice_data, <span class="number">99</span>));
+            <span class="macro">assert_eq!</span>(<span class="number">7705</span>, sum_be_words(<span class="kw-2">&amp;</span>slice_data, <span class="number">101</span>));
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">test</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;benchmark&quot;</span>))]</span>
-<span class="kw">mod</span> <span class="ident">checksum_benchmarks</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::checksum</span>;
-    <span class="kw">use</span> <span class="ident">test</span>::{<span class="ident">black_box</span>, <span class="ident">Bencher</span>};
+<span class="attr">#[cfg(all(test, feature = <span class="string">&quot;benchmark&quot;</span>))]
+</span><span class="kw">mod </span>checksum_benchmarks {
+    <span class="kw">use </span><span class="kw">super</span>::checksum;
+    <span class="kw">use </span>test::{black_box, Bencher};
 
-    <span class="attribute">#[<span class="ident">bench</span>]</span>
-    <span class="kw">fn</span> <span class="ident">bench_checksum_small</span>(<span class="ident">b</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Bencher</span>) {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">99u8</span>; <span class="number">20</span>];
-        <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">checksum</span>(<span class="ident">black_box</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>), <span class="number">5</span>));
+    <span class="attr">#[bench]
+    </span><span class="kw">fn </span>bench_checksum_small(b: <span class="kw-2">&amp;mut </span>Bencher) {
+        <span class="kw">let </span>data = <span class="macro">vec!</span>[<span class="number">99u8</span>; <span class="number">20</span>];
+        b.iter(|| checksum(black_box(<span class="kw-2">&amp;</span>data), <span class="number">5</span>));
     }
 
-    <span class="attribute">#[<span class="ident">bench</span>]</span>
-    <span class="kw">fn</span> <span class="ident">bench_checksum_large</span>(<span class="ident">b</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Bencher</span>) {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">123u8</span>; <span class="number">1024</span>];
-        <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">checksum</span>(<span class="ident">black_box</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>), <span class="number">5</span>));
+    <span class="attr">#[bench]
+    </span><span class="kw">fn </span>bench_checksum_large(b: <span class="kw-2">&amp;mut </span>Bencher) {
+        <span class="kw">let </span>data = <span class="macro">vec!</span>[<span class="number">123u8</span>; <span class="number">1024</span>];
+        b.iter(|| checksum(black_box(<span class="kw-2">&amp;</span>data), <span class="number">5</span>));
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

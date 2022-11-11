@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/icmp.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>icmp.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/icmp.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>icmp.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -439,440 +432,439 @@
 <span id="432">432</span>
 <span id="433">433</span>
 <span id="434">434</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! An ICMP packet abstraction.</span>
+</span><span class="doccomment">//! An ICMP packet abstraction.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
 
-<span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+<span class="kw">use </span>alloc::vec::Vec;
 
-<span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+<span class="kw">use </span>pnet_macros::packet;
+<span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-<span class="doccomment">/// Represents the &quot;ICMP type&quot; header field.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IcmpType</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+<span class="doccomment">/// Represents the &quot;ICMP type&quot; header field.
+</span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub struct </span>IcmpType(<span class="kw">pub </span>u8);
 
-<span class="kw">impl</span> <span class="ident">IcmpType</span> {
-    <span class="doccomment">/// Create a new `IcmpType` instance.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u8</span>) -&gt; <span class="ident">IcmpType</span> {
-        <span class="ident">IcmpType</span>(<span class="ident">val</span>)
+<span class="kw">impl </span>IcmpType {
+    <span class="doccomment">/// Create a new `IcmpType` instance.
+    </span><span class="kw">pub fn </span>new(val: u8) -&gt; IcmpType {
+        IcmpType(val)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">IcmpType</span> {
-    <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-    <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+<span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>IcmpType {
+    <span class="kw">type </span>T = (u8,);
+    <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
         (<span class="self">self</span>.<span class="number">0</span>,)
     }
 }
 
-<span class="doccomment">/// Represents the &quot;ICMP code&quot; header field.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IcmpCode</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+<span class="doccomment">/// Represents the &quot;ICMP code&quot; header field.
+</span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub struct </span>IcmpCode(<span class="kw">pub </span>u8);
 
-<span class="kw">impl</span> <span class="ident">IcmpCode</span> {
-    <span class="doccomment">/// Create a new `IcmpCode` instance.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u8</span>) -&gt; <span class="ident">IcmpCode</span> {
-        <span class="ident">IcmpCode</span>(<span class="ident">val</span>)
+<span class="kw">impl </span>IcmpCode {
+    <span class="doccomment">/// Create a new `IcmpCode` instance.
+    </span><span class="kw">pub fn </span>new(val: u8) -&gt; IcmpCode {
+        IcmpCode(val)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">IcmpCode</span> {
-    <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-    <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+<span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>IcmpCode {
+    <span class="kw">type </span>T = (u8,);
+    <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
         (<span class="self">self</span>.<span class="number">0</span>,)
     }
 }
 
-<span class="doccomment">/// Represents a generic ICMP packet.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Icmp</span> {
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">icmp_type</span>: <span class="ident">IcmpType</span>,
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">icmp_code</span>: <span class="ident">IcmpCode</span>,
-    <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-    <span class="comment">// theoretically, the header is 64 bytes long, but since the &quot;Rest Of Header&quot; part depends on</span>
-    <span class="comment">// the ICMP type and ICMP code, we consider it&#39;s part of the payload.</span>
-    <span class="comment">// rest_of_header: u32be,</span>
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a generic ICMP packet.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Icmp {
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>icmp_type: IcmpType,
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>icmp_code: IcmpCode,
+    <span class="kw">pub </span>checksum: u16be,
+    <span class="comment">// theoretically, the header is 64 bytes long, but since the &quot;Rest Of Header&quot; part depends on
+    // the ICMP type and ICMP code, we consider it&#39;s part of the payload.
+    // rest_of_header: u32be,
+    </span><span class="attr">#[payload]
+    </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
 }
 
-<span class="doccomment">/// Calculates a checksum of an ICMP packet.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">checksum</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">IcmpPacket</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Packet</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>;
+<span class="doccomment">/// Calculates a checksum of an ICMP packet.
+</span><span class="kw">pub fn </span>checksum(packet: <span class="kw-2">&amp;</span>IcmpPacket) -&gt; u16be {
+    <span class="kw">use </span><span class="kw">crate</span>::Packet;
+    <span class="kw">use </span><span class="kw">crate</span>::util;
 
-    <span class="ident">util::checksum</span>(<span class="ident">packet</span>.<span class="ident">packet</span>(), <span class="number">1</span>)
+    util::checksum(packet.packet(), <span class="number">1</span>)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">checksum_tests</span> {
-    <span class="kw">use</span> <span class="ident">alloc::vec</span>;
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>checksum_tests {
+    <span class="kw">use </span>alloc::vec;
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">checksum_zeros</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">8</span>];
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">65535</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIcmpPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>()), <span class="ident">expected</span>);
-        <span class="ident">pkg</span>.<span class="ident">set_checksum</span>(<span class="number">123</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>()), <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>checksum_zeros() {
+        <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">8</span>];
+        <span class="kw">let </span>expected = <span class="number">65535</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>pkg = MutableIcmpPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable()), expected);
+        pkg.set_checksum(<span class="number">123</span>);
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable()), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">checksum_nonzero</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">255u8</span>; <span class="number">8</span>];
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIcmpPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>()), <span class="ident">expected</span>);
-        <span class="ident">pkg</span>.<span class="ident">set_checksum</span>(<span class="number">0</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>()), <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>checksum_nonzero() {
+        <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[<span class="number">255u8</span>; <span class="number">8</span>];
+        <span class="kw">let </span>expected = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>pkg = MutableIcmpPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable()), expected);
+        pkg.set_checksum(<span class="number">0</span>);
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable()), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">checksum_odd_bytes</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">191u8</span>; <span class="number">7</span>];
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="number">49535</span>;
-        <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">IcmpPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>), <span class="ident">expected</span>);
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>checksum_odd_bytes() {
+        <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[<span class="number">191u8</span>; <span class="number">7</span>];
+        <span class="kw">let </span>expected = <span class="number">49535</span>;
+        <span class="kw">let </span>pkg = IcmpPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg), expected);
     }
 }
 
 
-<span class="doccomment">/// The enumeration of the recognized ICMP types.</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IcmpTypes</span> {
+<span class="doccomment">/// The enumeration of the recognized ICMP types.
+</span><span class="attr">#[allow(non_snake_case)]
+#[allow(non_upper_case_globals)]
+</span><span class="kw">pub mod </span>IcmpTypes {
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp::IcmpType</span>;
-    <span class="doccomment">/// ICMP type for &quot;echo reply&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EchoReply</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">0</span>);
-    <span class="doccomment">/// ICMP type for &quot;destination unreachable&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationUnreachable</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">3</span>);
-    <span class="doccomment">/// ICMP type for &quot;source quench&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SourceQuench</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">4</span>);
-    <span class="doccomment">/// ICMP type for &quot;redirect message&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RedirectMessage</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">5</span>);
-    <span class="doccomment">/// ICMP type for &quot;echo request&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EchoRequest</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">8</span>);
-    <span class="doccomment">/// ICMP type for &quot;router advertisement&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RouterAdvertisement</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">9</span>);
-    <span class="doccomment">/// ICMP type for &quot;router solicitation&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RouterSolicitation</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">10</span>);
-    <span class="doccomment">/// ICMP type for &quot;time exceeded&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TimeExceeded</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">11</span>);
-    <span class="doccomment">/// ICMP type for &quot;parameter problem&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ParameterProblem</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">12</span>);
-    <span class="doccomment">/// ICMP type for &quot;timestamp&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Timestamp</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">13</span>);
-    <span class="doccomment">/// ICMP type for &quot;timestamp reply&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TimestampReply</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">14</span>);
-    <span class="doccomment">/// ICMP type for &quot;information request&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">InformationRequest</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">15</span>);
-    <span class="doccomment">/// ICMP type for &quot;information reply&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">InformationReply</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">16</span>);
-    <span class="doccomment">/// ICMP type for &quot;address mask request&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">AddressMaskRequest</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">17</span>);
-    <span class="doccomment">/// ICMP type for &quot;address mask reply&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">AddressMaskReply</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">18</span>);
-    <span class="doccomment">/// ICMP type for &quot;traceroute&quot; packet.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Traceroute</span>: <span class="ident">IcmpType</span> <span class="op">=</span> <span class="ident">IcmpType</span>(<span class="number">30</span>);
+    <span class="kw">use </span><span class="kw">crate</span>::icmp::IcmpType;
+    <span class="doccomment">/// ICMP type for &quot;echo reply&quot; packet.
+    </span><span class="kw">pub const </span>EchoReply: IcmpType = IcmpType(<span class="number">0</span>);
+    <span class="doccomment">/// ICMP type for &quot;destination unreachable&quot; packet.
+    </span><span class="kw">pub const </span>DestinationUnreachable: IcmpType = IcmpType(<span class="number">3</span>);
+    <span class="doccomment">/// ICMP type for &quot;source quench&quot; packet.
+    </span><span class="kw">pub const </span>SourceQuench: IcmpType = IcmpType(<span class="number">4</span>);
+    <span class="doccomment">/// ICMP type for &quot;redirect message&quot; packet.
+    </span><span class="kw">pub const </span>RedirectMessage: IcmpType = IcmpType(<span class="number">5</span>);
+    <span class="doccomment">/// ICMP type for &quot;echo request&quot; packet.
+    </span><span class="kw">pub const </span>EchoRequest: IcmpType = IcmpType(<span class="number">8</span>);
+    <span class="doccomment">/// ICMP type for &quot;router advertisement&quot; packet.
+    </span><span class="kw">pub const </span>RouterAdvertisement: IcmpType = IcmpType(<span class="number">9</span>);
+    <span class="doccomment">/// ICMP type for &quot;router solicitation&quot; packet.
+    </span><span class="kw">pub const </span>RouterSolicitation: IcmpType = IcmpType(<span class="number">10</span>);
+    <span class="doccomment">/// ICMP type for &quot;time exceeded&quot; packet.
+    </span><span class="kw">pub const </span>TimeExceeded: IcmpType = IcmpType(<span class="number">11</span>);
+    <span class="doccomment">/// ICMP type for &quot;parameter problem&quot; packet.
+    </span><span class="kw">pub const </span>ParameterProblem: IcmpType = IcmpType(<span class="number">12</span>);
+    <span class="doccomment">/// ICMP type for &quot;timestamp&quot; packet.
+    </span><span class="kw">pub const </span>Timestamp: IcmpType = IcmpType(<span class="number">13</span>);
+    <span class="doccomment">/// ICMP type for &quot;timestamp reply&quot; packet.
+    </span><span class="kw">pub const </span>TimestampReply: IcmpType = IcmpType(<span class="number">14</span>);
+    <span class="doccomment">/// ICMP type for &quot;information request&quot; packet.
+    </span><span class="kw">pub const </span>InformationRequest: IcmpType = IcmpType(<span class="number">15</span>);
+    <span class="doccomment">/// ICMP type for &quot;information reply&quot; packet.
+    </span><span class="kw">pub const </span>InformationReply: IcmpType = IcmpType(<span class="number">16</span>);
+    <span class="doccomment">/// ICMP type for &quot;address mask request&quot; packet.
+    </span><span class="kw">pub const </span>AddressMaskRequest: IcmpType = IcmpType(<span class="number">17</span>);
+    <span class="doccomment">/// ICMP type for &quot;address mask reply&quot; packet.
+    </span><span class="kw">pub const </span>AddressMaskReply: IcmpType = IcmpType(<span class="number">18</span>);
+    <span class="doccomment">/// ICMP type for &quot;traceroute&quot; packet.
+    </span><span class="kw">pub const </span>Traceroute: IcmpType = IcmpType(<span class="number">30</span>);
 }
 
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">echo_reply</span> {
-    <span class="doccomment">//! abstraction for ICMP &quot;echo reply&quot; packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |           Identifier          |        Sequence Number        |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Data ...</span>
-    <span class="doccomment">//! +-+-+-+-+-</span>
-    <span class="doccomment">//! ```</span>
+<span class="kw">pub mod </span>echo_reply {
+    <span class="doccomment">//! abstraction for ICMP &quot;echo reply&quot; packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |           Identifier          |        Sequence Number        |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Data ...
+    //! +-+-+-+-+-
+    //! ```
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp</span>::{<span class="ident">IcmpCode</span>, <span class="ident">IcmpType</span>};
+    </span><span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
+    <span class="kw">use </span><span class="kw">crate</span>::icmp::{IcmpCode, IcmpType};
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-    <span class="doccomment">/// Represent the &quot;identifier&quot; field of the ICMP echo replay header.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Identifier</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represent the &quot;identifier&quot; field of the ICMP echo replay header.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>Identifier(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">Identifier</span> {
-        <span class="doccomment">/// Create a new `Identifier` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">Identifier</span> {
-            <span class="ident">Identifier</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>Identifier {
+        <span class="doccomment">/// Create a new `Identifier` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; Identifier {
+            Identifier(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Identifier</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Identifier {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Represent the &quot;sequence number&quot; field of the ICMP echo replay header.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SequenceNumber</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represent the &quot;sequence number&quot; field of the ICMP echo replay header.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>SequenceNumber(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">SequenceNumber</span> {
-        <span class="doccomment">/// Create a new `SequenceNumber` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">SequenceNumber</span> {
-            <span class="ident">SequenceNumber</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>SequenceNumber {
+        <span class="doccomment">/// Create a new `SequenceNumber` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; SequenceNumber {
+            SequenceNumber(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">SequenceNumber</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>SequenceNumber {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Enumeration of available ICMP codes for ICMP echo replay packets. There is actually only</span>
-    <span class="doccomment">/// one, since the only valid ICMP code is 0.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IcmpCodes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp::IcmpCode</span>;
-        <span class="doccomment">/// 0 is the only available ICMP code for &quot;echo reply&quot; ICMP packets.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NoCode</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">0</span>);
+    <span class="doccomment">/// Enumeration of available ICMP codes for ICMP echo replay packets. There is actually only
+    /// one, since the only valid ICMP code is 0.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>IcmpCodes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmp::IcmpCode;
+        <span class="doccomment">/// 0 is the only available ICMP code for &quot;echo reply&quot; ICMP packets.
+        </span><span class="kw">pub const </span>NoCode: IcmpCode = IcmpCode(<span class="number">0</span>);
     }
 
-    <span class="doccomment">/// Represents an ICMP echo reply packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">EchoReply</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_type</span>: <span class="ident">IcmpType</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_code</span>: <span class="ident">IcmpCode</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">identifier</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">sequence_number</span>: <span class="ident">u16be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Represents an ICMP echo reply packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>EchoReply {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_type: IcmpType,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_code: IcmpCode,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>identifier: u16be,
+        <span class="kw">pub </span>sequence_number: u16be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 }
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">echo_request</span> {
-    <span class="doccomment">//! abstraction for &quot;echo request&quot; ICMP packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |           Identifier          |        Sequence Number        |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Data ...</span>
-    <span class="doccomment">//! +-+-+-+-+-</span>
-    <span class="doccomment">//! ```</span>
+<span class="kw">pub mod </span>echo_request {
+    <span class="doccomment">//! abstraction for &quot;echo request&quot; ICMP packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |           Identifier          |        Sequence Number        |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Data ...
+    //! +-+-+-+-+-
+    //! ```
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp</span>::{<span class="ident">IcmpCode</span>, <span class="ident">IcmpType</span>};
+    </span><span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
+    <span class="kw">use </span><span class="kw">crate</span>::icmp::{IcmpCode, IcmpType};
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-    <span class="doccomment">/// Represents the identifier field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Identifier</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the identifier field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>Identifier(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">Identifier</span> {
-        <span class="doccomment">/// Create a new `Identifier` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">Identifier</span> {
-            <span class="ident">Identifier</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>Identifier {
+        <span class="doccomment">/// Create a new `Identifier` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; Identifier {
+            Identifier(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Identifier</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Identifier {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Represents the sequence number field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SequenceNumber</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the sequence number field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>SequenceNumber(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">SequenceNumber</span> {
-        <span class="doccomment">/// Create a new `SequenceNumber` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">SequenceNumber</span> {
-            <span class="ident">SequenceNumber</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>SequenceNumber {
+        <span class="doccomment">/// Create a new `SequenceNumber` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; SequenceNumber {
+            SequenceNumber(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">SequenceNumber</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>SequenceNumber {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Enumeration of available ICMP codes for &quot;echo reply&quot; ICMP packets. There is actually only</span>
-    <span class="doccomment">/// one, since the only valid ICMP code is 0.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IcmpCodes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp::IcmpCode</span>;
-        <span class="doccomment">/// 0 is the only available ICMP code for &quot;echo reply&quot; ICMP packets.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NoCode</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">0</span>);
+    <span class="doccomment">/// Enumeration of available ICMP codes for &quot;echo reply&quot; ICMP packets. There is actually only
+    /// one, since the only valid ICMP code is 0.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>IcmpCodes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmp::IcmpCode;
+        <span class="doccomment">/// 0 is the only available ICMP code for &quot;echo reply&quot; ICMP packets.
+        </span><span class="kw">pub const </span>NoCode: IcmpCode = IcmpCode(<span class="number">0</span>);
     }
 
-    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">EchoRequest</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_type</span>: <span class="ident">IcmpType</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_code</span>: <span class="ident">IcmpCode</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">identifier</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">sequence_number</span>: <span class="ident">u16be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-    }
-}
-
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">destination_unreachable</span> {
-    <span class="doccomment">//! abstraction for &quot;destination unreachable&quot; ICMP packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |                             unused                            |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |      Internet Header + 64 bits of Original Data Datagram      |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! ```</span>
-
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp</span>::{<span class="ident">IcmpCode</span>, <span class="ident">IcmpType</span>};
-
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
-
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
-
-    <span class="doccomment">/// Enumeration of the recognized ICMP codes for &quot;destination unreachable&quot; ICMP packets.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IcmpCodes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp::IcmpCode</span>;
-        <span class="doccomment">/// ICMP code for &quot;destination network unreachable&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationNetworkUnreachable</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">0</span>);
-        <span class="doccomment">/// ICMP code for &quot;destination host unreachable&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationHostUnreachable</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">1</span>);
-        <span class="doccomment">/// ICMP code for &quot;destination protocol unreachable&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationProtocolUnreachable</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">2</span>);
-        <span class="doccomment">/// ICMP code for &quot;destination port unreachable&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationPortUnreachable</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">3</span>);
-        <span class="doccomment">/// ICMP code for &quot;fragmentation required and DFF flag set&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FragmentationRequiredAndDFFlagSet</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">4</span>);
-        <span class="doccomment">/// ICMP code for &quot;source route failed&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SourceRouteFailed</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">5</span>);
-        <span class="doccomment">/// ICMP code for &quot;destination network unknown&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationNetworkUnknown</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">6</span>);
-        <span class="doccomment">/// ICMP code for &quot;destination host unknown&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationHostUnknown</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">7</span>);
-        <span class="doccomment">/// ICMP code for &quot;source host isolated&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SourceHostIsolated</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">8</span>);
-        <span class="doccomment">/// ICMP code for &quot;network administrative prohibited&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NetworkAdministrativelyProhibited</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">9</span>);
-        <span class="doccomment">/// ICMP code for &quot;host administrative prohibited&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HostAdministrativelyProhibited</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">10</span>);
-        <span class="doccomment">/// ICMP code for &quot;network unreachable for this Type Of Service&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NetworkUnreachableForTOS</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">11</span>);
-        <span class="doccomment">/// ICMP code for &quot;host unreachable for this Type Of Service&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HostUnreachableForTOS</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">12</span>);
-        <span class="doccomment">/// ICMP code for &quot;communication administratively prohibited&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CommunicationAdministrativelyProhibited</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">13</span>);
-        <span class="doccomment">/// ICMP code for &quot;host precedence violation&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HostPrecedenceViolation</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">14</span>);
-        <span class="doccomment">/// ICMP code for &quot;precedence cut off in effect&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PrecedenceCutoffInEffect</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">15</span>);
-    }
-
-    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DestinationUnreachable</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_type</span>: <span class="ident">IcmpType</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_code</span>: <span class="ident">IcmpCode</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">unused</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>EchoRequest {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_type: IcmpType,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_code: IcmpCode,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>identifier: u16be,
+        <span class="kw">pub </span>sequence_number: u16be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 }
 
+<span class="kw">pub mod </span>destination_unreachable {
+    <span class="doccomment">//! abstraction for &quot;destination unreachable&quot; ICMP packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |                             unused                            |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |      Internet Header + 64 bits of Original Data Datagram      |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! ```
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time_exceeded</span> {
-    <span class="doccomment">//! abstraction for &quot;time exceeded&quot; ICMP packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |                             unused                            |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |      Internet Header + 64 bits of Original Data Datagram      |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! ```</span>
+    </span><span class="kw">use </span><span class="kw">crate</span>::icmp::{IcmpCode, IcmpType};
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp</span>::{<span class="ident">IcmpCode</span>, <span class="ident">IcmpType</span>};
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
-
-    <span class="doccomment">/// Enumeration of the recognized ICMP codes for &quot;time exceeded&quot; ICMP packets.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IcmpCodes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmp::IcmpCode</span>;
-        <span class="doccomment">/// ICMP code for &quot;time to live exceeded in transit&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TimeToLiveExceededInTransit</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">0</span>);
-        <span class="doccomment">/// ICMP code for &quot;fragment reassembly time exceeded&quot; packet.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FragmentReasemblyTimeExceeded</span>: <span class="ident">IcmpCode</span> <span class="op">=</span> <span class="ident">IcmpCode</span>(<span class="number">1</span>);
+    <span class="doccomment">/// Enumeration of the recognized ICMP codes for &quot;destination unreachable&quot; ICMP packets.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>IcmpCodes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmp::IcmpCode;
+        <span class="doccomment">/// ICMP code for &quot;destination network unreachable&quot; packet.
+        </span><span class="kw">pub const </span>DestinationNetworkUnreachable: IcmpCode = IcmpCode(<span class="number">0</span>);
+        <span class="doccomment">/// ICMP code for &quot;destination host unreachable&quot; packet.
+        </span><span class="kw">pub const </span>DestinationHostUnreachable: IcmpCode = IcmpCode(<span class="number">1</span>);
+        <span class="doccomment">/// ICMP code for &quot;destination protocol unreachable&quot; packet.
+        </span><span class="kw">pub const </span>DestinationProtocolUnreachable: IcmpCode = IcmpCode(<span class="number">2</span>);
+        <span class="doccomment">/// ICMP code for &quot;destination port unreachable&quot; packet.
+        </span><span class="kw">pub const </span>DestinationPortUnreachable: IcmpCode = IcmpCode(<span class="number">3</span>);
+        <span class="doccomment">/// ICMP code for &quot;fragmentation required and DFF flag set&quot; packet.
+        </span><span class="kw">pub const </span>FragmentationRequiredAndDFFlagSet: IcmpCode = IcmpCode(<span class="number">4</span>);
+        <span class="doccomment">/// ICMP code for &quot;source route failed&quot; packet.
+        </span><span class="kw">pub const </span>SourceRouteFailed: IcmpCode = IcmpCode(<span class="number">5</span>);
+        <span class="doccomment">/// ICMP code for &quot;destination network unknown&quot; packet.
+        </span><span class="kw">pub const </span>DestinationNetworkUnknown: IcmpCode = IcmpCode(<span class="number">6</span>);
+        <span class="doccomment">/// ICMP code for &quot;destination host unknown&quot; packet.
+        </span><span class="kw">pub const </span>DestinationHostUnknown: IcmpCode = IcmpCode(<span class="number">7</span>);
+        <span class="doccomment">/// ICMP code for &quot;source host isolated&quot; packet.
+        </span><span class="kw">pub const </span>SourceHostIsolated: IcmpCode = IcmpCode(<span class="number">8</span>);
+        <span class="doccomment">/// ICMP code for &quot;network administrative prohibited&quot; packet.
+        </span><span class="kw">pub const </span>NetworkAdministrativelyProhibited: IcmpCode = IcmpCode(<span class="number">9</span>);
+        <span class="doccomment">/// ICMP code for &quot;host administrative prohibited&quot; packet.
+        </span><span class="kw">pub const </span>HostAdministrativelyProhibited: IcmpCode = IcmpCode(<span class="number">10</span>);
+        <span class="doccomment">/// ICMP code for &quot;network unreachable for this Type Of Service&quot; packet.
+        </span><span class="kw">pub const </span>NetworkUnreachableForTOS: IcmpCode = IcmpCode(<span class="number">11</span>);
+        <span class="doccomment">/// ICMP code for &quot;host unreachable for this Type Of Service&quot; packet.
+        </span><span class="kw">pub const </span>HostUnreachableForTOS: IcmpCode = IcmpCode(<span class="number">12</span>);
+        <span class="doccomment">/// ICMP code for &quot;communication administratively prohibited&quot; packet.
+        </span><span class="kw">pub const </span>CommunicationAdministrativelyProhibited: IcmpCode = IcmpCode(<span class="number">13</span>);
+        <span class="doccomment">/// ICMP code for &quot;host precedence violation&quot; packet.
+        </span><span class="kw">pub const </span>HostPrecedenceViolation: IcmpCode = IcmpCode(<span class="number">14</span>);
+        <span class="doccomment">/// ICMP code for &quot;precedence cut off in effect&quot; packet.
+        </span><span class="kw">pub const </span>PrecedenceCutoffInEffect: IcmpCode = IcmpCode(<span class="number">15</span>);
     }
 
-    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TimeExceeded</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_type</span>: <span class="ident">IcmpType</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmp_code</span>: <span class="ident">IcmpCode</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">unused</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>DestinationUnreachable {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_type: IcmpType,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_code: IcmpCode,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>unused: u32be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
+    }
+}
+
+
+<span class="kw">pub mod </span>time_exceeded {
+    <span class="doccomment">//! abstraction for &quot;time exceeded&quot; ICMP packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |                             unused                            |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |      Internet Header + 64 bits of Original Data Datagram      |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! ```
+
+    </span><span class="kw">use </span><span class="kw">crate</span>::icmp::{IcmpCode, IcmpType};
+
+    <span class="kw">use </span>alloc::vec::Vec;
+
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
+
+    <span class="doccomment">/// Enumeration of the recognized ICMP codes for &quot;time exceeded&quot; ICMP packets.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>IcmpCodes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmp::IcmpCode;
+        <span class="doccomment">/// ICMP code for &quot;time to live exceeded in transit&quot; packet.
+        </span><span class="kw">pub const </span>TimeToLiveExceededInTransit: IcmpCode = IcmpCode(<span class="number">0</span>);
+        <span class="doccomment">/// ICMP code for &quot;fragment reassembly time exceeded&quot; packet.
+        </span><span class="kw">pub const </span>FragmentReasemblyTimeExceeded: IcmpCode = IcmpCode(<span class="number">1</span>);
+    }
+
+    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMP packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>TimeExceeded {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_type: IcmpType,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmp_code: IcmpCode,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>unused: u32be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

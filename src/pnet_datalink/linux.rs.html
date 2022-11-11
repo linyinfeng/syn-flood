@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/linux.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>linux.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/linux.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>linux.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -381,382 +374,381 @@
 <span id="374">374</span>
 <span id="375">375</span>
 <span id="376">376</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014-2016 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014-2016 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Support for sending and receiving data link layer packets using Linux&#39;s `AF_PACKET`.</span>
+</span><span class="doccomment">//! Support for sending and receiving data link layer packets using Linux&#39;s `AF_PACKET`.
 
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libc</span>;
+</span><span class="kw">extern crate </span>libc;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::bindings::linux</span>;
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">DataLinkReceiver</span>, <span class="ident">DataLinkSender</span>, <span class="ident">MacAddr</span>, <span class="ident">NetworkInterface</span>};
+<span class="kw">use </span><span class="kw">crate</span>::bindings::linux;
+<span class="kw">use crate</span>::{DataLinkReceiver, DataLinkSender, MacAddr, NetworkInterface};
 
-<span class="kw">use</span> <span class="ident">pnet_sys</span>;
+<span class="kw">use </span>pnet_sys;
 
-<span class="kw">use</span> <span class="ident">std::cmp</span>;
-<span class="kw">use</span> <span class="ident">std::io</span>;
-<span class="kw">use</span> <span class="ident">std::mem</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
-<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
-<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+<span class="kw">use </span>std::cmp;
+<span class="kw">use </span>std::io;
+<span class="kw">use </span>std::mem;
+<span class="kw">use </span>std::ptr;
+<span class="kw">use </span>std::sync::Arc;
+<span class="kw">use </span>std::time::Duration;
 
-<span class="kw">fn</span> <span class="ident">network_addr_to_sockaddr</span>(
-    <span class="ident">ni</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>,
-    <span class="ident">storage</span>: <span class="kw-2">*mut</span> <span class="ident">libc::sockaddr_storage</span>,
-    <span class="ident">proto</span>: <span class="ident">libc::c_int</span>,
-) -&gt; <span class="ident">usize</span> {
-    <span class="kw">unsafe</span> {
-        <span class="kw">let</span> <span class="ident">sll</span>: <span class="kw-2">*mut</span> <span class="ident">libc::sockaddr_ll</span> <span class="op">=</span> <span class="ident">mem::transmute</span>(<span class="ident">storage</span>);
-        (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_family</span> <span class="op">=</span> <span class="ident">libc::AF_PACKET</span> <span class="kw">as</span> <span class="ident">libc::sa_family_t</span>;
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">MacAddr</span>(<span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">c</span>, <span class="ident">d</span>, <span class="ident">e</span>, <span class="ident">f</span>)) <span class="op">=</span> <span class="ident">ni</span>.<span class="ident">mac</span> {
-            (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_addr</span> <span class="op">=</span> [<span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">c</span>, <span class="ident">d</span>, <span class="ident">e</span>, <span class="ident">f</span>, <span class="number">0</span>, <span class="number">0</span>];
+<span class="kw">fn </span>network_addr_to_sockaddr(
+    ni: <span class="kw-2">&amp;</span>NetworkInterface,
+    storage: <span class="kw-2">*mut </span>libc::sockaddr_storage,
+    proto: libc::c_int,
+) -&gt; usize {
+    <span class="kw">unsafe </span>{
+        <span class="kw">let </span>sll: <span class="kw-2">*mut </span>libc::sockaddr_ll = mem::transmute(storage);
+        (<span class="kw-2">*</span>sll).sll_family = libc::AF_PACKET <span class="kw">as </span>libc::sa_family_t;
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(MacAddr(a, b, c, d, e, f)) = ni.mac {
+            (<span class="kw-2">*</span>sll).sll_addr = [a, b, c, d, e, f, <span class="number">0</span>, <span class="number">0</span>];
         }
-        (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_protocol</span> <span class="op">=</span> (<span class="ident">proto</span> <span class="kw">as</span> <span class="ident">u16</span>).<span class="ident">to_be</span>();
-        (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_halen</span> <span class="op">=</span> <span class="number">6</span>;
-        (<span class="kw-2">*</span><span class="ident">sll</span>).<span class="ident">sll_ifindex</span> <span class="op">=</span> <span class="ident">ni</span>.<span class="ident">index</span> <span class="kw">as</span> <span class="ident">i32</span>;
-        <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::sockaddr_ll</span><span class="op">&gt;</span>()
+        (<span class="kw-2">*</span>sll).sll_protocol = (proto <span class="kw">as </span>u16).to_be();
+        (<span class="kw-2">*</span>sll).sll_halen = <span class="number">6</span>;
+        (<span class="kw-2">*</span>sll).sll_ifindex = ni.index <span class="kw">as </span>i32;
+        mem::size_of::&lt;libc::sockaddr_ll&gt;()
     }
 }
 
-<span class="doccomment">/// Configuration for the Linux datalink backend.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Config</span> {
-    <span class="doccomment">/// The size of buffer to use when writing packets. Defaults to 4096.</span>
-    <span class="kw">pub</span> <span class="ident">write_buffer_size</span>: <span class="ident">usize</span>,
+<span class="doccomment">/// Configuration for the Linux datalink backend.
+</span><span class="attr">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+</span><span class="kw">pub struct </span>Config {
+    <span class="doccomment">/// The size of buffer to use when writing packets. Defaults to 4096.
+    </span><span class="kw">pub </span>write_buffer_size: usize,
 
-    <span class="doccomment">/// The size of buffer to use when reading packets. Defaults to 4096.</span>
-    <span class="kw">pub</span> <span class="ident">read_buffer_size</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// The size of buffer to use when reading packets. Defaults to 4096.
+    </span><span class="kw">pub </span>read_buffer_size: usize,
 
-    <span class="doccomment">/// The read timeout. Defaults to None.</span>
-    <span class="kw">pub</span> <span class="ident">read_timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The read timeout. Defaults to None.
+    </span><span class="kw">pub </span>read_timeout: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 
-    <span class="doccomment">/// The write timeout. Defaults to None.</span>
-    <span class="kw">pub</span> <span class="ident">write_timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The write timeout. Defaults to None.
+    </span><span class="kw">pub </span>write_timeout: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 
-    <span class="doccomment">/// Specifies whether to read packets at the datalink layer or network layer.</span>
-    <span class="doccomment">/// NOTE FIXME Currently ignored.</span>
-    <span class="doccomment">/// Defaults to Layer2.</span>
-    <span class="kw">pub</span> <span class="ident">channel_type</span>: <span class="ident"><span class="kw">super</span>::ChannelType</span>,
+    <span class="doccomment">/// Specifies whether to read packets at the datalink layer or network layer.
+    /// NOTE FIXME Currently ignored.
+    /// Defaults to Layer2.
+    </span><span class="kw">pub </span>channel_type: <span class="kw">super</span>::ChannelType,
 
-    <span class="doccomment">/// Specifies packet fanout option, if desired. Defaults to None.</span>
-    <span class="kw">pub</span> <span class="ident">fanout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">super</span>::FanoutOption</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Specifies packet fanout option, if desired. Defaults to None.
+    </span><span class="kw">pub </span>fanout: <span class="prelude-ty">Option</span>&lt;<span class="kw">super</span>::FanoutOption&gt;,
 
-    <span class="doccomment">/// Promiscuous mode.</span>
-    <span class="kw">pub</span> <span class="ident">promiscuous</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Promiscuous mode.
+    </span><span class="kw">pub </span>promiscuous: bool,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident"><span class="kw">super</span>::Config</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">config</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="kw">super</span>::Config</span>) -&gt; <span class="ident">Config</span> {
-        <span class="ident">Config</span> {
-            <span class="ident">write_buffer_size</span>: <span class="ident">config</span>.<span class="ident">write_buffer_size</span>,
-            <span class="ident">read_buffer_size</span>: <span class="ident">config</span>.<span class="ident">read_buffer_size</span>,
-            <span class="ident">channel_type</span>: <span class="ident">config</span>.<span class="ident">channel_type</span>,
-            <span class="ident">read_timeout</span>: <span class="ident">config</span>.<span class="ident">read_timeout</span>,
-            <span class="ident">write_timeout</span>: <span class="ident">config</span>.<span class="ident">write_timeout</span>,
-            <span class="ident">fanout</span>: <span class="ident">config</span>.<span class="ident">linux_fanout</span>,
-            <span class="ident">promiscuous</span>: <span class="ident">config</span>.<span class="ident">promiscuous</span>,
-        }
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">Config</span> {
-        <span class="ident">Config</span> {
-            <span class="ident">write_buffer_size</span>: <span class="number">4096</span>,
-            <span class="ident">read_buffer_size</span>: <span class="number">4096</span>,
-            <span class="ident">read_timeout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">write_timeout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">channel_type</span>: <span class="ident"><span class="kw">super</span>::ChannelType::Layer2</span>,
-            <span class="ident">fanout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">promiscuous</span>: <span class="bool-val">true</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw">super</span>::Config&gt; <span class="kw">for </span>Config {
+    <span class="kw">fn </span>from(config: <span class="kw-2">&amp;</span><span class="kw">super</span>::Config) -&gt; Config {
+        Config {
+            write_buffer_size: config.write_buffer_size,
+            read_buffer_size: config.read_buffer_size,
+            channel_type: config.channel_type,
+            read_timeout: config.read_timeout,
+            write_timeout: config.write_timeout,
+            fanout: config.linux_fanout,
+            promiscuous: config.promiscuous,
         }
     }
 }
 
-<span class="doccomment">/// Create a data link channel using the Linux&#39;s `AF_PACKET` socket type.</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel</span>(<span class="ident">network_interface</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>, <span class="ident">config</span>: <span class="ident">Config</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident"><span class="kw">super</span>::Channel</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">eth_p_all</span> <span class="op">=</span> <span class="number">0x0003</span>;
-    <span class="kw">let</span> (<span class="ident">typ</span>, <span class="ident">proto</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">config</span>.<span class="ident">channel_type</span> {
-        <span class="ident"><span class="kw">super</span>::ChannelType::Layer2</span> =&gt; (<span class="ident">libc::SOCK_RAW</span>, <span class="ident">eth_p_all</span>),
-        <span class="ident"><span class="kw">super</span>::ChannelType::Layer3</span>(<span class="ident">proto</span>) =&gt; (<span class="ident">libc::SOCK_DGRAM</span>, <span class="ident">proto</span>),
+<span class="kw">impl </span>Default <span class="kw">for </span>Config {
+    <span class="kw">fn </span>default() -&gt; Config {
+        Config {
+            write_buffer_size: <span class="number">4096</span>,
+            read_buffer_size: <span class="number">4096</span>,
+            read_timeout: <span class="prelude-val">None</span>,
+            write_timeout: <span class="prelude-val">None</span>,
+            channel_type: <span class="kw">super</span>::ChannelType::Layer2,
+            fanout: <span class="prelude-val">None</span>,
+            promiscuous: <span class="bool-val">true</span>,
+        }
+    }
+}
+
+<span class="doccomment">/// Create a data link channel using the Linux&#39;s `AF_PACKET` socket type.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub fn </span>channel(network_interface: <span class="kw-2">&amp;</span>NetworkInterface, config: Config) -&gt; io::Result&lt;<span class="kw">super</span>::Channel&gt; {
+    <span class="kw">let </span>eth_p_all = <span class="number">0x0003</span>;
+    <span class="kw">let </span>(typ, proto) = <span class="kw">match </span>config.channel_type {
+        <span class="kw">super</span>::ChannelType::Layer2 =&gt; (libc::SOCK_RAW, eth_p_all),
+        <span class="kw">super</span>::ChannelType::Layer3(proto) =&gt; (libc::SOCK_DGRAM, proto),
     };
-    <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc::socket</span>(<span class="ident">libc::AF_PACKET</span>, <span class="ident">typ</span>, <span class="ident">proto</span>.<span class="ident">to_be</span>() <span class="kw">as</span> <span class="ident">i32</span>) };
-    <span class="kw">if</span> <span class="ident">socket</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>());
+    <span class="kw">let </span>socket = <span class="kw">unsafe </span>{ libc::socket(libc::AF_PACKET, typ, proto.to_be() <span class="kw">as </span>i32) };
+    <span class="kw">if </span>socket == -<span class="number">1 </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(io::Error::last_os_error());
     }
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">addr</span>: <span class="ident">libc::sockaddr_storage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() };
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">network_addr_to_sockaddr</span>(<span class="ident">network_interface</span>, <span class="kw-2">&amp;mut</span> <span class="ident">addr</span>, <span class="ident">proto</span> <span class="kw">as</span> <span class="ident">i32</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>addr: libc::sockaddr_storage = <span class="kw">unsafe </span>{ mem::zeroed() };
+    <span class="kw">let </span>len = network_addr_to_sockaddr(network_interface, <span class="kw-2">&amp;mut </span>addr, proto <span class="kw">as </span>i32);
 
-    <span class="kw">let</span> <span class="ident">send_addr</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="ident">addr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr_storage</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr</span>;
+    <span class="kw">let </span>send_addr = (<span class="kw-2">&amp;</span>addr <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr_storage) <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr;
 
-    <span class="comment">// Bind to interface</span>
-    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc::bind</span>(<span class="ident">socket</span>, <span class="ident">send_addr</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">libc::socklen_t</span>) } <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-        <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io::Error::last_os_error</span>();
-        <span class="kw">unsafe</span> {
-            <span class="ident">pnet_sys::close</span>(<span class="ident">socket</span>);
+    <span class="comment">// Bind to interface
+    </span><span class="kw">if unsafe </span>{ libc::bind(socket, send_addr, len <span class="kw">as </span>libc::socklen_t) } == -<span class="number">1 </span>{
+        <span class="kw">let </span>err = io::Error::last_os_error();
+        <span class="kw">unsafe </span>{
+            pnet_sys::close(socket);
         }
-        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>);
+        <span class="kw">return </span><span class="prelude-val">Err</span>(err);
     }
 
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pmr</span>: <span class="ident">linux::packet_mreq</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() };
-    <span class="ident">pmr</span>.<span class="ident">mr_ifindex</span> <span class="op">=</span> <span class="ident">network_interface</span>.<span class="ident">index</span> <span class="kw">as</span> <span class="ident">i32</span>;
-    <span class="ident">pmr</span>.<span class="ident">mr_type</span> <span class="op">=</span> <span class="ident">linux::PACKET_MR_PROMISC</span> <span class="kw">as</span> <span class="ident">u16</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>pmr: linux::packet_mreq = <span class="kw">unsafe </span>{ mem::zeroed() };
+    pmr.mr_ifindex = network_interface.index <span class="kw">as </span>i32;
+    pmr.mr_type = linux::PACKET_MR_PROMISC <span class="kw">as </span>u16;
 
-    <span class="comment">// Enable promiscuous capture</span>
-    <span class="kw">if</span> <span class="ident">config</span>.<span class="ident">promiscuous</span> {
-        <span class="kw">if</span> <span class="kw">unsafe</span> {
-            <span class="ident">libc::setsockopt</span>(
-                <span class="ident">socket</span>,
-                <span class="ident">linux::SOL_PACKET</span>,
-                <span class="ident">linux::PACKET_ADD_MEMBERSHIP</span>,
-                (<span class="kw-2">&amp;</span><span class="ident">pmr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">linux::packet_mreq</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
-                <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">linux::packet_mreq</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
+    <span class="comment">// Enable promiscuous capture
+    </span><span class="kw">if </span>config.promiscuous {
+        <span class="kw">if unsafe </span>{
+            libc::setsockopt(
+                socket,
+                linux::SOL_PACKET,
+                linux::PACKET_ADD_MEMBERSHIP,
+                (<span class="kw-2">&amp;</span>pmr <span class="kw">as </span><span class="kw-2">*const </span>linux::packet_mreq) <span class="kw">as </span><span class="kw-2">*const </span>libc::c_void,
+                mem::size_of::&lt;linux::packet_mreq&gt;() <span class="kw">as </span>libc::socklen_t,
             )
-        } <span class="op">==</span> <span class="op">-</span><span class="number">1</span>
-        {
-            <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io::Error::last_os_error</span>();
-            <span class="kw">unsafe</span> {
-                <span class="ident">pnet_sys::close</span>(<span class="ident">socket</span>);
+        } == -<span class="number">1
+        </span>{
+            <span class="kw">let </span>err = io::Error::last_os_error();
+            <span class="kw">unsafe </span>{
+                pnet_sys::close(socket);
             }
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>);
+            <span class="kw">return </span><span class="prelude-val">Err</span>(err);
         }
     }
 
-    <span class="comment">// Enable packet fanout</span>
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">fanout</span>) <span class="op">=</span> <span class="ident">config</span>.<span class="ident">fanout</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::FanoutType</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">typ</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">fanout</span>.<span class="ident">fanout_type</span> {
-            <span class="ident">FanoutType::HASH</span> =&gt; <span class="ident">linux::PACKET_FANOUT_HASH</span>,
-            <span class="ident">FanoutType::LB</span> =&gt; <span class="ident">linux::PACKET_FANOUT_LB</span>,
-            <span class="ident">FanoutType::CPU</span> =&gt; <span class="ident">linux::PACKET_FANOUT_CPU</span>,
-            <span class="ident">FanoutType::ROLLOVER</span> =&gt; <span class="ident">linux::PACKET_FANOUT_ROLLOVER</span>,
-            <span class="ident">FanoutType::RND</span> =&gt; <span class="ident">linux::PACKET_FANOUT_RND</span>,
-            <span class="ident">FanoutType::QM</span> =&gt; <span class="ident">linux::PACKET_FANOUT_QM</span>,
-            <span class="ident">FanoutType::CBPF</span> =&gt; <span class="ident">linux::PACKET_FANOUT_CBPF</span>,
-            <span class="ident">FanoutType::EBPF</span> =&gt; <span class="ident">linux::PACKET_FANOUT_EBPF</span>,
-        } <span class="kw">as</span> <span class="ident">u32</span>;
-        <span class="comment">// set defrag flag</span>
-        <span class="kw">if</span> <span class="ident">fanout</span>.<span class="ident">defrag</span> {
-            <span class="ident">typ</span> <span class="op">=</span> <span class="ident">typ</span> <span class="op">|</span> <span class="ident">linux::PACKET_FANOUT_FLAG_DEFRAG</span>;
+    <span class="comment">// Enable packet fanout
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(fanout) = config.fanout {
+        <span class="kw">use </span><span class="kw">super</span>::FanoutType;
+        <span class="kw">let </span><span class="kw-2">mut </span>typ = <span class="kw">match </span>fanout.fanout_type {
+            FanoutType::HASH =&gt; linux::PACKET_FANOUT_HASH,
+            FanoutType::LB =&gt; linux::PACKET_FANOUT_LB,
+            FanoutType::CPU =&gt; linux::PACKET_FANOUT_CPU,
+            FanoutType::ROLLOVER =&gt; linux::PACKET_FANOUT_ROLLOVER,
+            FanoutType::RND =&gt; linux::PACKET_FANOUT_RND,
+            FanoutType::QM =&gt; linux::PACKET_FANOUT_QM,
+            FanoutType::CBPF =&gt; linux::PACKET_FANOUT_CBPF,
+            FanoutType::EBPF =&gt; linux::PACKET_FANOUT_EBPF,
+        } <span class="kw">as </span>u32;
+        <span class="comment">// set defrag flag
+        </span><span class="kw">if </span>fanout.defrag {
+            typ = typ | linux::PACKET_FANOUT_FLAG_DEFRAG;
         }
-        <span class="comment">// set rollover flag</span>
-        <span class="kw">if</span> <span class="ident">fanout</span>.<span class="ident">rollover</span> {
-            <span class="ident">typ</span> <span class="op">=</span> <span class="ident">typ</span> <span class="op">|</span> <span class="ident">linux::PACKET_FANOUT_FLAG_ROLLOVER</span>;
+        <span class="comment">// set rollover flag
+        </span><span class="kw">if </span>fanout.rollover {
+            typ = typ | linux::PACKET_FANOUT_FLAG_ROLLOVER;
         }
-        <span class="comment">// set uniqueid flag -- probably not needed atm..</span>
-        <span class="comment">// PACKET_FANOUT_FLAG_UNIQUEID -- https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a69a864209e9ab436d4a58e8028ac96cc873d15</span>
-        <span class="kw">let</span> <span class="ident">arg</span>: <span class="ident">libc::c_uint</span> <span class="op">=</span> <span class="ident">fanout</span>.<span class="ident">group_id</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">|</span> (<span class="ident">typ</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>);
+        <span class="comment">// set uniqueid flag -- probably not needed atm..
+        // PACKET_FANOUT_FLAG_UNIQUEID -- https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a69a864209e9ab436d4a58e8028ac96cc873d15
+        </span><span class="kw">let </span>arg: libc::c_uint = fanout.group_id <span class="kw">as </span>u32 | (typ &lt;&lt; <span class="number">16</span>);
 
-        <span class="kw">if</span> <span class="kw">unsafe</span> {
-            <span class="ident">libc::setsockopt</span>(
-                <span class="ident">socket</span>,
-                <span class="ident">linux::SOL_PACKET</span>,
-                <span class="ident">linux::PACKET_FANOUT</span>,
-                (<span class="kw-2">&amp;</span><span class="ident">arg</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_uint</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
-                <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_uint</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
+        <span class="kw">if unsafe </span>{
+            libc::setsockopt(
+                socket,
+                linux::SOL_PACKET,
+                linux::PACKET_FANOUT,
+                (<span class="kw-2">&amp;</span>arg <span class="kw">as </span><span class="kw-2">*const </span>libc::c_uint) <span class="kw">as </span><span class="kw-2">*const </span>libc::c_void,
+                mem::size_of::&lt;libc::c_uint&gt;() <span class="kw">as </span>libc::socklen_t,
             )
-        } <span class="op">==</span> <span class="op">-</span><span class="number">1</span>
-        {
-            <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io::Error::last_os_error</span>();
-            <span class="kw">unsafe</span> {
-                <span class="ident">pnet_sys::close</span>(<span class="ident">socket</span>);
+        } == -<span class="number">1
+        </span>{
+            <span class="kw">let </span>err = io::Error::last_os_error();
+            <span class="kw">unsafe </span>{
+                pnet_sys::close(socket);
             }
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>);
+            <span class="kw">return </span><span class="prelude-val">Err</span>(err);
         }
     }
 
-    <span class="comment">// Enable nonblocking</span>
-    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc::fcntl</span>(<span class="ident">socket</span>, <span class="ident">libc::F_SETFL</span>, <span class="ident">libc::O_NONBLOCK</span>) } <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-        <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">io::Error::last_os_error</span>();
-        <span class="kw">unsafe</span> {
-            <span class="ident">pnet_sys::close</span>(<span class="ident">socket</span>);
+    <span class="comment">// Enable nonblocking
+    </span><span class="kw">if unsafe </span>{ libc::fcntl(socket, libc::F_SETFL, libc::O_NONBLOCK) } == -<span class="number">1 </span>{
+        <span class="kw">let </span>err = io::Error::last_os_error();
+        <span class="kw">unsafe </span>{
+            pnet_sys::close(socket);
         }
-        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>);
+        <span class="kw">return </span><span class="prelude-val">Err</span>(err);
     }
 
-    <span class="kw">let</span> <span class="ident">fd</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">pnet_sys::FileDesc</span> { <span class="ident">fd</span>: <span class="ident">socket</span> });
-    <span class="kw">let</span> <span class="ident">sender</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">DataLinkSenderImpl</span> {
-        <span class="ident">socket</span>: <span class="ident">fd</span>.<span class="ident">clone</span>(),
-        <span class="ident">fd_set</span>: <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() },
-        <span class="ident">write_buffer</span>: <span class="macro">vec!</span>[<span class="number">0</span>; <span class="ident">config</span>.<span class="ident">write_buffer_size</span>],
-        <span class="ident">_channel_type</span>: <span class="ident">config</span>.<span class="ident">channel_type</span>,
-        <span class="ident">send_addr</span>: <span class="kw">unsafe</span> { <span class="kw-2">*</span>(<span class="ident">send_addr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr_ll</span>) },
-        <span class="ident">send_addr_len</span>: <span class="ident">len</span>,
-        <span class="ident">timeout</span>: <span class="ident">config</span>
-            .<span class="ident">write_timeout</span>
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">to</span><span class="op">|</span> <span class="ident">pnet_sys::duration_to_timespec</span>(<span class="ident">to</span>)),
+    <span class="kw">let </span>fd = Arc::new(pnet_sys::FileDesc { fd: socket });
+    <span class="kw">let </span>sender = Box::new(DataLinkSenderImpl {
+        socket: fd.clone(),
+        fd_set: <span class="kw">unsafe </span>{ mem::zeroed() },
+        write_buffer: <span class="macro">vec!</span>[<span class="number">0</span>; config.write_buffer_size],
+        _channel_type: config.channel_type,
+        send_addr: <span class="kw">unsafe </span>{ <span class="kw-2">*</span>(send_addr <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr_ll) },
+        send_addr_len: len,
+        timeout: config
+            .write_timeout
+            .map(|to| pnet_sys::duration_to_timespec(to)),
     });
-    <span class="kw">let</span> <span class="ident">receiver</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">DataLinkReceiverImpl</span> {
-        <span class="ident">socket</span>: <span class="ident">fd</span>.<span class="ident">clone</span>(),
-        <span class="ident">fd_set</span>: <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() },
-        <span class="ident">read_buffer</span>: <span class="macro">vec!</span>[<span class="number">0</span>; <span class="ident">config</span>.<span class="ident">read_buffer_size</span>],
-        <span class="ident">_channel_type</span>: <span class="ident">config</span>.<span class="ident">channel_type</span>,
-        <span class="ident">timeout</span>: <span class="ident">config</span>
-            .<span class="ident">read_timeout</span>
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">to</span><span class="op">|</span> <span class="ident">pnet_sys::duration_to_timespec</span>(<span class="ident">to</span>)),
+    <span class="kw">let </span>receiver = Box::new(DataLinkReceiverImpl {
+        socket: fd.clone(),
+        fd_set: <span class="kw">unsafe </span>{ mem::zeroed() },
+        read_buffer: <span class="macro">vec!</span>[<span class="number">0</span>; config.read_buffer_size],
+        _channel_type: config.channel_type,
+        timeout: config
+            .read_timeout
+            .map(|to| pnet_sys::duration_to_timespec(to)),
     });
 
-    <span class="prelude-val">Ok</span>(<span class="ident"><span class="kw">super</span>::Channel::Ethernet</span>(<span class="ident">sender</span>, <span class="ident">receiver</span>))
+    <span class="prelude-val">Ok</span>(<span class="kw">super</span>::Channel::Ethernet(sender, receiver))
 }
 
-<span class="kw">struct</span> <span class="ident">DataLinkSenderImpl</span> {
-    <span class="ident">socket</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">pnet_sys::FileDesc</span><span class="op">&gt;</span>,
-    <span class="ident">fd_set</span>: <span class="ident">libc::fd_set</span>,
-    <span class="ident">write_buffer</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-    <span class="ident">_channel_type</span>: <span class="ident"><span class="kw">super</span>::ChannelType</span>,
-    <span class="ident">send_addr</span>: <span class="ident">libc::sockaddr_ll</span>,
-    <span class="ident">send_addr_len</span>: <span class="ident">usize</span>,
-    <span class="ident">timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">libc::timespec</span><span class="op">&gt;</span>,
+<span class="kw">struct </span>DataLinkSenderImpl {
+    socket: Arc&lt;pnet_sys::FileDesc&gt;,
+    fd_set: libc::fd_set,
+    write_buffer: Vec&lt;u8&gt;,
+    _channel_type: <span class="kw">super</span>::ChannelType,
+    send_addr: libc::sockaddr_ll,
+    send_addr_len: usize,
+    timeout: <span class="prelude-ty">Option</span>&lt;libc::timespec&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">DataLinkSender</span> <span class="kw">for</span> <span class="ident">DataLinkSenderImpl</span> {
-    <span class="comment">// FIXME Layer 3</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">build_and_send</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">num_packets</span>: <span class="ident">usize</span>,
-        <span class="ident">packet_size</span>: <span class="ident">usize</span>,
-        <span class="ident">func</span>: <span class="kw-2">&amp;mut</span> <span class="kw">dyn</span> <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]),
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">num_packets</span> <span class="op">*</span> <span class="ident">packet_size</span>;
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">write_buffer</span>.<span class="ident">len</span>() {
-            <span class="kw">let</span> <span class="ident">min</span> <span class="op">=</span> <span class="ident">cmp::min</span>(<span class="self">self</span>.<span class="ident">write_buffer</span>[..].<span class="ident">len</span>(), <span class="ident">len</span>);
-            <span class="kw">let</span> <span class="ident">mut_slice</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">write_buffer</span>;
-            <span class="kw">for</span> <span class="ident">chunk</span> <span class="kw">in</span> <span class="ident">mut_slice</span>[..<span class="ident">min</span>].<span class="ident">chunks_mut</span>(<span class="ident">packet_size</span>) {
-                <span class="ident">func</span>(<span class="ident">chunk</span>);
-                <span class="kw">let</span> <span class="ident">send_addr</span> <span class="op">=</span>
-                    (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">send_addr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr_ll</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr</span>;
+<span class="kw">impl </span>DataLinkSender <span class="kw">for </span>DataLinkSenderImpl {
+    <span class="comment">// FIXME Layer 3
+    </span><span class="attr">#[inline]
+    </span><span class="kw">fn </span>build_and_send(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        num_packets: usize,
+        packet_size: usize,
+        func: <span class="kw-2">&amp;mut </span><span class="kw">dyn </span>FnMut(<span class="kw-2">&amp;mut </span>[u8]),
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt; {
+        <span class="kw">let </span>len = num_packets * packet_size;
+        <span class="kw">if </span>len &lt;= <span class="self">self</span>.write_buffer.len() {
+            <span class="kw">let </span>min = cmp::min(<span class="self">self</span>.write_buffer[..].len(), len);
+            <span class="kw">let </span>mut_slice = <span class="kw-2">&amp;mut </span><span class="self">self</span>.write_buffer;
+            <span class="kw">for </span>chunk <span class="kw">in </span>mut_slice[..min].chunks_mut(packet_size) {
+                func(chunk);
+                <span class="kw">let </span>send_addr =
+                    (<span class="kw-2">&amp;</span><span class="self">self</span>.send_addr <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr_ll) <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr;
 
-                <span class="kw">unsafe</span> {
-                    <span class="ident">libc::FD_ZERO</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
-                    <span class="ident">libc::FD_SET</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
+                <span class="kw">unsafe </span>{
+                    libc::FD_ZERO(<span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
+                    libc::FD_SET(<span class="self">self</span>.socket.fd, <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
                 }
-                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                    <span class="ident">libc::pselect</span>(
-                        <span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span> <span class="op">+</span> <span class="number">1</span>,
-                        <span class="ident">ptr::null_mut</span>(),
-                        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>,
-                        <span class="ident">ptr::null_mut</span>(),
-                        <span class="self">self</span>.<span class="ident">timeout</span>
-                            .<span class="ident">as_ref</span>()
-                            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">to</span><span class="op">|</span> <span class="ident">to</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::timespec</span>)
-                            .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()),
-                        <span class="ident">ptr::null</span>(),
+                <span class="kw">let </span>ret = <span class="kw">unsafe </span>{
+                    libc::pselect(
+                        <span class="self">self</span>.socket.fd + <span class="number">1</span>,
+                        ptr::null_mut(),
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set,
+                        ptr::null_mut(),
+                        <span class="self">self</span>.timeout
+                            .as_ref()
+                            .map(|to| to <span class="kw">as </span><span class="kw-2">*const </span>libc::timespec)
+                            .unwrap_or(ptr::null()),
+                        ptr::null(),
                     )
                 };
-                <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-                    <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>()));
-                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
-                    <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(<span class="ident">io::ErrorKind::TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>)));
-                } <span class="kw">else</span> {
-                    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">pnet_sys::send_to</span>(
-                        <span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>,
-                        <span class="ident">chunk</span>,
-                        <span class="ident">send_addr</span>,
-                        <span class="self">self</span>.<span class="ident">send_addr_len</span> <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
+                <span class="kw">if </span>ret == -<span class="number">1 </span>{
+                    <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::last_os_error()));
+                } <span class="kw">else if </span>ret == <span class="number">0 </span>{
+                    <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::new(io::ErrorKind::TimedOut, <span class="string">&quot;Timed out&quot;</span>)));
+                } <span class="kw">else </span>{
+                    <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = pnet_sys::send_to(
+                        <span class="self">self</span>.socket.fd,
+                        chunk,
+                        send_addr,
+                        <span class="self">self</span>.send_addr_len <span class="kw">as </span>libc::socklen_t,
                     ) {
-                        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">e</span>));
+                        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(e));
                     }
                 }
             }
 
             <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(()))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">send_to</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">_dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">libc::FD_ZERO</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
-            <span class="ident">libc::FD_SET</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>send_to(<span class="kw-2">&amp;mut </span><span class="self">self</span>, packet: <span class="kw-2">&amp;</span>[u8], _dst: <span class="prelude-ty">Option</span>&lt;NetworkInterface&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt; {
+        <span class="kw">unsafe </span>{
+            libc::FD_ZERO(<span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
+            libc::FD_SET(<span class="self">self</span>.socket.fd, <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
         }
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">libc::pselect</span>(
-                <span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span> <span class="op">+</span> <span class="number">1</span>,
-                <span class="ident">ptr::null_mut</span>(),
-                <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>,
-                <span class="ident">ptr::null_mut</span>(),
-                <span class="self">self</span>.<span class="ident">timeout</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">to</span><span class="op">|</span> <span class="ident">to</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::timespec</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()),
-                <span class="ident">ptr::null</span>(),
+        <span class="kw">let </span>ret = <span class="kw">unsafe </span>{
+            libc::pselect(
+                <span class="self">self</span>.socket.fd + <span class="number">1</span>,
+                ptr::null_mut(),
+                <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set,
+                ptr::null_mut(),
+                <span class="self">self</span>.timeout
+                    .as_ref()
+                    .map(|to| to <span class="kw">as </span><span class="kw-2">*const </span>libc::timespec)
+                    .unwrap_or(ptr::null()),
+                ptr::null(),
             )
         };
-        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>()))
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(<span class="ident">io::ErrorKind::TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>)))
-        } <span class="kw">else</span> {
-            <span class="kw">match</span> <span class="ident">pnet_sys::send_to</span>(
-                <span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>,
-                <span class="ident">packet</span>,
-                (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">send_addr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::sockaddr_ll</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
-                <span class="self">self</span>.<span class="ident">send_addr_len</span> <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
+        <span class="kw">if </span>ret == -<span class="number">1 </span>{
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::last_os_error()))
+        } <span class="kw">else if </span>ret == <span class="number">0 </span>{
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::new(io::ErrorKind::TimedOut, <span class="string">&quot;Timed out&quot;</span>)))
+        } <span class="kw">else </span>{
+            <span class="kw">match </span>pnet_sys::send_to(
+                <span class="self">self</span>.socket.fd,
+                packet,
+                (<span class="kw-2">&amp;</span><span class="self">self</span>.send_addr <span class="kw">as </span><span class="kw-2">*const </span>libc::sockaddr_ll) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="self">self</span>.send_addr_len <span class="kw">as </span>libc::socklen_t,
             ) {
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">e</span>)),
+                <span class="prelude-val">Err</span>(e) =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(e)),
                 <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(())),
             }
         }
     }
 }
 
-<span class="kw">struct</span> <span class="ident">DataLinkReceiverImpl</span> {
-    <span class="ident">socket</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">pnet_sys::FileDesc</span><span class="op">&gt;</span>,
-    <span class="ident">fd_set</span>: <span class="ident">libc::fd_set</span>,
-    <span class="ident">read_buffer</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-    <span class="ident">_channel_type</span>: <span class="ident"><span class="kw">super</span>::ChannelType</span>,
-    <span class="ident">timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">libc::timespec</span><span class="op">&gt;</span>,
+<span class="kw">struct </span>DataLinkReceiverImpl {
+    socket: Arc&lt;pnet_sys::FileDesc&gt;,
+    fd_set: libc::fd_set,
+    read_buffer: Vec&lt;u8&gt;,
+    _channel_type: <span class="kw">super</span>::ChannelType,
+    timeout: <span class="prelude-ty">Option</span>&lt;libc::timespec&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">DataLinkReceiver</span> <span class="kw">for</span> <span class="ident">DataLinkReceiverImpl</span> {
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">caddr</span>: <span class="ident">libc::sockaddr_storage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() };
-        <span class="kw">unsafe</span> {
-            <span class="ident">libc::FD_ZERO</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
-            <span class="ident">libc::FD_SET</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>);
+<span class="kw">impl </span>DataLinkReceiver <span class="kw">for </span>DataLinkReceiverImpl {
+    <span class="kw">fn </span>next(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; io::Result&lt;<span class="kw-2">&amp;</span>[u8]&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>caddr: libc::sockaddr_storage = <span class="kw">unsafe </span>{ mem::zeroed() };
+        <span class="kw">unsafe </span>{
+            libc::FD_ZERO(<span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
+            libc::FD_SET(<span class="self">self</span>.socket.fd, <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set);
         }
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">libc::pselect</span>(
-                <span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span> <span class="op">+</span> <span class="number">1</span>,
-                <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">fd_set</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">libc::fd_set</span>,
-                <span class="ident">ptr::null_mut</span>(),
-                <span class="ident">ptr::null_mut</span>(),
-                <span class="self">self</span>.<span class="ident">timeout</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">to</span><span class="op">|</span> <span class="ident">to</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::timespec</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()),
-                <span class="ident">ptr::null</span>(),
+        <span class="kw">let </span>ret = <span class="kw">unsafe </span>{
+            libc::pselect(
+                <span class="self">self</span>.socket.fd + <span class="number">1</span>,
+                <span class="kw-2">&amp;mut </span><span class="self">self</span>.fd_set <span class="kw">as </span><span class="kw-2">*mut </span>libc::fd_set,
+                ptr::null_mut(),
+                ptr::null_mut(),
+                <span class="self">self</span>.timeout
+                    .as_ref()
+                    .map(|to| to <span class="kw">as </span><span class="kw-2">*const </span>libc::timespec)
+                    .unwrap_or(ptr::null()),
+                ptr::null(),
             )
         };
-        <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>())
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(<span class="ident">io::ErrorKind::TimedOut</span>, <span class="string">&quot;Timed out&quot;</span>))
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">pnet_sys::recv_from</span>(<span class="self">self</span>.<span class="ident">socket</span>.<span class="ident">fd</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">read_buffer</span>, <span class="kw-2">&amp;mut</span> <span class="ident">caddr</span>);
-            <span class="kw">match</span> <span class="ident">res</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">len</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">read_buffer</span>[<span class="number">0</span>..<span class="ident">len</span>]),
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">e</span>),
+        <span class="kw">if </span>ret == -<span class="number">1 </span>{
+            <span class="prelude-val">Err</span>(io::Error::last_os_error())
+        } <span class="kw">else if </span>ret == <span class="number">0 </span>{
+            <span class="prelude-val">Err</span>(io::Error::new(io::ErrorKind::TimedOut, <span class="string">&quot;Timed out&quot;</span>))
+        } <span class="kw">else </span>{
+            <span class="kw">let </span>res = pnet_sys::recv_from(<span class="self">self</span>.socket.fd, <span class="kw-2">&amp;mut </span><span class="self">self</span>.read_buffer, <span class="kw-2">&amp;mut </span>caddr);
+            <span class="kw">match </span>res {
+                <span class="prelude-val">Ok</span>(len) =&gt; <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.read_buffer[<span class="number">0</span>..len]),
+                <span class="prelude-val">Err</span>(e) =&gt; <span class="prelude-val">Err</span>(e),
             }
         }
     }
 }
 
-<span class="doccomment">/// Get a list of available network interfaces for the current machine.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interfaces</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;unix_interfaces.rs&quot;</span>]</span>
-    <span class="kw">mod</span> <span class="ident">interfaces</span>;
-    <span class="ident">interfaces::interfaces</span>()
+<span class="doccomment">/// Get a list of available network interfaces for the current machine.
+</span><span class="kw">pub fn </span>interfaces() -&gt; Vec&lt;NetworkInterface&gt; {
+    <span class="attr">#[path = <span class="string">&quot;unix_interfaces.rs&quot;</span>]
+    </span><span class="kw">mod </span>interfaces;
+    interfaces::interfaces()
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_datalink" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_datalink" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

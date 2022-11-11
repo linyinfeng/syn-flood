@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/udp.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>udp.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/udp.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>udp.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -175,176 +168,175 @@
 <span id="168">168</span>
 <span id="169">169</span>
 <span id="170">170</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! A UDP packet abstraction.</span>
+</span><span class="doccomment">//! A UDP packet abstraction.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Packet</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocols</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::Packet;
+<span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocols;
 
-<span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+<span class="kw">use </span>alloc::vec::Vec;
 
-<span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+<span class="kw">use </span>pnet_macros::packet;
+<span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-<span class="kw">use</span> <span class="ident">pnet_base::core_net</span>::{<span class="ident">Ipv4Addr</span>, <span class="ident">Ipv6Addr</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>;
+<span class="kw">use </span>pnet_base::core_net::{Ipv4Addr, Ipv6Addr};
+<span class="kw">use </span><span class="kw">crate</span>::util;
 
-<span class="doccomment">/// Represents a UDP Packet.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Udp</span> {
-    <span class="kw">pub</span> <span class="ident">source</span>: <span class="ident">u16be</span>,
-    <span class="kw">pub</span> <span class="ident">destination</span>: <span class="ident">u16be</span>,
-    <span class="kw">pub</span> <span class="ident">length</span>: <span class="ident">u16be</span>,
-    <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a UDP Packet.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Udp {
+    <span class="kw">pub </span>source: u16be,
+    <span class="kw">pub </span>destination: u16be,
+    <span class="kw">pub </span>length: u16be,
+    <span class="kw">pub </span>checksum: u16be,
+    <span class="attr">#[payload]
+    </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
 }
 
-<span class="doccomment">/// Calculate a checksum for a packet built on IPv4.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv4_checksum</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">UdpPacket</span>, <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>, <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="ident">ipv4_checksum_adv</span>(<span class="ident">packet</span>, <span class="kw-2">&amp;</span>[], <span class="ident">source</span>, <span class="ident">destination</span>)
+<span class="doccomment">/// Calculate a checksum for a packet built on IPv4.
+</span><span class="kw">pub fn </span>ipv4_checksum(packet: <span class="kw-2">&amp;</span>UdpPacket, source: <span class="kw-2">&amp;</span>Ipv4Addr, destination: <span class="kw-2">&amp;</span>Ipv4Addr) -&gt; u16be {
+    ipv4_checksum_adv(packet, <span class="kw-2">&amp;</span>[], source, destination)
 }
 
-<span class="doccomment">/// Calculate a checksum for a packet built on IPv4. Advanced version which</span>
-<span class="doccomment">/// accepts an extra slice of data that will be included in the checksum</span>
-<span class="doccomment">/// as being part of the data portion of the packet.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If `packet` contains an odd number of bytes the last byte will not be</span>
-<span class="doccomment">/// counted as the first byte of a word together with the first byte of</span>
-<span class="doccomment">/// `extra_data`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv4_checksum_adv</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">UdpPacket</span>,
-                         <span class="ident">extra_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-                         <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>,
-                         <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv4Addr</span>)
-    -&gt; <span class="ident">u16be</span> {
-    <span class="ident">util::ipv4_checksum</span>(<span class="ident">packet</span>.<span class="ident">packet</span>(),
+<span class="doccomment">/// Calculate a checksum for a packet built on IPv4. Advanced version which
+/// accepts an extra slice of data that will be included in the checksum
+/// as being part of the data portion of the packet.
+///
+/// If `packet` contains an odd number of bytes the last byte will not be
+/// counted as the first byte of a word together with the first byte of
+/// `extra_data`.
+</span><span class="kw">pub fn </span>ipv4_checksum_adv(packet: <span class="kw-2">&amp;</span>UdpPacket,
+                         extra_data: <span class="kw-2">&amp;</span>[u8],
+                         source: <span class="kw-2">&amp;</span>Ipv4Addr,
+                         destination: <span class="kw-2">&amp;</span>Ipv4Addr)
+    -&gt; u16be {
+    util::ipv4_checksum(packet.packet(),
                         <span class="number">3</span>,
-                        <span class="ident">extra_data</span>,
-                        <span class="ident">source</span>,
-                        <span class="ident">destination</span>,
-                        <span class="ident">IpNextHeaderProtocols::Udp</span>)
+                        extra_data,
+                        source,
+                        destination,
+                        IpNextHeaderProtocols::Udp)
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">udp_header_ipv4_test</span>() {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocols</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv4::MutableIpv4Packet</span>;
+<span class="attr">#[test]
+</span><span class="kw">fn </span>udp_header_ipv4_test() {
+    <span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocols;
+    <span class="kw">use </span><span class="kw">crate</span>::ipv4::MutableIpv4Packet;
 
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">20</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">4</span>];
-    <span class="kw">let</span> <span class="ident">ipv4_source</span> <span class="op">=</span> <span class="ident">Ipv4Addr::new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">1</span>);
-    <span class="kw">let</span> <span class="ident">ipv4_destination</span> <span class="op">=</span> <span class="ident">Ipv4Addr::new</span>(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">199</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">20 </span>+ <span class="number">8 </span>+ <span class="number">4</span>];
+    <span class="kw">let </span>ipv4_source = Ipv4Addr::new(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">1</span>);
+    <span class="kw">let </span>ipv4_destination = Ipv4Addr::new(<span class="number">192</span>, <span class="number">168</span>, <span class="number">0</span>, <span class="number">199</span>);
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv4Packet::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-        <span class="ident">ip_header</span>.<span class="ident">set_next_level_protocol</span>(<span class="ident">IpNextHeaderProtocols::Udp</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_source</span>(<span class="ident">ipv4_source</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_destination</span>(<span class="ident">ipv4_destination</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>ip_header = MutableIpv4Packet::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+        ip_header.set_next_level_protocol(IpNextHeaderProtocols::Udp);
+        ip_header.set_source(ipv4_source);
+        ip_header.set_destination(ipv4_destination);
     }
 
-    <span class="comment">// Set data</span>
-    <span class="ident">packet</span>[<span class="number">20</span> <span class="op">+</span> <span class="number">8</span>] <span class="op">=</span> <span class="string">&#39;t&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">20</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span> <span class="string">&#39;e&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">20</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">2</span>] <span class="op">=</span> <span class="string">&#39;s&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">20</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">3</span>] <span class="op">=</span> <span class="string">&#39;t&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
+    <span class="comment">// Set data
+    </span>packet[<span class="number">20 </span>+ <span class="number">8</span>] = <span class="string">&#39;t&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">20 </span>+ <span class="number">8 </span>+ <span class="number">1</span>] = <span class="string">&#39;e&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">20 </span>+ <span class="number">8 </span>+ <span class="number">2</span>] = <span class="string">&#39;s&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">20 </span>+ <span class="number">8 </span>+ <span class="number">3</span>] = <span class="string">&#39;t&#39; </span><span class="kw">as </span>u8;
 
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">udp_header</span> <span class="op">=</span> <span class="ident">MutableUdpPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[<span class="number">20</span>..]).<span class="ident">unwrap</span>();
-        <span class="ident">udp_header</span>.<span class="ident">set_source</span>(<span class="number">12345</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_source</span>(), <span class="number">12345</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>udp_header = MutableUdpPacket::new(<span class="kw-2">&amp;mut </span>packet[<span class="number">20</span>..]).unwrap();
+        udp_header.set_source(<span class="number">12345</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_source(), <span class="number">12345</span>);
 
-        <span class="ident">udp_header</span>.<span class="ident">set_destination</span>(<span class="number">54321</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_destination</span>(), <span class="number">54321</span>);
+        udp_header.set_destination(<span class="number">54321</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_destination(), <span class="number">54321</span>);
 
-        <span class="ident">udp_header</span>.<span class="ident">set_length</span>(<span class="number">8</span> <span class="op">+</span> <span class="number">4</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_length</span>(), <span class="number">8</span> <span class="op">+</span> <span class="number">4</span>);
+        udp_header.set_length(<span class="number">8 </span>+ <span class="number">4</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_length(), <span class="number">8 </span>+ <span class="number">4</span>);
 
-        <span class="kw">let</span> <span class="ident">checksum</span> <span class="op">=</span> <span class="ident">ipv4_checksum</span>(<span class="kw-2">&amp;</span><span class="ident">udp_header</span>.<span class="ident">to_immutable</span>(), <span class="kw-2">&amp;</span><span class="ident">ipv4_source</span>, <span class="kw-2">&amp;</span><span class="ident">ipv4_destination</span>);
-        <span class="ident">udp_header</span>.<span class="ident">set_checksum</span>(<span class="ident">checksum</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_checksum</span>(), <span class="number">0x9178</span>);
+        <span class="kw">let </span>checksum = ipv4_checksum(<span class="kw-2">&amp;</span>udp_header.to_immutable(), <span class="kw-2">&amp;</span>ipv4_source, <span class="kw-2">&amp;</span>ipv4_destination);
+        udp_header.set_checksum(checksum);
+        <span class="macro">assert_eq!</span>(udp_header.get_checksum(), <span class="number">0x9178</span>);
     }
 
-    <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> [<span class="number">0x30</span>, <span class="number">0x39</span>, <span class="comment">/* source */</span>
-                      <span class="number">0xd4</span>, <span class="number">0x31</span>, <span class="comment">/* destination */</span>
-                      <span class="number">0x00</span>, <span class="number">0x0c</span>, <span class="comment">/* length */</span>
-                      <span class="number">0x91</span>, <span class="number">0x78</span>  <span class="comment">/* checksum */</span>];
-    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[<span class="number">20</span>..<span class="number">28</span>]);
+    <span class="kw">let </span>ref_packet = [<span class="number">0x30</span>, <span class="number">0x39</span>, <span class="comment">/* source */
+                      </span><span class="number">0xd4</span>, <span class="number">0x31</span>, <span class="comment">/* destination */
+                      </span><span class="number">0x00</span>, <span class="number">0x0c</span>, <span class="comment">/* length */
+                      </span><span class="number">0x91</span>, <span class="number">0x78  </span><span class="comment">/* checksum */</span>];
+    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[<span class="number">20</span>..<span class="number">28</span>]);
 }
 
 
-<span class="doccomment">/// Calculate a checksum for a packet built on IPv6.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv6_checksum</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">UdpPacket</span>, <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>, <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="ident">ipv6_checksum_adv</span>(<span class="ident">packet</span>, <span class="kw-2">&amp;</span>[], <span class="ident">source</span>, <span class="ident">destination</span>)
+<span class="doccomment">/// Calculate a checksum for a packet built on IPv6.
+</span><span class="kw">pub fn </span>ipv6_checksum(packet: <span class="kw-2">&amp;</span>UdpPacket, source: <span class="kw-2">&amp;</span>Ipv6Addr, destination: <span class="kw-2">&amp;</span>Ipv6Addr) -&gt; u16be {
+    ipv6_checksum_adv(packet, <span class="kw-2">&amp;</span>[], source, destination)
 }
 
-<span class="doccomment">/// Calculate the checksum for a packet built on IPv6. Advanced version which</span>
-<span class="doccomment">/// accepts an extra slice of data that will be included in the checksum</span>
-<span class="doccomment">/// as being part of the data portion of the packet.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If `packet` contains an odd number of bytes the last byte will not be</span>
-<span class="doccomment">/// counted as the first byte of a word together with the first byte of</span>
-<span class="doccomment">/// `extra_data`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ipv6_checksum_adv</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">UdpPacket</span>,
-                         <span class="ident">extra_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-                         <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>,
-                         <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>)
-    -&gt; <span class="ident">u16be</span> {
-    <span class="ident">util::ipv6_checksum</span>(<span class="ident">packet</span>.<span class="ident">packet</span>(),
+<span class="doccomment">/// Calculate the checksum for a packet built on IPv6. Advanced version which
+/// accepts an extra slice of data that will be included in the checksum
+/// as being part of the data portion of the packet.
+///
+/// If `packet` contains an odd number of bytes the last byte will not be
+/// counted as the first byte of a word together with the first byte of
+/// `extra_data`.
+</span><span class="kw">pub fn </span>ipv6_checksum_adv(packet: <span class="kw-2">&amp;</span>UdpPacket,
+                         extra_data: <span class="kw-2">&amp;</span>[u8],
+                         source: <span class="kw-2">&amp;</span>Ipv6Addr,
+                         destination: <span class="kw-2">&amp;</span>Ipv6Addr)
+    -&gt; u16be {
+    util::ipv6_checksum(packet.packet(),
                         <span class="number">3</span>,
-                        <span class="ident">extra_data</span>,
-                        <span class="ident">source</span>,
-                        <span class="ident">destination</span>,
-                        <span class="ident">IpNextHeaderProtocols::Udp</span>)
+                        extra_data,
+                        source,
+                        destination,
+                        IpNextHeaderProtocols::Udp)
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">udp_header_ipv6_test</span>() {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocols</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ipv6::MutableIpv6Packet</span>;
+<span class="attr">#[test]
+</span><span class="kw">fn </span>udp_header_ipv6_test() {
+    <span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocols;
+    <span class="kw">use </span><span class="kw">crate</span>::ipv6::MutableIpv6Packet;
 
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">40</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">4</span>];
-    <span class="kw">let</span> <span class="ident">ipv6_source</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
-    <span class="kw">let</span> <span class="ident">ipv6_destination</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">40 </span>+ <span class="number">8 </span>+ <span class="number">4</span>];
+    <span class="kw">let </span>ipv6_source = Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
+    <span class="kw">let </span>ipv6_destination = Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv6Packet::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-        <span class="ident">ip_header</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Udp</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_source</span>(<span class="ident">ipv6_source</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_destination</span>(<span class="ident">ipv6_destination</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>ip_header = MutableIpv6Packet::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+        ip_header.set_next_header(IpNextHeaderProtocols::Udp);
+        ip_header.set_source(ipv6_source);
+        ip_header.set_destination(ipv6_destination);
     }
 
-    <span class="comment">// Set data</span>
-    <span class="ident">packet</span>[<span class="number">40</span> <span class="op">+</span> <span class="number">8</span>] <span class="op">=</span> <span class="string">&#39;t&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">40</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span> <span class="string">&#39;e&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">40</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">2</span>] <span class="op">=</span> <span class="string">&#39;s&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
-    <span class="ident">packet</span>[<span class="number">40</span> <span class="op">+</span> <span class="number">8</span> <span class="op">+</span> <span class="number">3</span>] <span class="op">=</span> <span class="string">&#39;t&#39;</span> <span class="kw">as</span> <span class="ident">u8</span>;
+    <span class="comment">// Set data
+    </span>packet[<span class="number">40 </span>+ <span class="number">8</span>] = <span class="string">&#39;t&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">40 </span>+ <span class="number">8 </span>+ <span class="number">1</span>] = <span class="string">&#39;e&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">40 </span>+ <span class="number">8 </span>+ <span class="number">2</span>] = <span class="string">&#39;s&#39; </span><span class="kw">as </span>u8;
+    packet[<span class="number">40 </span>+ <span class="number">8 </span>+ <span class="number">3</span>] = <span class="string">&#39;t&#39; </span><span class="kw">as </span>u8;
 
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">udp_header</span> <span class="op">=</span> <span class="ident">MutableUdpPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[<span class="number">40</span>..]).<span class="ident">unwrap</span>();
-        <span class="ident">udp_header</span>.<span class="ident">set_source</span>(<span class="number">12345</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_source</span>(), <span class="number">12345</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>udp_header = MutableUdpPacket::new(<span class="kw-2">&amp;mut </span>packet[<span class="number">40</span>..]).unwrap();
+        udp_header.set_source(<span class="number">12345</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_source(), <span class="number">12345</span>);
 
-        <span class="ident">udp_header</span>.<span class="ident">set_destination</span>(<span class="number">54321</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_destination</span>(), <span class="number">54321</span>);
+        udp_header.set_destination(<span class="number">54321</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_destination(), <span class="number">54321</span>);
 
-        <span class="ident">udp_header</span>.<span class="ident">set_length</span>(<span class="number">8</span> <span class="op">+</span> <span class="number">4</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_length</span>(), <span class="number">8</span> <span class="op">+</span> <span class="number">4</span>);
+        udp_header.set_length(<span class="number">8 </span>+ <span class="number">4</span>);
+        <span class="macro">assert_eq!</span>(udp_header.get_length(), <span class="number">8 </span>+ <span class="number">4</span>);
 
-        <span class="kw">let</span> <span class="ident">checksum</span> <span class="op">=</span> <span class="ident">ipv6_checksum</span>(<span class="kw-2">&amp;</span><span class="ident">udp_header</span>.<span class="ident">to_immutable</span>(), <span class="kw-2">&amp;</span><span class="ident">ipv6_source</span>, <span class="kw-2">&amp;</span><span class="ident">ipv6_destination</span>);
-        <span class="ident">udp_header</span>.<span class="ident">set_checksum</span>(<span class="ident">checksum</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">udp_header</span>.<span class="ident">get_checksum</span>(), <span class="number">0x1390</span>);
+        <span class="kw">let </span>checksum = ipv6_checksum(<span class="kw-2">&amp;</span>udp_header.to_immutable(), <span class="kw-2">&amp;</span>ipv6_source, <span class="kw-2">&amp;</span>ipv6_destination);
+        udp_header.set_checksum(checksum);
+        <span class="macro">assert_eq!</span>(udp_header.get_checksum(), <span class="number">0x1390</span>);
     }
 
-    <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> [<span class="number">0x30</span>, <span class="number">0x39</span>, <span class="comment">/* source */</span>
-                      <span class="number">0xd4</span>, <span class="number">0x31</span>, <span class="comment">/* destination */</span>
-                      <span class="number">0x00</span>, <span class="number">0x0c</span>, <span class="comment">/* length */</span>
-                      <span class="number">0x13</span>, <span class="number">0x90</span>  <span class="comment">/* checksum */</span>];
-    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[<span class="number">40</span>..<span class="number">48</span>]);
+    <span class="kw">let </span>ref_packet = [<span class="number">0x30</span>, <span class="number">0x39</span>, <span class="comment">/* source */
+                      </span><span class="number">0xd4</span>, <span class="number">0x31</span>, <span class="comment">/* destination */
+                      </span><span class="number">0x00</span>, <span class="number">0x0c</span>, <span class="comment">/* length */
+                      </span><span class="number">0x13</span>, <span class="number">0x90  </span><span class="comment">/* checksum */</span>];
+    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[<span class="number">40</span>..<span class="number">48</span>]);
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

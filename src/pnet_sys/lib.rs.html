@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_sys-0.30.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_sys/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_sys/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_sys/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_sys-0.30.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_sys/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -245,246 +238,245 @@
 <span id="238">238</span>
 <span id="239">239</span>
 <span id="240">240</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libc</span>;
+</span><span class="kw">extern crate </span>libc;
 
-<span class="kw">use</span> <span class="ident">std::io</span>;
-<span class="kw">use</span> <span class="ident">std::mem</span>;
-<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+<span class="kw">use </span>std::io;
+<span class="kw">use </span>std::mem;
+<span class="kw">use </span>std::time::Duration;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;unix.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">imp</span>;
+<span class="attr">#[cfg(unix)]
+#[path = <span class="string">&quot;unix.rs&quot;</span>]
+</span><span class="kw">mod </span>imp;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;windows.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">imp</span>;
+<span class="attr">#[cfg(windows)]
+#[path = <span class="string">&quot;windows.rs&quot;</span>]
+</span><span class="kw">mod </span>imp;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::imp::public</span>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::imp::public::<span class="kw-2">*</span>;
 
-<span class="doccomment">/// Any file descriptor on unix, only sockets on Windows.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FileDesc</span> {
-    <span class="kw">pub</span> <span class="ident">fd</span>: <span class="ident">CSocket</span>,
+<span class="doccomment">/// Any file descriptor on unix, only sockets on Windows.
+</span><span class="kw">pub struct </span>FileDesc {
+    <span class="kw">pub </span>fd: CSocket,
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">FileDesc</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">close</span>(<span class="self">self</span>.<span class="ident">fd</span>);
+<span class="kw">impl </span>Drop <span class="kw">for </span>FileDesc {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            close(<span class="self">self</span>.fd);
         }
     }
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_to</span>(
-    <span class="ident">socket</span>: <span class="ident">CSocket</span>,
-    <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    <span class="ident">dst</span>: <span class="kw-2">*const</span> <span class="ident">SockAddr</span>,
-    <span class="ident">slen</span>: <span class="ident">SockLen</span>,
-) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">send_len</span> <span class="op">=</span> <span class="ident">imp::retry</span>(<span class="kw-2">&amp;mut</span> <span class="op">|</span><span class="op">|</span> <span class="kw">unsafe</span> {
-        <span class="ident">imp::sendto</span>(
-            <span class="ident">socket</span>,
-            <span class="ident">buffer</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="ident">Buf</span>,
-            <span class="ident">buffer</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">BufLen</span>,
+<span class="kw">pub fn </span>send_to(
+    socket: CSocket,
+    buffer: <span class="kw-2">&amp;</span>[u8],
+    dst: <span class="kw-2">*const </span>SockAddr,
+    slen: SockLen,
+) -&gt; io::Result&lt;usize&gt; {
+    <span class="kw">let </span>send_len = imp::retry(<span class="kw-2">&amp;mut </span>|| <span class="kw">unsafe </span>{
+        imp::sendto(
+            socket,
+            buffer.as_ptr() <span class="kw">as </span>Buf,
+            buffer.len() <span class="kw">as </span>BufLen,
             <span class="number">0</span>,
-            <span class="ident">dst</span>,
-            <span class="ident">slen</span>,
+            dst,
+            slen,
         )
     });
 
-    <span class="kw">if</span> <span class="ident">send_len</span> <span class="op">&lt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>())
-    } <span class="kw">else</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">send_len</span> <span class="kw">as</span> <span class="ident">usize</span>)
+    <span class="kw">if </span>send_len &lt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::last_os_error())
+    } <span class="kw">else </span>{
+        <span class="prelude-val">Ok</span>(send_len <span class="kw">as </span>usize)
     }
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recv_from</span>(
-    <span class="ident">socket</span>: <span class="ident">CSocket</span>,
-    <span class="ident">buffer</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>],
-    <span class="ident">caddr</span>: <span class="kw-2">*mut</span> <span class="ident">SockAddrStorage</span>,
-) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">caddrlen</span> <span class="op">=</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">SockAddrStorage</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">SockLen</span>;
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">imp::retry</span>(<span class="kw-2">&amp;mut</span> <span class="op">|</span><span class="op">|</span> <span class="kw">unsafe</span> {
-        <span class="ident">imp::recvfrom</span>(
-            <span class="ident">socket</span>,
-            <span class="ident">buffer</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="ident">MutBuf</span>,
-            <span class="ident">buffer</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">BufLen</span>,
+<span class="kw">pub fn </span>recv_from(
+    socket: CSocket,
+    buffer: <span class="kw-2">&amp;mut </span>[u8],
+    caddr: <span class="kw-2">*mut </span>SockAddrStorage,
+) -&gt; io::Result&lt;usize&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>caddrlen = mem::size_of::&lt;SockAddrStorage&gt;() <span class="kw">as </span>SockLen;
+    <span class="kw">let </span>len = imp::retry(<span class="kw-2">&amp;mut </span>|| <span class="kw">unsafe </span>{
+        imp::recvfrom(
+            socket,
+            buffer.as_ptr() <span class="kw">as </span>MutBuf,
+            buffer.len() <span class="kw">as </span>BufLen,
             <span class="number">0</span>,
-            <span class="ident">caddr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">SockAddr</span>,
-            <span class="kw-2">&amp;mut</span> <span class="ident">caddrlen</span>,
+            caddr <span class="kw">as </span><span class="kw-2">*mut </span>SockAddr,
+            <span class="kw-2">&amp;mut </span>caddrlen,
         )
     });
 
-    <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>())
-    } <span class="kw">else</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>)
+    <span class="kw">if </span>len &lt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::last_os_error())
+    } <span class="kw">else </span>{
+        <span class="prelude-val">Ok</span>(len <span class="kw">as </span>usize)
     }
 }
 
-<span class="doccomment">/// Set a timeout for receiving from the socket.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>: <span class="ident">CSocket</span>, <span class="ident">t</span>: <span class="ident">Duration</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">ts</span> <span class="op">=</span> <span class="ident">duration_to_timeval</span>(<span class="ident">t</span>);
-    <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">setsockopt</span>(
-            <span class="ident">socket</span>,
-            <span class="ident">SOL_SOCKET</span>,
-            <span class="ident">SO_RCVTIMEO</span>,
-            (<span class="kw-2">&amp;</span><span class="ident">ts</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::timeval</span>) <span class="kw">as</span> <span class="ident">Buf</span>,
-            <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::timeval</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">SockLen</span>,
+<span class="doccomment">/// Set a timeout for receiving from the socket.
+</span><span class="attr">#[cfg(unix)]
+</span><span class="kw">pub fn </span>set_socket_receive_timeout(socket: CSocket, t: Duration) -&gt; io::Result&lt;()&gt; {
+    <span class="kw">let </span>ts = duration_to_timeval(t);
+    <span class="kw">let </span>r = <span class="kw">unsafe </span>{
+        setsockopt(
+            socket,
+            SOL_SOCKET,
+            SO_RCVTIMEO,
+            (<span class="kw-2">&amp;</span>ts <span class="kw">as </span><span class="kw-2">*const </span>libc::timeval) <span class="kw">as </span>Buf,
+            mem::size_of::&lt;libc::timeval&gt;() <span class="kw">as </span>SockLen,
         )
     };
 
-    <span class="kw">if</span> <span class="ident">r</span> <span class="op">&lt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>())
-    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">r</span> <span class="op">&gt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(
-            <span class="ident">io::ErrorKind::Other</span>,
-            <span class="macro">format!</span>(<span class="string">&quot;Unknown return value from getsockopt(): {}&quot;</span>, <span class="ident">r</span>),
+    <span class="kw">if </span>r &lt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::last_os_error())
+    } <span class="kw">else if </span>r &gt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::new(
+            io::ErrorKind::Other,
+            <span class="macro">format!</span>(<span class="string">&quot;Unknown return value from getsockopt(): {}&quot;</span>, r),
         ))
-    } <span class="kw">else</span> {
+    } <span class="kw">else </span>{
         <span class="prelude-val">Ok</span>(())
     }
 }
 
-<span class="doccomment">/// Extracts and returns a timout for reading from the socket.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_socket_receive_timeout</span>(<span class="ident">socket</span>: <span class="ident">CSocket</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">ts</span> <span class="op">=</span> <span class="ident">libc::timeval</span> {
-        <span class="ident">tv_sec</span>: <span class="number">0</span>,
-        <span class="ident">tv_usec</span>: <span class="number">0</span>,
+<span class="doccomment">/// Extracts and returns a timout for reading from the socket.
+</span><span class="attr">#[cfg(unix)]
+</span><span class="kw">pub fn </span>get_socket_receive_timeout(socket: CSocket) -&gt; io::Result&lt;Duration&gt; {
+    <span class="kw">let </span>ts = libc::timeval {
+        tv_sec: <span class="number">0</span>,
+        tv_usec: <span class="number">0</span>,
     };
-    <span class="kw">let</span> <span class="ident">len</span>: <span class="ident">SockLen</span> <span class="op">=</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::timeval</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">SockLen</span>;
-    <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">getsockopt</span>(
-            <span class="ident">socket</span>,
-            <span class="ident">SOL_SOCKET</span>,
-            <span class="ident">SO_RCVTIMEO</span>,
-            (<span class="kw-2">&amp;</span><span class="ident">ts</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::timeval</span>) <span class="kw">as</span> <span class="ident">MutBuf</span>,
-            (<span class="kw-2">&amp;</span><span class="ident">len</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">SockLen</span>) <span class="kw">as</span> <span class="ident">MutSockLen</span>,
+    <span class="kw">let </span>len: SockLen = mem::size_of::&lt;libc::timeval&gt;() <span class="kw">as </span>SockLen;
+    <span class="kw">let </span>r = <span class="kw">unsafe </span>{
+        getsockopt(
+            socket,
+            SOL_SOCKET,
+            SO_RCVTIMEO,
+            (<span class="kw-2">&amp;</span>ts <span class="kw">as </span><span class="kw-2">*const </span>libc::timeval) <span class="kw">as </span>MutBuf,
+            (<span class="kw-2">&amp;</span>len <span class="kw">as </span><span class="kw-2">*const </span>SockLen) <span class="kw">as </span>MutSockLen,
         )
     };
     <span class="macro">assert_eq!</span>(
-        <span class="ident">len</span>,
-        <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::timeval</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">SockLen</span>,
-        <span class="string">&quot;getsockopt did not set size of return value&quot;</span>
-    );
+        len,
+        mem::size_of::&lt;libc::timeval&gt;() <span class="kw">as </span>SockLen,
+        <span class="string">&quot;getsockopt did not set size of return value&quot;
+    </span>);
 
-    <span class="kw">if</span> <span class="ident">r</span> <span class="op">&lt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::last_os_error</span>())
-    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">r</span> <span class="op">&gt;</span> <span class="number">0</span> {
-        <span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(
-            <span class="ident">io::ErrorKind::Other</span>,
-            <span class="macro">format!</span>(<span class="string">&quot;Unknown return value from getsockopt(): {}&quot;</span>, <span class="ident">r</span>),
+    <span class="kw">if </span>r &lt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::last_os_error())
+    } <span class="kw">else if </span>r &gt; <span class="number">0 </span>{
+        <span class="prelude-val">Err</span>(io::Error::new(
+            io::ErrorKind::Other,
+            <span class="macro">format!</span>(<span class="string">&quot;Unknown return value from getsockopt(): {}&quot;</span>, r),
         ))
-    } <span class="kw">else</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">timeval_to_duration</span>(<span class="ident">ts</span>))
+    } <span class="kw">else </span>{
+        <span class="prelude-val">Ok</span>(timeval_to_duration(ts))
     }
 }
 
-<span class="comment">// These functions are taken/adapted from libnative::io::{mod, net}</span>
+<span class="comment">// These functions are taken/adapted from libnative::io::{mod, net}
 
-<span class="kw">fn</span> <span class="ident">htons</span>(<span class="ident">u</span>: <span class="ident">u16</span>) -&gt; <span class="ident">u16</span> {
-    <span class="ident">u</span>.<span class="ident">to_be</span>()
+</span><span class="kw">fn </span>htons(u: u16) -&gt; u16 {
+    u.to_be()
 }
-<span class="kw">fn</span> <span class="ident">ntohs</span>(<span class="ident">u</span>: <span class="ident">u16</span>) -&gt; <span class="ident">u16</span> {
-    <span class="ident">u16::from_be</span>(<span class="ident">u</span>)
+<span class="kw">fn </span>ntohs(u: u16) -&gt; u16 {
+    u16::from_be(u)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::get_socket_receive_timeout</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::recv_from</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::set_socket_receive_timeout</span>;
-    <span class="kw">use</span> <span class="ident">std::mem</span>;
-    <span class="kw">use</span> <span class="ident">std::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::CSocket</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::SockAddrStorage</span>;
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">crate</span>::get_socket_receive_timeout;
+    <span class="kw">use </span><span class="kw">crate</span>::recv_from;
+    <span class="kw">use </span><span class="kw">crate</span>::set_socket_receive_timeout;
+    <span class="kw">use </span>std::mem;
+    <span class="kw">use </span>std::time::{Duration, Instant};
+    <span class="kw">use </span><span class="kw">crate</span>::CSocket;
+    <span class="kw">use </span><span class="kw">crate</span>::SockAddrStorage;
 
-    <span class="kw">fn</span> <span class="ident">test_timeout</span>(<span class="ident">socket</span>: <span class="ident">CSocket</span>) -&gt; <span class="ident">Duration</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">1024</span>];
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">caddr</span>: <span class="ident">SockAddrStorage</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() };
+    <span class="kw">fn </span>test_timeout(socket: CSocket) -&gt; Duration {
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">1024</span>];
+        <span class="kw">let </span><span class="kw-2">mut </span>caddr: SockAddrStorage = <span class="kw">unsafe </span>{ mem::zeroed() };
 
-        <span class="kw">let</span> <span class="ident">t0</span> <span class="op">=</span> <span class="ident">Instant::now</span>();
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">recv_from</span>(<span class="ident">socket</span>, <span class="kw-2">&amp;mut</span> <span class="ident">buffer</span>, <span class="kw-2">&amp;mut</span> <span class="ident">caddr</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">res</span>.<span class="ident">is_ok</span>());
-        <span class="ident">Instant::now</span>() <span class="op">-</span> <span class="ident">t0</span>
+        <span class="kw">let </span>t0 = Instant::now();
+        <span class="kw">let </span>res = recv_from(socket, <span class="kw-2">&amp;mut </span>buffer, <span class="kw-2">&amp;mut </span>caddr);
+        <span class="macro">assert!</span>(!res.is_ok());
+        Instant::now() - t0
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_set_socket_receive_timeout_1s</span>() {
-        <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc::socket</span>(<span class="ident">libc::AF_INET</span>, <span class="ident">libc::SOCK_RAW</span>, <span class="number">1</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) };
-        <span class="kw">let</span> <span class="ident">d</span> <span class="op">=</span> <span class="ident">Duration::new</span>(<span class="number">1</span>, <span class="number">0</span>);
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>, <span class="ident">d</span>.<span class="ident">clone</span>());
-        <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="kw">_</span> =&gt; {}
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_set_socket_receive_timeout_1s() {
+        <span class="kw">let </span>socket = <span class="kw">unsafe </span>{ libc::socket(libc::AF_INET, libc::SOCK_RAW, <span class="number">1 </span><span class="kw">as </span>libc::c_int) };
+        <span class="kw">let </span>d = Duration::new(<span class="number">1</span>, <span class="number">0</span>);
+        <span class="kw">let </span>res = set_socket_receive_timeout(socket, d.clone());
+        <span class="kw">match </span>res {
+            <span class="prelude-val">Err</span>(e) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, e),
+            <span class="kw">_ </span>=&gt; {}
         };
 
-        <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">test_timeout</span>(<span class="ident">socket</span>);
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Duration::new</span>(<span class="number">1</span>, <span class="number">0</span>));
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&lt;</span> <span class="ident">Duration::from_millis</span>(<span class="number">1100</span>));
+        <span class="kw">let </span>t = test_timeout(socket);
+        <span class="macro">assert!</span>(t &gt;= Duration::new(<span class="number">1</span>, <span class="number">0</span>));
+        <span class="macro">assert!</span>(t &lt; Duration::from_millis(<span class="number">1100</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_set_socket_receive_timeout_500ms</span>() {
-        <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc::socket</span>(<span class="ident">libc::AF_INET</span>, <span class="ident">libc::SOCK_RAW</span>, <span class="number">1</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) };
-        <span class="kw">let</span> <span class="ident">d</span> <span class="op">=</span> <span class="ident">Duration::from_millis</span>(<span class="number">500</span>);
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>, <span class="ident">d</span>);
-        <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="kw">_</span> =&gt; {}
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_set_socket_receive_timeout_500ms() {
+        <span class="kw">let </span>socket = <span class="kw">unsafe </span>{ libc::socket(libc::AF_INET, libc::SOCK_RAW, <span class="number">1 </span><span class="kw">as </span>libc::c_int) };
+        <span class="kw">let </span>d = Duration::from_millis(<span class="number">500</span>);
+        <span class="kw">let </span>res = set_socket_receive_timeout(socket, d);
+        <span class="kw">match </span>res {
+            <span class="prelude-val">Err</span>(e) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, e),
+            <span class="kw">_ </span>=&gt; {}
         };
 
-        <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">test_timeout</span>(<span class="ident">socket</span>);
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Duration::from_millis</span>(<span class="number">500</span>));
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&lt;</span> <span class="ident">Duration::from_millis</span>(<span class="number">600</span>));
+        <span class="kw">let </span>t = test_timeout(socket);
+        <span class="macro">assert!</span>(t &gt;= Duration::from_millis(<span class="number">500</span>));
+        <span class="macro">assert!</span>(t &lt; Duration::from_millis(<span class="number">600</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_set_socket_receive_timeout_1500ms</span>() {
-        <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc::socket</span>(<span class="ident">libc::AF_INET</span>, <span class="ident">libc::SOCK_RAW</span>, <span class="number">1</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) };
-        <span class="kw">let</span> <span class="ident">d</span> <span class="op">=</span> <span class="ident">Duration::from_millis</span>(<span class="number">1500</span>);
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>, <span class="ident">d</span>);
-        <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="kw">_</span> =&gt; {}
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_set_socket_receive_timeout_1500ms() {
+        <span class="kw">let </span>socket = <span class="kw">unsafe </span>{ libc::socket(libc::AF_INET, libc::SOCK_RAW, <span class="number">1 </span><span class="kw">as </span>libc::c_int) };
+        <span class="kw">let </span>d = Duration::from_millis(<span class="number">1500</span>);
+        <span class="kw">let </span>res = set_socket_receive_timeout(socket, d);
+        <span class="kw">match </span>res {
+            <span class="prelude-val">Err</span>(e) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;set_socket_receive_timeout reslted in error: {}&quot;</span>, e),
+            <span class="kw">_ </span>=&gt; {}
         };
 
-        <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">test_timeout</span>(<span class="ident">socket</span>);
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Duration::from_millis</span>(<span class="number">1500</span>));
-        <span class="macro">assert!</span>(<span class="ident">t</span> <span class="op">&lt;</span> <span class="ident">Duration::from_millis</span>(<span class="number">1600</span>));
+        <span class="kw">let </span>t = test_timeout(socket);
+        <span class="macro">assert!</span>(t &gt;= Duration::from_millis(<span class="number">1500</span>));
+        <span class="macro">assert!</span>(t &lt; Duration::from_millis(<span class="number">1600</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_get_socket_receive_timeout</span>() {
-        <span class="kw">let</span> <span class="ident">socket</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">libc::socket</span>(<span class="ident">libc::AF_INET</span>, <span class="ident">libc::SOCK_RAW</span>, <span class="number">1</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) };
-        <span class="kw">let</span> <span class="ident">s1</span> <span class="op">=</span> <span class="ident">Duration::new</span>(<span class="number">1</span>, <span class="number">0</span>);
-        <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>, <span class="ident">s1</span>).<span class="ident">ok</span>();
-        <span class="kw">let</span> <span class="ident">g1</span> <span class="op">=</span> <span class="ident">get_socket_receive_timeout</span>(<span class="ident">socket</span>);
-        <span class="kw">match</span> <span class="ident">g1</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;get_socket_receive_timeout resulted in error: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="prelude-val">Ok</span>(<span class="ident">t</span>) =&gt; <span class="macro">assert_eq!</span>(<span class="ident">s1</span>, <span class="ident">t</span>, <span class="string">&quot;Expected to receive 1s timeout&quot;</span>),
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_get_socket_receive_timeout() {
+        <span class="kw">let </span>socket = <span class="kw">unsafe </span>{ libc::socket(libc::AF_INET, libc::SOCK_RAW, <span class="number">1 </span><span class="kw">as </span>libc::c_int) };
+        <span class="kw">let </span>s1 = Duration::new(<span class="number">1</span>, <span class="number">0</span>);
+        set_socket_receive_timeout(socket, s1).ok();
+        <span class="kw">let </span>g1 = get_socket_receive_timeout(socket);
+        <span class="kw">match </span>g1 {
+            <span class="prelude-val">Err</span>(e) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;get_socket_receive_timeout resulted in error: {}&quot;</span>, e),
+            <span class="prelude-val">Ok</span>(t) =&gt; <span class="macro">assert_eq!</span>(s1, t, <span class="string">&quot;Expected to receive 1s timeout&quot;</span>),
         }
 
-        <span class="kw">let</span> <span class="ident">s2</span> <span class="op">=</span> <span class="ident">Duration::from_millis</span>(<span class="number">500</span>);
-        <span class="ident">set_socket_receive_timeout</span>(<span class="ident">socket</span>, <span class="ident">s2</span>).<span class="ident">ok</span>();
-        <span class="kw">let</span> <span class="ident">g2</span> <span class="op">=</span> <span class="ident">get_socket_receive_timeout</span>(<span class="ident">socket</span>);
-        <span class="kw">match</span> <span class="ident">g2</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;get_socket_receive_timeout resulted in error: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="prelude-val">Ok</span>(<span class="ident">t</span>) =&gt; <span class="macro">assert_eq!</span>(<span class="ident">s2</span>, <span class="ident">t</span>, <span class="string">&quot;Expected to receive 500ms timeout&quot;</span>),
+        <span class="kw">let </span>s2 = Duration::from_millis(<span class="number">500</span>);
+        set_socket_receive_timeout(socket, s2).ok();
+        <span class="kw">let </span>g2 = get_socket_receive_timeout(socket);
+        <span class="kw">match </span>g2 {
+            <span class="prelude-val">Err</span>(e) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;get_socket_receive_timeout resulted in error: {}&quot;</span>, e),
+            <span class="prelude-val">Ok</span>(t) =&gt; <span class="macro">assert_eq!</span>(s2, t, <span class="string">&quot;Expected to receive 500ms timeout&quot;</span>),
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_sys" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

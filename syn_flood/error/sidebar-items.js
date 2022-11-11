@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["SynFloodError",""]]});
+window.SIDEBAR_ITEMS = {"enum":[["SynFloodError",""]]};

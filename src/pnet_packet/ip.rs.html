@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/ip.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ip.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/ip.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ip.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -660,661 +653,660 @@
 <span id="653">653</span>
 <span id="654">654</span>
 <span id="655">655</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Defines the type and constants for IP next header/next level protocol</span>
-<span class="doccomment">//! fields.</span>
+</span><span class="doccomment">//! Defines the type and constants for IP next header/next level protocol
+//! fields.
 
-<span class="kw">use</span> <span class="ident">core::fmt</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
+</span><span class="kw">use </span>core::fmt;
+<span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
 
-<span class="doccomment">/// Protocol numbers as defined at:</span>
-<span class="doccomment">/// &lt;http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml&gt;</span>
-<span class="doccomment">/// Above protocol numbers last updated: 2014-01-16</span>
-<span class="doccomment">/// These values should be used in either the IPv4 Next Level Protocol field</span>
-<span class="doccomment">/// or the IPv6 Next Header field.</span>
-<span class="doccomment">/// NOTE Everything here is pretending to be an enum, but with namespacing by</span>
-<span class="doccomment">///      default, so we allow breaking style guidelines.</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">IpNextHeaderProtocols</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::IpNextHeaderProtocol</span>;
+<span class="doccomment">/// Protocol numbers as defined at:
+/// &lt;http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml&gt;
+/// Above protocol numbers last updated: 2014-01-16
+/// These values should be used in either the IPv4 Next Level Protocol field
+/// or the IPv6 Next Header field.
+/// NOTE Everything here is pretending to be an enum, but with namespacing by
+///      default, so we allow breaking style guidelines.
+</span><span class="attr">#[allow(non_snake_case)]
+#[allow(non_upper_case_globals)]
+</span><span class="kw">pub mod </span>IpNextHeaderProtocols {
+    <span class="kw">use </span><span class="kw">super</span>::IpNextHeaderProtocol;
 
-    <span class="doccomment">/// IPv6 Hop-by-Hop Option \[RFC2460\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Hopopt</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">0</span>);
+    <span class="doccomment">/// IPv6 Hop-by-Hop Option \[RFC2460\]
+    </span><span class="kw">pub const </span>Hopopt: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">0</span>);
 
-    <span class="doccomment">/// Internet Control Message \[RFC792\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Icmp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">1</span>);
+    <span class="doccomment">/// Internet Control Message \[RFC792\]
+    </span><span class="kw">pub const </span>Icmp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">1</span>);
 
-    <span class="doccomment">/// Internet Group Management \[RFC1112\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Igmp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">2</span>);
+    <span class="doccomment">/// Internet Group Management \[RFC1112\]
+    </span><span class="kw">pub const </span>Igmp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">2</span>);
 
-    <span class="doccomment">/// Gateway-to-Gateway \[RFC823\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ggp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">3</span>);
+    <span class="doccomment">/// Gateway-to-Gateway \[RFC823\]
+    </span><span class="kw">pub const </span>Ggp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">3</span>);
 
-    <span class="doccomment">/// IPv4 encapsulation \[RFC2003\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv4</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">4</span>);
+    <span class="doccomment">/// IPv4 encapsulation \[RFC2003\]
+    </span><span class="kw">pub const </span>Ipv4: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">4</span>);
 
-    <span class="doccomment">/// Stream \[RFC1190\]\[RFC1819\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">St</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">5</span>);
+    <span class="doccomment">/// Stream \[RFC1190\]\[RFC1819\]
+    </span><span class="kw">pub const </span>St: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">5</span>);
 
-    <span class="doccomment">/// Transmission Control \[RFC793\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Tcp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">6</span>);
+    <span class="doccomment">/// Transmission Control \[RFC793\]
+    </span><span class="kw">pub const </span>Tcp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">6</span>);
 
-    <span class="doccomment">/// CBT</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Cbt</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">7</span>);
+    <span class="doccomment">/// CBT
+    </span><span class="kw">pub const </span>Cbt: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">7</span>);
 
-    <span class="doccomment">/// Exterior Gateway Protocol \[RFC888\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Egp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">8</span>);
+    <span class="doccomment">/// Exterior Gateway Protocol \[RFC888\]
+    </span><span class="kw">pub const </span>Egp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">8</span>);
 
-    <span class="doccomment">/// any private interior gateway (used by Cisco for their IGRP)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Igp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">9</span>);
+    <span class="doccomment">/// any private interior gateway (used by Cisco for their IGRP)
+    </span><span class="kw">pub const </span>Igp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">9</span>);
 
-    <span class="doccomment">/// BBN RCC Monitoring</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BbnRccMon</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">10</span>);
+    <span class="doccomment">/// BBN RCC Monitoring
+    </span><span class="kw">pub const </span>BbnRccMon: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">10</span>);
 
-    <span class="doccomment">/// Network Voice Protocol \[RFC741\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NvpII</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">11</span>);
+    <span class="doccomment">/// Network Voice Protocol \[RFC741\]
+    </span><span class="kw">pub const </span>NvpII: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">11</span>);
 
-    <span class="doccomment">/// PUP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pup</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">12</span>);
+    <span class="doccomment">/// PUP
+    </span><span class="kw">pub const </span>Pup: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">12</span>);
 
-    <span class="doccomment">/// ARGUS</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Argus</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">13</span>);
+    <span class="doccomment">/// ARGUS
+    </span><span class="kw">pub const </span>Argus: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">13</span>);
 
-    <span class="doccomment">/// EMCON</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Emcon</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">14</span>);
+    <span class="doccomment">/// EMCON
+    </span><span class="kw">pub const </span>Emcon: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">14</span>);
 
-    <span class="doccomment">/// Cross Net Debugger</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Xnet</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">15</span>);
+    <span class="doccomment">/// Cross Net Debugger
+    </span><span class="kw">pub const </span>Xnet: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">15</span>);
 
-    <span class="doccomment">/// Chaos</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Chaos</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">16</span>);
+    <span class="doccomment">/// Chaos
+    </span><span class="kw">pub const </span>Chaos: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">16</span>);
 
-    <span class="doccomment">/// User Datagram \[RFC768\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Udp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">17</span>);
+    <span class="doccomment">/// User Datagram \[RFC768\]
+    </span><span class="kw">pub const </span>Udp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">17</span>);
 
-    <span class="doccomment">/// Multiplexing</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Mux</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">18</span>);
+    <span class="doccomment">/// Multiplexing
+    </span><span class="kw">pub const </span>Mux: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">18</span>);
 
-    <span class="doccomment">/// DCN Measurement Subsystems</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DcnMeas</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">19</span>);
+    <span class="doccomment">/// DCN Measurement Subsystems
+    </span><span class="kw">pub const </span>DcnMeas: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">19</span>);
 
-    <span class="doccomment">/// Host Monitoring \[RFC869\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Hmp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">20</span>);
+    <span class="doccomment">/// Host Monitoring \[RFC869\]
+    </span><span class="kw">pub const </span>Hmp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">20</span>);
 
-    <span class="doccomment">/// Packet Radio Measurement</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Prm</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">21</span>);
+    <span class="doccomment">/// Packet Radio Measurement
+    </span><span class="kw">pub const </span>Prm: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">21</span>);
 
-    <span class="doccomment">/// XEROX NS IDP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">XnsIdp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">22</span>);
+    <span class="doccomment">/// XEROX NS IDP
+    </span><span class="kw">pub const </span>XnsIdp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">22</span>);
 
-    <span class="doccomment">/// Trunk-1</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Trunk1</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">23</span>);
+    <span class="doccomment">/// Trunk-1
+    </span><span class="kw">pub const </span>Trunk1: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">23</span>);
 
-    <span class="doccomment">/// Trunk-2</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Trunk2</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">24</span>);
+    <span class="doccomment">/// Trunk-2
+    </span><span class="kw">pub const </span>Trunk2: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">24</span>);
 
-    <span class="doccomment">/// Leaf-1</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Leaf1</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">25</span>);
+    <span class="doccomment">/// Leaf-1
+    </span><span class="kw">pub const </span>Leaf1: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">25</span>);
 
-    <span class="doccomment">/// Leaf-2</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Leaf2</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">26</span>);
+    <span class="doccomment">/// Leaf-2
+    </span><span class="kw">pub const </span>Leaf2: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">26</span>);
 
-    <span class="doccomment">/// Reliable Data Protocol \[RFC908\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Rdp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">27</span>);
+    <span class="doccomment">/// Reliable Data Protocol \[RFC908\]
+    </span><span class="kw">pub const </span>Rdp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">27</span>);
 
-    <span class="doccomment">/// Internet Reliable Transaction \[RFC938\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Irtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">28</span>);
+    <span class="doccomment">/// Internet Reliable Transaction \[RFC938\]
+    </span><span class="kw">pub const </span>Irtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">28</span>);
 
-    <span class="doccomment">/// ISO Transport Protocol Class 4 \[RFC905\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IsoTp4</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">29</span>);
+    <span class="doccomment">/// ISO Transport Protocol Class 4 \[RFC905\]
+    </span><span class="kw">pub const </span>IsoTp4: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">29</span>);
 
-    <span class="doccomment">/// Bulk Data Transfer Protocol \[RFC969\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Netblt</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">30</span>);
+    <span class="doccomment">/// Bulk Data Transfer Protocol \[RFC969\]
+    </span><span class="kw">pub const </span>Netblt: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">30</span>);
 
-    <span class="doccomment">/// MFE Network Services Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MfeNsp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">31</span>);
+    <span class="doccomment">/// MFE Network Services Protocol
+    </span><span class="kw">pub const </span>MfeNsp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">31</span>);
 
-    <span class="doccomment">/// MERIT Internodal Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MeritInp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">32</span>);
+    <span class="doccomment">/// MERIT Internodal Protocol
+    </span><span class="kw">pub const </span>MeritInp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">32</span>);
 
-    <span class="doccomment">/// Datagram Congestion Control Protocol \[RFC4340\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Dccp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">33</span>);
+    <span class="doccomment">/// Datagram Congestion Control Protocol \[RFC4340\]
+    </span><span class="kw">pub const </span>Dccp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">33</span>);
 
-    <span class="doccomment">/// Third Party Connect Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ThreePc</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">34</span>);
+    <span class="doccomment">/// Third Party Connect Protocol
+    </span><span class="kw">pub const </span>ThreePc: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">34</span>);
 
-    <span class="doccomment">/// Inter-Domain Policy Routing Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Idpr</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">35</span>);
+    <span class="doccomment">/// Inter-Domain Policy Routing Protocol
+    </span><span class="kw">pub const </span>Idpr: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">35</span>);
 
-    <span class="doccomment">/// XTP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Xtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">36</span>);
+    <span class="doccomment">/// XTP
+    </span><span class="kw">pub const </span>Xtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">36</span>);
 
-    <span class="doccomment">/// Datagram Delivery Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ddp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">37</span>);
+    <span class="doccomment">/// Datagram Delivery Protocol
+    </span><span class="kw">pub const </span>Ddp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">37</span>);
 
-    <span class="doccomment">/// IDPR Control Message Transport Proto</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IdprCmtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">38</span>);
+    <span class="doccomment">/// IDPR Control Message Transport Proto
+    </span><span class="kw">pub const </span>IdprCmtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">38</span>);
 
-    <span class="doccomment">/// TP++ Transport Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TpPlusPlus</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">39</span>);
+    <span class="doccomment">/// TP++ Transport Protocol
+    </span><span class="kw">pub const </span>TpPlusPlus: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">39</span>);
 
-    <span class="doccomment">/// IL Transport Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Il</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">40</span>);
+    <span class="doccomment">/// IL Transport Protocol
+    </span><span class="kw">pub const </span>Il: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">40</span>);
 
-    <span class="doccomment">/// IPv6 encapsulation \[RFC2473\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">41</span>);
+    <span class="doccomment">/// IPv6 encapsulation \[RFC2473\]
+    </span><span class="kw">pub const </span>Ipv6: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">41</span>);
 
-    <span class="doccomment">/// Source Demand Routing Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Sdrp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">42</span>);
+    <span class="doccomment">/// Source Demand Routing Protocol
+    </span><span class="kw">pub const </span>Sdrp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">42</span>);
 
-    <span class="doccomment">/// Routing Header for IPv6</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6Route</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">43</span>);
+    <span class="doccomment">/// Routing Header for IPv6
+    </span><span class="kw">pub const </span>Ipv6Route: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">43</span>);
 
-    <span class="doccomment">/// Fragment Header for IPv6</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6Frag</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">44</span>);
+    <span class="doccomment">/// Fragment Header for IPv6
+    </span><span class="kw">pub const </span>Ipv6Frag: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">44</span>);
 
-    <span class="doccomment">/// Inter-Domain Routing Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Idrp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">45</span>);
+    <span class="doccomment">/// Inter-Domain Routing Protocol
+    </span><span class="kw">pub const </span>Idrp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">45</span>);
 
-    <span class="doccomment">/// Reservation Protocol \[RFC2205\]\[RFC3209\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Rsvp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">46</span>);
+    <span class="doccomment">/// Reservation Protocol \[RFC2205\]\[RFC3209\]
+    </span><span class="kw">pub const </span>Rsvp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">46</span>);
 
-    <span class="doccomment">/// Generic Routing Encapsulation \[RFC1701\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Gre</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">47</span>);
+    <span class="doccomment">/// Generic Routing Encapsulation \[RFC1701\]
+    </span><span class="kw">pub const </span>Gre: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">47</span>);
 
-    <span class="doccomment">/// Dynamic Source Routing Protocol \[RFC4728\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Dsr</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">48</span>);
+    <span class="doccomment">/// Dynamic Source Routing Protocol \[RFC4728\]
+    </span><span class="kw">pub const </span>Dsr: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">48</span>);
 
-    <span class="doccomment">/// BNA</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Bna</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">49</span>);
+    <span class="doccomment">/// BNA
+    </span><span class="kw">pub const </span>Bna: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">49</span>);
 
-    <span class="doccomment">/// Encap Security Payload \[RFC4303\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Esp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">50</span>);
+    <span class="doccomment">/// Encap Security Payload \[RFC4303\]
+    </span><span class="kw">pub const </span>Esp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">50</span>);
 
-    <span class="doccomment">/// Authentication Header \[RFC4302\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ah</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">51</span>);
+    <span class="doccomment">/// Authentication Header \[RFC4302\]
+    </span><span class="kw">pub const </span>Ah: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">51</span>);
 
-    <span class="doccomment">/// Integrated Net Layer Security TUBA</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INlsp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">52</span>);
+    <span class="doccomment">/// Integrated Net Layer Security TUBA
+    </span><span class="kw">pub const </span>INlsp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">52</span>);
 
-    <span class="doccomment">/// IP with Encryption</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Swipe</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">53</span>);
+    <span class="doccomment">/// IP with Encryption
+    </span><span class="kw">pub const </span>Swipe: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">53</span>);
 
-    <span class="doccomment">/// NBMA Address Resolution Protocol \[RFC1735\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Narp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">54</span>);
+    <span class="doccomment">/// NBMA Address Resolution Protocol \[RFC1735\]
+    </span><span class="kw">pub const </span>Narp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">54</span>);
 
-    <span class="doccomment">/// IP Mobility</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Mobile</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">55</span>);
+    <span class="doccomment">/// IP Mobility
+    </span><span class="kw">pub const </span>Mobile: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">55</span>);
 
-    <span class="doccomment">/// Transport Layer Security Protocol using Kryptonet key management</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Tlsp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">56</span>);
+    <span class="doccomment">/// Transport Layer Security Protocol using Kryptonet key management
+    </span><span class="kw">pub const </span>Tlsp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">56</span>);
 
-    <span class="doccomment">/// SKIP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Skip</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">57</span>);
+    <span class="doccomment">/// SKIP
+    </span><span class="kw">pub const </span>Skip: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">57</span>);
 
-    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Please use `IpNextHeaderProtocols::Icmpv6` instead&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6Icmp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">58</span>);
+    <span class="attr">#[deprecated(note = <span class="string">&quot;Please use `IpNextHeaderProtocols::Icmpv6` instead&quot;</span>)]
+    </span><span class="kw">pub const </span>Ipv6Icmp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">58</span>);
 
-    <span class="doccomment">/// ICMPv6 \[RFC4443\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Icmpv6</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">58</span>);
+    <span class="doccomment">/// ICMPv6 \[RFC4443\]
+    </span><span class="kw">pub const </span>Icmpv6: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">58</span>);
 
-    <span class="doccomment">/// No Next Header for IPv6 \[RFC2460\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6NoNxt</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">59</span>);
+    <span class="doccomment">/// No Next Header for IPv6 \[RFC2460\]
+    </span><span class="kw">pub const </span>Ipv6NoNxt: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">59</span>);
 
-    <span class="doccomment">/// Destination Options for IPv6 \[RFC2460\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipv6Opts</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">60</span>);
+    <span class="doccomment">/// Destination Options for IPv6 \[RFC2460\]
+    </span><span class="kw">pub const </span>Ipv6Opts: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">60</span>);
 
-    <span class="doccomment">/// any host internal protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HostInternal</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">61</span>);
+    <span class="doccomment">/// any host internal protocol
+    </span><span class="kw">pub const </span>HostInternal: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">61</span>);
 
-    <span class="doccomment">/// CFTP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Cftp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">62</span>);
+    <span class="doccomment">/// CFTP
+    </span><span class="kw">pub const </span>Cftp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">62</span>);
 
-    <span class="doccomment">/// any local network</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LocalNetwork</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">63</span>);
+    <span class="doccomment">/// any local network
+    </span><span class="kw">pub const </span>LocalNetwork: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">63</span>);
 
-    <span class="doccomment">/// SATNET and Backroom EXPAK</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SatExpak</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">64</span>);
+    <span class="doccomment">/// SATNET and Backroom EXPAK
+    </span><span class="kw">pub const </span>SatExpak: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">64</span>);
 
-    <span class="doccomment">/// Kryptolan</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Kryptolan</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">65</span>);
+    <span class="doccomment">/// Kryptolan
+    </span><span class="kw">pub const </span>Kryptolan: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">65</span>);
 
-    <span class="doccomment">/// MIT Remote Virtual Disk Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Rvd</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">66</span>);
+    <span class="doccomment">/// MIT Remote Virtual Disk Protocol
+    </span><span class="kw">pub const </span>Rvd: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">66</span>);
 
-    <span class="doccomment">/// Internet Pluribus Packet Core</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ippc</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">67</span>);
+    <span class="doccomment">/// Internet Pluribus Packet Core
+    </span><span class="kw">pub const </span>Ippc: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">67</span>);
 
-    <span class="doccomment">/// any distributed file system</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DistributedFs</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">68</span>);
+    <span class="doccomment">/// any distributed file system
+    </span><span class="kw">pub const </span>DistributedFs: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">68</span>);
 
-    <span class="doccomment">/// SATNET Monitoring</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SatMon</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">69</span>);
+    <span class="doccomment">/// SATNET Monitoring
+    </span><span class="kw">pub const </span>SatMon: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">69</span>);
 
-    <span class="doccomment">/// VISA Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Visa</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">70</span>);
+    <span class="doccomment">/// VISA Protocol
+    </span><span class="kw">pub const </span>Visa: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">70</span>);
 
-    <span class="doccomment">/// Internet Packet Core Utility</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ipcv</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">71</span>);
+    <span class="doccomment">/// Internet Packet Core Utility
+    </span><span class="kw">pub const </span>Ipcv: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">71</span>);
 
-    <span class="doccomment">/// Computer Protocol Network Executive</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Cpnx</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">72</span>);
+    <span class="doccomment">/// Computer Protocol Network Executive
+    </span><span class="kw">pub const </span>Cpnx: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">72</span>);
 
-    <span class="doccomment">/// Computer Protocol Heart Beat</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Cphb</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">73</span>);
+    <span class="doccomment">/// Computer Protocol Heart Beat
+    </span><span class="kw">pub const </span>Cphb: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">73</span>);
 
-    <span class="doccomment">/// Wang Span Network</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Wsn</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">74</span>);
+    <span class="doccomment">/// Wang Span Network
+    </span><span class="kw">pub const </span>Wsn: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">74</span>);
 
-    <span class="doccomment">/// Packet Video Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pvp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">75</span>);
+    <span class="doccomment">/// Packet Video Protocol
+    </span><span class="kw">pub const </span>Pvp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">75</span>);
 
-    <span class="doccomment">/// Backroom SATNET Monitoring</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BrSatMon</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">76</span>);
+    <span class="doccomment">/// Backroom SATNET Monitoring
+    </span><span class="kw">pub const </span>BrSatMon: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">76</span>);
 
-    <span class="doccomment">/// SUN ND PROTOCOL-Temporary</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SunNd</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">77</span>);
+    <span class="doccomment">/// SUN ND PROTOCOL-Temporary
+    </span><span class="kw">pub const </span>SunNd: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">77</span>);
 
-    <span class="doccomment">/// WIDEBAND Monitoring</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WbMon</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">78</span>);
+    <span class="doccomment">/// WIDEBAND Monitoring
+    </span><span class="kw">pub const </span>WbMon: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">78</span>);
 
-    <span class="doccomment">/// WIDEBAND EXPAK</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WbExpak</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">79</span>);
+    <span class="doccomment">/// WIDEBAND EXPAK
+    </span><span class="kw">pub const </span>WbExpak: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">79</span>);
 
-    <span class="doccomment">/// ISO Internet Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IsoIp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">80</span>);
+    <span class="doccomment">/// ISO Internet Protocol
+    </span><span class="kw">pub const </span>IsoIp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">80</span>);
 
-    <span class="doccomment">/// VMTP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Vmtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">81</span>);
+    <span class="doccomment">/// VMTP
+    </span><span class="kw">pub const </span>Vmtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">81</span>);
 
-    <span class="doccomment">/// SECURE-VMTP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SecureVmtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">82</span>);
+    <span class="doccomment">/// SECURE-VMTP
+    </span><span class="kw">pub const </span>SecureVmtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">82</span>);
 
-    <span class="doccomment">/// VINES</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Vines</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">83</span>);
+    <span class="doccomment">/// VINES
+    </span><span class="kw">pub const </span>Vines: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">83</span>);
 
-    <span class="doccomment">/// Transaction Transport Protocol/IP Traffic Manager</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TtpOrIptm</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">84</span>);
+    <span class="doccomment">/// Transaction Transport Protocol/IP Traffic Manager
+    </span><span class="kw">pub const </span>TtpOrIptm: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">84</span>);
 
-    <span class="doccomment">/// NSFNET-IGP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NsfnetIgp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">85</span>);
+    <span class="doccomment">/// NSFNET-IGP
+    </span><span class="kw">pub const </span>NsfnetIgp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">85</span>);
 
-    <span class="doccomment">/// Dissimilar Gateway Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Dgp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">86</span>);
+    <span class="doccomment">/// Dissimilar Gateway Protocol
+    </span><span class="kw">pub const </span>Dgp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">86</span>);
 
-    <span class="doccomment">/// TCF</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Tcf</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">87</span>);
+    <span class="doccomment">/// TCF
+    </span><span class="kw">pub const </span>Tcf: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">87</span>);
 
-    <span class="doccomment">/// EIGRP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Eigrp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">88</span>);
+    <span class="doccomment">/// EIGRP
+    </span><span class="kw">pub const </span>Eigrp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">88</span>);
 
-    <span class="doccomment">/// OSPFIGP \[RFC1583\]\[RFC2328\]\[RFC5340\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OspfigP</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">89</span>);
+    <span class="doccomment">/// OSPFIGP \[RFC1583\]\[RFC2328\]\[RFC5340\]
+    </span><span class="kw">pub const </span>OspfigP: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">89</span>);
 
-    <span class="doccomment">/// Sprite RPC Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SpriteRpc</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">90</span>);
+    <span class="doccomment">/// Sprite RPC Protocol
+    </span><span class="kw">pub const </span>SpriteRpc: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">90</span>);
 
-    <span class="doccomment">/// Locus Address Resolution Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Larp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">91</span>);
+    <span class="doccomment">/// Locus Address Resolution Protocol
+    </span><span class="kw">pub const </span>Larp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">91</span>);
 
-    <span class="doccomment">/// Multicast Transport Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Mtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">92</span>);
+    <span class="doccomment">/// Multicast Transport Protocol
+    </span><span class="kw">pub const </span>Mtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">92</span>);
 
-    <span class="doccomment">/// AX.25 Frames</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ax25</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">93</span>);
+    <span class="doccomment">/// AX.25 Frames
+    </span><span class="kw">pub const </span>Ax25: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">93</span>);
 
-    <span class="doccomment">/// IP-within-IP Encapsulation Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IpIp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">94</span>);
+    <span class="doccomment">/// IP-within-IP Encapsulation Protocol
+    </span><span class="kw">pub const </span>IpIp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">94</span>);
 
-    <span class="doccomment">/// Mobile Internetworking Control Pro.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Micp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">95</span>);
+    <span class="doccomment">/// Mobile Internetworking Control Pro.
+    </span><span class="kw">pub const </span>Micp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">95</span>);
 
-    <span class="doccomment">/// Semaphore Communications Sec. Pro.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SccSp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">96</span>);
+    <span class="doccomment">/// Semaphore Communications Sec. Pro.
+    </span><span class="kw">pub const </span>SccSp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">96</span>);
 
-    <span class="doccomment">/// Ethernet-within-IP Encapsulation \[RFC3378\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Etherip</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">97</span>);
+    <span class="doccomment">/// Ethernet-within-IP Encapsulation \[RFC3378\]
+    </span><span class="kw">pub const </span>Etherip: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">97</span>);
 
-    <span class="doccomment">/// Encapsulation Header \[RFC1241\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Encap</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">98</span>);
+    <span class="doccomment">/// Encapsulation Header \[RFC1241\]
+    </span><span class="kw">pub const </span>Encap: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">98</span>);
 
-    <span class="doccomment">/// any private encryption scheme</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PrivEncryption</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">99</span>);
+    <span class="doccomment">/// any private encryption scheme
+    </span><span class="kw">pub const </span>PrivEncryption: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">99</span>);
 
-    <span class="doccomment">/// GMTP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Gmtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">100</span>);
+    <span class="doccomment">/// GMTP
+    </span><span class="kw">pub const </span>Gmtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">100</span>);
 
-    <span class="doccomment">/// Ipsilon Flow Management Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ifmp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">101</span>);
+    <span class="doccomment">/// Ipsilon Flow Management Protocol
+    </span><span class="kw">pub const </span>Ifmp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">101</span>);
 
-    <span class="doccomment">/// PNNI over IP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pnni</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">102</span>);
+    <span class="doccomment">/// PNNI over IP
+    </span><span class="kw">pub const </span>Pnni: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">102</span>);
 
-    <span class="doccomment">/// Protocol Independent Multicast \[RFC4601\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pim</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">103</span>);
+    <span class="doccomment">/// Protocol Independent Multicast \[RFC4601\]
+    </span><span class="kw">pub const </span>Pim: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">103</span>);
 
-    <span class="doccomment">/// ARIS</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Aris</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">104</span>);
+    <span class="doccomment">/// ARIS
+    </span><span class="kw">pub const </span>Aris: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">104</span>);
 
-    <span class="doccomment">/// SCPS</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Scps</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">105</span>);
+    <span class="doccomment">/// SCPS
+    </span><span class="kw">pub const </span>Scps: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">105</span>);
 
-    <span class="doccomment">/// QNX</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Qnx</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">106</span>);
+    <span class="doccomment">/// QNX
+    </span><span class="kw">pub const </span>Qnx: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">106</span>);
 
-    <span class="doccomment">/// Active Networks</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">AN</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">107</span>);
+    <span class="doccomment">/// Active Networks
+    </span><span class="kw">pub const </span>AN: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">107</span>);
 
-    <span class="doccomment">/// IP Payload Compression Protocol \[RFC2393\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IpComp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">108</span>);
+    <span class="doccomment">/// IP Payload Compression Protocol \[RFC2393\]
+    </span><span class="kw">pub const </span>IpComp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">108</span>);
 
-    <span class="doccomment">/// Sitara Networks Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Snp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">109</span>);
+    <span class="doccomment">/// Sitara Networks Protocol
+    </span><span class="kw">pub const </span>Snp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">109</span>);
 
-    <span class="doccomment">/// Compaq Peer Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CompaqPeer</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">110</span>);
+    <span class="doccomment">/// Compaq Peer Protocol
+    </span><span class="kw">pub const </span>CompaqPeer: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">110</span>);
 
-    <span class="doccomment">/// IPX in IP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IpxInIp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">111</span>);
+    <span class="doccomment">/// IPX in IP
+    </span><span class="kw">pub const </span>IpxInIp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">111</span>);
 
-    <span class="doccomment">/// Virtual Router Redundancy Protocol \[RFC5798\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Vrrp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">112</span>);
+    <span class="doccomment">/// Virtual Router Redundancy Protocol \[RFC5798\]
+    </span><span class="kw">pub const </span>Vrrp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">112</span>);
 
-    <span class="doccomment">/// PGM Reliable Transport Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pgm</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">113</span>);
+    <span class="doccomment">/// PGM Reliable Transport Protocol
+    </span><span class="kw">pub const </span>Pgm: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">113</span>);
 
-    <span class="doccomment">/// any 0-hop protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ZeroHop</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">114</span>);
+    <span class="doccomment">/// any 0-hop protocol
+    </span><span class="kw">pub const </span>ZeroHop: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">114</span>);
 
-    <span class="doccomment">/// Layer Two Tunneling Protocol \[RFC3931\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">L2tp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">115</span>);
+    <span class="doccomment">/// Layer Two Tunneling Protocol \[RFC3931\]
+    </span><span class="kw">pub const </span>L2tp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">115</span>);
 
-    <span class="doccomment">/// D-II Data Exchange (DDX)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ddx</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">116</span>);
+    <span class="doccomment">/// D-II Data Exchange (DDX)
+    </span><span class="kw">pub const </span>Ddx: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">116</span>);
 
-    <span class="doccomment">/// Interactive Agent Transfer Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Iatp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">117</span>);
+    <span class="doccomment">/// Interactive Agent Transfer Protocol
+    </span><span class="kw">pub const </span>Iatp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">117</span>);
 
-    <span class="doccomment">/// Schedule Transfer Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Stp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">118</span>);
+    <span class="doccomment">/// Schedule Transfer Protocol
+    </span><span class="kw">pub const </span>Stp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">118</span>);
 
-    <span class="doccomment">/// SpectraLink Radio Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Srp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">119</span>);
+    <span class="doccomment">/// SpectraLink Radio Protocol
+    </span><span class="kw">pub const </span>Srp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">119</span>);
 
-    <span class="doccomment">/// UTI</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Uti</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">120</span>);
+    <span class="doccomment">/// UTI
+    </span><span class="kw">pub const </span>Uti: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">120</span>);
 
-    <span class="doccomment">/// Simple Message Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Smp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">121</span>);
+    <span class="doccomment">/// Simple Message Protocol
+    </span><span class="kw">pub const </span>Smp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">121</span>);
 
-    <span class="doccomment">/// Simple Multicast Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Sm</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">122</span>);
+    <span class="doccomment">/// Simple Multicast Protocol
+    </span><span class="kw">pub const </span>Sm: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">122</span>);
 
-    <span class="doccomment">/// Performance Transparency Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Ptp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">123</span>);
+    <span class="doccomment">/// Performance Transparency Protocol
+    </span><span class="kw">pub const </span>Ptp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">123</span>);
 
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IsisOverIpv4</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">124</span>);
+    <span class="doccomment">///
+    </span><span class="kw">pub const </span>IsisOverIpv4: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">124</span>);
 
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Fire</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">125</span>);
+    <span class="doccomment">///
+    </span><span class="kw">pub const </span>Fire: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">125</span>);
 
-    <span class="doccomment">/// Combat Radio Transport Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Crtp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">126</span>);
+    <span class="doccomment">/// Combat Radio Transport Protocol
+    </span><span class="kw">pub const </span>Crtp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">126</span>);
 
-    <span class="doccomment">/// Combat Radio User Datagram</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Crudp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">127</span>);
+    <span class="doccomment">/// Combat Radio User Datagram
+    </span><span class="kw">pub const </span>Crudp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">127</span>);
 
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Sscopmce</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">128</span>);
+    <span class="doccomment">///
+    </span><span class="kw">pub const </span>Sscopmce: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">128</span>);
 
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Iplt</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">129</span>);
+    <span class="doccomment">///
+    </span><span class="kw">pub const </span>Iplt: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">129</span>);
 
-    <span class="doccomment">/// Secure Packet Shield</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Sps</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">130</span>);
+    <span class="doccomment">/// Secure Packet Shield
+    </span><span class="kw">pub const </span>Sps: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">130</span>);
 
-    <span class="doccomment">/// Private IP Encapsulation within IP</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Pipe</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">131</span>);
+    <span class="doccomment">/// Private IP Encapsulation within IP
+    </span><span class="kw">pub const </span>Pipe: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">131</span>);
 
-    <span class="doccomment">/// Stream Control Transmission Protocol</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Sctp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">132</span>);
+    <span class="doccomment">/// Stream Control Transmission Protocol
+    </span><span class="kw">pub const </span>Sctp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">132</span>);
 
-    <span class="doccomment">/// Fibre Channel \[RFC6172\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Fc</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">133</span>);
+    <span class="doccomment">/// Fibre Channel \[RFC6172\]
+    </span><span class="kw">pub const </span>Fc: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">133</span>);
 
-    <span class="doccomment">/// \[RFC3175\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RsvpE2eIgnore</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">134</span>);
+    <span class="doccomment">/// \[RFC3175\]
+    </span><span class="kw">pub const </span>RsvpE2eIgnore: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">134</span>);
 
-    <span class="doccomment">/// \[RFC6275\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MobilityHeader</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">135</span>);
+    <span class="doccomment">/// \[RFC6275\]
+    </span><span class="kw">pub const </span>MobilityHeader: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">135</span>);
 
-    <span class="doccomment">/// \[RFC3828\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UdpLite</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">136</span>);
+    <span class="doccomment">/// \[RFC3828\]
+    </span><span class="kw">pub const </span>UdpLite: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">136</span>);
 
-    <span class="doccomment">/// \[RFC4023\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MplsInIp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">137</span>);
+    <span class="doccomment">/// \[RFC4023\]
+    </span><span class="kw">pub const </span>MplsInIp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">137</span>);
 
-    <span class="doccomment">/// MANET Protocols \[RFC5498\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Manet</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">138</span>);
+    <span class="doccomment">/// MANET Protocols \[RFC5498\]
+    </span><span class="kw">pub const </span>Manet: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">138</span>);
 
-    <span class="doccomment">/// Host Identity Protocol \[RFC5201\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Hip</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">139</span>);
+    <span class="doccomment">/// Host Identity Protocol \[RFC5201\]
+    </span><span class="kw">pub const </span>Hip: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">139</span>);
 
-    <span class="doccomment">/// Shim6 Protocol \[RFC5533\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Shim6</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">140</span>);
+    <span class="doccomment">/// Shim6 Protocol \[RFC5533\]
+    </span><span class="kw">pub const </span>Shim6: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">140</span>);
 
-    <span class="doccomment">/// Wrapped Encapsulating Security Payload \[RFC5840\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Wesp</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">141</span>);
+    <span class="doccomment">/// Wrapped Encapsulating Security Payload \[RFC5840\]
+    </span><span class="kw">pub const </span>Wesp: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">141</span>);
 
-    <span class="doccomment">/// Robust Header Compression \[RFC5858\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Rohc</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">142</span>);
+    <span class="doccomment">/// Robust Header Compression \[RFC5858\]
+    </span><span class="kw">pub const </span>Rohc: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">142</span>);
 
-    <span class="doccomment">/// Use for experimentation and testing \[RFC3692\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Test1</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">253</span>);
+    <span class="doccomment">/// Use for experimentation and testing \[RFC3692\]
+    </span><span class="kw">pub const </span>Test1: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">253</span>);
 
-    <span class="doccomment">/// Use for experimentation and testing \[RFC3692\]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Test2</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">254</span>);
+    <span class="doccomment">/// Use for experimentation and testing \[RFC3692\]
+    </span><span class="kw">pub const </span>Test2: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">254</span>);
 
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Reserved</span>: <span class="ident">IpNextHeaderProtocol</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">255</span>);
+    <span class="doccomment">///
+    </span><span class="kw">pub const </span>Reserved: IpNextHeaderProtocol = IpNextHeaderProtocol(<span class="number">255</span>);
 }
 
-<span class="doccomment">/// Represents an IPv4 next level protocol, or an IPv6 next header protocol,</span>
-<span class="doccomment">/// see `IpNextHeaderProtocols` for a list of values.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+<span class="doccomment">/// Represents an IPv4 next level protocol, or an IPv6 next header protocol,
+/// see `IpNextHeaderProtocols` for a list of values.
+</span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub struct </span>IpNextHeaderProtocol(<span class="kw">pub </span>u8);
 
-<span class="kw">impl</span> <span class="ident">IpNextHeaderProtocol</span> {
-    <span class="doccomment">/// Create a new IpNextHeaderProtocol</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">value</span>: <span class="ident">u8</span>) -&gt; <span class="ident">IpNextHeaderProtocol</span> {
-        <span class="ident">IpNextHeaderProtocol</span>(<span class="ident">value</span>)
+<span class="kw">impl </span>IpNextHeaderProtocol {
+    <span class="doccomment">/// Create a new IpNextHeaderProtocol
+    </span><span class="kw">pub fn </span>new(value: u8) -&gt; IpNextHeaderProtocol {
+        IpNextHeaderProtocol(value)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">IpNextHeaderProtocol</span> {
-    <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-    <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+<span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>IpNextHeaderProtocol {
+    <span class="kw">type </span>T = (u8,);
+    <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
         (<span class="self">self</span>.<span class="number">0</span>,)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">IpNextHeaderProtocol</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>IpNextHeaderProtocol {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
         <span class="macro">write!</span>(
-            <span class="ident">f</span>,
+            f,
             <span class="string">&quot;{}&quot;</span>,
-            <span class="kw">match</span> <span class="self">self</span> {
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Hopopt</span> =&gt; <span class="string">&quot;Hopopt&quot;</span>,         <span class="comment">// 0</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Icmp</span> =&gt; <span class="string">&quot;Icmp&quot;</span>,             <span class="comment">// 1</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Igmp</span> =&gt; <span class="string">&quot;Igmp&quot;</span>,             <span class="comment">// 2</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ggp</span> =&gt; <span class="string">&quot;Ggp&quot;</span>,               <span class="comment">// 3</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv4</span> =&gt; <span class="string">&quot;Ipv4&quot;</span>,             <span class="comment">// 4</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::St</span> =&gt; <span class="string">&quot;St&quot;</span>,                 <span class="comment">// 5</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Tcp</span> =&gt; <span class="string">&quot;Tcp&quot;</span>,               <span class="comment">// 6</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Cbt</span> =&gt; <span class="string">&quot;Cbt&quot;</span>,               <span class="comment">// 7</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Egp</span> =&gt; <span class="string">&quot;Egp&quot;</span>,               <span class="comment">// 8</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Igp</span> =&gt; <span class="string">&quot;Igp&quot;</span>,               <span class="comment">// 9</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::BbnRccMon</span> =&gt; <span class="string">&quot;BbnRccMon&quot;</span>,   <span class="comment">// 10</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::NvpII</span> =&gt; <span class="string">&quot;NvpII&quot;</span>,           <span class="comment">// 11</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pup</span> =&gt; <span class="string">&quot;Pup&quot;</span>,               <span class="comment">// 12</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Argus</span> =&gt; <span class="string">&quot;Argus&quot;</span>,           <span class="comment">// 13</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Emcon</span> =&gt; <span class="string">&quot;Emcon&quot;</span>,           <span class="comment">// 14</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Xnet</span> =&gt; <span class="string">&quot;Xnet&quot;</span>,             <span class="comment">// 15</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Chaos</span> =&gt; <span class="string">&quot;Chaos&quot;</span>,           <span class="comment">// 16</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Udp</span> =&gt; <span class="string">&quot;Udp&quot;</span>,               <span class="comment">// 17</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Mux</span> =&gt; <span class="string">&quot;Mux&quot;</span>,               <span class="comment">// 18</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::DcnMeas</span> =&gt; <span class="string">&quot;DcnMeas&quot;</span>,       <span class="comment">// 19</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Hmp</span> =&gt; <span class="string">&quot;Hmp&quot;</span>,               <span class="comment">// 20</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Prm</span> =&gt; <span class="string">&quot;Prm&quot;</span>,               <span class="comment">// 21</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::XnsIdp</span> =&gt; <span class="string">&quot;XnsIdp&quot;</span>,         <span class="comment">// 22</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Trunk1</span> =&gt; <span class="string">&quot;Trunk1&quot;</span>,         <span class="comment">// 23</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Trunk2</span> =&gt; <span class="string">&quot;Trunk2&quot;</span>,         <span class="comment">// 24</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Leaf1</span> =&gt; <span class="string">&quot;Leaf1&quot;</span>,           <span class="comment">// 25</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Leaf2</span> =&gt; <span class="string">&quot;Leaf2&quot;</span>,           <span class="comment">// 26</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Rdp</span> =&gt; <span class="string">&quot;Rdp&quot;</span>,               <span class="comment">// 27</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Irtp</span> =&gt; <span class="string">&quot;Irtp&quot;</span>,             <span class="comment">// 28</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IsoTp4</span> =&gt; <span class="string">&quot;IsoTp4&quot;</span>,         <span class="comment">// 29</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Netblt</span> =&gt; <span class="string">&quot;Netblt&quot;</span>,         <span class="comment">// 30</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::MfeNsp</span> =&gt; <span class="string">&quot;MfeNsp&quot;</span>,         <span class="comment">// 31</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::MeritInp</span> =&gt; <span class="string">&quot;MeritInp&quot;</span>,     <span class="comment">// 32</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Dccp</span> =&gt; <span class="string">&quot;Dccp&quot;</span>,             <span class="comment">// 33</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::ThreePc</span> =&gt; <span class="string">&quot;ThreePc&quot;</span>,       <span class="comment">// 34</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Idpr</span> =&gt; <span class="string">&quot;Idpr&quot;</span>,             <span class="comment">// 35</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Xtp</span> =&gt; <span class="string">&quot;Xtp&quot;</span>,               <span class="comment">// 36</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ddp</span> =&gt; <span class="string">&quot;Ddp&quot;</span>,               <span class="comment">// 37</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IdprCmtp</span> =&gt; <span class="string">&quot;IdprCmtp&quot;</span>,     <span class="comment">// 38</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::TpPlusPlus</span> =&gt; <span class="string">&quot;TpPlusPlus&quot;</span>, <span class="comment">// 39</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Il</span> =&gt; <span class="string">&quot;Il&quot;</span>,                 <span class="comment">// 40</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv6</span> =&gt; <span class="string">&quot;Ipv6&quot;</span>,             <span class="comment">// 41</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Sdrp</span> =&gt; <span class="string">&quot;Sdrp&quot;</span>,             <span class="comment">// 42</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv6Route</span> =&gt; <span class="string">&quot;Ipv6Route&quot;</span>,   <span class="comment">// 43</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv6Frag</span> =&gt; <span class="string">&quot;Ipv6Frag&quot;</span>,     <span class="comment">// 44</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Idrp</span> =&gt; <span class="string">&quot;Idrp&quot;</span>,             <span class="comment">// 45</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Rsvp</span> =&gt; <span class="string">&quot;Rsvp&quot;</span>,             <span class="comment">// 46</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Gre</span> =&gt; <span class="string">&quot;Gre&quot;</span>,               <span class="comment">// 47</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Dsr</span> =&gt; <span class="string">&quot;Dsr&quot;</span>,               <span class="comment">// 48</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Bna</span> =&gt; <span class="string">&quot;Bna&quot;</span>,               <span class="comment">// 49</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Esp</span> =&gt; <span class="string">&quot;Esp&quot;</span>,               <span class="comment">// 50</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ah</span> =&gt; <span class="string">&quot;Ah&quot;</span>,                 <span class="comment">// 51</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::INlsp</span> =&gt; <span class="string">&quot;INlsp&quot;</span>,           <span class="comment">// 52</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Swipe</span> =&gt; <span class="string">&quot;Swipe&quot;</span>,           <span class="comment">// 53</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Narp</span> =&gt; <span class="string">&quot;Narp&quot;</span>,             <span class="comment">// 54</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Mobile</span> =&gt; <span class="string">&quot;Mobile&quot;</span>,         <span class="comment">// 55</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Tlsp</span> =&gt; <span class="string">&quot;Tlsp&quot;</span>,             <span class="comment">// 56</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Skip</span> =&gt; <span class="string">&quot;Skip&quot;</span>,             <span class="comment">// 57</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Icmpv6</span> =&gt; <span class="string">&quot;Icmpv6&quot;</span>,         <span class="comment">// 58</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv6NoNxt</span> =&gt; <span class="string">&quot;Ipv6NoNxt&quot;</span>,   <span class="comment">// 59</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipv6Opts</span> =&gt; <span class="string">&quot;Ipv6Opts&quot;</span>,     <span class="comment">// 60</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::HostInternal</span> =&gt; <span class="string">&quot;HostInternal&quot;</span>, <span class="comment">// 61</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Cftp</span> =&gt; <span class="string">&quot;Cftp&quot;</span>,             <span class="comment">// 62</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::LocalNetwork</span> =&gt; <span class="string">&quot;LocalNetwork&quot;</span>, <span class="comment">// 63</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SatExpak</span> =&gt; <span class="string">&quot;SatExpak&quot;</span>,     <span class="comment">// 64</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Kryptolan</span> =&gt; <span class="string">&quot;Kryptolan&quot;</span>,   <span class="comment">// 65</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Rvd</span> =&gt; <span class="string">&quot;Rvd&quot;</span>,               <span class="comment">// 66</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ippc</span> =&gt; <span class="string">&quot;Ippc&quot;</span>,             <span class="comment">// 67</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::DistributedFs</span> =&gt; <span class="string">&quot;DistributedFs&quot;</span>, <span class="comment">// 68</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SatMon</span> =&gt; <span class="string">&quot;SatMon&quot;</span>,         <span class="comment">// 69</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Visa</span> =&gt; <span class="string">&quot;Visa&quot;</span>,             <span class="comment">// 70</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ipcv</span> =&gt; <span class="string">&quot;Ipcv&quot;</span>,             <span class="comment">// 71</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Cpnx</span> =&gt; <span class="string">&quot;Cpnx&quot;</span>,             <span class="comment">// 72</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Cphb</span> =&gt; <span class="string">&quot;Cphb&quot;</span>,             <span class="comment">// 73</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Wsn</span> =&gt; <span class="string">&quot;Wsn&quot;</span>,               <span class="comment">// 74</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pvp</span> =&gt; <span class="string">&quot;Pvp&quot;</span>,               <span class="comment">// 75</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::BrSatMon</span> =&gt; <span class="string">&quot;BrSatMon&quot;</span>,     <span class="comment">// 76</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SunNd</span> =&gt; <span class="string">&quot;SunNd&quot;</span>,           <span class="comment">// 77</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::WbMon</span> =&gt; <span class="string">&quot;WbMon&quot;</span>,           <span class="comment">// 78</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::WbExpak</span> =&gt; <span class="string">&quot;WbExpak&quot;</span>,       <span class="comment">// 79</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IsoIp</span> =&gt; <span class="string">&quot;IsoIp&quot;</span>,           <span class="comment">// 80</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Vmtp</span> =&gt; <span class="string">&quot;Vmtp&quot;</span>,             <span class="comment">// 81</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SecureVmtp</span> =&gt; <span class="string">&quot;SecureVmtp&quot;</span>, <span class="comment">// 82</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Vines</span> =&gt; <span class="string">&quot;Vines&quot;</span>,           <span class="comment">// 83</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::TtpOrIptm</span> =&gt; <span class="string">&quot;TtpOrIptm&quot;</span>,   <span class="comment">// 84</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::NsfnetIgp</span> =&gt; <span class="string">&quot;NsfnetIgp&quot;</span>,   <span class="comment">// 85</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Dgp</span> =&gt; <span class="string">&quot;Dgp&quot;</span>,               <span class="comment">// 86</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Tcf</span> =&gt; <span class="string">&quot;Tcf&quot;</span>,               <span class="comment">// 87</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Eigrp</span> =&gt; <span class="string">&quot;Eigrp&quot;</span>,           <span class="comment">// 88</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::OspfigP</span> =&gt; <span class="string">&quot;OspfigP&quot;</span>,       <span class="comment">// 89</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SpriteRpc</span> =&gt; <span class="string">&quot;SpriteRpc&quot;</span>,   <span class="comment">// 90</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Larp</span> =&gt; <span class="string">&quot;Larp&quot;</span>,             <span class="comment">// 91</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Mtp</span> =&gt; <span class="string">&quot;Mtp&quot;</span>,               <span class="comment">// 92</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ax25</span> =&gt; <span class="string">&quot;Ax25&quot;</span>,             <span class="comment">// 93</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IpIp</span> =&gt; <span class="string">&quot;IpIp&quot;</span>,             <span class="comment">// 94</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Micp</span> =&gt; <span class="string">&quot;Micp&quot;</span>,             <span class="comment">// 95</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::SccSp</span> =&gt; <span class="string">&quot;SccSp&quot;</span>,           <span class="comment">// 96</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Etherip</span> =&gt; <span class="string">&quot;Etherip&quot;</span>,       <span class="comment">// 97</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Encap</span> =&gt; <span class="string">&quot;Encap&quot;</span>,           <span class="comment">// 98</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::PrivEncryption</span> =&gt; <span class="string">&quot;PrivEncryption&quot;</span>, <span class="comment">// 99</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Gmtp</span> =&gt; <span class="string">&quot;Gmtp&quot;</span>,             <span class="comment">// 100</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ifmp</span> =&gt; <span class="string">&quot;Ifmp&quot;</span>,             <span class="comment">// 101</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pnni</span> =&gt; <span class="string">&quot;Pnni&quot;</span>,             <span class="comment">// 102</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pim</span> =&gt; <span class="string">&quot;Pim&quot;</span>,               <span class="comment">// 103</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Aris</span> =&gt; <span class="string">&quot;Aris&quot;</span>,             <span class="comment">// 104</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Scps</span> =&gt; <span class="string">&quot;Scps&quot;</span>,             <span class="comment">// 105</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Qnx</span> =&gt; <span class="string">&quot;Qnx&quot;</span>,               <span class="comment">// 106</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::AN</span> =&gt; <span class="string">&quot;AN&quot;</span>,                 <span class="comment">// 107</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IpComp</span> =&gt; <span class="string">&quot;IpComp&quot;</span>,         <span class="comment">// 108</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Snp</span> =&gt; <span class="string">&quot;Snp&quot;</span>,               <span class="comment">// 109</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::CompaqPeer</span> =&gt; <span class="string">&quot;CompaqPeer&quot;</span>, <span class="comment">// 110</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IpxInIp</span> =&gt; <span class="string">&quot;IpxInIp&quot;</span>,       <span class="comment">// 111</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Vrrp</span> =&gt; <span class="string">&quot;Vrrp&quot;</span>,             <span class="comment">// 112</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pgm</span> =&gt; <span class="string">&quot;Pgm&quot;</span>,               <span class="comment">// 113</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::ZeroHop</span> =&gt; <span class="string">&quot;ZeroHop&quot;</span>,       <span class="comment">// 114</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::L2tp</span> =&gt; <span class="string">&quot;L2tp&quot;</span>,             <span class="comment">// 115</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ddx</span> =&gt; <span class="string">&quot;Ddx&quot;</span>,               <span class="comment">// 116</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Iatp</span> =&gt; <span class="string">&quot;Iatp&quot;</span>,             <span class="comment">// 117</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Stp</span> =&gt; <span class="string">&quot;Stp&quot;</span>,               <span class="comment">// 118</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Srp</span> =&gt; <span class="string">&quot;Srp&quot;</span>,               <span class="comment">// 119</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Uti</span> =&gt; <span class="string">&quot;Uti&quot;</span>,               <span class="comment">// 120</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Smp</span> =&gt; <span class="string">&quot;Smp&quot;</span>,               <span class="comment">// 121</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Sm</span> =&gt; <span class="string">&quot;Sm&quot;</span>,                 <span class="comment">// 122</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Ptp</span> =&gt; <span class="string">&quot;Ptp&quot;</span>,               <span class="comment">// 123</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::IsisOverIpv4</span> =&gt; <span class="string">&quot;IsisOverIpv4&quot;</span>, <span class="comment">// 124</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Fire</span> =&gt; <span class="string">&quot;Fire&quot;</span>,             <span class="comment">// 125</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Crtp</span> =&gt; <span class="string">&quot;Crtp&quot;</span>,             <span class="comment">// 126</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Crudp</span> =&gt; <span class="string">&quot;Crudp&quot;</span>,           <span class="comment">// 127</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Sscopmce</span> =&gt; <span class="string">&quot;Sscopmce&quot;</span>,     <span class="comment">// 128</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Iplt</span> =&gt; <span class="string">&quot;Iplt&quot;</span>,             <span class="comment">// 129</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Sps</span> =&gt; <span class="string">&quot;Sps&quot;</span>,               <span class="comment">// 130</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Pipe</span> =&gt; <span class="string">&quot;Pipe&quot;</span>,             <span class="comment">// 131</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Sctp</span> =&gt; <span class="string">&quot;Sctp&quot;</span>,             <span class="comment">// 132</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Fc</span> =&gt; <span class="string">&quot;Fc&quot;</span>,                 <span class="comment">// 133</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::RsvpE2eIgnore</span> =&gt; <span class="string">&quot;RsvpE2eIgnore&quot;</span>, <span class="comment">// 134</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::MobilityHeader</span> =&gt; <span class="string">&quot;MobilityHeader&quot;</span>, <span class="comment">// 135</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::UdpLite</span> =&gt; <span class="string">&quot;UdpLite&quot;</span>,       <span class="comment">// 136</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::MplsInIp</span> =&gt; <span class="string">&quot;MplsInIp&quot;</span>,     <span class="comment">// 137</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Manet</span> =&gt; <span class="string">&quot;Manet&quot;</span>,           <span class="comment">// 138</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Hip</span> =&gt; <span class="string">&quot;Hip&quot;</span>,               <span class="comment">// 139</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Shim6</span> =&gt; <span class="string">&quot;Shim6&quot;</span>,           <span class="comment">// 140</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Wesp</span> =&gt; <span class="string">&quot;Wesp&quot;</span>,             <span class="comment">// 141</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Rohc</span> =&gt; <span class="string">&quot;Rohc&quot;</span>,             <span class="comment">// 142</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Test1</span> =&gt; <span class="string">&quot;Test1&quot;</span>,           <span class="comment">// 253</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Test2</span> =&gt; <span class="string">&quot;Test2&quot;</span>,           <span class="comment">// 254*/</span>
-                <span class="kw-2">&amp;</span><span class="ident">IpNextHeaderProtocols::Reserved</span> =&gt; <span class="string">&quot;Reserved&quot;</span>,     <span class="comment">// 255</span>
-                <span class="kw">_</span> =&gt; <span class="string">&quot;unknown&quot;</span>,
+            <span class="kw">match </span><span class="self">self </span>{
+                <span class="kw-2">&amp;</span>IpNextHeaderProtocols::Hopopt =&gt; <span class="string">&quot;Hopopt&quot;</span>,         <span class="comment">// 0
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Icmp =&gt; <span class="string">&quot;Icmp&quot;</span>,             <span class="comment">// 1
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Igmp =&gt; <span class="string">&quot;Igmp&quot;</span>,             <span class="comment">// 2
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ggp =&gt; <span class="string">&quot;Ggp&quot;</span>,               <span class="comment">// 3
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv4 =&gt; <span class="string">&quot;Ipv4&quot;</span>,             <span class="comment">// 4
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::St =&gt; <span class="string">&quot;St&quot;</span>,                 <span class="comment">// 5
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Tcp =&gt; <span class="string">&quot;Tcp&quot;</span>,               <span class="comment">// 6
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Cbt =&gt; <span class="string">&quot;Cbt&quot;</span>,               <span class="comment">// 7
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Egp =&gt; <span class="string">&quot;Egp&quot;</span>,               <span class="comment">// 8
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Igp =&gt; <span class="string">&quot;Igp&quot;</span>,               <span class="comment">// 9
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::BbnRccMon =&gt; <span class="string">&quot;BbnRccMon&quot;</span>,   <span class="comment">// 10
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::NvpII =&gt; <span class="string">&quot;NvpII&quot;</span>,           <span class="comment">// 11
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pup =&gt; <span class="string">&quot;Pup&quot;</span>,               <span class="comment">// 12
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Argus =&gt; <span class="string">&quot;Argus&quot;</span>,           <span class="comment">// 13
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Emcon =&gt; <span class="string">&quot;Emcon&quot;</span>,           <span class="comment">// 14
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Xnet =&gt; <span class="string">&quot;Xnet&quot;</span>,             <span class="comment">// 15
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Chaos =&gt; <span class="string">&quot;Chaos&quot;</span>,           <span class="comment">// 16
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Udp =&gt; <span class="string">&quot;Udp&quot;</span>,               <span class="comment">// 17
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Mux =&gt; <span class="string">&quot;Mux&quot;</span>,               <span class="comment">// 18
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::DcnMeas =&gt; <span class="string">&quot;DcnMeas&quot;</span>,       <span class="comment">// 19
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Hmp =&gt; <span class="string">&quot;Hmp&quot;</span>,               <span class="comment">// 20
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Prm =&gt; <span class="string">&quot;Prm&quot;</span>,               <span class="comment">// 21
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::XnsIdp =&gt; <span class="string">&quot;XnsIdp&quot;</span>,         <span class="comment">// 22
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Trunk1 =&gt; <span class="string">&quot;Trunk1&quot;</span>,         <span class="comment">// 23
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Trunk2 =&gt; <span class="string">&quot;Trunk2&quot;</span>,         <span class="comment">// 24
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Leaf1 =&gt; <span class="string">&quot;Leaf1&quot;</span>,           <span class="comment">// 25
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Leaf2 =&gt; <span class="string">&quot;Leaf2&quot;</span>,           <span class="comment">// 26
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Rdp =&gt; <span class="string">&quot;Rdp&quot;</span>,               <span class="comment">// 27
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Irtp =&gt; <span class="string">&quot;Irtp&quot;</span>,             <span class="comment">// 28
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IsoTp4 =&gt; <span class="string">&quot;IsoTp4&quot;</span>,         <span class="comment">// 29
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Netblt =&gt; <span class="string">&quot;Netblt&quot;</span>,         <span class="comment">// 30
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::MfeNsp =&gt; <span class="string">&quot;MfeNsp&quot;</span>,         <span class="comment">// 31
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::MeritInp =&gt; <span class="string">&quot;MeritInp&quot;</span>,     <span class="comment">// 32
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Dccp =&gt; <span class="string">&quot;Dccp&quot;</span>,             <span class="comment">// 33
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::ThreePc =&gt; <span class="string">&quot;ThreePc&quot;</span>,       <span class="comment">// 34
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Idpr =&gt; <span class="string">&quot;Idpr&quot;</span>,             <span class="comment">// 35
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Xtp =&gt; <span class="string">&quot;Xtp&quot;</span>,               <span class="comment">// 36
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ddp =&gt; <span class="string">&quot;Ddp&quot;</span>,               <span class="comment">// 37
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IdprCmtp =&gt; <span class="string">&quot;IdprCmtp&quot;</span>,     <span class="comment">// 38
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::TpPlusPlus =&gt; <span class="string">&quot;TpPlusPlus&quot;</span>, <span class="comment">// 39
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Il =&gt; <span class="string">&quot;Il&quot;</span>,                 <span class="comment">// 40
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv6 =&gt; <span class="string">&quot;Ipv6&quot;</span>,             <span class="comment">// 41
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Sdrp =&gt; <span class="string">&quot;Sdrp&quot;</span>,             <span class="comment">// 42
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv6Route =&gt; <span class="string">&quot;Ipv6Route&quot;</span>,   <span class="comment">// 43
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv6Frag =&gt; <span class="string">&quot;Ipv6Frag&quot;</span>,     <span class="comment">// 44
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Idrp =&gt; <span class="string">&quot;Idrp&quot;</span>,             <span class="comment">// 45
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Rsvp =&gt; <span class="string">&quot;Rsvp&quot;</span>,             <span class="comment">// 46
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Gre =&gt; <span class="string">&quot;Gre&quot;</span>,               <span class="comment">// 47
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Dsr =&gt; <span class="string">&quot;Dsr&quot;</span>,               <span class="comment">// 48
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Bna =&gt; <span class="string">&quot;Bna&quot;</span>,               <span class="comment">// 49
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Esp =&gt; <span class="string">&quot;Esp&quot;</span>,               <span class="comment">// 50
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ah =&gt; <span class="string">&quot;Ah&quot;</span>,                 <span class="comment">// 51
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::INlsp =&gt; <span class="string">&quot;INlsp&quot;</span>,           <span class="comment">// 52
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Swipe =&gt; <span class="string">&quot;Swipe&quot;</span>,           <span class="comment">// 53
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Narp =&gt; <span class="string">&quot;Narp&quot;</span>,             <span class="comment">// 54
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Mobile =&gt; <span class="string">&quot;Mobile&quot;</span>,         <span class="comment">// 55
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Tlsp =&gt; <span class="string">&quot;Tlsp&quot;</span>,             <span class="comment">// 56
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Skip =&gt; <span class="string">&quot;Skip&quot;</span>,             <span class="comment">// 57
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Icmpv6 =&gt; <span class="string">&quot;Icmpv6&quot;</span>,         <span class="comment">// 58
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv6NoNxt =&gt; <span class="string">&quot;Ipv6NoNxt&quot;</span>,   <span class="comment">// 59
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipv6Opts =&gt; <span class="string">&quot;Ipv6Opts&quot;</span>,     <span class="comment">// 60
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::HostInternal =&gt; <span class="string">&quot;HostInternal&quot;</span>, <span class="comment">// 61
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Cftp =&gt; <span class="string">&quot;Cftp&quot;</span>,             <span class="comment">// 62
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::LocalNetwork =&gt; <span class="string">&quot;LocalNetwork&quot;</span>, <span class="comment">// 63
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SatExpak =&gt; <span class="string">&quot;SatExpak&quot;</span>,     <span class="comment">// 64
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Kryptolan =&gt; <span class="string">&quot;Kryptolan&quot;</span>,   <span class="comment">// 65
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Rvd =&gt; <span class="string">&quot;Rvd&quot;</span>,               <span class="comment">// 66
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ippc =&gt; <span class="string">&quot;Ippc&quot;</span>,             <span class="comment">// 67
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::DistributedFs =&gt; <span class="string">&quot;DistributedFs&quot;</span>, <span class="comment">// 68
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SatMon =&gt; <span class="string">&quot;SatMon&quot;</span>,         <span class="comment">// 69
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Visa =&gt; <span class="string">&quot;Visa&quot;</span>,             <span class="comment">// 70
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ipcv =&gt; <span class="string">&quot;Ipcv&quot;</span>,             <span class="comment">// 71
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Cpnx =&gt; <span class="string">&quot;Cpnx&quot;</span>,             <span class="comment">// 72
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Cphb =&gt; <span class="string">&quot;Cphb&quot;</span>,             <span class="comment">// 73
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Wsn =&gt; <span class="string">&quot;Wsn&quot;</span>,               <span class="comment">// 74
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pvp =&gt; <span class="string">&quot;Pvp&quot;</span>,               <span class="comment">// 75
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::BrSatMon =&gt; <span class="string">&quot;BrSatMon&quot;</span>,     <span class="comment">// 76
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SunNd =&gt; <span class="string">&quot;SunNd&quot;</span>,           <span class="comment">// 77
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::WbMon =&gt; <span class="string">&quot;WbMon&quot;</span>,           <span class="comment">// 78
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::WbExpak =&gt; <span class="string">&quot;WbExpak&quot;</span>,       <span class="comment">// 79
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IsoIp =&gt; <span class="string">&quot;IsoIp&quot;</span>,           <span class="comment">// 80
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Vmtp =&gt; <span class="string">&quot;Vmtp&quot;</span>,             <span class="comment">// 81
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SecureVmtp =&gt; <span class="string">&quot;SecureVmtp&quot;</span>, <span class="comment">// 82
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Vines =&gt; <span class="string">&quot;Vines&quot;</span>,           <span class="comment">// 83
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::TtpOrIptm =&gt; <span class="string">&quot;TtpOrIptm&quot;</span>,   <span class="comment">// 84
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::NsfnetIgp =&gt; <span class="string">&quot;NsfnetIgp&quot;</span>,   <span class="comment">// 85
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Dgp =&gt; <span class="string">&quot;Dgp&quot;</span>,               <span class="comment">// 86
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Tcf =&gt; <span class="string">&quot;Tcf&quot;</span>,               <span class="comment">// 87
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Eigrp =&gt; <span class="string">&quot;Eigrp&quot;</span>,           <span class="comment">// 88
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::OspfigP =&gt; <span class="string">&quot;OspfigP&quot;</span>,       <span class="comment">// 89
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SpriteRpc =&gt; <span class="string">&quot;SpriteRpc&quot;</span>,   <span class="comment">// 90
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Larp =&gt; <span class="string">&quot;Larp&quot;</span>,             <span class="comment">// 91
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Mtp =&gt; <span class="string">&quot;Mtp&quot;</span>,               <span class="comment">// 92
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ax25 =&gt; <span class="string">&quot;Ax25&quot;</span>,             <span class="comment">// 93
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IpIp =&gt; <span class="string">&quot;IpIp&quot;</span>,             <span class="comment">// 94
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Micp =&gt; <span class="string">&quot;Micp&quot;</span>,             <span class="comment">// 95
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::SccSp =&gt; <span class="string">&quot;SccSp&quot;</span>,           <span class="comment">// 96
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Etherip =&gt; <span class="string">&quot;Etherip&quot;</span>,       <span class="comment">// 97
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Encap =&gt; <span class="string">&quot;Encap&quot;</span>,           <span class="comment">// 98
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::PrivEncryption =&gt; <span class="string">&quot;PrivEncryption&quot;</span>, <span class="comment">// 99
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Gmtp =&gt; <span class="string">&quot;Gmtp&quot;</span>,             <span class="comment">// 100
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ifmp =&gt; <span class="string">&quot;Ifmp&quot;</span>,             <span class="comment">// 101
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pnni =&gt; <span class="string">&quot;Pnni&quot;</span>,             <span class="comment">// 102
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pim =&gt; <span class="string">&quot;Pim&quot;</span>,               <span class="comment">// 103
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Aris =&gt; <span class="string">&quot;Aris&quot;</span>,             <span class="comment">// 104
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Scps =&gt; <span class="string">&quot;Scps&quot;</span>,             <span class="comment">// 105
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Qnx =&gt; <span class="string">&quot;Qnx&quot;</span>,               <span class="comment">// 106
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::AN =&gt; <span class="string">&quot;AN&quot;</span>,                 <span class="comment">// 107
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IpComp =&gt; <span class="string">&quot;IpComp&quot;</span>,         <span class="comment">// 108
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Snp =&gt; <span class="string">&quot;Snp&quot;</span>,               <span class="comment">// 109
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::CompaqPeer =&gt; <span class="string">&quot;CompaqPeer&quot;</span>, <span class="comment">// 110
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IpxInIp =&gt; <span class="string">&quot;IpxInIp&quot;</span>,       <span class="comment">// 111
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Vrrp =&gt; <span class="string">&quot;Vrrp&quot;</span>,             <span class="comment">// 112
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pgm =&gt; <span class="string">&quot;Pgm&quot;</span>,               <span class="comment">// 113
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::ZeroHop =&gt; <span class="string">&quot;ZeroHop&quot;</span>,       <span class="comment">// 114
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::L2tp =&gt; <span class="string">&quot;L2tp&quot;</span>,             <span class="comment">// 115
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ddx =&gt; <span class="string">&quot;Ddx&quot;</span>,               <span class="comment">// 116
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Iatp =&gt; <span class="string">&quot;Iatp&quot;</span>,             <span class="comment">// 117
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Stp =&gt; <span class="string">&quot;Stp&quot;</span>,               <span class="comment">// 118
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Srp =&gt; <span class="string">&quot;Srp&quot;</span>,               <span class="comment">// 119
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Uti =&gt; <span class="string">&quot;Uti&quot;</span>,               <span class="comment">// 120
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Smp =&gt; <span class="string">&quot;Smp&quot;</span>,               <span class="comment">// 121
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Sm =&gt; <span class="string">&quot;Sm&quot;</span>,                 <span class="comment">// 122
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Ptp =&gt; <span class="string">&quot;Ptp&quot;</span>,               <span class="comment">// 123
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::IsisOverIpv4 =&gt; <span class="string">&quot;IsisOverIpv4&quot;</span>, <span class="comment">// 124
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Fire =&gt; <span class="string">&quot;Fire&quot;</span>,             <span class="comment">// 125
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Crtp =&gt; <span class="string">&quot;Crtp&quot;</span>,             <span class="comment">// 126
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Crudp =&gt; <span class="string">&quot;Crudp&quot;</span>,           <span class="comment">// 127
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Sscopmce =&gt; <span class="string">&quot;Sscopmce&quot;</span>,     <span class="comment">// 128
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Iplt =&gt; <span class="string">&quot;Iplt&quot;</span>,             <span class="comment">// 129
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Sps =&gt; <span class="string">&quot;Sps&quot;</span>,               <span class="comment">// 130
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Pipe =&gt; <span class="string">&quot;Pipe&quot;</span>,             <span class="comment">// 131
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Sctp =&gt; <span class="string">&quot;Sctp&quot;</span>,             <span class="comment">// 132
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Fc =&gt; <span class="string">&quot;Fc&quot;</span>,                 <span class="comment">// 133
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::RsvpE2eIgnore =&gt; <span class="string">&quot;RsvpE2eIgnore&quot;</span>, <span class="comment">// 134
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::MobilityHeader =&gt; <span class="string">&quot;MobilityHeader&quot;</span>, <span class="comment">// 135
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::UdpLite =&gt; <span class="string">&quot;UdpLite&quot;</span>,       <span class="comment">// 136
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::MplsInIp =&gt; <span class="string">&quot;MplsInIp&quot;</span>,     <span class="comment">// 137
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Manet =&gt; <span class="string">&quot;Manet&quot;</span>,           <span class="comment">// 138
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Hip =&gt; <span class="string">&quot;Hip&quot;</span>,               <span class="comment">// 139
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Shim6 =&gt; <span class="string">&quot;Shim6&quot;</span>,           <span class="comment">// 140
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Wesp =&gt; <span class="string">&quot;Wesp&quot;</span>,             <span class="comment">// 141
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Rohc =&gt; <span class="string">&quot;Rohc&quot;</span>,             <span class="comment">// 142
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Test1 =&gt; <span class="string">&quot;Test1&quot;</span>,           <span class="comment">// 253
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Test2 =&gt; <span class="string">&quot;Test2&quot;</span>,           <span class="comment">// 254*/
+                </span><span class="kw-2">&amp;</span>IpNextHeaderProtocols::Reserved =&gt; <span class="string">&quot;Reserved&quot;</span>,     <span class="comment">// 255
+                </span><span class="kw">_ </span>=&gt; <span class="string">&quot;unknown&quot;</span>,
             }
         )
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">ip_next_header_protocol_to_str</span>() {
-    <span class="kw">use</span> <span class="ident">std::format</span>;
-    <span class="kw">let</span> <span class="ident">hopopt</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">0</span>);
-    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">hopopt</span>), <span class="string">&quot;Hopopt&quot;</span>);
-    <span class="kw">let</span> <span class="ident">rvd</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">66</span>);
-    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">rvd</span>), <span class="string">&quot;Rvd&quot;</span>);
-    <span class="kw">let</span> <span class="ident">sscopmce</span> <span class="op">=</span> <span class="ident">IpNextHeaderProtocol</span>(<span class="number">128</span>);
-    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">sscopmce</span>), <span class="string">&quot;Sscopmce&quot;</span>);
+<span class="attr">#[test]
+</span><span class="kw">fn </span>ip_next_header_protocol_to_str() {
+    <span class="kw">use </span>std::format;
+    <span class="kw">let </span>hopopt = IpNextHeaderProtocol(<span class="number">0</span>);
+    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, hopopt), <span class="string">&quot;Hopopt&quot;</span>);
+    <span class="kw">let </span>rvd = IpNextHeaderProtocol(<span class="number">66</span>);
+    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, rvd), <span class="string">&quot;Rvd&quot;</span>);
+    <span class="kw">let </span>sscopmce = IpNextHeaderProtocol(<span class="number">128</span>);
+    <span class="macro">assert_eq!</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, sscopmce), <span class="string">&quot;Sscopmce&quot;</span>);
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

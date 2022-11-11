@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/option.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>option.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../syn_flood/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../syn_flood/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../syn_flood/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/option.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>option.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../syn_flood/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -94,95 +87,94 @@
 <span id="87">87</span>
 <span id="88">88</span>
 <span id="89">89</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">net::IpAddr</span>, <span class="ident">num::ParseFloatError</span>, <span class="ident">time::Duration</span>};
-<span class="kw">use</span> <span class="ident">structopt::StructOpt</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::{net::IpAddr, num::ParseFloatError, time::Duration};
+<span class="kw">use </span>structopt::StructOpt;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">StructOpt</span>)]</span>
-<span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">setting</span> <span class="op">=</span> <span class="ident">structopt::clap::AppSettings::ColoredHelp</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Opt</span> {
-    <span class="doccomment">/// Activate debug mode.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabling this option will set the log level of the tool to Trace. To set</span>
-    <span class="doccomment">/// the log level of other modules used by the tool, please use RUST_LOG</span>
-    <span class="doccomment">/// environment variable.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span>, <span class="ident">long</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">debug</span>: <span class="ident">bool</span>,
+<span class="attr">#[derive(Debug, StructOpt)]
+#[structopt(setting = structopt::clap::AppSettings::ColoredHelp)]
+</span><span class="kw">pub struct </span>Opt {
+    <span class="doccomment">/// Activate debug mode.
+    ///
+    /// Enabling this option will set the log level of the tool to Trace. To set
+    /// the log level of other modules used by the tool, please use RUST_LOG
+    /// environment variable.
+    </span><span class="attr">#[structopt(short, long)]
+    </span><span class="kw">pub </span>debug: bool,
 
-    <span class="doccomment">/// Destination address and port.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Including an address and a port. If a domain is provided, the tool will</span>
-    <span class="doccomment">/// resolve it.</span>
-    <span class="kw">pub</span> <span class="ident">destination</span>: <span class="ident">String</span>,
+    <span class="doccomment">/// Destination address and port.
+    ///
+    /// Including an address and a port. If a domain is provided, the tool will
+    /// resolve it.
+    </span><span class="kw">pub </span>destination: String,
 
-    <span class="doccomment">/// Force using IPv4 address.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This option conflicts with option --ipv6.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span> <span class="op">=</span> <span class="string">&quot;4&quot;</span>, <span class="ident">long</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">ipv4</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Force using IPv4 address.
+    ///
+    /// This option conflicts with option --ipv6.
+    </span><span class="attr">#[structopt(short = <span class="string">&quot;4&quot;</span>, long)]
+    </span><span class="kw">pub </span>ipv4: bool,
 
-    <span class="doccomment">/// Force using IPv6 address.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This option conflicts with option --ipv4.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span> <span class="op">=</span> <span class="string">&quot;6&quot;</span>, <span class="ident">long</span>, <span class="ident">conflicts_with</span> <span class="op">=</span> <span class="string">&quot;ipv4&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">ipv6</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Force using IPv6 address.
+    ///
+    /// This option conflicts with option --ipv4.
+    </span><span class="attr">#[structopt(short = <span class="string">&quot;6&quot;</span>, long, conflicts_with = <span class="string">&quot;ipv4&quot;</span>)]
+    </span><span class="kw">pub </span>ipv6: bool,
 
-    <span class="doccomment">/// Sets buffer size.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span> <span class="op">=</span> <span class="string">&quot;b&quot;</span>, <span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;buffer-size&quot;</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;8192&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">buffer_size</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Sets buffer size.
+    </span><span class="attr">#[structopt(short = <span class="string">&quot;b&quot;</span>, long = <span class="string">&quot;buffer-size&quot;</span>, default_value = <span class="string">&quot;8192&quot;</span>)]
+    </span><span class="kw">pub </span>buffer_size: usize,
 
-    <span class="doccomment">/// Sets ttl of IP packets.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">long</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;128&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">ttl</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Sets ttl of IP packets.
+    </span><span class="attr">#[structopt(long, default_value = <span class="string">&quot;128&quot;</span>)]
+    </span><span class="kw">pub </span>ttl: u8,
 
-    <span class="doccomment">/// Sets window size of TCP packets.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span> <span class="op">=</span> <span class="string">&quot;e&quot;</span>, <span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;window-size&quot;</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;64240&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">window_size</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// Sets window size of TCP packets.
+    </span><span class="attr">#[structopt(short = <span class="string">&quot;e&quot;</span>, long = <span class="string">&quot;window-size&quot;</span>, default_value = <span class="string">&quot;64240&quot;</span>)]
+    </span><span class="kw">pub </span>window_size: u16,
 
-    <span class="doccomment">/// Sets minimal port number.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;min-port&quot;</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;49152&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">min_port</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// Sets minimal port number.
+    </span><span class="attr">#[structopt(long = <span class="string">&quot;min-port&quot;</span>, default_value = <span class="string">&quot;49152&quot;</span>)]
+    </span><span class="kw">pub </span>min_port: u16,
 
-    <span class="doccomment">/// Sets maximal port number.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;max-port&quot;</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;65535&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">max_port</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// Sets maximal port number.
+    </span><span class="attr">#[structopt(long = <span class="string">&quot;max-port&quot;</span>, default_value = <span class="string">&quot;65535&quot;</span>)]
+    </span><span class="kw">pub </span>max_port: u16,
 
-    <span class="doccomment">/// Force using source address.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;source-address&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">source_address</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IpAddr</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Force using source address.
+    </span><span class="attr">#[structopt(long = <span class="string">&quot;source-address&quot;</span>)]
+    </span><span class="kw">pub </span>source_address: <span class="prelude-ty">Option</span>&lt;IpAddr&gt;,
 
-    <span class="doccomment">/// Force using source port.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;source-port&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">source_port</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Force using source port.
+    </span><span class="attr">#[structopt(long = <span class="string">&quot;source-port&quot;</span>)]
+    </span><span class="kw">pub </span>source_port: <span class="prelude-ty">Option</span>&lt;u16&gt;,
 
-    <span class="doccomment">/// Sets output interval(seconds).</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(
-        <span class="ident">short</span>,
-        <span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;output-interval&quot;</span>,
-        <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;1&quot;</span>,
-        <span class="ident">parse</span>(<span class="ident">try_from_str</span> <span class="op">=</span> <span class="ident">duration_try_from_str</span>)
-    )]</span>
-    <span class="kw">pub</span> <span class="ident">output_interval</span>: <span class="ident">Duration</span>,
+    <span class="doccomment">/// Sets output interval(seconds).
+    </span><span class="attr">#[structopt(
+        short,
+        long = <span class="string">&quot;output-interval&quot;</span>,
+        default_value = <span class="string">&quot;1&quot;</span>,
+        parse(try_from_str = duration_try_from_str)
+    )]
+    </span><span class="kw">pub </span>output_interval: Duration,
 
-    <span class="doccomment">/// Sets output interval(seconds).</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(
-        <span class="ident">short</span> <span class="op">=</span> <span class="string">&quot;i&quot;</span>,
-        <span class="ident">long</span> <span class="op">=</span> <span class="string">&quot;interval&quot;</span>,
-        <span class="ident">parse</span>(<span class="ident">try_from_str</span> <span class="op">=</span> <span class="ident">duration_try_from_str</span>)
-    )]</span>
-    <span class="kw">pub</span> <span class="ident">interval</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Sets output interval(seconds).
+    </span><span class="attr">#[structopt(
+        short = <span class="string">&quot;i&quot;</span>,
+        long = <span class="string">&quot;interval&quot;</span>,
+        parse(try_from_str = duration_try_from_str)
+    )]
+    </span><span class="kw">pub </span>interval: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 
-    <span class="doccomment">/// Number of packets to be sent.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span>, <span class="ident">long</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">number</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Number of packets to be sent.
+    </span><span class="attr">#[structopt(short, long)]
+    </span><span class="kw">pub </span>number: <span class="prelude-ty">Option</span>&lt;usize&gt;,
 
-    <span class="doccomment">/// Maximal time of sending packets.</span>
-    <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">short</span>, <span class="ident">long</span>, <span class="ident">parse</span>(<span class="ident">try_from_str</span> <span class="op">=</span> <span class="ident">duration_try_from_str</span>))]</span>
-    <span class="kw">pub</span> <span class="ident">time</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Maximal time of sending packets.
+    </span><span class="attr">#[structopt(short, long, parse(try_from_str = duration_try_from_str))]
+    </span><span class="kw">pub </span>time: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 }
 
-<span class="kw">fn</span> <span class="ident">duration_try_from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Duration</span>, <span class="ident">ParseFloatError</span><span class="op">&gt;</span> {
-    <span class="prelude-val">Ok</span>(<span class="ident">Duration::from_secs_f64</span>(<span class="ident">s</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>))
+<span class="kw">fn </span>duration_try_from_str(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Duration, ParseFloatError&gt; {
+    <span class="prelude-val">Ok</span>(Duration::from_secs_f64(s.parse()<span class="question-mark">?</span>))
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="syn_flood" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="syn_flood" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

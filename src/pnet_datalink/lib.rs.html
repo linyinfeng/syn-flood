@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_datalink/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_datalink-0.30.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_datalink/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -413,295 +406,295 @@
 <span id="406">406</span>
 <span id="407">407</span>
 <span id="408">408</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014-2016 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014-2016 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Support for sending and receiving data link layer packets.</span>
+</span><span class="doccomment">//! Support for sending and receiving data link layer packets.
 
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">ipnetwork</span>;
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libc</span>;
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">pnet_base</span>;
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">pnet_sys</span>;
+</span><span class="kw">extern crate </span>ipnetwork;
+<span class="kw">extern crate </span>libc;
+<span class="kw">extern crate </span>pnet_base;
+<span class="kw">extern crate </span>pnet_sys;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">serde</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">extern crate </span>serde;
+<span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="kw">use</span> <span class="ident">std::io</span>;
-<span class="kw">use</span> <span class="ident">std::option::Option</span>;
-<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+<span class="kw">use </span>std::io;
+<span class="kw">use </span>std::option::Option;
+<span class="kw">use </span>std::time::Duration;
 
-<span class="kw">use</span> <span class="ident">ipnetwork::IpNetwork</span>;
+<span class="kw">use </span>ipnetwork::IpNetwork;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">pnet_base</span>::{<span class="ident">MacAddr</span>, <span class="ident">ParseMacAddrErr</span>};
+<span class="kw">pub use </span>pnet_base::{MacAddr, ParseMacAddrErr};
 
-<span class="kw">mod</span> <span class="ident">bindings</span>;
+<span class="kw">mod </span>bindings;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;winpcap.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">backend</span>;
+<span class="attr">#[cfg(windows)]
+#[path = <span class="string">&quot;winpcap.rs&quot;</span>]
+</span><span class="kw">mod </span>backend;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">winpcap</span>;
+<span class="attr">#[cfg(windows)]
+</span><span class="kw">pub mod </span>winpcap;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(
-    <span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;netmap&quot;</span>),
-    <span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>)
-))]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;linux.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">backend</span>;
+<span class="attr">#[cfg(all(
+    not(feature = <span class="string">&quot;netmap&quot;</span>),
+    any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>)
+))]
+#[path = <span class="string">&quot;linux.rs&quot;</span>]
+</span><span class="kw">mod </span>backend;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>))]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">linux</span>;
+<span class="attr">#[cfg(any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>))]
+</span><span class="kw">pub mod </span>linux;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(
-    <span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;netmap&quot;</span>),
-    <span class="ident">any</span>(
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;freebsd&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;openbsd&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>,
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;ios&quot;</span>
-    )
-))]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;bpf.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">backend</span>;
+<span class="attr">#[cfg(all(
+    not(feature = <span class="string">&quot;netmap&quot;</span>),
+    any(
+        target_os = <span class="string">&quot;freebsd&quot;</span>,
+        target_os = <span class="string">&quot;openbsd&quot;</span>,
+        target_os = <span class="string">&quot;netbsd&quot;</span>,
+        target_os = <span class="string">&quot;illumos&quot;</span>,
+        target_os = <span class="string">&quot;solaris&quot;</span>,
+        target_os = <span class="string">&quot;macos&quot;</span>,
+        target_os = <span class="string">&quot;ios&quot;
+    </span>)
+))]
+#[path = <span class="string">&quot;bpf.rs&quot;</span>]
+</span><span class="kw">mod </span>backend;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;freebsd&quot;</span>,
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>,
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>,
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>,
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>,
-    <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;ios&quot;</span>
-))]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">bpf</span>;
+<span class="attr">#[cfg(any(
+    target_os = <span class="string">&quot;freebsd&quot;</span>,
+    target_os = <span class="string">&quot;netbsd&quot;</span>,
+    target_os = <span class="string">&quot;illumos&quot;</span>,
+    target_os = <span class="string">&quot;solaris&quot;</span>,
+    target_os = <span class="string">&quot;macos&quot;</span>,
+    target_os = <span class="string">&quot;ios&quot;
+</span>))]
+</span><span class="kw">pub mod </span>bpf;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;netmap&quot;</span>)]</span>
-<span class="attribute">#[<span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;netmap.rs&quot;</span>]</span>
-<span class="kw">mod</span> <span class="ident">backend</span>;
+<span class="attr">#[cfg(feature = <span class="string">&quot;netmap&quot;</span>)]
+#[path = <span class="string">&quot;netmap.rs&quot;</span>]
+</span><span class="kw">mod </span>backend;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;netmap&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">netmap</span>;
+<span class="attr">#[cfg(feature = <span class="string">&quot;netmap&quot;</span>)]
+</span><span class="kw">pub mod </span>netmap;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;pcap&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">pcap</span>;
+<span class="attr">#[cfg(feature = <span class="string">&quot;pcap&quot;</span>)]
+</span><span class="kw">pub mod </span>pcap;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">dummy</span>;
+<span class="kw">pub mod </span>dummy;
 
-<span class="doccomment">/// Type alias for an `EtherType`.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">EtherType</span> <span class="op">=</span> <span class="ident">u16</span>;
+<span class="doccomment">/// Type alias for an `EtherType`.
+</span><span class="kw">pub type </span>EtherType = u16;
 
-<span class="doccomment">/// Type of data link channel to present (Linux only).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ChannelType</span> {
-    <span class="doccomment">/// Send and receive layer 2 packets directly, including headers.</span>
-    <span class="ident">Layer2</span>,
-    <span class="doccomment">/// Send and receive &quot;cooked&quot; packets - send and receive network layer packets.</span>
-    <span class="ident">Layer3</span>(<span class="ident">EtherType</span>),
+<span class="doccomment">/// Type of data link channel to present (Linux only).
+</span><span class="attr">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+</span><span class="kw">pub enum </span>ChannelType {
+    <span class="doccomment">/// Send and receive layer 2 packets directly, including headers.
+    </span>Layer2,
+    <span class="doccomment">/// Send and receive &quot;cooked&quot; packets - send and receive network layer packets.
+    </span>Layer3(EtherType),
 }
 
-<span class="doccomment">/// A channel for sending and receiving at the data link layer.</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Channel</span> {
-    <span class="doccomment">/// A datalink channel which sends and receives Ethernet packets.</span>
-    <span class="ident">Ethernet</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">DataLinkSender</span><span class="op">&gt;</span>, <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">DataLinkReceiver</span><span class="op">&gt;</span>),
+<span class="doccomment">/// A channel for sending and receiving at the data link layer.
+</span><span class="attr">#[non_exhaustive]
+</span><span class="kw">pub enum </span>Channel {
+    <span class="doccomment">/// A datalink channel which sends and receives Ethernet packets.
+    </span>Ethernet(Box&lt;<span class="kw">dyn </span>DataLinkSender&gt;, Box&lt;<span class="kw">dyn </span>DataLinkReceiver&gt;),
 }
 
-<span class="doccomment">/// Socket fanout type (Linux only).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">FanoutType</span> {
-    <span class="ident">HASH</span>,
-    <span class="ident">LB</span>,
-    <span class="ident">CPU</span>,
-    <span class="ident">ROLLOVER</span>,
-    <span class="ident">RND</span>,
-    <span class="ident">QM</span>,
-    <span class="ident">CBPF</span>,
-    <span class="ident">EBPF</span>,
+<span class="doccomment">/// Socket fanout type (Linux only).
+</span><span class="attr">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+</span><span class="kw">pub enum </span>FanoutType {
+    HASH,
+    LB,
+    CPU,
+    ROLLOVER,
+    RND,
+    QM,
+    CBPF,
+    EBPF,
 }
 
-<span class="doccomment">/// Fanout settings (Linux only).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FanoutOption</span> {
-    <span class="kw">pub</span> <span class="ident">group_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">fanout_type</span>: <span class="ident">FanoutType</span>,
-    <span class="kw">pub</span> <span class="ident">defrag</span>: <span class="ident">bool</span>,
-    <span class="kw">pub</span> <span class="ident">rollover</span>: <span class="ident">bool</span>,
+<span class="doccomment">/// Fanout settings (Linux only).
+</span><span class="attr">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+</span><span class="kw">pub struct </span>FanoutOption {
+    <span class="kw">pub </span>group_id: u16,
+    <span class="kw">pub </span>fanout_type: FanoutType,
+    <span class="kw">pub </span>defrag: bool,
+    <span class="kw">pub </span>rollover: bool,
 }
 
-<span class="doccomment">/// A generic configuration type, encapsulating all options supported by each backend.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Each option should be treated as a hint - each backend is free to ignore any and all</span>
-<span class="doccomment">/// options which don&#39;t apply to it.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Config</span> {
-    <span class="doccomment">/// The size of buffer to use when writing packets. Defaults to 4096.</span>
-    <span class="kw">pub</span> <span class="ident">write_buffer_size</span>: <span class="ident">usize</span>,
+<span class="doccomment">/// A generic configuration type, encapsulating all options supported by each backend.
+///
+/// Each option should be treated as a hint - each backend is free to ignore any and all
+/// options which don&#39;t apply to it.
+</span><span class="attr">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+</span><span class="kw">pub struct </span>Config {
+    <span class="doccomment">/// The size of buffer to use when writing packets. Defaults to 4096.
+    </span><span class="kw">pub </span>write_buffer_size: usize,
 
-    <span class="doccomment">/// The size of buffer to use when reading packets. Defaults to 4096.</span>
-    <span class="kw">pub</span> <span class="ident">read_buffer_size</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// The size of buffer to use when reading packets. Defaults to 4096.
+    </span><span class="kw">pub </span>read_buffer_size: usize,
 
-    <span class="doccomment">/// Linux/BPF/Netmap only: The read timeout. Defaults to None.</span>
-    <span class="kw">pub</span> <span class="ident">read_timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Linux/BPF/Netmap only: The read timeout. Defaults to None.
+    </span><span class="kw">pub </span>read_timeout: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 
-    <span class="doccomment">/// Linux/BPF/Netmap only: The write timeout. Defaults to None.</span>
-    <span class="kw">pub</span> <span class="ident">write_timeout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Linux/BPF/Netmap only: The write timeout. Defaults to None.
+    </span><span class="kw">pub </span>write_timeout: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
 
-    <span class="doccomment">/// Linux only: Specifies whether to read packets at the datalink layer or network layer.</span>
-    <span class="doccomment">/// Defaults to Layer2</span>
-    <span class="kw">pub</span> <span class="ident">channel_type</span>: <span class="ident">ChannelType</span>,
+    <span class="doccomment">/// Linux only: Specifies whether to read packets at the datalink layer or network layer.
+    /// Defaults to Layer2
+    </span><span class="kw">pub </span>channel_type: ChannelType,
 
-    <span class="doccomment">/// BPF/OS X only: The number of /dev/bpf* file descriptors to attempt before failing. Defaults</span>
-    <span class="doccomment">/// to: 1000.</span>
-    <span class="kw">pub</span> <span class="ident">bpf_fd_attempts</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// BPF/OS X only: The number of /dev/bpf* file descriptors to attempt before failing. Defaults
+    /// to: 1000.
+    </span><span class="kw">pub </span>bpf_fd_attempts: usize,
 
-    <span class="kw">pub</span> <span class="ident">linux_fanout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FanoutOption</span><span class="op">&gt;</span>,
+    <span class="kw">pub </span>linux_fanout: <span class="prelude-ty">Option</span>&lt;FanoutOption&gt;,
 
-    <span class="kw">pub</span> <span class="ident">promiscuous</span>: <span class="ident">bool</span>,
+    <span class="kw">pub </span>promiscuous: bool,
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Config</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">Config</span> {
-        <span class="ident">Config</span> {
-            <span class="ident">write_buffer_size</span>: <span class="number">4096</span>,
-            <span class="ident">read_buffer_size</span>: <span class="number">4096</span>,
-            <span class="ident">read_timeout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">write_timeout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">channel_type</span>: <span class="ident">ChannelType::Layer2</span>,
-            <span class="ident">bpf_fd_attempts</span>: <span class="number">1000</span>,
-            <span class="ident">linux_fanout</span>: <span class="prelude-val">None</span>,
-            <span class="ident">promiscuous</span>: <span class="bool-val">true</span>,
+<span class="kw">impl </span>Default <span class="kw">for </span>Config {
+    <span class="kw">fn </span>default() -&gt; Config {
+        Config {
+            write_buffer_size: <span class="number">4096</span>,
+            read_buffer_size: <span class="number">4096</span>,
+            read_timeout: <span class="prelude-val">None</span>,
+            write_timeout: <span class="prelude-val">None</span>,
+            channel_type: ChannelType::Layer2,
+            bpf_fd_attempts: <span class="number">1000</span>,
+            linux_fanout: <span class="prelude-val">None</span>,
+            promiscuous: <span class="bool-val">true</span>,
         }
     }
 }
 
-<span class="doccomment">/// Create a new datalink channel for sending and receiving data.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This allows for sending and receiving packets at the data link layer.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A list of network interfaces can be retrieved using datalink::interfaces().</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The configuration serves as a hint to the backend - some or all of it may be used or ignored,</span>
-<span class="doccomment">/// depending on which backend is used.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// When matching on the returned channel, make sure to include a catch-all so that code doesn&#39;t</span>
-<span class="doccomment">/// break when new channel types are added.</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel</span>(<span class="ident">network_interface</span>: <span class="kw-2">&amp;</span><span class="ident">NetworkInterface</span>, <span class="ident">configuration</span>: <span class="ident">Config</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Channel</span><span class="op">&gt;</span> {
-    <span class="ident">backend::channel</span>(<span class="ident">network_interface</span>, (<span class="kw-2">&amp;</span><span class="ident">configuration</span>).<span class="ident">into</span>())
+<span class="doccomment">/// Create a new datalink channel for sending and receiving data.
+///
+/// This allows for sending and receiving packets at the data link layer.
+///
+/// A list of network interfaces can be retrieved using datalink::interfaces().
+///
+/// The configuration serves as a hint to the backend - some or all of it may be used or ignored,
+/// depending on which backend is used.
+///
+/// When matching on the returned channel, make sure to include a catch-all so that code doesn&#39;t
+/// break when new channel types are added.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub fn </span>channel(network_interface: <span class="kw-2">&amp;</span>NetworkInterface, configuration: Config) -&gt; io::Result&lt;Channel&gt; {
+    backend::channel(network_interface, (<span class="kw-2">&amp;</span>configuration).into())
 }
 
-<span class="doccomment">/// Trait to enable sending `$packet` packets.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">DataLinkSender</span>: <span class="ident">Send</span> {
-    <span class="doccomment">/// Create and send a number of packets.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This will call `func` `num_packets` times. The function will be provided with a</span>
-    <span class="doccomment">/// mutable packet to manipulate, which will then be sent. This allows packets to be</span>
-    <span class="doccomment">/// built in-place, avoiding the copy required for `send`. If there is not sufficient</span>
-    <span class="doccomment">/// capacity in the buffer, None will be returned.</span>
-    <span class="kw">fn</span> <span class="ident">build_and_send</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">num_packets</span>: <span class="ident">usize</span>,
-        <span class="ident">packet_size</span>: <span class="ident">usize</span>,
-        <span class="ident">func</span>: <span class="kw-2">&amp;mut</span> <span class="kw">dyn</span> <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]),
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Trait to enable sending `$packet` packets.
+</span><span class="kw">pub trait </span>DataLinkSender: Send {
+    <span class="doccomment">/// Create and send a number of packets.
+    ///
+    /// This will call `func` `num_packets` times. The function will be provided with a
+    /// mutable packet to manipulate, which will then be sent. This allows packets to be
+    /// built in-place, avoiding the copy required for `send`. If there is not sufficient
+    /// capacity in the buffer, None will be returned.
+    </span><span class="kw">fn </span>build_and_send(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        num_packets: usize,
+        packet_size: usize,
+        func: <span class="kw-2">&amp;mut </span><span class="kw">dyn </span>FnMut(<span class="kw-2">&amp;mut </span>[u8]),
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt;;
 
-    <span class="doccomment">/// Send a packet.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This may require an additional copy compared to `build_and_send`, depending on the</span>
-    <span class="doccomment">/// operating system being used. The second parameter is currently ignored, however</span>
-    <span class="doccomment">/// `None` should be passed.</span>
-    <span class="kw">fn</span> <span class="ident">send_to</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">packet</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Send a packet.
+    ///
+    /// This may require an additional copy compared to `build_and_send`, depending on the
+    /// operating system being used. The second parameter is currently ignored, however
+    /// `None` should be passed.
+    </span><span class="kw">fn </span>send_to(<span class="kw-2">&amp;mut </span><span class="self">self</span>, packet: <span class="kw-2">&amp;</span>[u8], dst: <span class="prelude-ty">Option</span>&lt;NetworkInterface&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;io::Result&lt;()&gt;&gt;;
 }
 
-<span class="doccomment">/// Structure for receiving packets at the data link layer. Should be constructed using</span>
-<span class="doccomment">/// `datalink_channel()`.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">DataLinkReceiver</span>: <span class="ident">Send</span> {
-    <span class="doccomment">/// Get the next ethernet frame in the channel.</span>
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>;
+<span class="doccomment">/// Structure for receiving packets at the data link layer. Should be constructed using
+/// `datalink_channel()`.
+</span><span class="kw">pub trait </span>DataLinkReceiver: Send {
+    <span class="doccomment">/// Get the next ethernet frame in the channel.
+    </span><span class="kw">fn </span>next(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; io::Result&lt;<span class="kw-2">&amp;</span>[u8]&gt;;
 }
 
-<span class="doccomment">/// Represents a network interface and its associated addresses.</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NetworkInterface</span> {
-    <span class="doccomment">/// The name of the interface.</span>
-    <span class="kw">pub</span> <span class="ident">name</span>: <span class="ident">String</span>,
-    <span class="doccomment">/// A description of the interface.</span>
-    <span class="kw">pub</span> <span class="ident">description</span>: <span class="ident">String</span>,
-    <span class="doccomment">/// The interface index (operating system specific).</span>
-    <span class="kw">pub</span> <span class="ident">index</span>: <span class="ident">u32</span>,
-    <span class="doccomment">/// A MAC address for the interface.</span>
-    <span class="kw">pub</span> <span class="ident">mac</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MacAddr</span><span class="op">&gt;</span>,
-    <span class="doccomment">/// IP addresses and netmasks for the interface.</span>
-    <span class="kw">pub</span> <span class="ident">ips</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">IpNetwork</span><span class="op">&gt;</span>,
-    <span class="doccomment">/// Operating system specific flags for the interface.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">u32</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">u64</span>,
+<span class="doccomment">/// Represents a network interface and its associated addresses.
+</span><span class="attr">#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[derive(Clone, PartialEq, Eq, Debug, Hash)]
+</span><span class="kw">pub struct </span>NetworkInterface {
+    <span class="doccomment">/// The name of the interface.
+    </span><span class="kw">pub </span>name: String,
+    <span class="doccomment">/// A description of the interface.
+    </span><span class="kw">pub </span>description: String,
+    <span class="doccomment">/// The interface index (operating system specific).
+    </span><span class="kw">pub </span>index: u32,
+    <span class="doccomment">/// A MAC address for the interface.
+    </span><span class="kw">pub </span>mac: <span class="prelude-ty">Option</span>&lt;MacAddr&gt;,
+    <span class="doccomment">/// IP addresses and netmasks for the interface.
+    </span><span class="kw">pub </span>ips: Vec&lt;IpNetwork&gt;,
+    <span class="doccomment">/// Operating system specific flags for the interface.
+    </span><span class="attr">#[cfg(not(any(target_os = <span class="string">&quot;illumos&quot;</span>, target_os = <span class="string">&quot;solaris&quot;</span>)))]
+    </span><span class="kw">pub </span>flags: u32,
+    <span class="attr">#[cfg(any(target_os = <span class="string">&quot;illumos&quot;</span>, target_os = <span class="string">&quot;solaris&quot;</span>))]
+    </span><span class="kw">pub </span>flags: u64,
 }
 
-<span class="doccomment">/// Type alias for an `InterfaceType`.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>)))]</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">InterfaceType</span> <span class="op">=</span> <span class="ident">u32</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;illumos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>))]</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">InterfaceType</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="doccomment">/// Type alias for an `InterfaceType`.
+</span><span class="attr">#[cfg(not(any(target_os = <span class="string">&quot;illumos&quot;</span>, target_os = <span class="string">&quot;solaris&quot;</span>)))]
+</span><span class="kw">pub type </span>InterfaceType = u32;
+<span class="attr">#[cfg(any(target_os = <span class="string">&quot;illumos&quot;</span>, target_os = <span class="string">&quot;solaris&quot;</span>))]
+</span><span class="kw">pub type </span>InterfaceType = u64;
 
-<span class="kw">impl</span> <span class="ident">NetworkInterface</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_up</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_UP</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+<span class="kw">impl </span>NetworkInterface {
+    <span class="kw">pub fn </span>is_up(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_UP <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_broadcast</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_BROADCAST</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="kw">pub fn </span>is_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_BROADCAST <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Is the interface a loopback interface?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_loopback</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_LOOPBACK</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="doccomment">/// Is the interface a loopback interface?
+    </span><span class="kw">pub fn </span>is_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_LOOPBACK <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_point_to_point</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_POINTOPOINT</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="kw">pub fn </span>is_point_to_point(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_POINTOPOINT <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_multicast</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_MULTICAST</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="kw">pub fn </span>is_multicast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_MULTICAST <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Triggered when the driver has signated netif_carrier_on</span>
-    <span class="doccomment">/// Check &lt;https://www.kernel.org/doc/html/latest/networking/operstates.html&gt; for more information</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_lower_up</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_LOWER_UP</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="doccomment">/// Triggered when the driver has signated netif_carrier_on
+    /// Check &lt;https://www.kernel.org/doc/html/latest/networking/operstates.html&gt; for more information
+    </span><span class="attr">#[cfg(any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>))]
+    </span><span class="kw">pub fn </span>is_lower_up(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_LOWER_UP <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Triggered when the driver has signated netif_dormant_on</span>
-    <span class="doccomment">/// Check &lt;https://www.kernel.org/doc/html/latest/networking/operstates.html&gt; for more information</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_dormant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_DORMANT</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="doccomment">/// Triggered when the driver has signated netif_dormant_on
+    /// Check &lt;https://www.kernel.org/doc/html/latest/networking/operstates.html&gt; for more information
+    </span><span class="attr">#[cfg(any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>))]
+    </span><span class="kw">pub fn </span>is_dormant(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_DORMANT <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_running</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&amp;</span> (<span class="ident">pnet_sys::IFF_RUNNING</span> <span class="kw">as</span> <span class="ident">InterfaceType</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-    }
+    <span class="attr">#[cfg(unix)]
+    </span><span class="kw">pub fn </span>is_running(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.flags &amp; (pnet_sys::IFF_RUNNING <span class="kw">as </span>InterfaceType) != <span class="number">0
+    </span>}
 }
 
-<span class="kw">impl</span> <span class="ident">::std::fmt::Display</span> <span class="kw">for</span> <span class="ident">NetworkInterface</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::std::fmt::Formatter</span>) -&gt; <span class="ident">::std::fmt::Result</span> {
-        <span class="kw">const</span> <span class="ident">FLAGS</span>: [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>; <span class="number">8</span>] <span class="op">=</span> [
+<span class="kw">impl </span>::std::fmt::Display <span class="kw">for </span>NetworkInterface {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::std::fmt::Formatter) -&gt; ::std::fmt::Result {
+        <span class="kw">const </span>FLAGS: [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str; <span class="number">8</span>] = [
             <span class="string">&quot;UP&quot;</span>,
             <span class="string">&quot;BROADCAST&quot;</span>,
             <span class="string">&quot;LOOPBACK&quot;</span>,
@@ -711,36 +704,36 @@
             <span class="string">&quot;DORMANT&quot;</span>,
             <span class="string">&quot;LOWERUP&quot;</span>,
         ];
-        <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">flags</span> <span class="op">&gt;</span> <span class="number">0</span> {
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>))]</span>
-            <span class="kw">let</span> <span class="ident">rets</span> <span class="op">=</span> [
-                <span class="self">self</span>.<span class="ident">is_up</span>(),
-                <span class="self">self</span>.<span class="ident">is_broadcast</span>(),
-                <span class="self">self</span>.<span class="ident">is_loopback</span>(),
-                <span class="self">self</span>.<span class="ident">is_point_to_point</span>(),
-                <span class="self">self</span>.<span class="ident">is_multicast</span>(),
-                <span class="self">self</span>.<span class="ident">is_running</span>(),
-                <span class="self">self</span>.<span class="ident">is_dormant</span>(),
-                <span class="self">self</span>.<span class="ident">is_lower_up</span>(),
+        <span class="kw">let </span>flags = <span class="kw">if </span><span class="self">self</span>.flags &gt; <span class="number">0 </span>{
+            <span class="attr">#[cfg(any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>))]
+            </span><span class="kw">let </span>rets = [
+                <span class="self">self</span>.is_up(),
+                <span class="self">self</span>.is_broadcast(),
+                <span class="self">self</span>.is_loopback(),
+                <span class="self">self</span>.is_point_to_point(),
+                <span class="self">self</span>.is_multicast(),
+                <span class="self">self</span>.is_running(),
+                <span class="self">self</span>.is_dormant(),
+                <span class="self">self</span>.is_lower_up(),
             ];
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;android&quot;</span>))))]</span>
-            <span class="kw">let</span> <span class="ident">rets</span> <span class="op">=</span> [
-                <span class="self">self</span>.<span class="ident">is_up</span>(),
-                <span class="self">self</span>.<span class="ident">is_broadcast</span>(),
-                <span class="self">self</span>.<span class="ident">is_loopback</span>(),
-                <span class="self">self</span>.<span class="ident">is_point_to_point</span>(),
-                <span class="self">self</span>.<span class="ident">is_multicast</span>(),
-                <span class="self">self</span>.<span class="ident">is_running</span>(),
+            <span class="attr">#[cfg(all(unix, not(any(target_os = <span class="string">&quot;linux&quot;</span>, target_os = <span class="string">&quot;android&quot;</span>))))]
+            </span><span class="kw">let </span>rets = [
+                <span class="self">self</span>.is_up(),
+                <span class="self">self</span>.is_broadcast(),
+                <span class="self">self</span>.is_loopback(),
+                <span class="self">self</span>.is_point_to_point(),
+                <span class="self">self</span>.is_multicast(),
+                <span class="self">self</span>.is_running(),
                 <span class="bool-val">false</span>,
                 <span class="bool-val">false</span>,
             ];
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">unix</span>))]</span>
-            <span class="kw">let</span> <span class="ident">rets</span> <span class="op">=</span> [
-                <span class="self">self</span>.<span class="ident">is_up</span>(),
-                <span class="self">self</span>.<span class="ident">is_broadcast</span>(),
-                <span class="self">self</span>.<span class="ident">is_loopback</span>(),
-                <span class="self">self</span>.<span class="ident">is_point_to_point</span>(),
-                <span class="self">self</span>.<span class="ident">is_multicast</span>(),
+            <span class="attr">#[cfg(not(unix))]
+            </span><span class="kw">let </span>rets = [
+                <span class="self">self</span>.is_up(),
+                <span class="self">self</span>.is_broadcast(),
+                <span class="self">self</span>.is_loopback(),
+                <span class="self">self</span>.is_point_to_point(),
+                <span class="self">self</span>.is_multicast(),
                 <span class="bool-val">false</span>,
                 <span class="bool-val">false</span>,
                 <span class="bool-val">false</span>,
@@ -748,79 +741,78 @@
 
             <span class="macro">format!</span>(
                 <span class="string">&quot;{:X}&lt;{}&gt;&quot;</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>,
-                <span class="ident">rets</span>.<span class="ident">iter</span>()
-                    .<span class="ident">zip</span>(<span class="ident">FLAGS</span>.<span class="ident">iter</span>())
-                    .<span class="ident">filter</span>(<span class="op">|</span><span class="kw-2">&amp;</span>(<span class="ident">ret</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="ident">ret</span> <span class="op">==</span> <span class="kw-2">&amp;</span><span class="bool-val">true</span>)
-                    .<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">name</span>)<span class="op">|</span> <span class="ident">name</span>.<span class="ident">to_string</span>())
-                    .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>()
-                    .<span class="ident">join</span>(<span class="string">&quot;,&quot;</span>)
+                <span class="self">self</span>.flags,
+                rets.iter()
+                    .zip(FLAGS.iter())
+                    .filter(|<span class="kw-2">&amp;</span>(ret, <span class="kw">_</span>)| ret == <span class="kw-2">&amp;</span><span class="bool-val">true</span>)
+                    .map(|(<span class="kw">_</span>, name)| name.to_string())
+                    .collect::&lt;Vec&lt;String&gt;&gt;()
+                    .join(<span class="string">&quot;,&quot;</span>)
             )
-        } <span class="kw">else</span> {
-            <span class="macro">format!</span>(<span class="string">&quot;{:X}&quot;</span>, <span class="self">self</span>.<span class="ident">flags</span>)
+        } <span class="kw">else </span>{
+            <span class="macro">format!</span>(<span class="string">&quot;{:X}&quot;</span>, <span class="self">self</span>.flags)
         };
 
-        <span class="kw">let</span> <span class="ident">mac</span> <span class="op">=</span> <span class="self">self</span>
-            .<span class="ident">mac</span>
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">mac</span><span class="op">|</span> <span class="ident">mac</span>.<span class="ident">to_string</span>())
-            .<span class="ident">unwrap_or</span>(<span class="string">&quot;N/A&quot;</span>.<span class="ident">to_owned</span>());
-        <span class="kw">let</span> <span class="ident">ips</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">ips</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span> {
+        <span class="kw">let </span>mac = <span class="self">self
+            </span>.mac
+            .map(|mac| mac.to_string())
+            .unwrap_or(<span class="string">&quot;N/A&quot;</span>.to_owned());
+        <span class="kw">let </span>ips = <span class="kw">if </span><span class="self">self</span>.ips.len() &gt; <span class="number">0 </span>{
             <span class="macro">format!</span>(
                 <span class="string">&quot;\n{}&quot;</span>,
-                <span class="self">self</span>.<span class="ident">ips</span>
-                    .<span class="ident">iter</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">ip</span><span class="op">|</span> {
-                        <span class="kw">if</span> <span class="ident">ip</span>.<span class="ident">is_ipv4</span>() {
-                            <span class="macro">format!</span>(<span class="string">&quot;       inet: {}&quot;</span>, <span class="ident">ip</span>)
-                        } <span class="kw">else</span> {
-                            <span class="macro">format!</span>(<span class="string">&quot;      inet6: {}&quot;</span>, <span class="ident">ip</span>)
+                <span class="self">self</span>.ips
+                    .iter()
+                    .map(|ip| {
+                        <span class="kw">if </span>ip.is_ipv4() {
+                            <span class="macro">format!</span>(<span class="string">&quot;       inet: {}&quot;</span>, ip)
+                        } <span class="kw">else </span>{
+                            <span class="macro">format!</span>(<span class="string">&quot;      inet6: {}&quot;</span>, ip)
                         }
                     })
-                    .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>()
-                    .<span class="ident">join</span>(<span class="string">&quot;\n&quot;</span>)
+                    .collect::&lt;Vec&lt;String&gt;&gt;()
+                    .join(<span class="string">&quot;\n&quot;</span>)
             )
-        } <span class="kw">else</span> {
-            <span class="string">&quot;&quot;</span>.<span class="ident">to_string</span>()
+        } <span class="kw">else </span>{
+            <span class="string">&quot;&quot;</span>.to_string()
         };
 
         <span class="macro">write!</span>(
-            <span class="ident">f</span>,
+            f,
             <span class="string">&quot;{}: flags={}
       index: {}
       ether: {}{}&quot;</span>,
-            <span class="self">self</span>.<span class="ident">name</span>, <span class="ident">flags</span>, <span class="self">self</span>.<span class="ident">index</span>, <span class="ident">mac</span>, <span class="ident">ips</span>
+            <span class="self">self</span>.name, flags, <span class="self">self</span>.index, mac, ips
         )
     }
 }
 
-<span class="doccomment">/// Get a list of available network interfaces for the current machine.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you need the default network interface, you can choose the first</span>
-<span class="doccomment">/// one that is up, not loopback and has an IP. This is not guaranteed to</span>
-<span class="doccomment">/// work on each system but should work for basic packet sniffing:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use pnet::datalink::interfaces;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Get a vector with all network interfaces found</span>
-<span class="doccomment">/// let all_interfaces = interfaces();</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Search for the default interface - the one that is</span>
-<span class="doccomment">/// // up, not loopback and has an IP.</span>
-<span class="doccomment">/// let default_interface = all_interfaces</span>
-<span class="doccomment">///     .iter()</span>
-<span class="doccomment">///     .find(|e| e.is_up() &amp;&amp; !e.is_loopback() &amp;&amp; !e.ips.is_empty());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// match default_interface {</span>
-<span class="doccomment">///     Some(interface) =&gt; println!(&quot;Found default interface with [{}].&quot;, interface.name),</span>
-<span class="doccomment">///     None =&gt; println!(&quot;Error while finding the default interface.&quot;),</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interfaces</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NetworkInterface</span><span class="op">&gt;</span> {
-    <span class="ident">backend::interfaces</span>()
+<span class="doccomment">/// Get a list of available network interfaces for the current machine.
+///
+/// If you need the default network interface, you can choose the first
+/// one that is up, not loopback and has an IP. This is not guaranteed to
+/// work on each system but should work for basic packet sniffing:
+///
+/// ```
+/// use pnet::datalink::interfaces;
+///
+/// // Get a vector with all network interfaces found
+/// let all_interfaces = interfaces();
+///
+/// // Search for the default interface - the one that is
+/// // up, not loopback and has an IP.
+/// let default_interface = all_interfaces
+///     .iter()
+///     .find(|e| e.is_up() &amp;&amp; !e.is_loopback() &amp;&amp; !e.ips.is_empty());
+///
+/// match default_interface {
+///     Some(interface) =&gt; println!(&quot;Found default interface with [{}].&quot;, interface.name),
+///     None =&gt; println!(&quot;Error while finding the default interface.&quot;),
+/// }
+///
+/// ```
+///
+</span><span class="kw">pub fn </span>interfaces() -&gt; Vec&lt;NetworkInterface&gt; {
+    backend::interfaces()
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_datalink" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_datalink" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

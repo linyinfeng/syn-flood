@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["random_global_ipv4_addr",""],["random_source_port",""]]});
+window.SIDEBAR_ITEMS = {"fn":[["random_global_ipv4_addr",""],["random_source_port",""]]};

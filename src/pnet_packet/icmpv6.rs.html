@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/icmpv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>icmpv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/icmpv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>icmpv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -1004,735 +997,735 @@
 <span id="997">997</span>
 <span id="998">998</span>
 <span id="999">999</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! An ICMPv6 packet abstraction.</span>
+</span><span class="doccomment">//! An ICMPv6 packet abstraction.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocols</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocols;
+<span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
 
-<span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+<span class="kw">use </span>alloc::vec::Vec;
 
-<span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">pnet_base::core_net::Ipv6Addr</span>;
+<span class="kw">use </span>pnet_macros::packet;
+<span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
+<span class="kw">use </span>pnet_base::core_net::Ipv6Addr;
 
-<span class="doccomment">/// Represents the &quot;ICMPv6 type&quot; header field.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Icmpv6Type</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+<span class="doccomment">/// Represents the &quot;ICMPv6 type&quot; header field.
+</span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub struct </span>Icmpv6Type(<span class="kw">pub </span>u8);
 
-<span class="kw">impl</span> <span class="ident">Icmpv6Type</span> {
-    <span class="doccomment">/// Create a new `Icmpv6Type` instance.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u8</span>) -&gt; <span class="ident">Icmpv6Type</span> {
-        <span class="ident">Icmpv6Type</span>(<span class="ident">val</span>)
+<span class="kw">impl </span>Icmpv6Type {
+    <span class="doccomment">/// Create a new `Icmpv6Type` instance.
+    </span><span class="kw">pub fn </span>new(val: u8) -&gt; Icmpv6Type {
+        Icmpv6Type(val)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Icmpv6Type</span> {
-    <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-    <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+<span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Icmpv6Type {
+    <span class="kw">type </span>T = (u8,);
+    <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
         (<span class="self">self</span>.<span class="number">0</span>,)
     }
 }
 
-<span class="doccomment">/// Represents the &quot;ICMPv6 code&quot; header field.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Icmpv6Code</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+<span class="doccomment">/// Represents the &quot;ICMPv6 code&quot; header field.
+</span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub struct </span>Icmpv6Code(<span class="kw">pub </span>u8);
 
-<span class="kw">impl</span> <span class="ident">Icmpv6Code</span> {
-    <span class="doccomment">/// Create a new `Icmpv6Code` instance.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u8</span>) -&gt; <span class="ident">Icmpv6Code</span> {
-        <span class="ident">Icmpv6Code</span>(<span class="ident">val</span>)
+<span class="kw">impl </span>Icmpv6Code {
+    <span class="doccomment">/// Create a new `Icmpv6Code` instance.
+    </span><span class="kw">pub fn </span>new(val: u8) -&gt; Icmpv6Code {
+        Icmpv6Code(val)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Icmpv6Code</span> {
-    <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-    <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+<span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Icmpv6Code {
+    <span class="kw">type </span>T = (u8,);
+    <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
         (<span class="self">self</span>.<span class="number">0</span>,)
     }
 }
 
-<span class="doccomment">/// Represents a generic ICMPv6 packet [RFC 4443 § 2.1]</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```text</span>
-<span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-<span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-<span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-<span class="doccomment">/// |                                                               |</span>
-<span class="doccomment">/// +                         Message Body                          +</span>
-<span class="doccomment">/// |                                                               |</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [RFC 4443 § 2.1]: https://tools.ietf.org/html/rfc4443#section-2.1</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Icmpv6</span> {
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-    <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a generic ICMPv6 packet [RFC 4443 § 2.1]
+///
+/// ```text
+/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+/// |     Type      |     Code      |          Checksum             |
+/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+/// |                                                               |
+/// +                         Message Body                          +
+/// |                                                               |
+/// ```
+///
+/// [RFC 4443 § 2.1]: https://tools.ietf.org/html/rfc4443#section-2.1
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Icmpv6 {
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+    <span class="kw">pub </span>checksum: u16be,
+    <span class="attr">#[payload]
+    </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
 }
 
-<span class="doccomment">/// Calculates a checksum of an ICMPv6 packet.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">checksum</span>(<span class="ident">packet</span>: <span class="kw-2">&amp;</span><span class="ident">Icmpv6Packet</span>, <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>, <span class="ident">destination</span>: <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr</span>) -&gt; <span class="ident">u16be</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Packet</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>;
+<span class="doccomment">/// Calculates a checksum of an ICMPv6 packet.
+</span><span class="kw">pub fn </span>checksum(packet: <span class="kw-2">&amp;</span>Icmpv6Packet, source: <span class="kw-2">&amp;</span>Ipv6Addr, destination: <span class="kw-2">&amp;</span>Ipv6Addr) -&gt; u16be {
+    <span class="kw">use </span><span class="kw">crate</span>::Packet;
+    <span class="kw">use </span><span class="kw">crate</span>::util;
 
-    <span class="ident">util::ipv6_checksum</span>(<span class="ident">packet</span>.<span class="ident">packet</span>(), <span class="number">1</span>, <span class="kw-2">&amp;</span>[], <span class="ident">source</span>, <span class="ident">destination</span>, <span class="ident">IpNextHeaderProtocols::Icmpv6</span>)
+    util::ipv6_checksum(packet.packet(), <span class="number">1</span>, <span class="kw-2">&amp;</span>[], source, destination, IpNextHeaderProtocols::Icmpv6)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">checksum_tests</span> {
-    <span class="kw">use</span> <span class="ident">alloc::vec</span>;
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>checksum_tests {
+    <span class="kw">use </span>alloc::vec;
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">checksum_echo_request</span>() {
-        <span class="comment">// The equivalent of your typical ping -6 ::1%lo</span>
-        <span class="kw">let</span> <span class="ident">lo</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
-            <span class="number">0x80</span>, <span class="comment">// Icmpv6 Type</span>
-            <span class="number">0x00</span>, <span class="comment">// Code</span>
-            <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="comment">// Checksum</span>
-            <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Id</span>
-            <span class="number">0x00</span>, <span class="number">0x01</span>, <span class="comment">// Sequence</span>
-            <span class="comment">// 56 bytes of &quot;random&quot; data</span>
-            <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x75</span>, <span class="number">0x73</span>, <span class="number">0x74</span>, <span class="number">0x20</span>, <span class="number">0x61</span>, <span class="number">0x20</span>,
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>checksum_echo_request() {
+        <span class="comment">// The equivalent of your typical ping -6 ::1%lo
+        </span><span class="kw">let </span>lo = <span class="kw-2">&amp;</span>Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
+            <span class="number">0x80</span>, <span class="comment">// Icmpv6 Type
+            </span><span class="number">0x00</span>, <span class="comment">// Code
+            </span><span class="number">0xff</span>, <span class="number">0xff</span>, <span class="comment">// Checksum
+            </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Id
+            </span><span class="number">0x00</span>, <span class="number">0x01</span>, <span class="comment">// Sequence
+            // 56 bytes of &quot;random&quot; data
+            </span><span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x75</span>, <span class="number">0x73</span>, <span class="number">0x74</span>, <span class="number">0x20</span>, <span class="number">0x61</span>, <span class="number">0x20</span>,
             <span class="number">0x66</span>, <span class="number">0x6c</span>, <span class="number">0x65</span>, <span class="number">0x73</span>, <span class="number">0x68</span>, <span class="number">0x20</span>, <span class="number">0x77</span>, <span class="number">0x6f</span>,
             <span class="number">0x75</span>, <span class="number">0x6e</span>, <span class="number">0x64</span>, <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x74</span>, <span class="number">0x69</span>, <span class="number">0x73</span>,
             <span class="number">0x20</span>, <span class="number">0x62</span>, <span class="number">0x75</span>, <span class="number">0x74</span>, <span class="number">0x20</span>, <span class="number">0x61</span>, <span class="number">0x20</span>, <span class="number">0x73</span>,
             <span class="number">0x63</span>, <span class="number">0x72</span>, <span class="number">0x61</span>, <span class="number">0x74</span>, <span class="number">0x63</span>, <span class="number">0x68</span>, <span class="number">0x20</span>, <span class="number">0x20</span>,
             <span class="number">0x6b</span>, <span class="number">0x6e</span>, <span class="number">0x69</span>, <span class="number">0x67</span>, <span class="number">0x68</span>, <span class="number">0x74</span>, <span class="number">0x73</span>, <span class="number">0x20</span>,
-            <span class="number">0x6f</span>, <span class="number">0x66</span>, <span class="number">0x20</span>, <span class="number">0x6e</span>, <span class="number">0x69</span>, <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x20</span>
-        ];
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableIcmpv6Packet::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>(), <span class="ident">lo</span>, <span class="ident">lo</span>), <span class="number">0x1d2e</span>);
+            <span class="number">0x6f</span>, <span class="number">0x66</span>, <span class="number">0x20</span>, <span class="number">0x6e</span>, <span class="number">0x69</span>, <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x20
+        </span>];
+        <span class="kw">let </span><span class="kw-2">mut </span>pkg = MutableIcmpv6Packet::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable(), lo, lo), <span class="number">0x1d2e</span>);
 
-        <span class="comment">// Check</span>
-        <span class="ident">pkg</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Type</span>(<span class="number">0x81</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">checksum</span>(<span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">to_immutable</span>(), <span class="ident">lo</span>, <span class="ident">lo</span>), <span class="number">0x1c2e</span>);
+        <span class="comment">// Check
+        </span>pkg.set_icmpv6_type(Icmpv6Type(<span class="number">0x81</span>));
+        <span class="macro">assert_eq!</span>(checksum(<span class="kw-2">&amp;</span>pkg.to_immutable(), lo, lo), <span class="number">0x1c2e</span>);
     }
 }
 
 
-<span class="doccomment">/// The enumeration of the recognized ICMPv6 types.</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Icmpv6Types</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6::Icmpv6Type</span>;
-    <span class="doccomment">/// ICMPv6 type for &quot;destination unreachable&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DestinationUnreachable</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">1</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;packet too big&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PacketTooBig</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">2</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;time exceeded&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TimeExceeded</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">3</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;parameter problem&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ParameterProblem</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">4</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;echo request&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EchoRequest</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">128</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;echo reply&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EchoReply</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">129</span>);
-    <span class="comment">// Neighbor Discovery Protocol [RFC4861]</span>
-    <span class="doccomment">/// ICMPv6 type for &quot;router solicitation&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RouterSolicit</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">133</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;router advertisement&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RouterAdvert</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">134</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;neighbor solicitation&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NeighborSolicit</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">135</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;neighbor advertisement&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NeighborAdvert</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">136</span>);
-    <span class="doccomment">/// ICMPv6 type for &quot;redirect&quot;.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Redirect</span>: <span class="ident">Icmpv6Type</span> <span class="op">=</span> <span class="ident">Icmpv6Type</span>(<span class="number">137</span>);
+<span class="doccomment">/// The enumeration of the recognized ICMPv6 types.
+</span><span class="attr">#[allow(non_snake_case)]
+#[allow(non_upper_case_globals)]
+</span><span class="kw">pub mod </span>Icmpv6Types {
+    <span class="kw">use </span><span class="kw">crate</span>::icmpv6::Icmpv6Type;
+    <span class="doccomment">/// ICMPv6 type for &quot;destination unreachable&quot;.
+    </span><span class="kw">pub const </span>DestinationUnreachable: Icmpv6Type = Icmpv6Type(<span class="number">1</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;packet too big&quot;.
+    </span><span class="kw">pub const </span>PacketTooBig: Icmpv6Type = Icmpv6Type(<span class="number">2</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;time exceeded&quot;.
+    </span><span class="kw">pub const </span>TimeExceeded: Icmpv6Type = Icmpv6Type(<span class="number">3</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;parameter problem&quot;.
+    </span><span class="kw">pub const </span>ParameterProblem: Icmpv6Type = Icmpv6Type(<span class="number">4</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;echo request&quot;.
+    </span><span class="kw">pub const </span>EchoRequest: Icmpv6Type = Icmpv6Type(<span class="number">128</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;echo reply&quot;.
+    </span><span class="kw">pub const </span>EchoReply: Icmpv6Type = Icmpv6Type(<span class="number">129</span>);
+    <span class="comment">// Neighbor Discovery Protocol [RFC4861]
+    </span><span class="doccomment">/// ICMPv6 type for &quot;router solicitation&quot;.
+    </span><span class="kw">pub const </span>RouterSolicit: Icmpv6Type = Icmpv6Type(<span class="number">133</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;router advertisement&quot;.
+    </span><span class="kw">pub const </span>RouterAdvert: Icmpv6Type = Icmpv6Type(<span class="number">134</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;neighbor solicitation&quot;.
+    </span><span class="kw">pub const </span>NeighborSolicit: Icmpv6Type = Icmpv6Type(<span class="number">135</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;neighbor advertisement&quot;.
+    </span><span class="kw">pub const </span>NeighborAdvert: Icmpv6Type = Icmpv6Type(<span class="number">136</span>);
+    <span class="doccomment">/// ICMPv6 type for &quot;redirect&quot;.
+    </span><span class="kw">pub const </span>Redirect: Icmpv6Type = Icmpv6Type(<span class="number">137</span>);
 }
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ndp</span> {
-    <span class="doccomment">//! Abstractions for the Neighbor Discovery Protocol [RFC 4861]</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! [RFC 4861]: https://tools.ietf.org/html/rfc4861</span>
+<span class="kw">pub mod </span>ndp {
+    <span class="doccomment">//! Abstractions for the Neighbor Discovery Protocol [RFC 4861]
+    //!
+    //! [RFC 4861]: https://tools.ietf.org/html/rfc4861
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6</span>::{<span class="ident">Icmpv6Code</span>, <span class="ident">Icmpv6Type</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Packet</span>;
+    </span><span class="kw">use </span><span class="kw">crate</span>::icmpv6::{Icmpv6Code, Icmpv6Type};
+    <span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
+    <span class="kw">use </span><span class="kw">crate</span>::Packet;
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident">pnet_base::core_net::Ipv6Addr</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
+    <span class="kw">use </span>pnet_base::core_net::Ipv6Addr;
 
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Icmpv6Codes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6::Icmpv6Code</span>;
-        <span class="doccomment">/// 0 is the only available ICMPv6 Code for the NDP.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NoCode</span>: <span class="ident">Icmpv6Code</span> <span class="op">=</span> <span class="ident">Icmpv6Code</span>(<span class="number">0</span>);
+    <span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>Icmpv6Codes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmpv6::Icmpv6Code;
+        <span class="doccomment">/// 0 is the only available ICMPv6 Code for the NDP.
+        </span><span class="kw">pub const </span>NoCode: Icmpv6Code = Icmpv6Code(<span class="number">0</span>);
     }
 
-    <span class="doccomment">/// Represents a Neighbor Discovery Option Type.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NdpOptionType</span>(<span class="kw">pub</span> <span class="ident">u8</span>);
+    <span class="doccomment">/// Represents a Neighbor Discovery Option Type.
+    </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>NdpOptionType(<span class="kw">pub </span>u8);
 
-    <span class="kw">impl</span> <span class="ident">NdpOptionType</span> {
-        <span class="doccomment">/// Create a new `NdpOptionType` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">value</span>: <span class="ident">u8</span>) -&gt; <span class="ident">NdpOptionType</span> {
-            <span class="ident">NdpOptionType</span>(<span class="ident">value</span>)
+    <span class="kw">impl </span>NdpOptionType {
+        <span class="doccomment">/// Create a new `NdpOptionType` instance.
+        </span><span class="kw">pub fn </span>new(value: u8) -&gt; NdpOptionType {
+            NdpOptionType(value)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">NdpOptionType</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u8</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u8</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>NdpOptionType {
+        <span class="kw">type </span>T = (u8,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u8,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Neighbor Discovery Option Types [RFC 4861 § 4.6]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.6]: https://tools.ietf.org/html/rfc4861#section-4.6</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">NdpOptionTypes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::NdpOptionType</span>;
+    <span class="doccomment">/// Neighbor Discovery Option Types [RFC 4861 § 4.6]
+    ///
+    /// [RFC 4861 § 4.6]: https://tools.ietf.org/html/rfc4861#section-4.6
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>NdpOptionTypes {
+        <span class="kw">use </span><span class="kw">super</span>::NdpOptionType;
 
-        <span class="doccomment">/// Source Link-Layer Address Option [RFC 4861 § 4.6.1]</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// ```text</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |     Type      |    Length     |    Link-Layer Address ...</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// ```</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [RFC 4861 § 4.6.1]: https://tools.ietf.org/html/rfc4861#section-4.6.1</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SourceLLAddr</span>: <span class="ident">NdpOptionType</span> <span class="op">=</span> <span class="ident">NdpOptionType</span>(<span class="number">1</span>);
+        <span class="doccomment">/// Source Link-Layer Address Option [RFC 4861 § 4.6.1]
+        ///
+        /// ```text
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |     Type      |    Length     |    Link-Layer Address ...
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// ```
+        ///
+        /// [RFC 4861 § 4.6.1]: https://tools.ietf.org/html/rfc4861#section-4.6.1
+        </span><span class="kw">pub const </span>SourceLLAddr: NdpOptionType = NdpOptionType(<span class="number">1</span>);
 
-        <span class="doccomment">/// Target Link-Layer Address Option [RFC 4861 § 4.6.1]</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// ```text</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |     Type      |    Length     |    Link-Layer Address ...</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// ```</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [RFC 4861 § 4.6.1]: https://tools.ietf.org/html/rfc4861#section-4.6.1</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TargetLLAddr</span>: <span class="ident">NdpOptionType</span> <span class="op">=</span> <span class="ident">NdpOptionType</span>(<span class="number">2</span>);
+        <span class="doccomment">/// Target Link-Layer Address Option [RFC 4861 § 4.6.1]
+        ///
+        /// ```text
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |     Type      |    Length     |    Link-Layer Address ...
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// ```
+        ///
+        /// [RFC 4861 § 4.6.1]: https://tools.ietf.org/html/rfc4861#section-4.6.1
+        </span><span class="kw">pub const </span>TargetLLAddr: NdpOptionType = NdpOptionType(<span class="number">2</span>);
 
-        <span class="doccomment">/// Prefix Information Option [RFC 4861 § 4.6.2]</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// ```text</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |     Type      |    Length     | Prefix Length |L|A| Reserved1 |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                         Valid Lifetime                        |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                       Preferred Lifetime                      |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                           Reserved2                           |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// +                                                               +</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// +                            Prefix                             +</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// +                                                               +</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// ```</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [RFC 4861 § 4.6.2]: https://tools.ietf.org/html/rfc4861#section-4.6.2</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PrefixInformation</span>: <span class="ident">NdpOptionType</span> <span class="op">=</span> <span class="ident">NdpOptionType</span>(<span class="number">3</span>);
+        <span class="doccomment">/// Prefix Information Option [RFC 4861 § 4.6.2]
+        ///
+        /// ```text
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |     Type      |    Length     | Prefix Length |L|A| Reserved1 |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                         Valid Lifetime                        |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                       Preferred Lifetime                      |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                           Reserved2                           |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                                                               |
+        /// +                                                               +
+        /// |                                                               |
+        /// +                            Prefix                             +
+        /// |                                                               |
+        /// +                                                               +
+        /// |                                                               |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// ```
+        ///
+        /// [RFC 4861 § 4.6.2]: https://tools.ietf.org/html/rfc4861#section-4.6.2
+        </span><span class="kw">pub const </span>PrefixInformation: NdpOptionType = NdpOptionType(<span class="number">3</span>);
 
-        <span class="doccomment">/// Redirected Header Option [RFC 4861 § 4.6.3]</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// ```text</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |     Type      |    Length     |            Reserved           |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                           Reserved                            |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// ~                       IP header + data                        ~</span>
-        <span class="doccomment">/// |                                                               |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// ```</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [RFC 4861 § 4.6.3]: https://tools.ietf.org/html/rfc4861#section-4.6.3</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RedirectedHeader</span>: <span class="ident">NdpOptionType</span> <span class="op">=</span> <span class="ident">NdpOptionType</span>(<span class="number">4</span>);
+        <span class="doccomment">/// Redirected Header Option [RFC 4861 § 4.6.3]
+        ///
+        /// ```text
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |     Type      |    Length     |            Reserved           |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                           Reserved                            |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                                                               |
+        /// ~                       IP header + data                        ~
+        /// |                                                               |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// ```
+        ///
+        /// [RFC 4861 § 4.6.3]: https://tools.ietf.org/html/rfc4861#section-4.6.3
+        </span><span class="kw">pub const </span>RedirectedHeader: NdpOptionType = NdpOptionType(<span class="number">4</span>);
 
-        <span class="doccomment">/// MTU Option [RFC 4861 § 4.6.4]</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// ```text</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |     Type      |    Length     |           Reserved            |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// |                              MTU                              |</span>
-        <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-        <span class="doccomment">/// ```</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [RFC 4861 § 4.6.4]: https://tools.ietf.org/html/rfc4861#section-4.6.4</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MTU</span>: <span class="ident">NdpOptionType</span> <span class="op">=</span> <span class="ident">NdpOptionType</span>(<span class="number">5</span>);
+        <span class="doccomment">/// MTU Option [RFC 4861 § 4.6.4]
+        ///
+        /// ```text
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |     Type      |    Length     |           Reserved            |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// |                              MTU                              |
+        /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// ```
+        ///
+        /// [RFC 4861 § 4.6.4]: https://tools.ietf.org/html/rfc4861#section-4.6.4
+        </span><span class="kw">pub const </span>MTU: NdpOptionType = NdpOptionType(<span class="number">5</span>);
     }
 
-    <span class="doccomment">/// Neighbor Discovery Option [RFC 4861 § 4.6]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |    Length     |              ...              |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// ~                              ...                              ~</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.6]: https://tools.ietf.org/html/rfc4861#section-4.6</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NdpOption</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">option_type</span>: <span class="ident">NdpOptionType</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">length</span>: <span class="ident">u8</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;ndp_option_payload_length&quot;</span>]</span>
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">data</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Neighbor Discovery Option [RFC 4861 § 4.6]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |    Length     |              ...              |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// ~                              ...                              ~
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// ```
+    ///
+    /// [RFC 4861 § 4.6]: https://tools.ietf.org/html/rfc4861#section-4.6
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>NdpOption {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>option_type: NdpOptionType,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>length: u8,
+        <span class="attr">#[length_fn = <span class="string">&quot;ndp_option_payload_length&quot;</span>]
+        #[payload]
+        </span><span class="kw">pub </span>data: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Calculate a length of a `NdpOption`&#39;s payload.</span>
-    <span class="kw">fn</span> <span class="ident">ndp_option_payload_length</span>(<span class="ident">option</span>: <span class="kw-2">&amp;</span><span class="ident">NdpOptionPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">option</span>.<span class="ident">get_length</span>();
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">&gt;</span> <span class="number">0</span> {
-            ((<span class="ident">len</span> <span class="op">*</span> <span class="number">8</span>) <span class="op">-</span> <span class="number">2</span>) <span class="kw">as</span> <span class="ident">usize</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Calculate a length of a `NdpOption`&#39;s payload.
+    </span><span class="kw">fn </span>ndp_option_payload_length(option: <span class="kw-2">&amp;</span>NdpOptionPacket) -&gt; usize {
+        <span class="kw">let </span>len = option.get_length();
+        <span class="kw">if </span>len &gt; <span class="number">0 </span>{
+            ((len * <span class="number">8</span>) - <span class="number">2</span>) <span class="kw">as </span>usize
+        } <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="doccomment">/// Router Solicitation Message [RFC 4861 § 4.1]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                            Reserved                           |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |   Options ...</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.1]: https://tools.ietf.org/html/rfc4861#section-4.1</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RouterSolicit</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">reserved</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;rs_ndp_options_length&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NdpOption</span><span class="op">&gt;</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Router Solicitation Message [RFC 4861 § 4.1]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |     Code      |          Checksum             |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                            Reserved                           |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |   Options ...
+    /// ```
+    ///
+    /// [RFC 4861 § 4.1]: https://tools.ietf.org/html/rfc4861#section-4.1
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>RouterSolicit {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>reserved: u32be,
+        <span class="attr">#[length_fn = <span class="string">&quot;rs_ndp_options_length&quot;</span>]
+        </span><span class="kw">pub </span>options: Vec&lt;NdpOption&gt;,
+        <span class="attr">#[payload]
+        #[length = <span class="string">&quot;0&quot;</span>]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Router Solicit packet calculation for the length of the options.</span>
-    <span class="kw">fn</span> <span class="ident">rs_ndp_options_length</span>(<span class="ident">pkt</span>: <span class="kw-2">&amp;</span><span class="ident">RouterSolicitPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">if</span> <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">8</span> {
-            <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="number">8</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Router Solicit packet calculation for the length of the options.
+    </span><span class="kw">fn </span>rs_ndp_options_length(pkt: <span class="kw-2">&amp;</span>RouterSolicitPacket) -&gt; usize {
+        <span class="kw">if </span>pkt.packet().len() &gt; <span class="number">8 </span>{
+            pkt.packet().len() - <span class="number">8
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="doccomment">/// The enumeration of recognized Router Advert flags.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">RouterAdvertFlags</span> {
-        <span class="doccomment">/// &quot;Managed Address Configuration&quot; flag. This is set when</span>
-        <span class="doccomment">/// addresses are available via DHCPv6.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ManagedAddressConf</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0b10000000</span>;
-        <span class="doccomment">/// &quot;Other Configuration&quot; flag. This is set when other</span>
-        <span class="doccomment">/// configuration information is available via DHCPv6.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OtherConf</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0b01000000</span>;
+    <span class="doccomment">/// The enumeration of recognized Router Advert flags.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>RouterAdvertFlags {
+        <span class="doccomment">/// &quot;Managed Address Configuration&quot; flag. This is set when
+        /// addresses are available via DHCPv6.
+        </span><span class="kw">pub const </span>ManagedAddressConf: u8 = <span class="number">0b10000000</span>;
+        <span class="doccomment">/// &quot;Other Configuration&quot; flag. This is set when other
+        /// configuration information is available via DHCPv6.
+        </span><span class="kw">pub const </span>OtherConf: u8 = <span class="number">0b01000000</span>;
     }
 
-    <span class="doccomment">/// Router Advertisement Message Format [RFC 4861 § 4.2]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// | Cur Hop Limit |M|O|  Reserved |       Router Lifetime         |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                         Reachable Time                        |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                          Retrans Timer                        |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |   Options ...</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.2]: https://tools.ietf.org/html/rfc4861#section-4.2</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RouterAdvert</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">hop_limit</span>: <span class="ident">u8</span>,
-        <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">u8</span>,
-        <span class="kw">pub</span> <span class="ident">lifetime</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">reachable_time</span>: <span class="ident">u32be</span>,
-        <span class="kw">pub</span> <span class="ident">retrans_time</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;ra_ndp_options_length&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NdpOption</span><span class="op">&gt;</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Router Advertisement Message Format [RFC 4861 § 4.2]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |     Code      |          Checksum             |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// | Cur Hop Limit |M|O|  Reserved |       Router Lifetime         |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                         Reachable Time                        |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                          Retrans Timer                        |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |   Options ...
+    /// +-+-+-+-+-+-+-+-+-+-+-+-
+    /// ```
+    ///
+    /// [RFC 4861 § 4.2]: https://tools.ietf.org/html/rfc4861#section-4.2
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>RouterAdvert {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>hop_limit: u8,
+        <span class="kw">pub </span>flags: u8,
+        <span class="kw">pub </span>lifetime: u16be,
+        <span class="kw">pub </span>reachable_time: u32be,
+        <span class="kw">pub </span>retrans_time: u32be,
+        <span class="attr">#[length_fn = <span class="string">&quot;ra_ndp_options_length&quot;</span>]
+        </span><span class="kw">pub </span>options: Vec&lt;NdpOption&gt;,
+        <span class="attr">#[payload]
+        #[length = <span class="string">&quot;0&quot;</span>]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Router Advert packet calculation for the length of the options.</span>
-    <span class="kw">fn</span> <span class="ident">ra_ndp_options_length</span>(<span class="ident">pkt</span>: <span class="kw-2">&amp;</span><span class="ident">RouterAdvertPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">if</span> <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">16</span> {
-            <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="number">16</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Router Advert packet calculation for the length of the options.
+    </span><span class="kw">fn </span>ra_ndp_options_length(pkt: <span class="kw-2">&amp;</span>RouterAdvertPacket) -&gt; usize {
+        <span class="kw">if </span>pkt.packet().len() &gt; <span class="number">16 </span>{
+            pkt.packet().len() - <span class="number">16
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="doccomment">/// Neighbor Solicitation Message Format [RFC 4861 § 4.3]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                           Reserved                            |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                       Target Address                          +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |   Options ...</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.3]: https://tools.ietf.org/html/rfc4861#section-4.3</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NeighborSolicit</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">reserved</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">target_addr</span>: <span class="ident">Ipv6Addr</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;ns_ndp_options_length&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NdpOption</span><span class="op">&gt;</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Neighbor Solicitation Message Format [RFC 4861 § 4.3]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |     Code      |          Checksum             |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                           Reserved                            |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +                       Target Address                          +
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |   Options ...
+    /// +-+-+-+-+-+-+-+-+-+-+-+-
+    /// ```
+    ///
+    /// [RFC 4861 § 4.3]: https://tools.ietf.org/html/rfc4861#section-4.3
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>NeighborSolicit {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>reserved: u32be,
+        <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+        </span><span class="kw">pub </span>target_addr: Ipv6Addr,
+        <span class="attr">#[length_fn = <span class="string">&quot;ns_ndp_options_length&quot;</span>]
+        </span><span class="kw">pub </span>options: Vec&lt;NdpOption&gt;,
+        <span class="attr">#[payload]
+        #[length = <span class="string">&quot;0&quot;</span>]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Neighbor Solicit packet calculation for the length of the options.</span>
-    <span class="kw">fn</span> <span class="ident">ns_ndp_options_length</span>(<span class="ident">pkt</span>: <span class="kw-2">&amp;</span><span class="ident">NeighborSolicitPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">if</span> <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">24</span> {
-            <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="number">24</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Neighbor Solicit packet calculation for the length of the options.
+    </span><span class="kw">fn </span>ns_ndp_options_length(pkt: <span class="kw-2">&amp;</span>NeighborSolicitPacket) -&gt; usize {
+        <span class="kw">if </span>pkt.packet().len() &gt; <span class="number">24 </span>{
+            pkt.packet().len() - <span class="number">24
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="doccomment">/// Enumeration of recognized Neighbor Advert flags.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">NeighborAdvertFlags</span> {
-        <span class="doccomment">/// Indicates that the sender is a router.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Router</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0b10000000</span>;
-        <span class="doccomment">/// Indicates that the advertisement was sent due to the receipt of a</span>
-        <span class="doccomment">/// Neighbor Solicitation message.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Solicited</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0b01000000</span>;
-        <span class="doccomment">/// Indicates that the advertisement should override an existing cache</span>
-        <span class="doccomment">/// entry.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">Override</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0b00100000</span>;
+    <span class="doccomment">/// Enumeration of recognized Neighbor Advert flags.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>NeighborAdvertFlags {
+        <span class="doccomment">/// Indicates that the sender is a router.
+        </span><span class="kw">pub const </span>Router: u8 = <span class="number">0b10000000</span>;
+        <span class="doccomment">/// Indicates that the advertisement was sent due to the receipt of a
+        /// Neighbor Solicitation message.
+        </span><span class="kw">pub const </span>Solicited: u8 = <span class="number">0b01000000</span>;
+        <span class="doccomment">/// Indicates that the advertisement should override an existing cache
+        /// entry.
+        </span><span class="kw">pub const </span>Override: u8 = <span class="number">0b00100000</span>;
     }
 
-    <span class="doccomment">/// Neighbor Advertisement Message Format [RFC 4861 § 4.4]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |R|S|O|                     Reserved                            |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                       Target Address                          +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |   Options ...</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.4]: https://tools.ietf.org/html/rfc4861#section-4.4</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NeighborAdvert</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">u8</span>,
-        <span class="kw">pub</span> <span class="ident">reserved</span>: <span class="ident">u24be</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">target_addr</span>: <span class="ident">Ipv6Addr</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;na_ndp_options_length&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NdpOption</span><span class="op">&gt;</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Neighbor Advertisement Message Format [RFC 4861 § 4.4]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |     Code      |          Checksum             |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |R|S|O|                     Reserved                            |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +                       Target Address                          +
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |   Options ...
+    /// +-+-+-+-+-+-+-+-+-+-+-+-
+    /// ```
+    ///
+    /// [RFC 4861 § 4.4]: https://tools.ietf.org/html/rfc4861#section-4.4
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>NeighborAdvert {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>flags: u8,
+        <span class="kw">pub </span>reserved: u24be,
+        <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+        </span><span class="kw">pub </span>target_addr: Ipv6Addr,
+        <span class="attr">#[length_fn = <span class="string">&quot;na_ndp_options_length&quot;</span>]
+        </span><span class="kw">pub </span>options: Vec&lt;NdpOption&gt;,
+        <span class="attr">#[payload]
+        #[length = <span class="string">&quot;0&quot;</span>]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Neighbor Advert packet calculation for the length of the options.</span>
-    <span class="kw">fn</span> <span class="ident">na_ndp_options_length</span>(<span class="ident">pkt</span>: <span class="kw-2">&amp;</span><span class="ident">NeighborAdvertPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">if</span> <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">24</span> {
-            <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="number">24</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Neighbor Advert packet calculation for the length of the options.
+    </span><span class="kw">fn </span>na_ndp_options_length(pkt: <span class="kw-2">&amp;</span>NeighborAdvertPacket) -&gt; usize {
+        <span class="kw">if </span>pkt.packet().len() &gt; <span class="number">24 </span>{
+            pkt.packet().len() - <span class="number">24
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="doccomment">/// Redirect Message Format [RFC 4861 § 4.5]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                           Reserved                            |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                       Target Address                          +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                     Destination Address                       +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +                                                               +</span>
-    <span class="doccomment">/// |                                                               |</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">/// |   Options ...</span>
-    <span class="doccomment">/// +-+-+-+-+-+-+-+-+-+-+-+-</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC 4861 § 4.5]: https://tools.ietf.org/html/rfc4861#section-4.5</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Redirect</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">reserved</span>: <span class="ident">u32be</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">target_addr</span>: <span class="ident">Ipv6Addr</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">dest_addr</span>: <span class="ident">Ipv6Addr</span>,
-        <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;redirect_options_length&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NdpOption</span><span class="op">&gt;</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Redirect Message Format [RFC 4861 § 4.5]
+    ///
+    /// ```text
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |     Type      |     Code      |          Checksum             |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                           Reserved                            |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +                       Target Address                          +
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +                     Destination Address                       +
+    /// |                                                               |
+    /// +                                                               +
+    /// |                                                               |
+    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /// |   Options ...
+    /// +-+-+-+-+-+-+-+-+-+-+-+-
+    /// ```
+    ///
+    /// [RFC 4861 § 4.5]: https://tools.ietf.org/html/rfc4861#section-4.5
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>Redirect {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>reserved: u32be,
+        <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+        </span><span class="kw">pub </span>target_addr: Ipv6Addr,
+        <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+        </span><span class="kw">pub </span>dest_addr: Ipv6Addr,
+        <span class="attr">#[length_fn = <span class="string">&quot;redirect_options_length&quot;</span>]
+        </span><span class="kw">pub </span>options: Vec&lt;NdpOption&gt;,
+        <span class="attr">#[payload]
+        #[length = <span class="string">&quot;0&quot;</span>]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 
-    <span class="doccomment">/// Redirect packet calculation for the length of the options.</span>
-    <span class="kw">fn</span> <span class="ident">redirect_options_length</span>(<span class="ident">pkt</span>: <span class="kw-2">&amp;</span><span class="ident">RedirectPacket</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">if</span> <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">40</span> {
-            <span class="ident">pkt</span>.<span class="ident">packet</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="number">40</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        }
+    <span class="doccomment">/// Redirect packet calculation for the length of the options.
+    </span><span class="kw">fn </span>redirect_options_length(pkt: <span class="kw-2">&amp;</span>RedirectPacket) -&gt; usize {
+        <span class="kw">if </span>pkt.packet().len() &gt; <span class="number">40 </span>{
+            pkt.packet().len() - <span class="number">40
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>}
     }
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-    <span class="kw">mod</span> <span class="ident">ndp_tests</span> {
-        <span class="kw">use</span> <span class="ident">alloc::vec</span>;
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6</span>::{<span class="ident">Icmpv6Types</span>, <span class="ident">Icmpv6Code</span>};
-        <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="attr">#[cfg(test)]
+    </span><span class="kw">mod </span>ndp_tests {
+        <span class="kw">use </span>alloc::vec;
+        <span class="kw">use </span><span class="kw">crate</span>::icmpv6::{Icmpv6Types, Icmpv6Code};
+        <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_option_parsing</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_option_parsing() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
                 <span class="number">0x02</span>, <span class="number">0x01</span>, <span class="number">0x06</span>, <span class="number">0x05</span>, <span class="number">0x04</span>, <span class="number">0x03</span>, <span class="number">0x02</span>, <span class="number">0x01</span>,
-                <span class="comment">// Extra bytes to confuse the parsing</span>
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>
-            ];
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableNdpOptionPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_option_type</span>(), <span class="ident">NdpOptionTypes::TargetLLAddr</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_length</span>(), <span class="number">0x01</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">payload</span>().<span class="ident">len</span>(), <span class="number">6</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">payload</span>(), <span class="kw-2">&amp;</span>[<span class="number">0x06</span>, <span class="number">0x05</span>, <span class="number">0x04</span>, <span class="number">0x03</span>, <span class="number">0x02</span>, <span class="number">0x01</span>]);
+                <span class="comment">// Extra bytes to confuse the parsing
+                </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00
+            </span>];
+            <span class="kw">let </span>pkg = MutableNdpOptionPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_option_type(), NdpOptionTypes::TargetLLAddr);
+            <span class="macro">assert_eq!</span>(pkg.get_length(), <span class="number">0x01</span>);
+            <span class="macro">assert_eq!</span>(pkg.payload().len(), <span class="number">6</span>);
+            <span class="macro">assert_eq!</span>(pkg.payload(), <span class="kw-2">&amp;</span>[<span class="number">0x06</span>, <span class="number">0x05</span>, <span class="number">0x04</span>, <span class="number">0x03</span>, <span class="number">0x02</span>, <span class="number">0x01</span>]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_rs_parse</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
-                <span class="number">0x85</span>, <span class="comment">// Type</span>
-                <span class="number">0x00</span>, <span class="comment">// Code</span>
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Checksum</span>
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Reserved</span>
-                <span class="number">0x02</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_rs_parse() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
+                <span class="number">0x85</span>, <span class="comment">// Type
+                </span><span class="number">0x00</span>, <span class="comment">// Code
+                </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Checksum
+                </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Reserved
+                </span><span class="number">0x02</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
             ];
 
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableRouterSolicitPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_type</span>(), <span class="ident">Icmpv6Types::RouterSolicit</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_code</span>(), <span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_checksum</span>(), <span class="number">0</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_reserved</span>(), <span class="number">0</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_options</span>().<span class="ident">len</span>(), <span class="number">2</span>);
+            <span class="kw">let </span>pkg = MutableRouterSolicitPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_type(), Icmpv6Types::RouterSolicit);
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_code(), Icmpv6Code(<span class="number">0</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_checksum(), <span class="number">0</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_reserved(), <span class="number">0</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_options().len(), <span class="number">2</span>);
 
-            <span class="kw">let</span> <span class="ident">option</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">get_options</span>()[<span class="number">0</span>];
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">option_type</span>, <span class="ident">NdpOptionTypes::TargetLLAddr</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">length</span>, <span class="number">0x01</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">data</span>.<span class="ident">len</span>(), <span class="number">6</span>);
+            <span class="kw">let </span>option = <span class="kw-2">&amp;</span>pkg.get_options()[<span class="number">0</span>];
+            <span class="macro">assert_eq!</span>(option.option_type, NdpOptionTypes::TargetLLAddr);
+            <span class="macro">assert_eq!</span>(option.length, <span class="number">0x01</span>);
+            <span class="macro">assert_eq!</span>(option.data, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
+            <span class="macro">assert_eq!</span>(option.data.len(), <span class="number">6</span>);
 
-            <span class="kw">let</span> <span class="ident">option</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">get_options</span>()[<span class="number">1</span>];
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">option_type</span>, <span class="ident">NdpOptionTypes::SourceLLAddr</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">length</span>, <span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
+            <span class="kw">let </span>option = <span class="kw-2">&amp;</span>pkg.get_options()[<span class="number">1</span>];
+            <span class="macro">assert_eq!</span>(option.option_type, NdpOptionTypes::SourceLLAddr);
+            <span class="macro">assert_eq!</span>(option.length, <span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(option.data, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_rs_create</span>() {
-            <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_rs_create() {
+            <span class="kw">let </span>ref_packet = <span class="macro">vec!</span>[
                 <span class="number">0x85</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>
-            ];
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">16</span>];
-            <span class="kw">let</span> <span class="ident">options</span> <span class="op">=</span> <span class="macro">vec!</span>[
-                <span class="ident">NdpOption</span> {
-                    <span class="ident">option_type</span>: <span class="ident">NdpOptionTypes::SourceLLAddr</span>,
-                    <span class="ident">length</span>: <span class="number">1</span>,
-                    <span class="ident">data</span>: <span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]
+                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00
+            </span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">16</span>];
+            <span class="kw">let </span>options = <span class="macro">vec!</span>[
+                NdpOption {
+                    option_type: NdpOptionTypes::SourceLLAddr,
+                    length: <span class="number">1</span>,
+                    data: <span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]
                 }
             ];
             {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rs_packet</span> <span class="op">=</span> <span class="ident">MutableRouterSolicitPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-                <span class="ident">rs_packet</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Types::RouterSolicit</span>);
-                <span class="ident">rs_packet</span>.<span class="ident">set_icmpv6_code</span>(<span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-                <span class="ident">rs_packet</span>.<span class="ident">set_options</span>(<span class="kw-2">&amp;</span><span class="ident">options</span>[..]);
+                <span class="kw">let </span><span class="kw-2">mut </span>rs_packet = MutableRouterSolicitPacket::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+                rs_packet.set_icmpv6_type(Icmpv6Types::RouterSolicit);
+                rs_packet.set_icmpv6_code(Icmpv6Code(<span class="number">0</span>));
+                rs_packet.set_options(<span class="kw-2">&amp;</span>options[..]);
             }
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..]);
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_ra_parse</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
-                <span class="number">0x86</span>, <span class="comment">// Type</span>
-                <span class="number">0x00</span>, <span class="comment">// Code</span>
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Checksum</span>
-                <span class="number">0xff</span>, <span class="comment">// Hop Limit</span>
-                <span class="number">0x80</span>, <span class="comment">// Flags</span>
-                <span class="number">0x09</span>, <span class="number">0x00</span>, <span class="comment">// Lifetime</span>
-                <span class="number">0x12</span>, <span class="number">0x34</span>, <span class="number">0x56</span>, <span class="number">0x78</span>, <span class="comment">// Reachable</span>
-                <span class="number">0x87</span>, <span class="number">0x65</span>, <span class="number">0x43</span>, <span class="number">0x21</span>, <span class="comment">// Retrans</span>
-                <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Source Link-Layer</span>
-                <span class="number">0x05</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x57</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x74</span> <span class="comment">// MTU</span>
-            ];
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableRouterAdvertPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_type</span>(), <span class="ident">Icmpv6Types::RouterAdvert</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_code</span>(), <span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_checksum</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_hop_limit</span>(), <span class="number">0xff</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_flags</span>(), <span class="ident">RouterAdvertFlags::ManagedAddressConf</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_lifetime</span>(), <span class="number">0x900</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_reachable_time</span>(), <span class="number">0x12345678</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_retrans_time</span>(), <span class="number">0x87654321</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_options</span>().<span class="ident">len</span>(), <span class="number">2</span>);
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_ra_parse() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
+                <span class="number">0x86</span>, <span class="comment">// Type
+                </span><span class="number">0x00</span>, <span class="comment">// Code
+                </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Checksum
+                </span><span class="number">0xff</span>, <span class="comment">// Hop Limit
+                </span><span class="number">0x80</span>, <span class="comment">// Flags
+                </span><span class="number">0x09</span>, <span class="number">0x00</span>, <span class="comment">// Lifetime
+                </span><span class="number">0x12</span>, <span class="number">0x34</span>, <span class="number">0x56</span>, <span class="number">0x78</span>, <span class="comment">// Reachable
+                </span><span class="number">0x87</span>, <span class="number">0x65</span>, <span class="number">0x43</span>, <span class="number">0x21</span>, <span class="comment">// Retrans
+                </span><span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="comment">// Source Link-Layer
+                </span><span class="number">0x05</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x57</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x74 </span><span class="comment">// MTU
+            </span>];
+            <span class="kw">let </span>pkg = MutableRouterAdvertPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_type(), Icmpv6Types::RouterAdvert);
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_code(), Icmpv6Code(<span class="number">0</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_checksum(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_hop_limit(), <span class="number">0xff</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_flags(), RouterAdvertFlags::ManagedAddressConf);
+            <span class="macro">assert_eq!</span>(pkg.get_lifetime(), <span class="number">0x900</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_reachable_time(), <span class="number">0x12345678</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_retrans_time(), <span class="number">0x87654321</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_options().len(), <span class="number">2</span>);
 
-            <span class="kw">let</span> <span class="ident">option</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">get_options</span>()[<span class="number">0</span>];
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">option_type</span>, <span class="ident">NdpOptionTypes::SourceLLAddr</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">length</span>, <span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
+            <span class="kw">let </span>option = <span class="kw-2">&amp;</span>pkg.get_options()[<span class="number">0</span>];
+            <span class="macro">assert_eq!</span>(option.option_type, NdpOptionTypes::SourceLLAddr);
+            <span class="macro">assert_eq!</span>(option.length, <span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(option.data, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]);
 
-            <span class="kw">let</span> <span class="ident">option</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">pkg</span>.<span class="ident">get_options</span>()[<span class="number">1</span>];
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">option_type</span>, <span class="ident">NdpOptionTypes::MTU</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">length</span>, <span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">option</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x57</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x74</span>]);
+            <span class="kw">let </span>option = <span class="kw-2">&amp;</span>pkg.get_options()[<span class="number">1</span>];
+            <span class="macro">assert_eq!</span>(option.option_type, NdpOptionTypes::MTU);
+            <span class="macro">assert_eq!</span>(option.length, <span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(option.data, <span class="kw-2">&amp;</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x57</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x74</span>]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_ra_create</span>() {
-            <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_ra_create() {
+            <span class="kw">let </span>ref_packet = <span class="macro">vec!</span>[
                 <span class="number">0x86</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x05</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>
-            ];
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">24</span>];
-            <span class="kw">let</span> <span class="ident">options</span> <span class="op">=</span> <span class="macro">vec!</span>[
-                <span class="ident">NdpOption</span> {
-                    <span class="ident">option_type</span>: <span class="ident">NdpOptionTypes::MTU</span>,
-                    <span class="ident">length</span>: <span class="number">1</span>,
-                    <span class="ident">data</span>: <span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]
+                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00
+            </span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">24</span>];
+            <span class="kw">let </span>options = <span class="macro">vec!</span>[
+                NdpOption {
+                    option_type: NdpOptionTypes::MTU,
+                    length: <span class="number">1</span>,
+                    data: <span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>]
                 }
             ];
             {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ra_packet</span> <span class="op">=</span> <span class="ident">MutableRouterAdvertPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-                <span class="ident">ra_packet</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Types::RouterAdvert</span>);
-                <span class="ident">ra_packet</span>.<span class="ident">set_icmpv6_code</span>(<span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-                <span class="ident">ra_packet</span>.<span class="ident">set_hop_limit</span>(<span class="number">0xff</span>);
-                <span class="ident">ra_packet</span>.<span class="ident">set_flags</span>(<span class="ident">RouterAdvertFlags::ManagedAddressConf</span>);
-                <span class="ident">ra_packet</span>.<span class="ident">set_options</span>(<span class="kw-2">&amp;</span><span class="ident">options</span>[..]);
+                <span class="kw">let </span><span class="kw-2">mut </span>ra_packet = MutableRouterAdvertPacket::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+                ra_packet.set_icmpv6_type(Icmpv6Types::RouterAdvert);
+                ra_packet.set_icmpv6_code(Icmpv6Code(<span class="number">0</span>));
+                ra_packet.set_hop_limit(<span class="number">0xff</span>);
+                ra_packet.set_flags(RouterAdvertFlags::ManagedAddressConf);
+                ra_packet.set_options(<span class="kw-2">&amp;</span>options[..]);
             }
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..]);
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_ns_parse</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_ns_parse() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
                 <span class="number">0x87</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>
-            ];
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableNeighborSolicitPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_type</span>(), <span class="ident">Icmpv6Types::NeighborSolicit</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_code</span>(), <span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_checksum</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_reserved</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_target_addr</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01
+            </span>];
+            <span class="kw">let </span>pkg = MutableNeighborSolicitPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_type(), Icmpv6Types::NeighborSolicit);
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_code(), Icmpv6Code(<span class="number">0</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_checksum(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_reserved(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_target_addr(), Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_ns_create</span>() {
-            <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_ns_create() {
+            <span class="kw">let </span>ref_packet = <span class="macro">vec!</span>[
                 <span class="number">0x87</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
@@ -1740,38 +1733,38 @@
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>,
             ];
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">24</span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">24</span>];
             {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ns_packet</span> <span class="op">=</span> <span class="ident">MutableNeighborSolicitPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-                <span class="ident">ns_packet</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Types::NeighborSolicit</span>);
-                <span class="ident">ns_packet</span>.<span class="ident">set_icmpv6_code</span>(<span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-                <span class="ident">ns_packet</span>.<span class="ident">set_target_addr</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+                <span class="kw">let </span><span class="kw-2">mut </span>ns_packet = MutableNeighborSolicitPacket::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+                ns_packet.set_icmpv6_type(Icmpv6Types::NeighborSolicit);
+                ns_packet.set_icmpv6_code(Icmpv6Code(<span class="number">0</span>));
+                ns_packet.set_target_addr(Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
             }
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..]);
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_na_parse</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_na_parse() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
                 <span class="number">0x88</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
-                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>
-            ];
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableNeighborAdvertPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_type</span>(), <span class="ident">Icmpv6Types::NeighborAdvert</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_code</span>(), <span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_checksum</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_reserved</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_flags</span>(), <span class="number">0x80</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_target_addr</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+                <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01
+            </span>];
+            <span class="kw">let </span>pkg = MutableNeighborAdvertPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_type(), Icmpv6Types::NeighborAdvert);
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_code(), Icmpv6Code(<span class="number">0</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_checksum(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_reserved(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_flags(), <span class="number">0x80</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_target_addr(), Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_na_create</span>() {
-            <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_na_create() {
+            <span class="kw">let </span>ref_packet = <span class="macro">vec!</span>[
                 <span class="number">0x88</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
@@ -1779,20 +1772,20 @@
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>,
             ];
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">24</span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">24</span>];
             {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">na_packet</span> <span class="op">=</span> <span class="ident">MutableNeighborAdvertPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-                <span class="ident">na_packet</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Types::NeighborAdvert</span>);
-                <span class="ident">na_packet</span>.<span class="ident">set_icmpv6_code</span>(<span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-                <span class="ident">na_packet</span>.<span class="ident">set_target_addr</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-                <span class="ident">na_packet</span>.<span class="ident">set_flags</span>(<span class="ident">NeighborAdvertFlags::Router</span>);
+                <span class="kw">let </span><span class="kw-2">mut </span>na_packet = MutableNeighborAdvertPacket::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+                na_packet.set_icmpv6_type(Icmpv6Types::NeighborAdvert);
+                na_packet.set_icmpv6_code(Icmpv6Code(<span class="number">0</span>));
+                na_packet.set_target_addr(Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+                na_packet.set_flags(NeighborAdvertFlags::Router);
             }
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..]);
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..]);
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_redirect_parse</span>() {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_redirect_parse() {
+            <span class="kw">let </span><span class="kw-2">mut </span>data = <span class="macro">vec!</span>[
                 <span class="number">0x89</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
@@ -1804,18 +1797,18 @@
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
             ];
-            <span class="kw">let</span> <span class="ident">pkg</span> <span class="op">=</span> <span class="ident">MutableRedirectPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">data</span>[..]).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_type</span>(), <span class="ident">Icmpv6Types::Redirect</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_icmpv6_code</span>(), <span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_checksum</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_reserved</span>(), <span class="number">0x00</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_target_addr</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">pkg</span>.<span class="ident">get_dest_addr</span>(), <span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
+            <span class="kw">let </span>pkg = MutableRedirectPacket::new(<span class="kw-2">&amp;mut </span>data[..]).unwrap();
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_type(), Icmpv6Types::Redirect);
+            <span class="macro">assert_eq!</span>(pkg.get_icmpv6_code(), Icmpv6Code(<span class="number">0</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_checksum(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_reserved(), <span class="number">0x00</span>);
+            <span class="macro">assert_eq!</span>(pkg.get_target_addr(), Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+            <span class="macro">assert_eq!</span>(pkg.get_dest_addr(), Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
         }
 
-        <span class="attribute">#[<span class="ident">test</span>]</span>
-        <span class="kw">fn</span> <span class="ident">basic_redirect_create</span>() {
-            <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="attr">#[test]
+        </span><span class="kw">fn </span>basic_redirect_create() {
+            <span class="kw">let </span>ref_packet = <span class="macro">vec!</span>[
                 <span class="number">0x89</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0xff</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
@@ -1827,182 +1820,181 @@
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
                 <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,
             ];
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">40</span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">40</span>];
             {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rdr_packet</span> <span class="op">=</span> <span class="ident">MutableRedirectPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-                <span class="ident">rdr_packet</span>.<span class="ident">set_icmpv6_type</span>(<span class="ident">Icmpv6Types::Redirect</span>);
-                <span class="ident">rdr_packet</span>.<span class="ident">set_icmpv6_code</span>(<span class="ident">Icmpv6Code</span>(<span class="number">0</span>));
-                <span class="ident">rdr_packet</span>.<span class="ident">set_target_addr</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
-                <span class="ident">rdr_packet</span>.<span class="ident">set_dest_addr</span>(<span class="ident">Ipv6Addr::new</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
+                <span class="kw">let </span><span class="kw-2">mut </span>rdr_packet = MutableRedirectPacket::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+                rdr_packet.set_icmpv6_type(Icmpv6Types::Redirect);
+                rdr_packet.set_icmpv6_code(Icmpv6Code(<span class="number">0</span>));
+                rdr_packet.set_target_addr(Ipv6Addr::new(<span class="number">0xff02</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>));
+                rdr_packet.set_dest_addr(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));
             }
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..]);
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..]);
         }
     }
 }
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">echo_reply</span> {
-    <span class="doccomment">//! abstraction for &quot;echo reply&quot; ICMPv6 packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |           Identifier          |        Sequence Number        |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Data ...</span>
-    <span class="doccomment">//! +-+-+-+-+-</span>
-    <span class="doccomment">//! ```</span>
+<span class="kw">pub mod </span>echo_reply {
+    <span class="doccomment">//! abstraction for &quot;echo reply&quot; ICMPv6 packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |           Identifier          |        Sequence Number        |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Data ...
+    //! +-+-+-+-+-
+    //! ```
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6</span>::{<span class="ident">Icmpv6Code</span>, <span class="ident">Icmpv6Type</span>};
+    </span><span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
+    <span class="kw">use </span><span class="kw">crate</span>::icmpv6::{Icmpv6Code, Icmpv6Type};
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-    <span class="doccomment">/// Represents the identifier field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Identifier</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the identifier field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>Identifier(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">Identifier</span> {
-        <span class="doccomment">/// Create a new `Identifier` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">Identifier</span> {
-            <span class="ident">Identifier</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>Identifier {
+        <span class="doccomment">/// Create a new `Identifier` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; Identifier {
+            Identifier(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Identifier</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Identifier {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Represents the sequence number field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SequenceNumber</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the sequence number field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>SequenceNumber(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">SequenceNumber</span> {
-        <span class="doccomment">/// Create a new `SequenceNumber` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">SequenceNumber</span> {
-            <span class="ident">SequenceNumber</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>SequenceNumber {
+        <span class="doccomment">/// Create a new `SequenceNumber` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; SequenceNumber {
+            SequenceNumber(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">SequenceNumber</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>SequenceNumber {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Enumeration of available ICMPv6 codes for &quot;echo reply&quot; ICMPv6 packets. There is actually only</span>
-    <span class="doccomment">/// one, since the only valid ICMPv6 code is 0.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Icmpv6Codes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6::Icmpv6Code</span>;
-        <span class="doccomment">/// 0 is the only available ICMPv6 code for &quot;echo reply&quot; ICMPv6 packets.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NoCode</span>: <span class="ident">Icmpv6Code</span> <span class="op">=</span> <span class="ident">Icmpv6Code</span>(<span class="number">0</span>);
+    <span class="doccomment">/// Enumeration of available ICMPv6 codes for &quot;echo reply&quot; ICMPv6 packets. There is actually only
+    /// one, since the only valid ICMPv6 code is 0.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>Icmpv6Codes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmpv6::Icmpv6Code;
+        <span class="doccomment">/// 0 is the only available ICMPv6 code for &quot;echo reply&quot; ICMPv6 packets.
+        </span><span class="kw">pub const </span>NoCode: Icmpv6Code = Icmpv6Code(<span class="number">0</span>);
     }
 
-    <span class="doccomment">/// Represents an &quot;echo reply&quot; ICMPv6 packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">EchoReply</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">identifier</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">sequence_number</span>: <span class="ident">u16be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Represents an &quot;echo reply&quot; ICMPv6 packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>EchoReply {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>identifier: u16be,
+        <span class="kw">pub </span>sequence_number: u16be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 }
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">echo_request</span> {
-    <span class="doccomment">//! abstraction for &quot;echo request&quot; ICMPv6 packets.</span>
-    <span class="doccomment">//!</span>
-    <span class="doccomment">//! ```text</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Type      |     Code      |          Checksum             |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |           Identifier          |        Sequence Number        |</span>
-    <span class="doccomment">//! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span>
-    <span class="doccomment">//! |     Data ...</span>
-    <span class="doccomment">//! +-+-+-+-+-</span>
-    <span class="doccomment">//! ```</span>
+<span class="kw">pub mod </span>echo_request {
+    <span class="doccomment">//! abstraction for &quot;echo request&quot; ICMPv6 packets.
+    //!
+    //! ```text
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Type      |     Code      |          Checksum             |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |           Identifier          |        Sequence Number        |
+    //! +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    //! |     Data ...
+    //! +-+-+-+-+-
+    //! ```
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PrimitiveValues</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6</span>::{<span class="ident">Icmpv6Code</span>, <span class="ident">Icmpv6Type</span>};
+    </span><span class="kw">use </span><span class="kw">crate</span>::PrimitiveValues;
+    <span class="kw">use </span><span class="kw">crate</span>::icmpv6::{Icmpv6Code, Icmpv6Type};
 
-    <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+    <span class="kw">use </span>alloc::vec::Vec;
 
-    <span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-    <span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>pnet_macros::packet;
+    <span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-    <span class="doccomment">/// Represents the identifier field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Identifier</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the identifier field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>Identifier(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">Identifier</span> {
-        <span class="doccomment">/// Create a new `Identifier` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">Identifier</span> {
-            <span class="ident">Identifier</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>Identifier {
+        <span class="doccomment">/// Create a new `Identifier` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; Identifier {
+            Identifier(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">Identifier</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>Identifier {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Represents the sequence number field.</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SequenceNumber</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
+    <span class="doccomment">/// Represents the sequence number field.
+    </span><span class="attr">#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    </span><span class="kw">pub struct </span>SequenceNumber(<span class="kw">pub </span>u16);
 
-    <span class="kw">impl</span> <span class="ident">SequenceNumber</span> {
-        <span class="doccomment">/// Create a new `SequenceNumber` instance.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">u16</span>) -&gt; <span class="ident">SequenceNumber</span> {
-            <span class="ident">SequenceNumber</span>(<span class="ident">val</span>)
+    <span class="kw">impl </span>SequenceNumber {
+        <span class="doccomment">/// Create a new `SequenceNumber` instance.
+        </span><span class="kw">pub fn </span>new(val: u16) -&gt; SequenceNumber {
+            SequenceNumber(val)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">PrimitiveValues</span> <span class="kw">for</span> <span class="ident">SequenceNumber</span> {
-        <span class="kw">type</span> <span class="ident">T</span> <span class="op">=</span> (<span class="ident">u16</span>,);
-        <span class="kw">fn</span> <span class="ident">to_primitive_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u16</span>,) {
+    <span class="kw">impl </span>PrimitiveValues <span class="kw">for </span>SequenceNumber {
+        <span class="kw">type </span>T = (u16,);
+        <span class="kw">fn </span>to_primitive_values(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u16,) {
             (<span class="self">self</span>.<span class="number">0</span>,)
         }
     }
 
-    <span class="doccomment">/// Enumeration of available ICMPv6 codes for &quot;echo reply&quot; ICMPv6 packets. There is actually only</span>
-    <span class="doccomment">/// one, since the only valid ICMPv6 code is 0.</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">Icmpv6Codes</span> {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::icmpv6::Icmpv6Code</span>;
-        <span class="doccomment">/// 0 is the only available ICMPv6 code for &quot;echo reply&quot; ICMPv6 packets.</span>
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NoCode</span>: <span class="ident">Icmpv6Code</span> <span class="op">=</span> <span class="ident">Icmpv6Code</span>(<span class="number">0</span>);
+    <span class="doccomment">/// Enumeration of available ICMPv6 codes for &quot;echo reply&quot; ICMPv6 packets. There is actually only
+    /// one, since the only valid ICMPv6 code is 0.
+    </span><span class="attr">#[allow(non_snake_case)]
+    #[allow(non_upper_case_globals)]
+    </span><span class="kw">pub mod </span>Icmpv6Codes {
+        <span class="kw">use </span><span class="kw">crate</span>::icmpv6::Icmpv6Code;
+        <span class="doccomment">/// 0 is the only available ICMPv6 code for &quot;echo reply&quot; ICMPv6 packets.
+        </span><span class="kw">pub const </span>NoCode: Icmpv6Code = Icmpv6Code(<span class="number">0</span>);
     }
 
-    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMPv6 packet.</span>
-    <span class="attribute">#[<span class="ident">packet</span>]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">EchoRequest</span> {
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_type</span>: <span class="ident">Icmpv6Type</span>,
-        <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">icmpv6_code</span>: <span class="ident">Icmpv6Code</span>,
-        <span class="kw">pub</span> <span class="ident">checksum</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">identifier</span>: <span class="ident">u16be</span>,
-        <span class="kw">pub</span> <span class="ident">sequence_number</span>: <span class="ident">u16be</span>,
-        <span class="attribute">#[<span class="ident">payload</span>]</span>
-        <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Represents an &quot;echo request&quot; ICMPv6 packet.
+    </span><span class="attr">#[packet]
+    </span><span class="kw">pub struct </span>EchoRequest {
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_type: Icmpv6Type,
+        <span class="attr">#[construct_with(u8)]
+        </span><span class="kw">pub </span>icmpv6_code: Icmpv6Code,
+        <span class="kw">pub </span>checksum: u16be,
+        <span class="kw">pub </span>identifier: u16be,
+        <span class="kw">pub </span>sequence_number: u16be,
+        <span class="attr">#[payload]
+        </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>

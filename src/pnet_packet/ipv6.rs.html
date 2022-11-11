@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/ipv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a><h2 class="location"></h2>
-    </nav>
-    <nav class="sidebar"><a class="sidebar-logo" href="../../pnet_packet/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
-                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
-                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/pnet_packet-0.30.0/src/ipv6.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ipv6.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-74087aa2e88f4475.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../pnet_packet/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -315,316 +308,315 @@
 <span id="308">308</span>
 <span id="309">309</span>
 <span id="310">310</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright (c) 2014, 2015 Robert Clipsham &lt;robert@octarineparrot.com&gt;
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! An IPv6 packet abstraction.</span>
+</span><span class="doccomment">//! An IPv6 packet abstraction.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocol</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocol;
 
-<span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
+<span class="kw">use </span>alloc::vec::Vec;
 
-<span class="kw">use</span> <span class="ident">pnet_macros::packet</span>;
-<span class="kw">use</span> <span class="ident">pnet_macros_support::types</span>::<span class="kw-2">*</span>;
+<span class="kw">use </span>pnet_macros::packet;
+<span class="kw">use </span>pnet_macros_support::types::<span class="kw-2">*</span>;
 
-<span class="kw">use</span> <span class="ident">pnet_base::core_net::Ipv6Addr</span>;
+<span class="kw">use </span>pnet_base::core_net::Ipv6Addr;
 
-<span class="doccomment">/// Represents an IPv6 Packet.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ipv6</span> {
-    <span class="kw">pub</span> <span class="ident">version</span>: <span class="ident">u4</span>,
-    <span class="kw">pub</span> <span class="ident">traffic_class</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">flow_label</span>: <span class="ident">u20be</span>,
-    <span class="kw">pub</span> <span class="ident">payload_length</span>: <span class="ident">u16be</span>,
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">next_header</span>: <span class="ident">IpNextHeaderProtocol</span>,
-    <span class="kw">pub</span> <span class="ident">hop_limit</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">source</span>: <span class="ident">Ipv6Addr</span>,
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="ident">u16</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">destination</span>: <span class="ident">Ipv6Addr</span>,
-    <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;payload_length&quot;</span>]</span>
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents an IPv6 Packet.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Ipv6 {
+    <span class="kw">pub </span>version: u4,
+    <span class="kw">pub </span>traffic_class: u8,
+    <span class="kw">pub </span>flow_label: u20be,
+    <span class="kw">pub </span>payload_length: u16be,
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>next_header: IpNextHeaderProtocol,
+    <span class="kw">pub </span>hop_limit: u8,
+    <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+    </span><span class="kw">pub </span>source: Ipv6Addr,
+    <span class="attr">#[construct_with(u16, u16, u16, u16, u16, u16, u16, u16)]
+    </span><span class="kw">pub </span>destination: Ipv6Addr,
+    <span class="attr">#[length = <span class="string">&quot;payload_length&quot;</span>]
+    #[payload]
+    </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">ExtensionIterable</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">ExtensionIterable</span> {
-        <span class="ident">ExtensionIterable</span> { <span class="ident">buf</span>: <span class="ident">buf</span> }
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;p</span>&gt; ExtensionIterable&lt;<span class="lifetime">&#39;p</span>&gt; {
+    <span class="kw">pub fn </span>new(buf: <span class="kw-2">&amp;</span>[u8]) -&gt; ExtensionIterable {
+        ExtensionIterable { buf: buf }
     }
 }
 
-<span class="doccomment">/// Represents an IPv6 Extension.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Extension</span> {
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">next_header</span>: <span class="ident">IpNextHeaderProtocol</span>,
-    <span class="kw">pub</span> <span class="ident">hdr_ext_len</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;ipv6_extension_length&quot;</span>]</span>
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">options</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents an IPv6 Extension.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Extension {
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>next_header: IpNextHeaderProtocol,
+    <span class="kw">pub </span>hdr_ext_len: u8,
+    <span class="attr">#[length_fn = <span class="string">&quot;ipv6_extension_length&quot;</span>]
+    #[payload]
+    </span><span class="kw">pub </span>options: Vec&lt;u8&gt;,
 }
 
-<span class="kw">fn</span> <span class="ident">ipv6_extension_length</span>(<span class="ident">ext</span>: <span class="kw-2">&amp;</span><span class="ident">ExtensionPacket</span>) -&gt; <span class="ident">usize</span> {
-    <span class="ident">ext</span>.<span class="ident">get_hdr_ext_len</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">*</span> <span class="number">8</span> <span class="op">+</span> <span class="number">8</span> <span class="op">-</span> <span class="number">2</span>
+<span class="kw">fn </span>ipv6_extension_length(ext: <span class="kw-2">&amp;</span>ExtensionPacket) -&gt; usize {
+    ext.get_hdr_ext_len() <span class="kw">as </span>usize * <span class="number">8 </span>+ <span class="number">8 </span>- <span class="number">2
+</span>}
+
+<span class="doccomment">/// Represents an IPv6 Hop-by-Hop Options.
+</span><span class="kw">pub type </span>HopByHop = Extension;
+<span class="doccomment">/// A structure enabling manipulation of on the wire packets.
+</span><span class="kw">pub type </span>HopByHopPacket&lt;<span class="lifetime">&#39;p</span>&gt; = ExtensionPacket&lt;<span class="lifetime">&#39;p</span>&gt;;
+<span class="doccomment">/// A structure enabling manipulation of on the wire packets.
+</span><span class="kw">pub type </span>MutableHopByHopPacket&lt;<span class="lifetime">&#39;p</span>&gt; = MutableExtensionPacket&lt;<span class="lifetime">&#39;p</span>&gt;;
+
+<span class="doccomment">/// Represents an IPv6 Routing Extension.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Routing {
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>next_header: IpNextHeaderProtocol,
+    <span class="kw">pub </span>hdr_ext_len: u8,
+    <span class="kw">pub </span>routing_type: u8,
+    <span class="kw">pub </span>segments_left: u8,
+    <span class="attr">#[length_fn = <span class="string">&quot;routing_extension_length&quot;</span>]
+    #[payload]
+    </span><span class="kw">pub </span>data: Vec&lt;u8&gt;,
 }
 
-<span class="doccomment">/// Represents an IPv6 Hop-by-Hop Options.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HopByHop</span> <span class="op">=</span> <span class="ident">Extension</span>;
-<span class="doccomment">/// A structure enabling manipulation of on the wire packets.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HopByHopPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">ExtensionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>;
-<span class="doccomment">/// A structure enabling manipulation of on the wire packets.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">MutableHopByHopPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">MutableExtensionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>;
+<span class="kw">fn </span>routing_extension_length(ext: <span class="kw-2">&amp;</span>RoutingPacket) -&gt; usize {
+    ext.get_hdr_ext_len() <span class="kw">as </span>usize * <span class="number">8 </span>+ <span class="number">8 </span>- <span class="number">4
+</span>}
 
-<span class="doccomment">/// Represents an IPv6 Routing Extension.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Routing</span> {
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">next_header</span>: <span class="ident">IpNextHeaderProtocol</span>,
-    <span class="kw">pub</span> <span class="ident">hdr_ext_len</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">routing_type</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">segments_left</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">length_fn</span> <span class="op">=</span> <span class="string">&quot;routing_extension_length&quot;</span>]</span>
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">data</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents an IPv6 Fragment Extension.
+</span><span class="attr">#[packet]
+</span><span class="kw">pub struct </span>Fragment {
+    <span class="attr">#[construct_with(u8)]
+    </span><span class="kw">pub </span>next_header: IpNextHeaderProtocol,
+    <span class="kw">pub </span>reserved: u8,
+    <span class="kw">pub </span>fragment_offset_with_flags: u16be,
+    <span class="kw">pub </span>id: u32be,
+    <span class="attr">#[length = <span class="string">&quot;0&quot;</span>]
+    #[payload]
+    </span><span class="kw">pub </span>payload: Vec&lt;u8&gt;,
 }
 
-<span class="kw">fn</span> <span class="ident">routing_extension_length</span>(<span class="ident">ext</span>: <span class="kw-2">&amp;</span><span class="ident">RoutingPacket</span>) -&gt; <span class="ident">usize</span> {
-    <span class="ident">ext</span>.<span class="ident">get_hdr_ext_len</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">*</span> <span class="number">8</span> <span class="op">+</span> <span class="number">8</span> <span class="op">-</span> <span class="number">4</span>
-}
+<span class="kw">const </span>FRAGMENT_FLAGS_MASK: u16 = <span class="number">0x03</span>;
+<span class="kw">const </span>FRAGMENT_FLAGS_MORE_FRAGMENTS: u16 = <span class="number">0x01</span>;
+<span class="kw">const </span>FRAGMENT_OFFSET_MASK: u16 = !FRAGMENT_FLAGS_MASK;
 
-<span class="doccomment">/// Represents an IPv6 Fragment Extension.</span>
-<span class="attribute">#[<span class="ident">packet</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Fragment</span> {
-    <span class="attribute">#[<span class="ident">construct_with</span>(<span class="ident">u8</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">next_header</span>: <span class="ident">IpNextHeaderProtocol</span>,
-    <span class="kw">pub</span> <span class="ident">reserved</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">fragment_offset_with_flags</span>: <span class="ident">u16be</span>,
-    <span class="kw">pub</span> <span class="ident">id</span>: <span class="ident">u32be</span>,
-    <span class="attribute">#[<span class="ident">length</span> <span class="op">=</span> <span class="string">&quot;0&quot;</span>]</span>
-    <span class="attribute">#[<span class="ident">payload</span>]</span>
-    <span class="kw">pub</span> <span class="ident">payload</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-}
-
-<span class="kw">const</span> <span class="ident">FRAGMENT_FLAGS_MASK</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0x03</span>;
-<span class="kw">const</span> <span class="ident">FRAGMENT_FLAGS_MORE_FRAGMENTS</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0x01</span>;
-<span class="kw">const</span> <span class="ident">FRAGMENT_OFFSET_MASK</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="op">!</span><span class="ident">FRAGMENT_FLAGS_MASK</span>;
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">FragmentPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_fragment_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u16</span> {
-        <span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>() <span class="op">&amp;</span> <span class="ident">FRAGMENT_OFFSET_MASK</span>
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;p</span>&gt; FragmentPacket&lt;<span class="lifetime">&#39;p</span>&gt; {
+    <span class="kw">pub fn </span>get_fragment_offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u16 {
+        <span class="self">self</span>.get_fragment_offset_with_flags() &amp; FRAGMENT_OFFSET_MASK
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_last_fragment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        (<span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>() <span class="op">&amp;</span> <span class="ident">FRAGMENT_FLAGS_MORE_FRAGMENTS</span>) <span class="op">==</span> <span class="number">0</span>
-    }
+    <span class="kw">pub fn </span>is_last_fragment(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        (<span class="self">self</span>.get_fragment_offset_with_flags() &amp; FRAGMENT_FLAGS_MORE_FRAGMENTS) == <span class="number">0
+    </span>}
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="ident">MutableFragmentPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_fragment_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u16</span> {
-        <span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>() <span class="op">&amp;</span> <span class="ident">FRAGMENT_OFFSET_MASK</span>
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;p</span>&gt; MutableFragmentPacket&lt;<span class="lifetime">&#39;p</span>&gt; {
+    <span class="kw">pub fn </span>get_fragment_offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u16 {
+        <span class="self">self</span>.get_fragment_offset_with_flags() &amp; FRAGMENT_OFFSET_MASK
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_last_fragment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        (<span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>() <span class="op">&amp;</span> <span class="ident">FRAGMENT_FLAGS_MORE_FRAGMENTS</span>) <span class="op">==</span> <span class="number">0</span>
-    }
+    <span class="kw">pub fn </span>is_last_fragment(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        (<span class="self">self</span>.get_fragment_offset_with_flags() &amp; FRAGMENT_FLAGS_MORE_FRAGMENTS) == <span class="number">0
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_fragment_offset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">u16</span>) {
-        <span class="kw">let</span> <span class="ident">fragment_offset_with_flags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>();
+    <span class="kw">pub fn </span>set_fragment_offset(<span class="kw-2">&amp;mut </span><span class="self">self</span>, offset: u16) {
+        <span class="kw">let </span>fragment_offset_with_flags = <span class="self">self</span>.get_fragment_offset_with_flags();
 
-        <span class="self">self</span>.<span class="ident">set_fragment_offset_with_flags</span>(
-            (<span class="ident">offset</span> <span class="op">&amp;</span> <span class="ident">FRAGMENT_OFFSET_MASK</span>) <span class="op">|</span> (<span class="ident">fragment_offset_with_flags</span> <span class="op">&amp;</span> <span class="ident">FRAGMENT_FLAGS_MASK</span>),
+        <span class="self">self</span>.set_fragment_offset_with_flags(
+            (offset &amp; FRAGMENT_OFFSET_MASK) | (fragment_offset_with_flags &amp; FRAGMENT_FLAGS_MASK),
         );
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_last_fragment</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">is_last</span>: <span class="ident">bool</span>) {
-        <span class="kw">let</span> <span class="ident">fragment_offset_with_flags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_fragment_offset_with_flags</span>();
+    <span class="kw">pub fn </span>set_last_fragment(<span class="kw-2">&amp;mut </span><span class="self">self</span>, is_last: bool) {
+        <span class="kw">let </span>fragment_offset_with_flags = <span class="self">self</span>.get_fragment_offset_with_flags();
 
-        <span class="self">self</span>.<span class="ident">set_fragment_offset_with_flags</span>(<span class="kw">if</span> <span class="ident">is_last</span> {
-            <span class="ident">fragment_offset_with_flags</span> <span class="op">&amp;</span> <span class="op">!</span><span class="ident">FRAGMENT_FLAGS_MORE_FRAGMENTS</span>
-        } <span class="kw">else</span> {
-            <span class="ident">fragment_offset_with_flags</span> <span class="op">|</span> <span class="ident">FRAGMENT_FLAGS_MORE_FRAGMENTS</span>
+        <span class="self">self</span>.set_fragment_offset_with_flags(<span class="kw">if </span>is_last {
+            fragment_offset_with_flags &amp; !FRAGMENT_FLAGS_MORE_FRAGMENTS
+        } <span class="kw">else </span>{
+            fragment_offset_with_flags | FRAGMENT_FLAGS_MORE_FRAGMENTS
         });
     }
 }
 
-<span class="doccomment">/// Represents an Destination Options.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Destination</span> <span class="op">=</span> <span class="ident">Extension</span>;
-<span class="doccomment">/// A structure enabling manipulation of on the wire packets.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DestinationPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">ExtensionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>;
-<span class="doccomment">/// A structure enabling manipulation of on the wire packets.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">MutableDestinationPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">MutableExtensionPacket</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Represents an Destination Options.
+</span><span class="kw">pub type </span>Destination = Extension;
+<span class="doccomment">/// A structure enabling manipulation of on the wire packets.
+</span><span class="kw">pub type </span>DestinationPacket&lt;<span class="lifetime">&#39;p</span>&gt; = ExtensionPacket&lt;<span class="lifetime">&#39;p</span>&gt;;
+<span class="doccomment">/// A structure enabling manipulation of on the wire packets.
+</span><span class="kw">pub type </span>MutableDestinationPacket&lt;<span class="lifetime">&#39;p</span>&gt; = MutableExtensionPacket&lt;<span class="lifetime">&#39;p</span>&gt;;
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">ipv6_header_test</span>() {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ip::IpNextHeaderProtocols</span>;
-    <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">MutablePacket</span>, <span class="ident">Packet</span>, <span class="ident">PacketSize</span>};
-    <span class="kw">use</span> <span class="ident">alloc::vec</span>;
+<span class="attr">#[test]
+</span><span class="kw">fn </span>ipv6_header_test() {
+    <span class="kw">use </span><span class="kw">crate</span>::ip::IpNextHeaderProtocols;
+    <span class="kw">use crate</span>::{MutablePacket, Packet, PacketSize};
+    <span class="kw">use </span>alloc::vec;
 
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">packet</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">0x200</span>];
+    <span class="kw">let </span><span class="kw-2">mut </span>packet = [<span class="number">0u8</span>; <span class="number">0x200</span>];
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ip_header</span> <span class="op">=</span> <span class="ident">MutableIpv6Packet::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">packet</span>[..]).<span class="ident">unwrap</span>();
-        <span class="ident">ip_header</span>.<span class="ident">set_version</span>(<span class="number">6</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_version</span>(), <span class="number">6</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>ip_header = MutableIpv6Packet::new(<span class="kw-2">&amp;mut </span>packet[..]).unwrap();
+        ip_header.set_version(<span class="number">6</span>);
+        <span class="macro">assert_eq!</span>(ip_header.get_version(), <span class="number">6</span>);
 
-        <span class="ident">ip_header</span>.<span class="ident">set_traffic_class</span>(<span class="number">17</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_traffic_class</span>(), <span class="number">17</span>);
+        ip_header.set_traffic_class(<span class="number">17</span>);
+        <span class="macro">assert_eq!</span>(ip_header.get_traffic_class(), <span class="number">17</span>);
 
-        <span class="ident">ip_header</span>.<span class="ident">set_flow_label</span>(<span class="number">0x10101</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_flow_label</span>(), <span class="number">0x10101</span>);
+        ip_header.set_flow_label(<span class="number">0x10101</span>);
+        <span class="macro">assert_eq!</span>(ip_header.get_flow_label(), <span class="number">0x10101</span>);
 
-        <span class="ident">ip_header</span>.<span class="ident">set_payload_length</span>(<span class="number">0x0101</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_payload_length</span>(), <span class="number">0x0101</span>);
-        <span class="macro">assert_eq!</span>(<span class="number">0x0101</span>, <span class="ident">ip_header</span>.<span class="ident">payload</span>().<span class="ident">len</span>());
+        ip_header.set_payload_length(<span class="number">0x0101</span>);
+        <span class="macro">assert_eq!</span>(ip_header.get_payload_length(), <span class="number">0x0101</span>);
+        <span class="macro">assert_eq!</span>(<span class="number">0x0101</span>, ip_header.payload().len());
 
-        <span class="ident">ip_header</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Hopopt</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_next_header</span>(), <span class="ident">IpNextHeaderProtocols::Hopopt</span>);
+        ip_header.set_next_header(IpNextHeaderProtocols::Hopopt);
+        <span class="macro">assert_eq!</span>(ip_header.get_next_header(), IpNextHeaderProtocols::Hopopt);
 
-        <span class="ident">ip_header</span>.<span class="ident">set_hop_limit</span>(<span class="number">1</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_hop_limit</span>(), <span class="number">1</span>);
+        ip_header.set_hop_limit(<span class="number">1</span>);
+        <span class="macro">assert_eq!</span>(ip_header.get_hop_limit(), <span class="number">1</span>);
 
-        <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_source</span>(<span class="ident">source</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_source</span>(), <span class="ident">source</span>);
+        <span class="kw">let </span>source = Ipv6Addr::new(<span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>);
+        ip_header.set_source(source);
+        <span class="macro">assert_eq!</span>(ip_header.get_source(), source);
 
-        <span class="kw">let</span> <span class="ident">dest</span> <span class="op">=</span> <span class="ident">Ipv6Addr::new</span>(<span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>);
-        <span class="ident">ip_header</span>.<span class="ident">set_destination</span>(<span class="ident">dest</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">ip_header</span>.<span class="ident">get_destination</span>(), <span class="ident">dest</span>);
+        <span class="kw">let </span>dest = Ipv6Addr::new(<span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>, <span class="number">0x110</span>, <span class="number">0x1001</span>);
+        ip_header.set_destination(dest);
+        <span class="macro">assert_eq!</span>(ip_header.get_destination(), dest);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pos</span> <span class="op">=</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">hopopt</span> <span class="op">=</span> <span class="ident">MutableHopByHopPacket::new</span>(<span class="ident">ip_header</span>.<span class="ident">payload_mut</span>()).<span class="ident">unwrap</span>();
+        <span class="kw">let </span><span class="kw-2">mut </span>pos = {
+            <span class="kw">let </span><span class="kw-2">mut </span>hopopt = MutableHopByHopPacket::new(ip_header.payload_mut()).unwrap();
 
-            <span class="ident">hopopt</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Ipv6Opts</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">hopopt</span>.<span class="ident">get_next_header</span>(), <span class="ident">IpNextHeaderProtocols::Ipv6Opts</span>);
+            hopopt.set_next_header(IpNextHeaderProtocols::Ipv6Opts);
+            <span class="macro">assert_eq!</span>(hopopt.get_next_header(), IpNextHeaderProtocols::Ipv6Opts);
 
-            <span class="ident">hopopt</span>.<span class="ident">set_hdr_ext_len</span>(<span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">hopopt</span>.<span class="ident">get_hdr_ext_len</span>(), <span class="number">1</span>);
+            hopopt.set_hdr_ext_len(<span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(hopopt.get_hdr_ext_len(), <span class="number">1</span>);
 
-            <span class="ident">hopopt</span>.<span class="ident">set_options</span>(<span class="kw-2">&amp;</span>[<span class="string">b&#39;A&#39;</span>; <span class="number">14</span>][..]);
-            <span class="macro">assert_eq!</span>(<span class="ident">hopopt</span>.<span class="ident">payload</span>(), <span class="string">b&quot;AAAAAAAAAAAAAA&quot;</span>);
+            hopopt.set_options(<span class="kw-2">&amp;</span>[<span class="string">b&#39;A&#39;</span>; <span class="number">14</span>][..]);
+            <span class="macro">assert_eq!</span>(hopopt.payload(), <span class="string">b&quot;AAAAAAAAAAAAAA&quot;</span>);
 
-            <span class="ident">hopopt</span>.<span class="ident">packet_size</span>()
+            hopopt.packet_size()
         };
 
-        <span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dstopt</span> <span class="op">=</span>
-                <span class="ident">MutableDestinationPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ip_header</span>.<span class="ident">payload_mut</span>()[<span class="ident">pos</span>..]).<span class="ident">unwrap</span>();
+        pos += {
+            <span class="kw">let </span><span class="kw-2">mut </span>dstopt =
+                MutableDestinationPacket::new(<span class="kw-2">&amp;mut </span>ip_header.payload_mut()[pos..]).unwrap();
 
-            <span class="ident">dstopt</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Ipv6Route</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">dstopt</span>.<span class="ident">get_next_header</span>(), <span class="ident">IpNextHeaderProtocols::Ipv6Route</span>);
+            dstopt.set_next_header(IpNextHeaderProtocols::Ipv6Route);
+            <span class="macro">assert_eq!</span>(dstopt.get_next_header(), IpNextHeaderProtocols::Ipv6Route);
 
-            <span class="ident">dstopt</span>.<span class="ident">set_hdr_ext_len</span>(<span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">dstopt</span>.<span class="ident">get_hdr_ext_len</span>(), <span class="number">1</span>);
+            dstopt.set_hdr_ext_len(<span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(dstopt.get_hdr_ext_len(), <span class="number">1</span>);
 
-            <span class="ident">dstopt</span>.<span class="ident">set_options</span>(<span class="kw-2">&amp;</span>[<span class="string">b&#39;B&#39;</span>; <span class="number">14</span>][..]);
-            <span class="macro">assert_eq!</span>(<span class="ident">dstopt</span>.<span class="ident">payload</span>(), <span class="string">b&quot;BBBBBBBBBBBBBB&quot;</span>);
+            dstopt.set_options(<span class="kw-2">&amp;</span>[<span class="string">b&#39;B&#39;</span>; <span class="number">14</span>][..]);
+            <span class="macro">assert_eq!</span>(dstopt.payload(), <span class="string">b&quot;BBBBBBBBBBBBBB&quot;</span>);
 
-            <span class="ident">dstopt</span>.<span class="ident">packet_size</span>()
+            dstopt.packet_size()
         };
 
-        <span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">routing</span> <span class="op">=</span>
-                <span class="ident">MutableRoutingPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ip_header</span>.<span class="ident">payload_mut</span>()[<span class="ident">pos</span>..]).<span class="ident">unwrap</span>();
+        pos += {
+            <span class="kw">let </span><span class="kw-2">mut </span>routing =
+                MutableRoutingPacket::new(<span class="kw-2">&amp;mut </span>ip_header.payload_mut()[pos..]).unwrap();
 
-            <span class="ident">routing</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Ipv6Frag</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">routing</span>.<span class="ident">get_next_header</span>(), <span class="ident">IpNextHeaderProtocols::Ipv6Frag</span>);
+            routing.set_next_header(IpNextHeaderProtocols::Ipv6Frag);
+            <span class="macro">assert_eq!</span>(routing.get_next_header(), IpNextHeaderProtocols::Ipv6Frag);
 
-            <span class="ident">routing</span>.<span class="ident">set_hdr_ext_len</span>(<span class="number">1</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">routing</span>.<span class="ident">get_hdr_ext_len</span>(), <span class="number">1</span>);
+            routing.set_hdr_ext_len(<span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(routing.get_hdr_ext_len(), <span class="number">1</span>);
 
-            <span class="ident">routing</span>.<span class="ident">set_routing_type</span>(<span class="number">4</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">routing</span>.<span class="ident">get_routing_type</span>(), <span class="number">4</span>);
+            routing.set_routing_type(<span class="number">4</span>);
+            <span class="macro">assert_eq!</span>(routing.get_routing_type(), <span class="number">4</span>);
 
-            <span class="ident">routing</span>.<span class="ident">set_segments_left</span>(<span class="number">2</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">routing</span>.<span class="ident">get_segments_left</span>(), <span class="number">2</span>);
+            routing.set_segments_left(<span class="number">2</span>);
+            <span class="macro">assert_eq!</span>(routing.get_segments_left(), <span class="number">2</span>);
 
-            <span class="ident">routing</span>.<span class="ident">set_data</span>(<span class="kw-2">&amp;</span>[<span class="string">b&#39;C&#39;</span>; <span class="number">12</span>][..]);
-            <span class="macro">assert_eq!</span>(<span class="ident">routing</span>.<span class="ident">payload</span>(), <span class="string">b&quot;CCCCCCCCCCCC&quot;</span>);
+            routing.set_data(<span class="kw-2">&amp;</span>[<span class="string">b&#39;C&#39;</span>; <span class="number">12</span>][..]);
+            <span class="macro">assert_eq!</span>(routing.payload(), <span class="string">b&quot;CCCCCCCCCCCC&quot;</span>);
 
-            <span class="ident">routing</span>.<span class="ident">packet_size</span>()
+            routing.packet_size()
         };
 
-        <span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">frag</span> <span class="op">=</span> <span class="ident">MutableFragmentPacket::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ip_header</span>.<span class="ident">payload_mut</span>()[<span class="ident">pos</span>..]).<span class="ident">unwrap</span>();
+        pos += {
+            <span class="kw">let </span><span class="kw-2">mut </span>frag = MutableFragmentPacket::new(<span class="kw-2">&amp;mut </span>ip_header.payload_mut()[pos..]).unwrap();
 
-            <span class="ident">frag</span>.<span class="ident">set_next_header</span>(<span class="ident">IpNextHeaderProtocols::Udp</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">frag</span>.<span class="ident">get_next_header</span>(), <span class="ident">IpNextHeaderProtocols::Udp</span>);
+            frag.set_next_header(IpNextHeaderProtocols::Udp);
+            <span class="macro">assert_eq!</span>(frag.get_next_header(), IpNextHeaderProtocols::Udp);
 
-            <span class="ident">frag</span>.<span class="ident">set_fragment_offset</span>(<span class="number">1024</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">frag</span>.<span class="ident">get_fragment_offset</span>(), <span class="number">1024</span>);
+            frag.set_fragment_offset(<span class="number">1024</span>);
+            <span class="macro">assert_eq!</span>(frag.get_fragment_offset(), <span class="number">1024</span>);
 
-            <span class="ident">frag</span>.<span class="ident">set_last_fragment</span>(<span class="bool-val">false</span>);
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">frag</span>.<span class="ident">is_last_fragment</span>());
+            frag.set_last_fragment(<span class="bool-val">false</span>);
+            <span class="macro">assert!</span>(!frag.is_last_fragment());
 
-            <span class="ident">frag</span>.<span class="ident">set_id</span>(<span class="number">1234</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">frag</span>.<span class="ident">get_id</span>(), <span class="number">1234</span>);
+            frag.set_id(<span class="number">1234</span>);
+            <span class="macro">assert_eq!</span>(frag.get_id(), <span class="number">1234</span>);
 
-            <span class="ident">frag</span>.<span class="ident">packet_size</span>()
+            frag.packet_size()
         };
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">ExtensionIterable::new</span>(<span class="kw-2">&amp;</span><span class="ident">ip_header</span>.<span class="ident">payload</span>()[..<span class="ident">pos</span>])
-                .<span class="ident">map</span>(<span class="op">|</span><span class="ident">ext</span><span class="op">|</span> (
-                    <span class="ident">ext</span>.<span class="ident">get_next_header</span>(),
-                    <span class="ident">ext</span>.<span class="ident">get_hdr_ext_len</span>(),
-                    <span class="ident">ext</span>.<span class="ident">packet_size</span>()
+            ExtensionIterable::new(<span class="kw-2">&amp;</span>ip_header.payload()[..pos])
+                .map(|ext| (
+                    ext.get_next_header(),
+                    ext.get_hdr_ext_len(),
+                    ext.packet_size()
                 ))
-                .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(),
+                .collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
             <span class="macro">vec!</span>[
-                (<span class="ident">IpNextHeaderProtocols::Ipv6Opts</span>, <span class="number">1</span>, <span class="number">16</span>),
-                (<span class="ident">IpNextHeaderProtocols::Ipv6Route</span>, <span class="number">1</span>, <span class="number">16</span>),
-                (<span class="ident">IpNextHeaderProtocols::Ipv6Frag</span>, <span class="number">1</span>, <span class="number">16</span>),
-                (<span class="ident">IpNextHeaderProtocols::Udp</span>, <span class="number">0</span>, <span class="number">8</span>),
+                (IpNextHeaderProtocols::Ipv6Opts, <span class="number">1</span>, <span class="number">16</span>),
+                (IpNextHeaderProtocols::Ipv6Route, <span class="number">1</span>, <span class="number">16</span>),
+                (IpNextHeaderProtocols::Ipv6Frag, <span class="number">1</span>, <span class="number">16</span>),
+                (IpNextHeaderProtocols::Udp, <span class="number">0</span>, <span class="number">8</span>),
             ]
         );
     }
 
-    <span class="kw">let</span> <span class="ident">ref_packet</span> <span class="op">=</span> [<span class="number">0x61</span>,           <span class="comment">/* ver/traffic class */</span>
-                      <span class="number">0x11</span>,           <span class="comment">/* traffic class/flow label */</span>
-                      <span class="number">0x01</span>, <span class="number">0x01</span>,     <span class="comment">/* flow label */</span>
-                      <span class="number">0x01</span>, <span class="number">0x01</span>,     <span class="comment">/* payload length */</span>
-                      <span class="number">0x00</span>,           <span class="comment">/* next header */</span>
-                      <span class="number">0x01</span>,           <span class="comment">/* hop limit */</span>
-                      <span class="comment">/* source ip */</span>
+    <span class="kw">let </span>ref_packet = [<span class="number">0x61</span>,           <span class="comment">/* ver/traffic class */
+                      </span><span class="number">0x11</span>,           <span class="comment">/* traffic class/flow label */
+                      </span><span class="number">0x01</span>, <span class="number">0x01</span>,     <span class="comment">/* flow label */
+                      </span><span class="number">0x01</span>, <span class="number">0x01</span>,     <span class="comment">/* payload length */
+                      </span><span class="number">0x00</span>,           <span class="comment">/* next header */
+                      </span><span class="number">0x01</span>,           <span class="comment">/* hop limit */
+                      /* source ip */
+                      </span><span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
                       <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
                       <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
                       <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
-                      <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
-                      <span class="comment">/* dest ip */</span>
-                      <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
-                      <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
+                      <span class="comment">/* dest ip */
+                      </span><span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
                       <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
                       <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
-                      <span class="comment">/* Hop-by-Hop Options */</span>
-                      <span class="number">0x3c</span>,             <span class="comment">// Next Header</span>
-                      <span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len</span>
-                      <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>,
+                      <span class="number">0x01</span>, <span class="number">0x10</span>, <span class="number">0x10</span>, <span class="number">0x01</span>,
+                      <span class="comment">/* Hop-by-Hop Options */
+                      </span><span class="number">0x3c</span>,             <span class="comment">// Next Header
+                      </span><span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len
+                      </span><span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>,
                       <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;A&#39;</span>,
-                      <span class="comment">/* Destination Options */</span>
-                      <span class="number">0x2b</span>,             <span class="comment">// Next Header</span>
-                      <span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len</span>
-                      <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>,
+                      <span class="comment">/* Destination Options */
+                      </span><span class="number">0x2b</span>,             <span class="comment">// Next Header
+                      </span><span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len
+                      </span><span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>,
                       <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>, <span class="string">b&#39;B&#39;</span>,
-                      <span class="comment">/* Routing */</span>
-                      <span class="number">0x2c</span>,             <span class="comment">// Next Header</span>
-                      <span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len</span>
-                      <span class="number">0x04</span>,             <span class="comment">// Routing Type</span>
-                      <span class="number">0x02</span>,             <span class="comment">// Segments Left</span>
-                      <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>,
+                      <span class="comment">/* Routing */
+                      </span><span class="number">0x2c</span>,             <span class="comment">// Next Header
+                      </span><span class="number">0x01</span>,             <span class="comment">// Hdr Ext Len
+                      </span><span class="number">0x04</span>,             <span class="comment">// Routing Type
+                      </span><span class="number">0x02</span>,             <span class="comment">// Segments Left
+                      </span><span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>,
                       <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;C&#39;</span>,
-                      <span class="comment">/* Fragment */</span>
-                      <span class="number">0x11</span>,                     <span class="comment">// Next Header</span>
-                      <span class="number">0x00</span>,                     <span class="comment">// Reserved</span>
-                      <span class="number">0x04</span>, <span class="number">0x01</span>,               <span class="comment">// Fragment Offset</span>
-                      <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x04</span>, <span class="number">0xd2</span>    <span class="comment">// Identification</span>
-                      ];
-    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">ref_packet</span>[..], <span class="kw-2">&amp;</span><span class="ident">packet</span>[..<span class="ident">ref_packet</span>.<span class="ident">len</span>()]);
+                      <span class="comment">/* Fragment */
+                      </span><span class="number">0x11</span>,                     <span class="comment">// Next Header
+                      </span><span class="number">0x00</span>,                     <span class="comment">// Reserved
+                      </span><span class="number">0x04</span>, <span class="number">0x01</span>,               <span class="comment">// Fragment Offset
+                      </span><span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x04</span>, <span class="number">0xd2    </span><span class="comment">// Identification
+                      </span>];
+    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>ref_packet[..], <span class="kw-2">&amp;</span>packet[..ref_packet.len()]);
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pnet_packet" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (4cbaac699 2022-05-25)" ></div>
-</body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pnet_packet" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>
