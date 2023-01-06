@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`clap` is a simple-to-use, efficient, and full-featured library for parsing command line arguments and subcommands when writing console/terminal applications."><meta name="keywords" content="rust, rustlang, rust-lang, clap"><title>clap - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-52d73ba8755f90af.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-8a5340150ffb8218.css"><link rel="stylesheet" disabled href="../static.files/dark-19c2b904a5b0636e.css"><link rel="stylesheet" disabled href="../static.files/ayu-4f0dd21410274c70.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-0dede64717b247ca.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-201a7e04dc4c6fce.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../clap/index.html"><div class="logo-container"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../clap/index.html"><div class="logo-container"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2 class="location"><a href="#">Crate clap</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 2.34.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#types">Type Definitions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Crate <a class="mod" href="#">clap</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/clap/lib.rs.html#6-638">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><code>clap</code> is a simple-to-use, efficient, and full-featured library for parsing command line
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`clap` is a simple-to-use, efficient, and full-featured library for parsing command line arguments and subcommands when writing console/terminal applications."><meta name="keywords" content="rust, rustlang, rust-lang, clap"><title>clap - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-73bd0883af174920.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-bc1b32400f872ddb.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../clap/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../clap/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate clap</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 2.34.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#types">Type Definitions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Crate <a class="mod" href="#">clap</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/clap/lib.rs.html#6-638">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><code>clap</code> is a simple-to-use, efficient, and full-featured library for parsing command line
 arguments and subcommands when writing console/terminal applications.</p>
 <h3 id="about"><a href="#about">About</a></h3>
 <p><code>clap</code> is used to parse <em>and validate</em> the string of command line arguments provided by the user
@@ -151,7 +151,8 @@ subcommands:
         args:
             - debug:
                 short: d
-                help: print debug information</code></pre></div>
+                help: print debug information
+</code></pre></div>
 <p>Since this feature requires additional dependencies that not everyone may want, it is <em>not</em>
 compiled in by default and we need to enable a feature flag in Cargo.toml:</p>
 <p>Simply change your <code>clap = &quot;~2.27.0&quot;</code> to <code>clap = {version = &quot;~2.27.0&quot;, features = [&quot;yaml&quot;]}</code>.</p>
@@ -219,7 +220,8 @@ ARGS:
 
 SUBCOMMANDS:
     help    Prints this message
-    test    Controls testing features</code></pre></div>
+    test    Controls testing features
+</code></pre></div>
 <p><strong>NOTE:</strong> You could also run <code>myapp test --help</code> to see similar output and options for the
 <code>test</code> subcommand.</p>
 <h3 id="try-it"><a href="#try-it">Try it!</a></h3><h4 id="pre-built-test"><a href="#pre-built-test">Pre-Built Test</a></h4>
@@ -237,7 +239,8 @@ SUBCOMMANDS:
 <li>Add <code>clap</code> to your <code>Cargo.toml</code></li>
 </ul>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = &quot;2&quot;</code></pre></div>
+clap = &quot;2&quot;
+</code></pre></div>
 <ul>
 <li>Add the following to your <code>src/main.rs</code></li>
 </ul>
@@ -257,10 +260,12 @@ clap = &quot;2&quot;</code></pre></div>
 use the <code>~major.minor.patch</code> style versions in your <code>Cargo.toml</code>, for more information see
 <a href="#compatibility-policy">Compatibility Policy</a>) to use from crates.io:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = &quot;~2.27.0&quot;</code></pre></div>
+clap = &quot;~2.27.0&quot;
+</code></pre></div>
 <p>Or get the latest changes from the master branch at github:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
-git = &quot;https://github.com/clap-rs/clap.git&quot;</code></pre></div>
+git = &quot;https://github.com/clap-rs/clap.git&quot;
+</code></pre></div>
 <p>Add <code>extern crate clap;</code> to your crate root.</p>
 <p>Define a list of valid arguments for your program (see the
 <a href="https://docs.rs/clap/">documentation</a> or <a href="https://github.com/clap-rs/clap/tree/v2.34.0/examples">examples/</a> directory of this repo)</p>
@@ -276,13 +281,16 @@ with feature <code>term_size</code>)</li>
 <p>To disable these, add this to your <code>Cargo.toml</code>:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
 version = &quot;~2.27.0&quot;
-default-features = false</code></pre></div>
+default-features = false
+</code></pre></div>
 <p>You can also selectively enable only the features you’d like to include, by adding:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
 version = &quot;~2.27.0&quot;
 default-features = false
 
-features = [ &quot;suggestions&quot;, &quot;color&quot; ]</code></pre></div><h5 id="opt-in-features"><a href="#opt-in-features">Opt-in features</a></h5>
+# Cherry-pick the features you&#39;d like to use
+features = [ &quot;suggestions&quot;, &quot;color&quot; ]
+</code></pre></div><h5 id="opt-in-features"><a href="#opt-in-features">Opt-in features</a></h5>
 <ul>
 <li><strong>“yaml”</strong>: Enables building CLIs from YAML documents. (builds dependency <code>yaml-rust</code>)</li>
 <li><strong>“unstable”</strong>: Enables unstable <code>clap</code> features that may change from release to release</li>
@@ -314,18 +322,22 @@ me. I’m all about giving credit where credit is due :)</p>
 <h4 id="testing-code"><a href="#testing-code">Testing Code</a></h4>
 <p>To test with all features both enabled and disabled, you can run theese commands:</p>
 <div class="example-wrap"><pre class="language-text"><code>$ cargo test --no-default-features
-$ cargo test --features &quot;yaml unstable&quot;</code></pre></div>
+$ cargo test --features &quot;yaml unstable&quot;
+</code></pre></div>
 <p>Alternatively, if you have <a href="https://github.com/casey/just"><code>just</code></a> installed you can run the
 prebuilt recipes. <em>Not</em> using <code>just</code> is perfectly fine as well, it simply bundles commands
 automatically.</p>
 <p>For example, to test the code, as above simply run:</p>
-<div class="example-wrap"><pre class="language-text"><code>$ just run-tests</code></pre></div>
+<div class="example-wrap"><pre class="language-text"><code>$ just run-tests
+</code></pre></div>
 <p>From here on, I will list the appropriate <code>cargo</code> command as well as the <code>just</code> command.</p>
 <p>Sometimes it’s helpful to only run a subset of the tests, which can be done via:</p>
 <div class="example-wrap"><pre class="language-text"><code>$ cargo test --test &lt;test_name&gt;
 
+# Or
 
-$ just run-test &lt;test_name&gt;</code></pre></div><h4 id="linting-code"><a href="#linting-code">Linting Code</a></h4>
+$ just run-test &lt;test_name&gt;
+</code></pre></div><h4 id="linting-code"><a href="#linting-code">Linting Code</a></h4>
 <p>During the CI process <code>clap</code> runs against many different lints using
 <a href="https://github.com/Manishearth/rust-clippy"><code>clippy</code></a>. In order to check if these lints pass on
 your own computer prior to submitting a PR you’ll need a nightly compiler.</p>
@@ -334,15 +346,20 @@ your own computer prior to submitting a PR you’ll need a nightly compiler.</p>
 $ cargo build --features lints
 $ rustup override remove
 
+# Or
 
-$ just lint</code></pre></div><h4 id="debugging-code"><a href="#debugging-code">Debugging Code</a></h4>
+$ just lint
+</code></pre></div><h4 id="debugging-code"><a href="#debugging-code">Debugging Code</a></h4>
 <p>Another helpful technique is to see the <code>clap</code> debug output while developing features. In order
 to see the debug output while running the full test suite or individual tests, run:</p>
 <div class="example-wrap"><pre class="language-text"><code>$ cargo test --features debug
 
+# Or for individual tests
 $ cargo test --test &lt;test_name&gt; --features debug
 
-$ just debug &lt;test_name&gt;</code></pre></div><h4 id="goals"><a href="#goals">Goals</a></h4>
+# The corresponding just command for individual debugging tests is:
+$ just debug &lt;test_name&gt;
+</code></pre></div><h4 id="goals"><a href="#goals">Goals</a></h4>
 <p>There are a few goals of <code>clap</code> that I’d like to maintain throughout contributions. If your
 proposed changes break, or go against any of these goals we’ll discuss the changes further
 before merging (but will <em>not</em> be ignored, all contributes are welcome!). These are by no means
@@ -378,7 +395,8 @@ version of Rust is considered a minor breaking change, meaning <em>at a minimum<
 of <code>clap</code> will be bumped.</p>
 <p>In order to keep from being surprised by breaking changes, it is <strong>highly</strong> recommended to use
 the <code>~major.minor.patch</code> style in your <code>Cargo.toml</code>:</p>
-<div class="example-wrap"><pre class="language-toml"><code>[dependencies] clap = &quot;~2.27.0&quot;</code></pre></div>
+<div class="example-wrap"><pre class="language-toml"><code>[dependencies] clap = &quot;~2.27.0&quot;
+</code></pre></div>
 <p>This will cause <em>only</em> the patch version to be updated upon a <code>cargo update</code> call, and therefore
 cannot break due to new features, or bumped minimum versions of Rust.</p>
 <h5 id="minimum-version-of-rust"><a href="#minimum-version-of-rust">Minimum Version of Rust</a></h5>
@@ -421,4 +439,4 @@ methods.</div></div><div class="item-row"><div class="item-left module-item"><a 
 method. Usage of this iterator allows values which contain invalid UTF-8 code points unlike
 <a href="./struct.Values.html"><code>Values</code></a>.</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.SubCommand.html" title="clap::SubCommand struct">SubCommand</a></div><div class="item-right docblock-short">The abstract representation of a command line subcommand.</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Values.html" title="clap::Values struct">Values</a></div><div class="item-right docblock-short">An iterator for getting multiple values out of an argument via the <a href="./struct.ArgMatches.html#method.values_of"><code>ArgMatches::values_of</code></a>
 method.</div></div></div><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.AppSettings.html" title="clap::AppSettings enum">AppSettings</a></div><div class="item-right docblock-short">Application level settings, which affect how <a href="./struct.App.html"><code>App</code></a> operates</div></div><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.ArgSettings.html" title="clap::ArgSettings enum">ArgSettings</a></div><div class="item-right docblock-short">Various settings that apply to arguments and may be set, unset, and checked via getter/setter
-methods <a href="./struct.Arg.html#method.set"><code>Arg::set</code></a>, <a href="./struct.Arg.html#method.unset"><code>Arg::unset</code></a>, and <a href="./struct.Arg.html#method.is_set"><code>Arg::is_set</code></a></div></div><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.ErrorKind.html" title="clap::ErrorKind enum">ErrorKind</a></div><div class="item-right docblock-short">Command line argument parser kind of error</div></div><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.Shell.html" title="clap::Shell enum">Shell</a></div><div class="item-right docblock-short">Describes which shell to produce a completions file for</div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.Result.html" title="clap::Result type">Result</a></div><div class="item-right docblock-short">Short hand for <a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result</code></a> type</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="clap" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0-nightly (c1a859b25 2022-11-10)" data-search-js="search-39ee4160c7dc16c9.js" data-settings-js="settings-3a0b9947ba1bd99a.js" data-settings-css="settings-a66f7524084a489a.css" ></div></body></html>
+methods <a href="./struct.Arg.html#method.set"><code>Arg::set</code></a>, <a href="./struct.Arg.html#method.unset"><code>Arg::unset</code></a>, and <a href="./struct.Arg.html#method.is_set"><code>Arg::is_set</code></a></div></div><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.ErrorKind.html" title="clap::ErrorKind enum">ErrorKind</a></div><div class="item-right docblock-short">Command line argument parser kind of error</div></div><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.Shell.html" title="clap::Shell enum">Shell</a></div><div class="item-right docblock-short">Describes which shell to produce a completions file for</div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.Result.html" title="clap::Result type">Result</a></div><div class="item-right docblock-short">Short hand for <a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result</code></a> type</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="clap" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (388538fc9 2023-01-05)" data-search-js="search-181581080540673f.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-58836c674e2f7bd2.css" ></div></body></html>
