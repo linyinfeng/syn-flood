@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.4/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-ccceecc34bb68766.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../getrandom/index.html">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../getrandom/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk.png" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -252,6 +252,44 @@
 <a href="#251" id="251">251</a>
 <a href="#252" id="252">252</a>
 <a href="#253" id="253">253</a>
+<a href="#254" id="254">254</a>
+<a href="#255" id="255">255</a>
+<a href="#256" id="256">256</a>
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a>
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a>
+<a href="#261" id="261">261</a>
+<a href="#262" id="262">262</a>
+<a href="#263" id="263">263</a>
+<a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2019 Developers of the Rand project.
 //
 // Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
@@ -266,26 +304,27 @@
 //!
 //! | Target            | Target Triple      | Implementation
 //! | ----------------- | ------------------ | --------------
-//! | Linux, Android    | `*‑linux‑*`        | [`getrandom`][1] system call if available, otherwise [`/dev/urandom`][2] after successfully polling `/dev/random` |
-//! | Windows           | `*‑windows‑*`      | [`BCryptGenRandom`][3] |
-//! | macOS             | `*‑apple‑darwin`   | [`getentropy()`][19] if available, otherwise [`/dev/random`][20] (identical to `/dev/urandom`)
-//! | iOS               | `*‑apple‑ios`      | [`SecRandomCopyBytes`][4]
-//! | FreeBSD           | `*‑freebsd`        | [`getrandom()`][21] if available, otherwise [`kern.arandom`][5]
-//! | OpenBSD           | `*‑openbsd`        | [`getentropy`][6]
-//! | NetBSD            | `*‑netbsd`         | [`kern.arandom`][7]
-//! | Dragonfly BSD     | `*‑dragonfly`      | [`getrandom()`][22] if available, otherwise [`/dev/random`][8]
-//! | Solaris, illumos  | `*‑solaris`, `*‑illumos` | [`getrandom()`][9] if available, otherwise [`/dev/random`][10]
-//! | Fuchsia OS        | `*‑fuchsia`        | [`cprng_draw`][11]
-//! | Redox             | `*‑redox`          | [`/dev/urandom`][12]
+//! | Linux, Android    | `*‑linux‑*`        | [`getrandom`][1] system call if available, otherwise [`/dev/urandom`][2] after successfully polling `/dev/random`
+//! | Windows           | `*‑windows‑*`      | [`BCryptGenRandom`]
+//! | macOS             | `*‑apple‑darwin`   | [`getentropy`][3] if available, otherwise [`/dev/random`][4] (identical to `/dev/urandom`)
+//! | iOS               | `*‑apple‑ios`      | [`SecRandomCopyBytes`]
+//! | FreeBSD           | `*‑freebsd`        | [`getrandom`][5] if available, otherwise [`kern.arandom`][6]
+//! | OpenBSD           | `*‑openbsd`        | [`getentropy`][7]
+//! | NetBSD            | `*‑netbsd`         | [`kern.arandom`][8]
+//! | Dragonfly BSD     | `*‑dragonfly`      | [`getrandom`][9] if available, otherwise [`/dev/random`][10]
+//! | Solaris, illumos  | `*‑solaris`, `*‑illumos` | [`getrandom`][11] if available, otherwise [`/dev/random`][12]
+//! | Fuchsia OS        | `*‑fuchsia`        | [`cprng_draw`]
+//! | Redox             | `*‑redox`          | `/dev/urandom`
 //! | Haiku             | `*‑haiku`          | `/dev/random` (identical to `/dev/urandom`)
-//! | Hermit            | `x86_64-*-hermit`  | [`RDRAND`][18]
-//! | SGX               | `x86_64‑*‑sgx`     | [RDRAND][18]
+//! | Hermit            | `x86_64-*-hermit`  | [`RDRAND`]
+//! | SGX               | `x86_64‑*‑sgx`     | [`RDRAND`]
 //! | VxWorks           | `*‑wrs‑vxworks‑*`  | `randABytes` after checking entropy pool initialization with `randSecure`
+//! | ESP-IDF           | `*‑espidf`         | [`esp_fill_random`]
 //! | Emscripten        | `*‑emscripten`     | `/dev/random` (identical to `/dev/urandom`)
-//! | WASI              | `wasm32‑wasi`      | [`random_get`][17]
-//! | Web Browser       | `wasm32‑*‑unknown` | [`Crypto.getRandomValues()`][14], see [WebAssembly support][16]
-//! | Node.js           | `wasm32‑*‑unknown` | [`crypto.randomBytes`][15], see [WebAssembly support][16]
+//! | WASI              | `wasm32‑wasi`      | [`random_get`]
+//! | Web Browser and Node.js | `wasm32‑*‑unknown` | [`Crypto.getRandomValues`] if available, then [`crypto.randomFillSync`] if on Node.js, see [WebAssembly support]
 //! | SOLID             | `*-kmc-solid_*`    | `SOLID_RNG_SampleRandomBytes`
+//! | Nintendo 3DS      | `armv6k-nintendo-3ds` | [`getrandom`][1]
 //!
 //! There is no blanket implementation on `unix` targets that reads from
 //! `/dev/urandom`. This ensures all supported targets are using the recommended
@@ -306,8 +345,8 @@
 //!
 //! ### RDRAND on x86
 //!
-//! *If the `&quot;rdrand&quot;` Cargo feature is enabled*, `getrandom` will fallback to using
-//! the [`RDRAND`][18] instruction to get randomness on `no_std` `x86`/`x86_64`
+//! *If the `rdrand` Cargo feature is enabled*, `getrandom` will fallback to using
+//! the [`RDRAND`] instruction to get randomness on `no_std` `x86`/`x86_64`
 //! targets. This feature has no effect on other CPU architectures.
 //!
 //! ### WebAssembly support
@@ -320,14 +359,40 @@
 //! supported since, from the target name alone, we cannot deduce which
 //! JavaScript interface is in use (or if JavaScript is available at all).
 //!
-//! Instead, *if the `&quot;js&quot;` Cargo feature is enabled*, this crate will assume
+//! Instead, *if the `js` Cargo feature is enabled*, this crate will assume
 //! that you are building for an environment containing JavaScript, and will
 //! call the appropriate methods. Both web browser (main window and Web Workers)
 //! and Node.js environments are supported, invoking the methods
-//! [described above](#supported-targets) using the
-//! [wasm-bindgen](https://github.com/rust-lang/rust-bindgen) toolchain.
+//! [described above](#supported-targets) using the [`wasm-bindgen`] toolchain.
+//!
+//! To enable the `js` Cargo feature, add the following to the `dependencies`
+//! section in your `Cargo.toml` file:
+//! ```toml
+//! [dependencies]
+//! getrandom = { version = &quot;0.2&quot;, features = [&quot;js&quot;] }
+//! ```
+//!
+//! This can be done even if `getrandom` is not a direct dependency. Cargo
+//! allows crates to enable features for indirect dependencies.
+//!
+//! This feature should only be enabled for binary, test, or benchmark crates.
+//! Library crates should generally not enable this feature, leaving such a
+//! decision to *users* of their library. Also, libraries should not introduce
+//! their own `js` features *just* to enable `getrandom`&#39;s `js` feature.
 //!
 //! This feature has no effect on targets other than `wasm32-unknown-unknown`.
+//!
+//! #### Node.js ES module support
+//!
+//! Node.js supports both [CommonJS modules] and [ES modules]. Due to
+//! limitations in wasm-bindgen&#39;s [`module`] support, we cannot directly
+//! support ES Modules running on Node.js. However, on Node v15 and later, the
+//! module author can add a simple shim to support the Web Cryptography API:
+//! ```js
+//! import { webcrypto } from &#39;node:crypto&#39;
+//! globalThis.crypto = webcrypto
+//! ```
+//! This crate will then use the provided `webcrypto` implementation.
 //!
 //! ### Custom implementations
 //!
@@ -338,18 +403,8 @@
 //!
 //! Note that registering a custom implementation only has an effect on targets
 //! that would otherwise not compile. Any supported targets (including those
-//! using `&quot;rdrand&quot;` and `&quot;js&quot;` Cargo features) continue using their normal
+//! using `rdrand` and `js` Cargo features) continue using their normal
 //! implementations even if a function is registered.
-//!
-//! ### Indirect Dependencies
-//!
-//! If `getrandom` is not a direct dependency of your crate, you can still
-//! enable any of the above fallback behaviors by enabling the relevant
-//! feature in your root crate&#39;s `Cargo.toml`:
-//! ```toml
-//! [dependencies]
-//! getrandom = { version = &quot;0.2&quot;, features = [&quot;js&quot;] }
-//! ```
 //!
 //! ## Early boot
 //!
@@ -367,40 +422,54 @@
 //! entropy yet. To avoid returning low-entropy bytes, we first poll
 //! `/dev/random` and only switch to `/dev/urandom` once this has succeeded.
 //!
+//! On OpenBSD, this kind of entropy accounting isn&#39;t available, and on
+//! NetBSD, blocking on it is discouraged. On these platforms, nonblocking
+//! interfaces are used, even when reliable entropy may not be available.
+//! On the platforms where it is used, the reliability of entropy accounting
+//! itself isn&#39;t free from controversy. This library provides randomness
+//! sourced according to the platform&#39;s best practices, but each platform has
+//! its own limits on the grade of randomness it can promise in environments
+//! with few sources of entropy.
+//!
 //! ## Error handling
 //!
-//! We always choose failure over returning insecure &quot;random&quot; bytes. In general,
-//! on supported platforms, failure is highly unlikely, though not impossible.
-//! If an error does occur, then it is likely that it will occur on every call to
-//! `getrandom`, hence after the first successful call one can be reasonably
-//! confident that no errors will occur.
+//! We always choose failure over returning known insecure &quot;random&quot; bytes. In
+//! general, on supported platforms, failure is highly unlikely, though not
+//! impossible. If an error does occur, then it is likely that it will occur
+//! on every call to `getrandom`, hence after the first successful call one
+//! can be reasonably confident that no errors will occur.
 //!
 //! [1]: http://man7.org/linux/man-pages/man2/getrandom.2.html
 //! [2]: http://man7.org/linux/man-pages/man4/urandom.4.html
-//! [3]: https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom
-//! [4]: https://developer.apple.com/documentation/security/1399291-secrandomcopybytes?language=objc
-//! [5]: https://www.freebsd.org/cgi/man.cgi?query=random&amp;sektion=4
-//! [6]: https://man.openbsd.org/getentropy.2
-//! [7]: https://man.netbsd.org/sysctl.7
-//! [8]: https://leaf.dragonflybsd.org/cgi/web-man?command=random&amp;section=4
-//! [9]: https://docs.oracle.com/cd/E88353_01/html/E37841/getrandom-2.html
-//! [10]: https://docs.oracle.com/cd/E86824_01/html/E54777/random-7d.html
-//! [11]: https://fuchsia.dev/fuchsia-src/zircon/syscalls/cprng_draw
-//! [12]: https://github.com/redox-os/randd/blob/master/src/main.rs
-//! [14]: https://www.w3.org/TR/WebCryptoAPI/#Crypto-method-getRandomValues
-//! [15]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
-//! [16]: #webassembly-support
-//! [17]: https://github.com/WebAssembly/WASI/blob/main/phases/snapshot/docs.md#-random_getbuf-pointeru8-buf_len-size---errno
-//! [18]: https://software.intel.com/en-us/articles/intel-digital-random-number-generator-drng-software-implementation-guide
-//! [19]: https://www.unix.com/man-page/mojave/2/getentropy/
-//! [20]: https://www.unix.com/man-page/mojave/4/random/
-//! [21]: https://www.freebsd.org/cgi/man.cgi?query=getrandom&amp;manpath=FreeBSD+12.0-stable
-//! [22]: https://leaf.dragonflybsd.org/cgi/web-man?command=getrandom
+//! [3]: https://www.unix.com/man-page/mojave/2/getentropy/
+//! [4]: https://www.unix.com/man-page/mojave/4/random/
+//! [5]: https://www.freebsd.org/cgi/man.cgi?query=getrandom&amp;manpath=FreeBSD+12.0-stable
+//! [6]: https://www.freebsd.org/cgi/man.cgi?query=random&amp;sektion=4
+//! [7]: https://man.openbsd.org/getentropy.2
+//! [8]: https://man.netbsd.org/sysctl.7
+//! [9]: https://leaf.dragonflybsd.org/cgi/web-man?command=getrandom
+//! [10]: https://leaf.dragonflybsd.org/cgi/web-man?command=random&amp;section=4
+//! [11]: https://docs.oracle.com/cd/E88353_01/html/E37841/getrandom-2.html
+//! [12]: https://docs.oracle.com/cd/E86824_01/html/E54777/random-7d.html
+//!
+//! [`BCryptGenRandom`]: https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom
+//! [`Crypto.getRandomValues`]: https://www.w3.org/TR/WebCryptoAPI/#Crypto-method-getRandomValues
+//! [`RDRAND`]: https://software.intel.com/en-us/articles/intel-digital-random-number-generator-drng-software-implementation-guide
+//! [`SecRandomCopyBytes`]: https://developer.apple.com/documentation/security/1399291-secrandomcopybytes?language=objc
+//! [`cprng_draw`]: https://fuchsia.dev/fuchsia-src/zircon/syscalls/cprng_draw
+//! [`crypto.randomFillSync`]: https://nodejs.org/api/crypto.html#cryptorandomfillsyncbuffer-offset-size
+//! [`esp_fill_random`]: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/random.html#_CPPv415esp_fill_randomPv6size_t
+//! [`random_get`]: https://github.com/WebAssembly/WASI/blob/main/phases/snapshot/docs.md#-random_getbuf-pointeru8-buf_len-size---errno
+//! [WebAssembly support]: #webassembly-support
+//! [`wasm-bindgen`]: https://github.com/rustwasm/wasm-bindgen
+//! [`module`]: https://rustwasm.github.io/wasm-bindgen/reference/attributes/on-js-imports/module.html
+//! [CommonJS modules]: https://nodejs.org/api/modules.html
+//! [ES modules]: https://nodejs.org/api/esm.html
 
 </span><span class="attr">#![doc(
     html_logo_url = <span class="string">&quot;https://www.rust-lang.org/logos/rust-logo-128x128-blk.png&quot;</span>,
     html_favicon_url = <span class="string">&quot;https://www.rust-lang.org/favicon.ico&quot;</span>,
-    html_root_url = <span class="string">&quot;https://docs.rs/getrandom/0.2.4&quot;
+    html_root_url = <span class="string">&quot;https://docs.rs/getrandom/0.2.8&quot;
 </span>)]
 #![no_std]
 #![warn(rust_2018_idioms, unused_lifetimes, missing_docs)]
@@ -463,6 +532,8 @@
         <span class="attr">#[path = <span class="string">&quot;vxworks.rs&quot;</span>] </span><span class="kw">mod </span>imp;
     } <span class="kw">else if </span><span class="attr">#[cfg(target_os = <span class="string">&quot;solid_asp3&quot;</span>)] </span>{
         <span class="attr">#[path = <span class="string">&quot;solid.rs&quot;</span>] </span><span class="kw">mod </span>imp;
+    } <span class="kw">else if </span><span class="attr">#[cfg(target_os = <span class="string">&quot;espidf&quot;</span>)] </span>{
+        <span class="attr">#[path = <span class="string">&quot;espidf.rs&quot;</span>] </span><span class="kw">mod </span>imp;
     } <span class="kw">else if </span><span class="attr">#[cfg(windows)] </span>{
         <span class="attr">#[path = <span class="string">&quot;windows.rs&quot;</span>] </span><span class="kw">mod </span>imp;
     } <span class="kw">else if </span><span class="attr">#[cfg(all(target_arch = <span class="string">&quot;x86_64&quot;</span>, target_env = <span class="string">&quot;sgx&quot;</span>))] </span>{
@@ -473,6 +544,11 @@
     } <span class="kw">else if </span><span class="attr">#[cfg(all(feature = <span class="string">&quot;js&quot;</span>,
                         target_arch = <span class="string">&quot;wasm32&quot;</span>, target_os = <span class="string">&quot;unknown&quot;</span>))] </span>{
         <span class="attr">#[path = <span class="string">&quot;js.rs&quot;</span>] </span><span class="kw">mod </span>imp;
+    } <span class="kw">else if </span><span class="attr">#[cfg(all(target_os = <span class="string">&quot;horizon&quot;</span>, target_arch = <span class="string">&quot;arm&quot;</span>))] </span>{
+        <span class="comment">// We check for target_arch = &quot;arm&quot; because the Nintendo Switch also
+        // uses Horizon OS (it is aarch64).
+        </span><span class="kw">mod </span>util_libc;
+        <span class="attr">#[path = <span class="string">&quot;3ds.rs&quot;</span>] </span><span class="kw">mod </span>imp;
     } <span class="kw">else if </span><span class="attr">#[cfg(feature = <span class="string">&quot;custom&quot;</span>)] </span>{
         <span class="kw">use </span>custom <span class="kw">as </span>imp;
     } <span class="kw">else if </span><span class="attr">#[cfg(all(target_arch = <span class="string">&quot;wasm32&quot;</span>, target_os = <span class="string">&quot;unknown&quot;</span>))] </span>{
@@ -506,4 +582,4 @@
     imp::getrandom_inner(dest)
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="getrandom" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (333ee6c46 2023-01-18)" data-search-js="search-181581080540673f.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-cd1be5fcaa86d99b.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="getrandom" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (bd39bbb4b 2023-02-07)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

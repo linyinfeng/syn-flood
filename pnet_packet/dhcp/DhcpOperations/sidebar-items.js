@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":[["Reply","Dhcp reply"],["Request","DHCP request"]]};

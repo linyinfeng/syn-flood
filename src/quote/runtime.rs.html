@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.15/src/runtime.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>runtime.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-ccceecc34bb68766.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../quote/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.23/src/runtime.rs`."><title>runtime.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../quote/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -436,44 +436,14 @@
 <a href="#436" id="436">436</a>
 <a href="#437" id="437">437</a>
 <a href="#438" id="438">438</a>
-<a href="#439" id="439">439</a>
-<a href="#440" id="440">440</a>
-<a href="#441" id="441">441</a>
-<a href="#442" id="442">442</a>
-<a href="#443" id="443">443</a>
-<a href="#444" id="444">444</a>
-<a href="#445" id="445">445</a>
-<a href="#446" id="446">446</a>
-<a href="#447" id="447">447</a>
-<a href="#448" id="448">448</a>
-<a href="#449" id="449">449</a>
-<a href="#450" id="450">450</a>
-<a href="#451" id="451">451</a>
-<a href="#452" id="452">452</a>
-<a href="#453" id="453">453</a>
-<a href="#454" id="454">454</a>
-<a href="#455" id="455">455</a>
-<a href="#456" id="456">456</a>
-<a href="#457" id="457">457</a>
-<a href="#458" id="458">458</a>
-<a href="#459" id="459">459</a>
-<a href="#460" id="460">460</a>
-<a href="#461" id="461">461</a>
-<a href="#462" id="462">462</a>
-<a href="#463" id="463">463</a>
-<a href="#464" id="464">464</a>
-<a href="#465" id="465">465</a>
-<a href="#466" id="466">466</a>
-<a href="#467" id="467">467</a>
-<a href="#468" id="468">468</a>
-<a href="#469" id="469">469</a>
-<a href="#470" id="470">470</a>
 </pre><pre class="rust"><code><span class="kw">use crate</span>::{IdentFragment, ToTokens, TokenStreamExt};
-<span class="kw">use </span>std::fmt;
-<span class="kw">use </span>std::iter;
-<span class="kw">use </span>std::ops::BitOr;
+<span class="kw">use </span>core::fmt;
+<span class="kw">use </span>core::iter;
+<span class="kw">use </span>core::ops::BitOr;
 
+<span class="kw">pub use </span>core::option::Option;
 <span class="kw">pub use </span>proc_macro2::<span class="kw-2">*</span>;
+<span class="kw">pub use </span>std::format;
 
 <span class="kw">pub struct </span>HasIterator; <span class="comment">// True
 </span><span class="kw">pub struct </span>ThereIsNoIteratorInRepetition; <span class="comment">// False
@@ -516,8 +486,8 @@
     <span class="kw">use </span><span class="kw">super</span>::RepInterp;
     <span class="kw">use super</span>::{HasIterator <span class="kw">as </span>HasIter, ThereIsNoIteratorInRepetition <span class="kw">as </span>DoesNotHaveIter};
     <span class="kw">use </span><span class="kw">crate</span>::ToTokens;
+    <span class="kw">use </span>core::slice;
     <span class="kw">use </span>std::collections::btree_set::{<span class="self">self</span>, BTreeSet};
-    <span class="kw">use </span>std::slice;
 
     <span class="doccomment">/// Extension trait providing the `quote_into_iter` method on iterators.
     </span><span class="kw">pub trait </span>RepIteratorExt: Iterator + Sized {
@@ -675,27 +645,12 @@
 }
 
 <span class="kw">pub fn </span>push_ident(tokens: <span class="kw-2">&amp;mut </span>TokenStream, s: <span class="kw-2">&amp;</span>str) {
-    <span class="comment">// Optimization over `mk_ident`, as `s` is guaranteed to be a valid ident.
-    //
-    // FIXME: When `Ident::new_raw` becomes stable, this method should be
-    // updated to call it when available.
-    </span><span class="kw">if </span>s.starts_with(<span class="string">&quot;r#&quot;</span>) {
-        parse(tokens, s);
-    } <span class="kw">else </span>{
-        tokens.append(Ident::new(s, Span::call_site()));
-    }
+    <span class="kw">let </span>span = Span::call_site();
+    push_ident_spanned(tokens, span, s);
 }
 
 <span class="kw">pub fn </span>push_ident_spanned(tokens: <span class="kw-2">&amp;mut </span>TokenStream, span: Span, s: <span class="kw-2">&amp;</span>str) {
-    <span class="comment">// Optimization over `mk_ident`, as `s` is guaranteed to be a valid ident.
-    //
-    // FIXME: When `Ident::new_raw` becomes stable, this method should be
-    // updated to call it when available.
-    </span><span class="kw">if </span>s.starts_with(<span class="string">&quot;r#&quot;</span>) {
-        parse_spanned(tokens, span, s);
-    } <span class="kw">else </span>{
-        tokens.append(Ident::new(s, span));
-    }
+    tokens.append(ident_maybe_raw(s, span));
 }
 
 <span class="kw">pub fn </span>push_lifetime(tokens: <span class="kw-2">&amp;mut </span>TokenStream, lifetime: <span class="kw-2">&amp;</span>str) {
@@ -862,36 +817,17 @@
 
 <span class="comment">// Helper method for constructing identifiers from the `format_ident!` macro,
 // handling `r#` prefixes.
-//
-// Directly parsing the input string may produce a valid identifier,
-// although the input string was invalid, due to ignored characters such as
-// whitespace and comments. Instead, we always create a non-raw identifier
-// to validate that the string is OK, and only parse again if needed.
 </span><span class="kw">pub fn </span>mk_ident(id: <span class="kw-2">&amp;</span>str, span: <span class="prelude-ty">Option</span>&lt;Span&gt;) -&gt; Ident {
     <span class="kw">let </span>span = span.unwrap_or_else(Span::call_site);
+    ident_maybe_raw(id, span)
+}
 
-    <span class="kw">let </span>is_raw = id.starts_with(<span class="string">&quot;r#&quot;</span>);
-    <span class="kw">let </span>unraw = Ident::new(<span class="kw">if </span>is_raw { <span class="kw-2">&amp;</span>id[<span class="number">2</span>..] } <span class="kw">else </span>{ id }, span);
-    <span class="kw">if </span>!is_raw {
-        <span class="kw">return </span>unraw;
+<span class="kw">fn </span>ident_maybe_raw(id: <span class="kw-2">&amp;</span>str, span: Span) -&gt; Ident {
+    <span class="kw">if </span>id.starts_with(<span class="string">&quot;r#&quot;</span>) {
+        Ident::new_raw(<span class="kw-2">&amp;</span>id[<span class="number">2</span>..], span)
+    } <span class="kw">else </span>{
+        Ident::new(id, span)
     }
-
-    <span class="comment">// At this point, the identifier is raw, and the unraw-ed version of it was
-    // successfully converted into an identifier. Try to produce a valid raw
-    // identifier by running the `TokenStream` parser, and unwrapping the first
-    // token as an `Ident`.
-    //
-    // FIXME: When `Ident::new_raw` becomes stable, this method should be
-    // updated to call it when available.
-    </span><span class="kw">if let </span><span class="prelude-val">Ok</span>(ts) = id.parse::&lt;TokenStream&gt;() {
-        <span class="kw">let </span><span class="kw-2">mut </span>iter = ts.into_iter();
-        <span class="kw">if let </span>(<span class="prelude-val">Some</span>(TokenTree::Ident(<span class="kw-2">mut </span>id)), <span class="prelude-val">None</span>) = (iter.next(), iter.next()) {
-            id.set_span(span);
-            <span class="kw">return </span>id;
-        }
-    }
-
-    <span class="macro">panic!</span>(<span class="string">&quot;not allowed as a raw identifier: `{}`&quot;</span>, id);
 }
 
 <span class="comment">// Adapts from `IdentFragment` to `fmt::Display` for use by the `format_ident!`
@@ -939,4 +875,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="quote" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (333ee6c46 2023-01-18)" data-search-js="search-181581080540673f.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-cd1be5fcaa86d99b.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="quote" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (bd39bbb4b 2023-02-07)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
